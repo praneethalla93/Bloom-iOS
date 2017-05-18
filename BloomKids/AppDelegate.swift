@@ -8,6 +8,8 @@
 
 import UIKit
 
+let isLogin = false
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -15,7 +17,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        window = UIWindow()
+        window?.frame = UIScreen.main.bounds
+        
+        if isLogin {
+            
+        }else{
+            let authStoryboard = UIStoryboard(name: "BKAuth", bundle: nil)
+            let navagitionVC = authStoryboard.instantiateViewController(withIdentifier: "BKNavigationVC")
+            window?.rootViewController = navagitionVC
+        }
+        
+        window?.makeKeyAndVisible()
+        
         return true
     }
 
