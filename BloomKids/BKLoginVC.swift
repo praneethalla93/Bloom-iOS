@@ -16,16 +16,19 @@ let fakePassword = "123"
 class BKLoginVC: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var loginLogoHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var OAuthBottomConstraint: NSLayoutConstraint!
-
+    @IBOutlet weak var loginLogoTopSpaceConstraint: NSLayoutConstraint!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let size = UIScreen.main.bounds.size
         if size.height < 481.0 {
             // iPhone 4S, iPad Air, and all devices using @1x resolution
-            loginLogoHeightConstraint.constant *= 0.8
+            loginLogoTopSpaceConstraint.constant = 8.0
             OAuthBottomConstraint.constant = 0.0
+        }else{
+            loginLogoTopSpaceConstraint.constant = 20
+            OAuthBottomConstraint.constant = 49.0
         }
         
     }
