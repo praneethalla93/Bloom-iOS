@@ -11,13 +11,22 @@ import UIKit
 let fakeEmail = "123@gmail.com"
 let fakePassword = "123"
 
+
+
 class BKLoginVC: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var loginLogoHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var OAuthBottomConstraint: NSLayoutConstraint!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        let size = UIScreen.main.bounds.size
+        if size.height < 481.0 {
+            // iPhone 4S, iPad Air, and all devices using @1x resolution
+            loginLogoHeightConstraint.constant *= 0.8
+            OAuthBottomConstraint.constant = 0.0
+        }
         
     }
     @IBAction func forgotPasswordTapped(_ sender: UIButton) {
@@ -25,6 +34,12 @@ class BKLoginVC: UIViewController {
     }
 
     @IBAction func loginBtnTapped(_ sender: UIButton) {
+        guard let emailText = emailTextField.text, emailText.characters.count != 0,
+                let passwordText = passwordTextField.text, passwordText.characters.count != 0
+        else {
+            return
+        }
+        authenticate(emailText, password: passwordText)
         print("loginBtnTapped")
     }
     @IBAction func loginFBTapped(_ sender: UIButton) {
