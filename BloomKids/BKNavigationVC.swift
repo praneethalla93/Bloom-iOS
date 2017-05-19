@@ -16,8 +16,9 @@ class BKNavigationVC: UINavigationController {
     }
 
     func setupNavigationBar() {
-        self.navigationBar.barTintColor = BKGlobalTintColor
-        self.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white,NSFontAttributeName: UIFont.systemFont(ofSize: BKNavigationBarTitleFontSize)]
+        UINavigationBar.appearance().barTintColor = BKGlobalTintColor
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white,NSFontAttributeName: UIFont.systemFont(ofSize: BKNavigationBarTitleFontSize)]
+        UIBarButtonItem.appearance().tintColor = UIColor.white
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
