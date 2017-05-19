@@ -244,7 +244,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nL6-P4-koS" userLabel="DOB">
                                                 <rect key="frame" x="0.0" y="92" width="350" height="30"/>
                                                 <subviews>
-                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Date of birth" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wj3-dC-fyf">
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Date of birth    MM/DD/YYYY" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wj3-dC-fyf">
                                                         <rect key="frame" x="0.0" y="0.0" width="350" height="30"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -283,7 +283,7 @@
                                                 <rect key="frame" x="0.0" y="184" width="350" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numbersAndPunctuation" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="phonePad" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="MZG-T2-Y9y" id="h7q-S1-qiW"/>
                                                 </connections>
@@ -303,16 +303,38 @@
                                     <constraint firstItem="OAa-lD-n6T" firstAttribute="leading" secondItem="klY-Az-CMO" secondAttribute="leading" id="qPJ-5u-2yx"/>
                                 </constraints>
                             </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="VJw-1Y-xgS" userLabel="Date Picking">
+                                <rect key="frame" x="0.0" y="820" width="414" height="216"/>
+                                <subviews>
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="155-7E-psb">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="216"/>
+                                        <date key="date" timeIntervalSinceReferenceDate="516919702.26245701">
+                                            <!--2017-05-19 20:48:22 +0000-->
+                                        </date>
+                                        <date key="minimumDate" timeIntervalSinceReferenceDate="-978267600">
+                                            <!--1970-01-01 11:00:00 +0000-->
+                                        </date>
+                                        <date key="maximumDate" timeIntervalSinceReferenceDate="1167562800">
+                                            <!--2037-12-31 11:00:00 +0000-->
+                                        </date>
+                                    </datePicker>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="klY-Az-CMO" firstAttribute="top" secondItem="DJz-SJ-Sjr" secondAttribute="bottom" constant="20" id="5ut-kk-BHs"/>
+                            <constraint firstAttribute="trailing" secondItem="VJw-1Y-xgS" secondAttribute="trailing" id="JCs-nC-2Ib"/>
                             <constraint firstAttribute="trailing" secondItem="klY-Az-CMO" secondAttribute="trailing" constant="32" id="VJ5-ia-Mru"/>
                             <constraint firstItem="klY-Az-CMO" firstAttribute="leading" secondItem="YYh-sd-XYM" secondAttribute="leading" constant="32" id="hhz-0H-tlB"/>
+                            <constraint firstItem="2zC-6q-aOZ" firstAttribute="top" secondItem="VJw-1Y-xgS" secondAttribute="bottom" constant="-300" id="sHF-Ms-jca"/>
+                            <constraint firstItem="VJw-1Y-xgS" firstAttribute="leading" secondItem="YYh-sd-XYM" secondAttribute="leading" id="xJP-vA-OWj"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="dateOfBirthField" destination="wj3-dC-fyf" id="uxc-YZ-Q7U"/>
+                        <outlet property="datePicker" destination="155-7E-psb" id="V2q-uF-JTD"/>
+                        <outlet property="datePickingBottomConstraint" destination="sHF-Ms-jca" id="8rI-Lu-HtG"/>
                         <outlet property="emailField" destination="bf9-f5-sha" id="09R-B4-wBc"/>
                         <outlet property="inputTextFieldsHeightConstraint" destination="RXV-2j-Pd1" id="I3v-zm-Wm3"/>
                         <outlet property="nameField" destination="tRB-ba-wjM" id="rBl-0y-PiS"/>

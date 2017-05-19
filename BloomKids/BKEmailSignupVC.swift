@@ -16,9 +16,15 @@ class BKEmailSignupVC: UIViewController {
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var emailField: UITextField!
 
+    @IBOutlet weak var datePickingBottomConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var datePicker: UIDatePicker!
+    weak var activeField: UITextField?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         inputTextFieldsHeightConstraint.constant = BKInputTextFieldHeight
+        setupDatePicking()
 
     }
 
@@ -27,31 +33,49 @@ class BKEmailSignupVC: UIViewController {
         
     }
 
+    @IBAction func doneDatePicking(_ sender: UIButton) {
+    }
     
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
+        dismissDatePicker()
     }
-
+    
+    
+    func setupDatePicking() {
+        datePicker.backgroundColor = UIColor.white
+        NotificationCenter.default.addObserver(self, selector: #selector(keybordDidHide(_:)), name: NSNotification.Name.UIKeyboardDidHide, object: nil)
+    }
 }
 
 extension BKEmailSignupVC: UITextFieldDelegate {
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         if textField === self.dateOfBirthField {
-            handleDatePicking()
+            self.view.endEditing(true)
+            // activeField should be assigned after dimissing the keyboard
+            activeField = dateOfBirthField
+            showDatePicker()
             return false
         }
+        dismissDatePicker()
         return true
     }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField === nameField{
+            nameField.resignFirstResponder()
+            // dateOfBirthField doesn't use system keyboard
+            activeField = dateOfBirthField
+            showDatePicker()
+            return true
+        }
+        
+        
         if textField === emailField {
             nameField.becomeFirstResponder()
         }
         
-        if textField === nameField{
-            nameField.resignFirstResponder()
-            handleDatePicking()
-        }
         
         if textField === passwordField{
             phoneField.becomeFirstResponder()
@@ -60,13 +84,45 @@ extension BKEmailSignupVC: UITextFieldDelegate {
         if textField === phoneField{
             textField.resignFirstResponder()
         }
+        dismissDatePicker()
         return true
     }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        activeField = textField
+    }
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        activeField = nil
+    }
+    
 }
 
+//MARK:- Handle Date Picking
+// System keyboard height: 216.0, animation duration: 0.25s
+// Date Picker fixes height: 216.0
 extension BKEmailSignupVC {
-    func handleDatePicking() {
-        print("handleDatePicking")
+    func keybordDidHide(_ note: Notification) {
+        showDatePicker()
+    }
+
+    func dismissDatePicker() {
+        guard datePickingBottomConstraint.constant >= 0.0 else {
+            return
+        }
+        
+        datePickingBottomConstraint.constant = -CGFloat(216.0)
+        UIView.animate(withDuration: 0.25, animations: {
+            self.view.layoutIfNeeded()
+        })
+    }
+    
+    func showDatePicker() {
+        if activeField === dateOfBirthField {
+            datePickingBottomConstraint.constant = 0.0
+            UIView.animate(withDuration: 0.25, animations: {
+                self.view.layoutIfNeeded()
+            })
+        }
     }
 }
 
