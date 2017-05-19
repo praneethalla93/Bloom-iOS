@@ -227,37 +227,75 @@
                                                 </constraints>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="MZG-T2-Y9y" id="Iri-VQ-pGB"/>
+                                                </connections>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Your name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tRB-ba-wjM">
                                                 <rect key="frame" x="0.0" y="46" width="350" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="MZG-T2-Y9y" id="dya-Kn-4og"/>
+                                                </connections>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Date of birth" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wj3-dC-fyf">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nL6-P4-koS" userLabel="DOB">
                                                 <rect key="frame" x="0.0" y="92" width="350" height="30"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
-                                            </textField>
+                                                <subviews>
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Date of birth" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wj3-dC-fyf">
+                                                        <rect key="frame" x="0.0" y="0.0" width="350" height="30"/>
+                                                        <nil key="textColor"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
+                                                        <connections>
+                                                            <outlet property="delegate" destination="MZG-T2-Y9y" id="nS2-tR-OFA"/>
+                                                        </connections>
+                                                    </textField>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendar-icon" translatesAutoresizingMaskIntoConstraints="NO" id="CPP-JM-ZXC">
+                                                        <rect key="frame" x="316" y="3" width="24" height="24"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="CPP-JM-ZXC" secondAttribute="height" multiplier="1:1" id="RTY-yb-VXM"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="CPP-JM-ZXC" secondAttribute="trailing" constant="10" id="BlT-zx-loP"/>
+                                                    <constraint firstAttribute="trailing" secondItem="wj3-dC-fyf" secondAttribute="trailing" id="DVA-fZ-q4m"/>
+                                                    <constraint firstAttribute="bottom" secondItem="wj3-dC-fyf" secondAttribute="bottom" id="gBe-5E-lQ7"/>
+                                                    <constraint firstItem="wj3-dC-fyf" firstAttribute="leading" secondItem="nL6-P4-koS" secondAttribute="leading" id="pOW-G4-QiY"/>
+                                                    <constraint firstItem="CPP-JM-ZXC" firstAttribute="centerY" secondItem="nL6-P4-koS" secondAttribute="centerY" id="rHi-DB-kD7"/>
+                                                    <constraint firstItem="wj3-dC-fyf" firstAttribute="top" secondItem="nL6-P4-koS" secondAttribute="top" id="xFZ-9x-6me"/>
+                                                </constraints>
+                                            </view>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="l4d-ym-Xni">
                                                 <rect key="frame" x="0.0" y="138" width="350" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="MZG-T2-Y9y" id="kzM-Xi-RYC"/>
+                                                </connections>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Your phone(optional)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mpP-wM-4Ej">
                                                 <rect key="frame" x="0.0" y="184" width="350" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numbersAndPunctuation" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="MZG-T2-Y9y" id="h7q-S1-qiW"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zc1-Z2-qem">
                                         <rect key="frame" x="18" y="339" width="314" height="46"/>
                                         <state key="normal" image="sign-up-btn"/>
+                                        <connections>
+                                            <action selector="signupBtnTapped:" destination="MZG-T2-Y9y" eventType="touchUpInside" id="dPI-H2-e1T"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -274,7 +312,12 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="dateOfBirthField" destination="wj3-dC-fyf" id="uxc-YZ-Q7U"/>
+                        <outlet property="emailField" destination="bf9-f5-sha" id="09R-B4-wBc"/>
                         <outlet property="inputTextFieldsHeightConstraint" destination="RXV-2j-Pd1" id="I3v-zm-Wm3"/>
+                        <outlet property="nameField" destination="tRB-ba-wjM" id="rBl-0y-PiS"/>
+                        <outlet property="passwordField" destination="l4d-ym-Xni" id="hGg-90-20Z"/>
+                        <outlet property="phoneField" destination="mpP-wM-4Ej" id="wzY-LE-jGK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D4L-zL-Vpw" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -386,6 +429,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="calendar-icon" width="24" height="24"/>
         <image name="login-btn" width="314" height="42"/>
         <image name="login-facebook-btn" width="273" height="50"/>
         <image name="login-google-btn" width="273" height="50"/>

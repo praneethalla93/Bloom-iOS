@@ -10,27 +10,68 @@ import UIKit
 
 class BKEmailSignupVC: UIViewController {
     @IBOutlet weak var inputTextFieldsHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var phoneField: UITextField!
+    @IBOutlet weak var passwordField: UITextField!
+    @IBOutlet weak var dateOfBirthField: UITextField!
+    @IBOutlet weak var nameField: UITextField!
+    @IBOutlet weak var emailField: UITextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         inputTextFieldsHeightConstraint.constant = BKInputTextFieldHeight
-        // Do any additional setup after loading the view.
+
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func signupBtnTapped(_ sender: UIButton) {
+        
     }
-    */
+
+    
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
 
 }
+
+extension BKEmailSignupVC: UITextFieldDelegate {
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        if textField === self.dateOfBirthField {
+            handleDatePicking()
+            return false
+        }
+        return true
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField === emailField {
+            nameField.becomeFirstResponder()
+        }
+        
+        if textField === nameField{
+            nameField.resignFirstResponder()
+            handleDatePicking()
+        }
+        
+        if textField === passwordField{
+            phoneField.becomeFirstResponder()
+        }
+        
+        if textField === phoneField{
+            textField.resignFirstResponder()
+        }
+        return true
+    }
+}
+
+extension BKEmailSignupVC {
+    func handleDatePicking() {
+        print("handleDatePicking")
+    }
+}
+
+
+
+
+
+
