@@ -27,7 +27,7 @@ class BKLoginVC: UIViewController {
             loginLogoTopSpaceConstraint.constant = 8.0
             OAuthBottomConstraint.constant = 0.0
         }else{
-            loginLogoTopSpaceConstraint.constant = 20
+            loginLogoTopSpaceConstraint.constant = BKLoginLogoTopSpace
             OAuthBottomConstraint.constant = 49.0
         }
         
@@ -69,7 +69,7 @@ extension BKLoginVC: UITextFieldDelegate {
         if textField === self.emailTextField && isValidEmail(testStr: text){
             self.passwordTextField.becomeFirstResponder()
         }else{
-            authenticate(self.emailTextField.text!, password: self.passwordTextField.text!)
+            textField.resignFirstResponder()
         }
         return true
     }

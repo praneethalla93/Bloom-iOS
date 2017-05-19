@@ -11,3 +11,4 @@ import UIKit
 let BKGlobalTintColor = UIColor.init(red: 155/255.0, green: 207/255.0, blue: 132/255.0, alpha: 1.0)
 let BKNavigationBarTitleFontSize: CGFloat = 17.0
 
+let BKLoginLogoTopSpace: CGFloat = 20.0
