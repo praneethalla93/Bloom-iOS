@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A12561561ECE6EF500C46FD1 /* BKForgotPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12561551ECE6EF500C46FD1 /* BKForgotPasswordVC.swift */; };
+		A12561581ECE6F2800C46FD1 /* BKEmailSignupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12561571ECE6F2800C46FD1 /* BKEmailSignupVC.swift */; };
 		A1CFEFA91ECD5BCA003DBA74 /* BKAuth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1CFEFA81ECD5BCA003DBA74 /* BKAuth.storyboard */; };
 		A1CFEFAB1ECD5D2C003DBA74 /* BKLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CFEFAA1ECD5D2C003DBA74 /* BKLoginVC.swift */; };
 		A1CFEFAE1ECD5DFB003DBA74 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CFEFAD1ECD5DFB003DBA74 /* Constants.swift */; };
@@ -19,6 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A12561551ECE6EF500C46FD1 /* BKForgotPasswordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKForgotPasswordVC.swift; sourceTree = "<group>"; };
+		A12561571ECE6F2800C46FD1 /* BKEmailSignupVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKEmailSignupVC.swift; sourceTree = "<group>"; };
 		A1CFEFA81ECD5BCA003DBA74 /* BKAuth.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BKAuth.storyboard; sourceTree = "<group>"; };
 		A1CFEFAA1ECD5D2C003DBA74 /* BKLoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKLoginVC.swift; sourceTree = "<group>"; };
 		A1CFEFAD1ECD5DFB003DBA74 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -139,8 +143,10 @@
 		A1CFEFA71ECD5BAF003DBA74 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
-				A1CFEFA81ECD5BCA003DBA74 /* BKAuth.storyboard */,
 				A1CFEFAA1ECD5D2C003DBA74 /* BKLoginVC.swift */,
+				A12561551ECE6EF500C46FD1 /* BKForgotPasswordVC.swift */,
+				A12561571ECE6F2800C46FD1 /* BKEmailSignupVC.swift */,
+				A1CFEFA81ECD5BCA003DBA74 /* BKAuth.storyboard */,
 			);
 			name = Auth;
 			sourceTree = "<group>";
@@ -274,6 +280,8 @@
 				A1CFEFB31ECD6011003DBA74 /* BKNavigationVC.swift in Sources */,
 				A1CFEFB01ECD5E02003DBA74 /* Headers.swift in Sources */,
 				A1CFEFAB1ECD5D2C003DBA74 /* BKLoginVC.swift in Sources */,
+				A12561561ECE6EF500C46FD1 /* BKForgotPasswordVC.swift in Sources */,
+				A12561581ECE6F2800C46FD1 /* BKEmailSignupVC.swift in Sources */,
 				A1FC92401ECD4F960099E68D /* AppDelegate.swift in Sources */,
 				A1CFEFAE1ECD5DFB003DBA74 /* Constants.swift in Sources */,
 			);

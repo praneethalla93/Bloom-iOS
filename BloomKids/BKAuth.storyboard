@@ -177,24 +177,47 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="BloomKids" id="eas-NK-hN3">
-                        <barButtonItem key="rightBarButtonItem" title="Sign up" style="plain" id="3Jp-IO-vIb"/>
+                        <barButtonItem key="rightBarButtonItem" title="Sign up" style="plain" id="3Jp-IO-vIb">
+                            <connections>
+                                <action selector="signupBtnTapped:" destination="g2T-hX-qb2" id="7fA-L5-ITb"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="OAuthBottomConstraint" destination="eCp-22-vQH" id="IOJ-lq-zId"/>
                         <outlet property="emailTextField" destination="Zxg-Ox-spT" id="ioi-o9-v99"/>
                         <outlet property="loginLogoTopSpaceConstraint" destination="LEV-mc-LWW" id="YGe-YT-bEI"/>
                         <outlet property="passwordTextField" destination="A2S-v6-JJ9" id="5Uh-So-xTx"/>
-                        <segue destination="RAy-q1-aKR" kind="show" id="C8I-Hr-AjP"/>
+                        <segue destination="RAy-q1-aKR" kind="show" identifier="BKForgotPasswordVC" id="C8I-Hr-AjP"/>
+                        <segue destination="MZG-T2-Y9y" kind="show" identifier="BKEmailSignupVC" id="SLU-Zo-9AZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a9u-vg-act" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="256.52173913043481" y="63.586956521739133"/>
         </scene>
+        <!--Sign Up-->
+        <scene sceneID="ZP1-eG-EME">
+            <objects>
+                <viewController title="Sign Up" id="MZG-T2-Y9y" customClass="BKEmailSignupVC" customModule="BloomKids" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="DJz-SJ-Sjr"/>
+                        <viewControllerLayoutGuide type="bottom" id="2zC-6q-aOZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="YYh-sd-XYM">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="D4L-zL-Vpw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1220" y="638"/>
+        </scene>
         <!--Forgot password-->
         <scene sceneID="0T2-j9-7Zy">
             <objects>
-                <viewController title="Forgot password" id="RAy-q1-aKR" sceneMemberID="viewController">
+                <viewController title="Forgot password" id="RAy-q1-aKR" customClass="BKForgotPasswordVC" customModule="BloomKids" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="A4f-Aa-VC3"/>
                         <viewControllerLayoutGuide type="bottom" id="uK8-63-2M1"/>
@@ -204,6 +227,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rtz-ec-zmc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

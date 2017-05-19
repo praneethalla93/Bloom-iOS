@@ -33,7 +33,10 @@ class BKLoginVC: UIViewController {
         
     }
     @IBAction func forgotPasswordTapped(_ sender: UIButton) {
-        print("forgotPasswordTapped")
+        self.performSegue(withIdentifier: "BKForgotPasswordVC", sender: nil)
+    }
+    @IBAction func signupBtnTapped(_ sender: UIBarButtonItem) {
+        self.performSegue(withIdentifier: "BKEmailSignupVC", sender: nil)
     }
 
     @IBAction func loginBtnTapped(_ sender: UIButton) {
