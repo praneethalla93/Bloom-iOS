@@ -20,6 +20,7 @@ class BKEmailSignupVC: UIViewController {
     
     @IBOutlet weak var datePicker: UIDatePicker!
     weak var activeField: UITextField?
+    var dateOfBirthStr: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -111,9 +112,17 @@ extension BKEmailSignupVC {
         }
         
         datePickingBottomConstraint.constant = -CGFloat(216.0)
-        UIView.animate(withDuration: 0.25, animations: {
+        UIView.animate(withDuration: 0.25, animations: { 
             self.view.layoutIfNeeded()
-        })
+        }) { (_) in
+            let calendar = self.datePicker.calendar!
+            let date = self.datePicker.date
+            let month = calendar.component(Calendar.Component.month, from: date)
+            let day = calendar.component(Calendar.Component.day, from: date)
+            let year = calendar.component(Calendar.Component.year, from: date)
+            self.dateOfBirthStr = "\(month)/\(day)/\(year)"
+        }
+    
     }
     
     func showDatePicker() {
