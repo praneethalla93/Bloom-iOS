@@ -15,9 +15,10 @@ class BKForgotPasswordVC: UIViewController {
     @IBOutlet weak var comfirmPasswordField: UITextField!
     @IBOutlet weak var resetBtn: UIButton!
 
+    @IBOutlet weak var inputTextFieldsHeightConstraint: NSLayoutConstraint!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        inputTextFieldsHeightConstraint.constant = BKInputTextFieldHeight
         // Do any additional setup after loading the view.
     }
     @IBAction func resetBtnTapped(_ sender: UIButton) {

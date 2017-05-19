@@ -9,10 +9,11 @@
 import UIKit
 
 class BKEmailSignupVC: UIViewController {
+    @IBOutlet weak var inputTextFieldsHeightConstraint: NSLayoutConstraint!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        inputTextFieldsHeightConstraint.constant = BKInputTextFieldHeight
         // Do any additional setup after loading the view.
     }
 

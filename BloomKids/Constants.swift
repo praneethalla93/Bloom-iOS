@@ -12,3 +12,5 @@ let BKGlobalTintColor = UIColor.init(red: 155/255.0, green: 207/255.0, blue: 132
 let BKNavigationBarTitleFontSize: CGFloat = 17.0
 
 let BKLoginLogoTopSpace: CGFloat = 20.0
+
+let BKInputTextFieldHeight: CGFloat = UIScreen.main.bounds.size.height > 480.0 ? 35.0 : 30.0
