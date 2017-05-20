@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import SVProgressHUD
+
 
 let fakeEmail = "123@gmail.com"
 let fakePassword = "123"
@@ -31,6 +33,7 @@ class BKLoginVC: UIViewController {
             OAuthBottomConstraint.constant = 49.0
         }
         
+        
     }
     @IBAction func forgotPasswordTapped(_ sender: UIButton) {
         self.performSegue(withIdentifier: "BKForgotPasswordVC", sender: nil)
@@ -46,7 +49,6 @@ class BKLoginVC: UIViewController {
             return
         }
         authenticate(emailText, password: passwordText)
-        print("loginBtnTapped")
     }
     @IBAction func loginFBTapped(_ sender: UIButton) {
         print("loginFBTapped")
@@ -75,10 +77,18 @@ extension BKLoginVC: UITextFieldDelegate {
     }
     
     func authenticate(_ email: String, password: String) {
-        if email == fakeEmail && password == fakePassword {
-            print("ok")
-        }else{
-            print("failed")
+        guard isValidEmail(testStr: email) else {
+            return
+        }
+        
+        SVProgressHUD.show()
+        
+        BKAuthTool.shared.authenticate(email, password) { (success) in
+            if success {
+                SVProgressHUD.dismiss()
+            }else{
+                SVProgressHUD.showError(withStatus: "Your email or password is not matched :(")
+            }
         }
     }
     func isValidEmail(testStr:String) -> Bool {

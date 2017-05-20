@@ -53,7 +53,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="OSs-As-kBI" userLabel="Input">
                                                 <rect key="frame" x="0.0" y="0.0" width="382" height="156"/>
                                                 <subviews>
-                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zxg-Ox-spT">
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="stone@gmail.com" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zxg-Ox-spT">
                                                         <rect key="frame" x="0.0" y="0.0" width="382" height="42"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -62,7 +62,7 @@
                                                             <outlet property="delegate" destination="g2T-hX-qb2" id="7hc-bc-0F2"/>
                                                         </connections>
                                                     </textField>
-                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A2S-v6-JJ9">
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="emma" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A2S-v6-JJ9">
                                                         <rect key="frame" x="0.0" y="57" width="382" height="42"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -103,13 +103,13 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="1fm-iD-9UU" userLabel="OAuth">
-                                        <rect key="frame" x="0.0" y="426" width="382" height="133"/>
+                                        <rect key="frame" x="0.0" y="426.66666666666663" width="382" height="132.33333333333337"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="gVI-Hw-qWJ" userLabel="Separator">
-                                                <rect key="frame" x="0.0" y="0.0" width="382" height="13"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="382" height="12.333333333333371"/>
                                                 <subviews>
                                                     <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xuu-pg-b3J" userLabel="left">
-                                                        <rect key="frame" x="0.0" y="6" width="100" height="1"/>
+                                                        <rect key="frame" x="0.0" y="5.6666666666667425" width="100" height="1"/>
                                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="DbT-n6-2Mw"/>
@@ -117,7 +117,7 @@
                                                         </constraints>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="byt-F8-zW5">
-                                                        <rect key="frame" x="100" y="1" width="182" height="12"/>
+                                                        <rect key="frame" x="100" y="0.33333333333337123" width="182" height="12"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="12" id="mqv-36-N0T"/>
                                                         </constraints>
@@ -126,7 +126,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mfw-Ts-fya" userLabel="right">
-                                                        <rect key="frame" x="282" y="6" width="100" height="1"/>
+                                                        <rect key="frame" x="282" y="5.6666666666667425" width="100" height="1"/>
                                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="Eni-yQ-SUI"/>
@@ -136,7 +136,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="sDG-0J-C8p" userLabel="OAuthButtons">
-                                                <rect key="frame" x="0.0" y="23" width="382" height="110"/>
+                                                <rect key="frame" x="0.0" y="22.333333333333371" width="382" height="110"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ut3-Wn-Gps">
                                                         <rect key="frame" x="0.0" y="0.0" width="382" height="50"/>
@@ -212,7 +212,7 @@
                                 <rect key="frame" x="32" y="84" width="350" height="385"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login-logo" translatesAutoresizingMaskIntoConstraints="NO" id="J0B-vs-Pee">
-                                        <rect key="frame" x="138" y="0.0" width="75" height="85"/>
+                                        <rect key="frame" x="137.66666666666666" y="0.0" width="75" height="85"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="J0B-vs-Pee" secondAttribute="height" multiplier="15:17" id="uLG-hE-JvU"/>
                                         </constraints>
@@ -362,7 +362,7 @@
                                 <rect key="frame" x="32" y="84" width="350" height="285"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login-logo" translatesAutoresizingMaskIntoConstraints="NO" id="vXo-Ur-EKL">
-                                        <rect key="frame" x="138" y="0.0" width="75" height="85"/>
+                                        <rect key="frame" x="137.66666666666666" y="0.0" width="75" height="85"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="vXo-Ur-EKL" secondAttribute="height" multiplier="15:17" id="cj7-bX-mBj"/>
                                         </constraints>

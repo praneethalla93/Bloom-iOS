@@ -14,3 +14,5 @@ let BKNavigationBarTitleFontSize: CGFloat = 17.0
 let BKLoginLogoTopSpace: CGFloat = 20.0
 
 let BKInputTextFieldHeight: CGFloat = UIScreen.main.bounds.size.height > 480.0 ? 35.0 : 30.0
+
+let BKNetworkingLoginUrlStr = "http://custom-env.aqrfytx2is.us-east-1.elasticbeanstalk.com/rest/login/dologin"

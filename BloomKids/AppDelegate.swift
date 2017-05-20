@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 let isLogin = false
 
@@ -17,6 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        SVProgressHUD.setDefaultStyle(.dark)
+        SVProgressHUD.setMinimumDismissTimeInterval(1.0)
         window = UIWindow()
         window?.frame = UIScreen.main.bounds
         
