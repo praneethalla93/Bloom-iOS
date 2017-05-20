@@ -45,6 +45,7 @@ class BKEmailSignupVC: UIViewController {
     
     
     func setupDatePicking() {
+        datePicker.addTarget(self, action: #selector(datePickerValueChanged(_:)), for: UIControlEvents.valueChanged)
         datePicker.backgroundColor = UIColor.white
         NotificationCenter.default.addObserver(self, selector: #selector(keybordDidHide(_:)), name: NSNotification.Name.UIKeyboardDidHide, object: nil)
     }
@@ -102,6 +103,10 @@ extension BKEmailSignupVC: UITextFieldDelegate {
 // System keyboard height: 216.0, animation duration: 0.25s
 // Date Picker fixes height: 216.0
 extension BKEmailSignupVC {
+    func datePickerValueChanged(_ picker: UIDatePicker) {
+        dateOfBirthField.text = datePickerForString()
+    }
+    
     func keybordDidHide(_ note: Notification) {
         showDatePicker()
     }
@@ -115,12 +120,8 @@ extension BKEmailSignupVC {
         UIView.animate(withDuration: 0.25, animations: { 
             self.view.layoutIfNeeded()
         }) { (_) in
-            let calendar = self.datePicker.calendar!
-            let date = self.datePicker.date
-            let month = calendar.component(Calendar.Component.month, from: date)
-            let day = calendar.component(Calendar.Component.day, from: date)
-            let year = calendar.component(Calendar.Component.year, from: date)
-            self.dateOfBirthStr = "\(month)/\(day)/\(year)"
+            
+            self.dateOfBirthStr = self.datePickerForString()
         }
     
     }
@@ -132,6 +133,14 @@ extension BKEmailSignupVC {
                 self.view.layoutIfNeeded()
             })
         }
+    }
+    func datePickerForString() -> String {
+        let calendar = self.datePicker.calendar!
+        let date = self.datePicker.date
+        let month = calendar.component(Calendar.Component.month, from: date)
+        let day = calendar.component(Calendar.Component.day, from: date)
+        let year = calendar.component(Calendar.Component.year, from: date)
+        return "\(month)/\(day)/\(year)"
     }
 }
 
