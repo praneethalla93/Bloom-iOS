@@ -17,4 +17,20 @@ class BKAuthTool {
             completion(success)
         }
     }
+    
+    func signup(_ email: String, _ parentName: String, _ dateOfBirth: String, _ password: String, _ phone: String?, completion: @escaping (_ success: Bool)->Void) {
+        var parameters = ["email": email,
+        "parentname": parentName,
+        "dob": dateOfBirth,
+        "password": password]
+        
+        if let phoneNumber = phone {
+            parameters["phone"] = phoneNumber
+        }
+        
+        BKNetowrkTool.shared.request(.post, urlStr: BKNetworkingSignupUrlStr, parameters: parameters) { (success, data) in
+            completion(success)
+        }
+        
+    }
 }

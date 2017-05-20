@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class BKEmailSignupVC: UIViewController {
     @IBOutlet weak var inputTextFieldsHeightConstraint: NSLayoutConstraint!
@@ -66,7 +67,14 @@ class BKEmailSignupVC: UIViewController {
             return
         }
         
-        
+        SVProgressHUD.show()
+        BKAuthTool.shared.signup(emailText, nameText, dobText, passwordText, phoneField.text) { (success) in
+            if success {
+                SVProgressHUD.showSuccess(withStatus: "Welcome!")
+            }else{
+                SVProgressHUD.showError(withStatus: "Please check the infomation you just entered")
+            }
+        }
         
     }
     

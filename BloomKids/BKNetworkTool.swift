@@ -25,8 +25,8 @@ class BKNetowrkTool {
 
         Alamofire.request(url, method: method, parameters: parameters, encoding: JSONEncoding.default).responseJSON { (response: DataResponse) in
             var flag = false
-            if let statusCode = response.result.value as? [String: Bool] {
-                if let code = statusCode["status"] {
+            if let statusCode = response.result.value as? [String: Any] {
+                if let code = statusCode["status"] as? Bool {
                     flag = code
                 }
             }
