@@ -31,10 +31,43 @@ class BKEmailSignupVC: UIViewController {
 
     
     @IBAction func signupBtnTapped(_ sender: UIButton) {
+        guard let emailText = emailField.text, emailText.isValidEmail() else {
+            print("email incorrect")
+            return
+        }
         
-    }
-
-    @IBAction func doneDatePicking(_ sender: UIButton) {
+        guard let nameText = nameField.text, nameText.characters.count != 0 else {
+            print("name incorrect")
+            return
+        }
+        
+        guard let dobText = dateOfBirthField.text, dobText.characters.count != 0 else {
+            print("dob incorrect")
+            return
+        }
+        
+        guard let passwordText = passwordField.text, passwordText.characters.count != 0 else {
+            print("passwrod incorrect")
+            return
+        }
+        var flag = true
+        if let phoneText = phoneField.text {
+            
+            for ch in phoneText.characters {
+                if Int(ch.description) == nil {
+                    flag = false
+                    break
+                }
+            }
+        }
+        
+        guard flag else {
+            print("phone number is incorrect")
+            return
+        }
+        
+        
+        
     }
     
     
@@ -74,7 +107,7 @@ extension BKEmailSignupVC: UITextFieldDelegate {
         }
         
         
-        if textField === emailField {
+        if textField === emailField && emailField.text!.isValidEmail() {
             nameField.becomeFirstResponder()
         }
         

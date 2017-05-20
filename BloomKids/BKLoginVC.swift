@@ -68,7 +68,11 @@ extension BKLoginVC: UITextFieldDelegate {
             return false
         }
         
-        if textField === self.emailTextField && isValidEmail(testStr: text){
+        guard text.isValidEmail() else {
+            return false
+        }
+        
+        if textField === self.emailTextField{
             self.passwordTextField.becomeFirstResponder()
         }else{
             textField.resignFirstResponder()
@@ -77,7 +81,7 @@ extension BKLoginVC: UITextFieldDelegate {
     }
     
     func authenticate(_ email: String, password: String) {
-        guard isValidEmail(testStr: email) else {
+        guard email.isValidEmail() else {
             return
         }
         
@@ -90,12 +94,6 @@ extension BKLoginVC: UITextFieldDelegate {
                 SVProgressHUD.showError(withStatus: "Your email or password is not matched :(")
             }
         }
-    }
-    func isValidEmail(testStr:String) -> Bool {
-        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
-        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-        
-        return emailTest.evaluate(with: testStr)
     }
 }
 
