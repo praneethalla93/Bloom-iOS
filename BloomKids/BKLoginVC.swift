@@ -94,6 +94,7 @@ extension BKLoginVC: UITextFieldDelegate {
         BKAuthTool.shared.authenticate(email, password) { (success) in
             if success {
                 SVProgressHUD.dismiss()
+                BKAuthTool.shared.switchToMainUI()
             }else{
                 SVProgressHUD.showError(withStatus: "Your email or password is not matched :(")
             }

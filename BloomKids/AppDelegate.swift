@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if BKAuthTool.shared.shouldSwitchToMain(){
             let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let navagitionVC = mainStoryboard.instantiateViewController(withIdentifier: "BKMainNavVC")
+            let navagitionVC = mainStoryboard.instantiateViewController(withIdentifier: "BKMainTabBarVC")
             window?.rootViewController = navagitionVC
         }else{
             let authStoryboard = UIStoryboard(name: "BKAuth", bundle: nil)

@@ -10,6 +10,8 @@
 		732B959C6A89925E7239D316 /* Pods_BloomKids.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8EACF588830FABFF52CD389 /* Pods_BloomKids.framework */; };
 		A12561561ECE6EF500C46FD1 /* BKForgotPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12561551ECE6EF500C46FD1 /* BKForgotPasswordVC.swift */; };
 		A12561581ECE6F2800C46FD1 /* BKEmailSignupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12561571ECE6F2800C46FD1 /* BKEmailSignupVC.swift */; };
+		A179F9B51ED28A4500B42540 /* BKActivityVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A179F9B41ED28A4500B42540 /* BKActivityVC.swift */; };
+		A179F9B81ED28B4D00B42540 /* Activity.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A179F9B61ED28B4D00B42540 /* Activity.storyboard */; };
 		A17A7B2D1ECFCAB100D77D27 /* BKNetworkTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17A7B2C1ECFCAB100D77D27 /* BKNetworkTool.swift */; };
 		A17A7B2F1ECFD05900D77D27 /* BKAuthTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17A7B2E1ECFD05900D77D27 /* BKAuthTool.swift */; };
 		A1CFEFA91ECD5BCA003DBA74 /* BKAuth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1CFEFA81ECD5BCA003DBA74 /* BKAuth.storyboard */; };
@@ -28,6 +30,8 @@
 		25AE1343266B3A700D0D3E98 /* Pods-BloomKids.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BloomKids.release.xcconfig"; path = "Pods/Target Support Files/Pods-BloomKids/Pods-BloomKids.release.xcconfig"; sourceTree = "<group>"; };
 		A12561551ECE6EF500C46FD1 /* BKForgotPasswordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKForgotPasswordVC.swift; sourceTree = "<group>"; };
 		A12561571ECE6F2800C46FD1 /* BKEmailSignupVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKEmailSignupVC.swift; sourceTree = "<group>"; };
+		A179F9B41ED28A4500B42540 /* BKActivityVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKActivityVC.swift; sourceTree = "<group>"; };
+		A179F9B71ED28B4D00B42540 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Activity.storyboard; sourceTree = "<group>"; };
 		A17A7B2C1ECFCAB100D77D27 /* BKNetworkTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKNetworkTool.swift; sourceTree = "<group>"; };
 		A17A7B2E1ECFD05900D77D27 /* BKAuthTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKAuthTool.swift; sourceTree = "<group>"; };
 		A1CFEFA81ECD5BCA003DBA74 /* BKAuth.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BKAuth.storyboard; sourceTree = "<group>"; };
@@ -64,6 +68,15 @@
 				D8EACF588830FABFF52CD389 /* Pods_BloomKids.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A179F9AC1ED2811400B42540 /* Activity */ = {
+			isa = PBXGroup;
+			children = (
+				A179F9B61ED28B4D00B42540 /* Activity.storyboard */,
+				A179F9B41ED28A4500B42540 /* BKActivityVC.swift */,
+			);
+			name = Activity;
 			sourceTree = "<group>";
 		};
 		A17A7B2B1ECFCA5800D77D27 /* Networking */ = {
@@ -218,6 +231,7 @@
 		A1FC923E1ECD4F960099E68D /* BloomKids */ = {
 			isa = PBXGroup;
 			children = (
+				A179F9AC1ED2811400B42540 /* Activity */,
 				A17A7B2B1ECFCA5800D77D27 /* Networking */,
 				A1CFEFA71ECD5BAF003DBA74 /* Auth */,
 				A1CFEF9D1ECD5B50003DBA74 /* Profile */,
@@ -309,6 +323,7 @@
 			files = (
 				A1FC924A1ECD4F960099E68D /* LaunchScreen.storyboard in Resources */,
 				A1FC92471ECD4F960099E68D /* Assets.xcassets in Resources */,
+				A179F9B81ED28B4D00B42540 /* Activity.storyboard in Resources */,
 				A1FC92451ECD4F960099E68D /* Main.storyboard in Resources */,
 				A1CFEFA91ECD5BCA003DBA74 /* BKAuth.storyboard in Resources */,
 			);
@@ -376,6 +391,7 @@
 				A17A7B2D1ECFCAB100D77D27 /* BKNetworkTool.swift in Sources */,
 				A12561561ECE6EF500C46FD1 /* BKForgotPasswordVC.swift in Sources */,
 				A12561581ECE6F2800C46FD1 /* BKEmailSignupVC.swift in Sources */,
+				A179F9B51ED28A4500B42540 /* BKActivityVC.swift in Sources */,
 				A1FC92401ECD4F960099E68D /* AppDelegate.swift in Sources */,
 				A1FC8FAD1ECFF0710002F234 /* String+Extension.swift in Sources */,
 				A1CFEFAE1ECD5DFB003DBA74 /* Constants.swift in Sources */,
@@ -385,6 +401,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		A179F9B61ED28B4D00B42540 /* Activity.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A179F9B71ED28B4D00B42540 /* Base */,
+			);
+			name = Activity.storyboard;
+			sourceTree = "<group>";
+		};
 		A1FC92431ECD4F960099E68D /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
