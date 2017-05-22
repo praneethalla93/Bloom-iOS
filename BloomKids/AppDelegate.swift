@@ -9,6 +9,7 @@
 import UIKit
 import SVProgressHUD
 
+
 let isLogin = false
 
 @UIApplicationMain
@@ -23,12 +24,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow()
         window?.frame = UIScreen.main.bounds
         
-        if isLogin {
-            
-        }else{
+        if BKAuthTool.shared.shouldSwitchToAuthUI(){
             let authStoryboard = UIStoryboard(name: "BKAuth", bundle: nil)
             let navagitionVC = authStoryboard.instantiateViewController(withIdentifier: "BKNavigationVC")
             window?.rootViewController = navagitionVC
+        }else{
+            
         }
         
         window?.makeKeyAndVisible()

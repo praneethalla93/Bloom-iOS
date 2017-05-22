@@ -90,6 +90,10 @@ class BKEmailSignupVC: UIViewController {
         datePicker.backgroundColor = UIColor.white
         NotificationCenter.default.addObserver(self, selector: #selector(keybordDidHide(_:)), name: NSNotification.Name.UIKeyboardDidHide, object: nil)
     }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
 }
 
 extension BKEmailSignupVC: UITextFieldDelegate {

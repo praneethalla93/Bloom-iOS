@@ -11,6 +11,10 @@ import Foundation
 class BKAuthTool {
     static let shared = BKAuthTool()
     
+    func shouldSwitchToAuthUI() -> Bool{
+        return true
+    }
+    
     func authenticate(_ email: String, _ password: String, completion: @escaping (_ success: Bool)->Void) {
         let parameter = ["email": email, "password": password]
         BKNetowrkTool.shared.request(.post, urlStr: BKNetworkingLoginUrlStr, parameters: parameter) { (success, data) in
