@@ -9,10 +9,55 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Root View Controller-->
+        <scene sceneID="P3R-fy-lGA">
+            <objects>
+                <tableViewController id="728-iH-Ci3" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="ocB-VD-Y95">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="M8F-ik-yCe">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="M8F-ik-yCe" id="Q6z-tc-IMh">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="728-iH-Ci3" id="EpS-9g-dnN"/>
+                            <outlet property="delegate" destination="728-iH-Ci3" id="MiS-AY-j8U"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Root View Controller" id="ZDI-MN-Dy0"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="C1g-rd-gZr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1833" y="-49"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="x4b-BM-54J">
+            <objects>
+                <navigationController storyboardIdentifier="BKMainNavVC" id="Jg0-9l-58o" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Hkg-Vy-kq3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="728-iH-Ci3" kind="relationship" relationship="rootViewController" id="CUB-kK-chb"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bI6-XK-I6f" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2784" y="-49"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="FWJ-CN-j2u">
             <objects>
-                <tabBarController id="Wex-9C-VXx" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="BKMainTabBarVC" id="Wex-9C-VXx" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="9gP-MY-slA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>

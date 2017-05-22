@@ -24,12 +24,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow()
         window?.frame = UIScreen.main.bounds
         
-        if BKAuthTool.shared.shouldSwitchToAuthUI(){
+        if BKAuthTool.shared.shouldSwitchToMain(){
+            let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let navagitionVC = mainStoryboard.instantiateViewController(withIdentifier: "BKMainNavVC")
+            window?.rootViewController = navagitionVC
+        }else{
             let authStoryboard = UIStoryboard(name: "BKAuth", bundle: nil)
             let navagitionVC = authStoryboard.instantiateViewController(withIdentifier: "BKNavigationVC")
             window?.rootViewController = navagitionVC
-        }else{
-            
         }
         
         window?.makeKeyAndVisible()

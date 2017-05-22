@@ -7,17 +7,46 @@
 //
 
 import Foundation
+import KeychainAccess
+import SVProgressHUD
 
 class BKAuthTool {
     static let shared = BKAuthTool()
-    
-    func shouldSwitchToAuthUI() -> Bool{
-        return true
+    var currentUsername: String?
+    func shouldSwitchToMain() -> Bool{
+        let keychain = Keychain(service: BKKeychainService)
+        if let emailStr = try? keychain.getString(BKUserEmailKey), let email = emailStr {
+//            SVProgressHUD.show()
+            DispatchQueue.main.async {
+                if let passwordStr = try? keychain.getString(email), let password = passwordStr{
+                    self.authenticate(email, password, completion: { (success) in
+                        if success {
+//                            SVProgressHUD.dismiss()
+                        }else{
+                            SVProgressHUD.showError(withStatus: "login failed")
+                        }
+                    })
+                }else{
+                    SVProgressHUD.showError(withStatus: "password not in keychain")
+                }
+                
+            }
+            
+            return true
+        }else{
+            return false
+        }
     }
     
     func authenticate(_ email: String, _ password: String, completion: @escaping (_ success: Bool)->Void) {
         let parameter = ["email": email, "password": password]
         BKNetowrkTool.shared.request(.post, urlStr: BKNetworkingLoginUrlStr, parameters: parameter) { (success, data) in
+            if success {
+                let keychain = Keychain(service: BKKeychainService)
+                keychain[email] = password
+                keychain[BKUserEmailKey] = email
+            }
+            
             completion(success)
         }
     }
