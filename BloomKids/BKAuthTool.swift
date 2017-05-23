@@ -85,16 +85,14 @@ class BKAuthTool {
         }
     }
     
-    func signup(_ email: String, _ parentName: String, _ dateOfBirth: String, _ password: String, _ phone: String?, completion: @escaping (_ success: Bool)->Void) {
-        var parameters = ["email": email,
-        "parentname": parentName,
-        "dob": dateOfBirth,
-        "password": password]
-        
-        if let phoneNumber = phone {
-            parameters["phone"] = phoneNumber
-        }
-        
+    func signup(_ email: String, _ password: String, _ parentName: String,_ phone: String, relation: String, completion: @escaping (_ success: Bool)->Void) {
+        let parameters = [
+            "email": email,
+            "parentname": parentName,
+            "password": password,
+            "phone": phone,
+            "relation": relation]
+        print("parameters:\(parameters)")
         BKNetowrkTool.shared.request(.post, urlStr: BKNetworkingSignupUrlStr, parameters: parameters) { (success, data) in
             completion(success)
         }

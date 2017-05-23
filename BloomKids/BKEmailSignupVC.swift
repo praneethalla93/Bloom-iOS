@@ -13,23 +13,74 @@ class BKEmailSignupVC: UIViewController {
     @IBOutlet weak var inputTextFieldsHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var phoneField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
-    @IBOutlet weak var dateOfBirthField: UITextField!
+    @IBOutlet weak var comfirmPassword: UITextField!
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var emailField: UITextField!
+    @IBOutlet weak var fatherBtn: UIButton!
+    @IBOutlet weak var motherBtn: UIButton!
 
-    @IBOutlet weak var datePickingBottomConstraint: NSLayoutConstraint!
-    
-    @IBOutlet weak var datePicker: UIDatePicker!
-    weak var activeField: UITextField?
-    var dateOfBirthStr: String?
-    
+    weak var currentGender: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         inputTextFieldsHeightConstraint.constant = BKInputTextFieldHeight
-        setupDatePicking()
+        setupGenderBtns()
 
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setGenderBtnSelected(button: fatherBtn)
+        setGenderBtnNormal(button: motherBtn)
+    }
+    
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    
 
+}
+
+
+//MARK:- Setups
+extension BKEmailSignupVC {
+    func setupGenderBtns() {
+        fatherBtn.layer.masksToBounds = true
+        fatherBtn.layer.cornerRadius = fatherBtn.bounds.size.height / 2
+        
+        motherBtn.layer.masksToBounds = true
+        motherBtn.layer.cornerRadius = fatherBtn.bounds.size.height / 2
+        
+    }
+    func setGenderBtnNormal(button: UIButton) {
+        button.layer.borderColor = BKGlobalTintColor.cgColor
+        button.layer.borderWidth = 2.0
+        button.setTitleColor(BKGlobalTintColor, for: UIControlState.normal)
+        button.backgroundColor = UIColor.white
+    }
+    func setGenderBtnSelected(button: UIButton) {
+        currentGender = button
+        button.layer.borderColor = BKGlobalTintColor.cgColor
+        button.layer.borderWidth = 2.0
+        button.setTitleColor(UIColor.white, for: UIControlState.normal)
+        button.backgroundColor = BKGlobalTintColor
+    }
+}
+
+
+//MARK:- Controls
+extension BKEmailSignupVC {
+    @IBAction func genderTapped(_ sender: UIButton) {
+        if sender === fatherBtn {
+            setGenderBtnSelected(button: fatherBtn)
+            setGenderBtnNormal(button: motherBtn)
+        }else{
+            setGenderBtnSelected(button: motherBtn)
+            setGenderBtnNormal(button: fatherBtn)
+        }
+    }
+    
     
     @IBAction func signupBtnTapped(_ sender: UIButton) {
         guard let emailText = emailField.text, emailText.isValidEmail() else {
@@ -42,23 +93,22 @@ class BKEmailSignupVC: UIViewController {
             return
         }
         
-        guard let dobText = dateOfBirthField.text, dobText.characters.count != 0 else {
-            print("dob incorrect")
-            return
-        }
         
         guard let passwordText = passwordField.text, passwordText.characters.count != 0 else {
             print("passwrod incorrect")
             return
         }
+        
+        guard let phoneStr = phoneField.text, phoneStr.characters.count != 0 else {
+            print("phone # incorrect")
+            return
+        }
+        
         var flag = true
-        if let phoneText = phoneField.text {
-            
-            for ch in phoneText.characters {
-                if Int(ch.description) == nil {
-                    flag = false
-                    break
-                }
+        for ch in phoneStr.characters {
+            if Int(ch.description) == nil {
+                flag = false
+                break
             }
         }
         
@@ -67,57 +117,29 @@ class BKEmailSignupVC: UIViewController {
             return
         }
         
+        let genderStr = currentGender.titleLabel!.text!
+        
         SVProgressHUD.show()
-        BKAuthTool.shared.signup(emailText, nameText, dobText, passwordText, phoneField.text) { (success) in
+        BKAuthTool.shared.signup(emailText, passwordText, nameText, phoneStr, relation: genderStr) { (success) in
             if success {
                 SVProgressHUD.showSuccess(withStatus: "Welcome!")
+                BKAuthTool.shared.switchToMainUI()
             }else{
                 SVProgressHUD.showError(withStatus: "Please check the infomation you just entered")
             }
         }
         
     }
-    
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
-        dismissDatePicker()
-    }
-    
-    
-    func setupDatePicking() {
-        datePicker.addTarget(self, action: #selector(datePickerValueChanged(_:)), for: UIControlEvents.valueChanged)
-        datePicker.backgroundColor = UIColor.white
-        NotificationCenter.default.addObserver(self, selector: #selector(keybordDidHide(_:)), name: NSNotification.Name.UIKeyboardDidHide, object: nil)
-    }
-    
-    deinit {
-        NotificationCenter.default.removeObserver(self)
-    }
 }
 
+
+//MARK:- TextField related
 extension BKEmailSignupVC: UITextFieldDelegate {
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        if textField === self.dateOfBirthField {
-            self.view.endEditing(true)
-            // activeField should be assigned after dimissing the keyboard
-            activeField = dateOfBirthField
-            showDatePicker()
-            return false
-        }
-        dismissDatePicker()
-        return true
-    }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField === nameField{
             nameField.resignFirstResponder()
-            // dateOfBirthField doesn't use system keyboard
-            activeField = dateOfBirthField
-            showDatePicker()
-            return true
         }
-        
         
         if textField === emailField && emailField.text!.isValidEmail() {
             nameField.becomeFirstResponder()
@@ -131,62 +153,10 @@ extension BKEmailSignupVC: UITextFieldDelegate {
         if textField === phoneField{
             textField.resignFirstResponder()
         }
-        dismissDatePicker()
+
         return true
     }
     
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        activeField = textField
-    }
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        activeField = nil
-    }
-    
-}
-
-//MARK:- Handle Date Picking
-// System keyboard height: 216.0, animation duration: 0.25s
-// Date Picker fixes height: 216.0
-extension BKEmailSignupVC {
-    func datePickerValueChanged(_ picker: UIDatePicker) {
-        dateOfBirthField.text = datePickerForString()
-    }
-    
-    func keybordDidHide(_ note: Notification) {
-        showDatePicker()
-    }
-
-    func dismissDatePicker() {
-        guard datePickingBottomConstraint.constant >= 0.0 else {
-            return
-        }
-        
-        datePickingBottomConstraint.constant = -CGFloat(216.0)
-        UIView.animate(withDuration: 0.25, animations: { 
-            self.view.layoutIfNeeded()
-        }) { (_) in
-            
-            self.dateOfBirthStr = self.datePickerForString()
-        }
-    
-    }
-    
-    func showDatePicker() {
-        if activeField === dateOfBirthField {
-            datePickingBottomConstraint.constant = 0.0
-            UIView.animate(withDuration: 0.25, animations: {
-                self.view.layoutIfNeeded()
-            })
-        }
-    }
-    func datePickerForString() -> String {
-        let calendar = self.datePicker.calendar!
-        let date = self.datePicker.date
-        let month = calendar.component(Calendar.Component.month, from: date)
-        let day = calendar.component(Calendar.Component.day, from: date)
-        let year = calendar.component(Calendar.Component.year, from: date)
-        return "\(month)/\(day)/\(year)"
-    }
 }
 
 

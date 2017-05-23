@@ -209,7 +209,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="klY-Az-CMO">
-                                <rect key="frame" x="32" y="84" width="350" height="385"/>
+                                <rect key="frame" x="32" y="84" width="350" height="431"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login-logo" translatesAutoresizingMaskIntoConstraints="NO" id="J0B-vs-Pee">
                                         <rect key="frame" x="137.66666666666666" y="0.0" width="75" height="85"/>
@@ -218,7 +218,7 @@
                                         </constraints>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="OAa-lD-n6T">
-                                        <rect key="frame" x="0.0" y="105" width="350" height="214"/>
+                                        <rect key="frame" x="0.0" y="105" width="350" height="260"/>
                                         <subviews>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="sss@ggg.ccc" borderStyle="roundedRect" placeholder="Your email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bf9-f5-sha">
                                                 <rect key="frame" x="0.0" y="0.0" width="350" height="30"/>
@@ -232,46 +232,8 @@
                                                     <outlet property="delegate" destination="MZG-T2-Y9y" id="Iri-VQ-pGB"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Chandler" borderStyle="roundedRect" placeholder="Parent name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tRB-ba-wjM">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="l4d-ym-Xni">
                                                 <rect key="frame" x="0.0" y="46" width="350" height="30"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
-                                                <connections>
-                                                    <outlet property="delegate" destination="MZG-T2-Y9y" id="dya-Kn-4og"/>
-                                                </connections>
-                                            </textField>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nL6-P4-koS" userLabel="DOB">
-                                                <rect key="frame" x="0.0" y="92" width="350" height="30"/>
-                                                <subviews>
-                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="01/01/1990" borderStyle="roundedRect" placeholder="Date of birth    MM/DD/YYYY" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wj3-dC-fyf">
-                                                        <rect key="frame" x="0.0" y="0.0" width="350" height="30"/>
-                                                        <nil key="textColor"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
-                                                        <connections>
-                                                            <outlet property="delegate" destination="MZG-T2-Y9y" id="nS2-tR-OFA"/>
-                                                        </connections>
-                                                    </textField>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendar-icon" translatesAutoresizingMaskIntoConstraints="NO" id="CPP-JM-ZXC">
-                                                        <rect key="frame" x="316" y="3" width="24" height="24"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" secondItem="CPP-JM-ZXC" secondAttribute="height" multiplier="1:1" id="RTY-yb-VXM"/>
-                                                        </constraints>
-                                                    </imageView>
-                                                </subviews>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="trailing" secondItem="CPP-JM-ZXC" secondAttribute="trailing" constant="10" id="BlT-zx-loP"/>
-                                                    <constraint firstAttribute="trailing" secondItem="wj3-dC-fyf" secondAttribute="trailing" id="DVA-fZ-q4m"/>
-                                                    <constraint firstAttribute="bottom" secondItem="wj3-dC-fyf" secondAttribute="bottom" id="gBe-5E-lQ7"/>
-                                                    <constraint firstItem="wj3-dC-fyf" firstAttribute="leading" secondItem="nL6-P4-koS" secondAttribute="leading" id="pOW-G4-QiY"/>
-                                                    <constraint firstItem="CPP-JM-ZXC" firstAttribute="centerY" secondItem="nL6-P4-koS" secondAttribute="centerY" id="rHi-DB-kD7"/>
-                                                    <constraint firstItem="wj3-dC-fyf" firstAttribute="top" secondItem="nL6-P4-koS" secondAttribute="top" id="xFZ-9x-6me"/>
-                                                </constraints>
-                                            </view>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="123" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="l4d-ym-Xni">
-                                                <rect key="frame" x="0.0" y="138" width="350" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
@@ -279,7 +241,25 @@
                                                     <outlet property="delegate" destination="MZG-T2-Y9y" id="kzM-Xi-RYC"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Your phone(optional)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mpP-wM-4Ej">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Comfirm Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XGP-OB-c3A">
+                                                <rect key="frame" x="0.0" y="92" width="350" height="30"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="MZG-T2-Y9y" id="3pd-LT-W0G"/>
+                                                </connections>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Chandler" borderStyle="roundedRect" placeholder="Your name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tRB-ba-wjM">
+                                                <rect key="frame" x="0.0" y="138" width="350" height="30"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="MZG-T2-Y9y" id="dya-Kn-4og"/>
+                                                </connections>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Your phone number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mpP-wM-4Ej">
                                                 <rect key="frame" x="0.0" y="184" width="350" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -288,10 +268,52 @@
                                                     <outlet property="delegate" destination="MZG-T2-Y9y" id="h7q-S1-qiW"/>
                                                 </connections>
                                             </textField>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jG8-22-C04">
+                                                <rect key="frame" x="0.0" y="230" width="350" height="30"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are a" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bTo-4R-R6P">
+                                                        <rect key="frame" x="0.0" y="5" width="70.666666666666671" height="20.333333333333314"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="AGe-3S-zfB">
+                                                        <rect key="frame" x="80.666666666666657" y="-1" width="269.33333333333337" height="33"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J6V-N3-WBl">
+                                                                <rect key="frame" x="0.0" y="0.0" width="124.66666666666667" height="33"/>
+                                                                <color key="backgroundColor" red="0.60784313729999995" green="0.81176470590000005" blue="0.51764705879999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <state key="normal" title="Father"/>
+                                                                <connections>
+                                                                    <action selector="genderTapped:" destination="MZG-T2-Y9y" eventType="touchUpInside" id="IQn-hH-9H1"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6lR-3D-ldd">
+                                                                <rect key="frame" x="144.66666666666663" y="0.0" width="124.66666666666669" height="33"/>
+                                                                <color key="backgroundColor" red="0.60784313729999995" green="0.81176470590000005" blue="0.51764705879999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <state key="normal" title="Mother"/>
+                                                                <connections>
+                                                                    <action selector="genderTapped:" destination="MZG-T2-Y9y" eventType="touchUpInside" id="q9w-vN-Oh7"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstItem="bTo-4R-R6P" firstAttribute="leading" secondItem="jG8-22-C04" secondAttribute="leading" id="9oq-2P-b7X"/>
+                                                    <constraint firstItem="AGe-3S-zfB" firstAttribute="centerY" secondItem="jG8-22-C04" secondAttribute="centerY" id="DmE-Vd-tkZ"/>
+                                                    <constraint firstItem="AGe-3S-zfB" firstAttribute="leading" secondItem="bTo-4R-R6P" secondAttribute="trailing" constant="10" id="ePY-R7-UwR"/>
+                                                    <constraint firstAttribute="trailing" secondItem="AGe-3S-zfB" secondAttribute="trailing" id="qOE-nt-5Yj"/>
+                                                    <constraint firstItem="bTo-4R-R6P" firstAttribute="centerY" secondItem="jG8-22-C04" secondAttribute="centerY" id="vNl-5S-LHC"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zc1-Z2-qem">
-                                        <rect key="frame" x="18" y="339" width="314" height="46"/>
+                                        <rect key="frame" x="18" y="385" width="314" height="46"/>
                                         <state key="normal" image="sign-up-btn"/>
                                         <connections>
                                             <action selector="signupBtnTapped:" destination="MZG-T2-Y9y" eventType="touchUpInside" id="dPI-H2-e1T"/>
@@ -303,40 +325,20 @@
                                     <constraint firstItem="OAa-lD-n6T" firstAttribute="leading" secondItem="klY-Az-CMO" secondAttribute="leading" id="qPJ-5u-2yx"/>
                                 </constraints>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="VJw-1Y-xgS" userLabel="Date Picking">
-                                <rect key="frame" x="0.0" y="820" width="414" height="216"/>
-                                <subviews>
-                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="155-7E-psb">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="216"/>
-                                        <date key="date" timeIntervalSinceReferenceDate="516919702.26245701">
-                                            <!--2017-05-19 20:48:22 +0000-->
-                                        </date>
-                                        <date key="minimumDate" timeIntervalSinceReferenceDate="-978267600">
-                                            <!--1970-01-01 11:00:00 +0000-->
-                                        </date>
-                                        <date key="maximumDate" timeIntervalSinceReferenceDate="1167562800">
-                                            <!--2037-12-31 11:00:00 +0000-->
-                                        </date>
-                                    </datePicker>
-                                </subviews>
-                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="klY-Az-CMO" firstAttribute="top" secondItem="DJz-SJ-Sjr" secondAttribute="bottom" constant="20" id="5ut-kk-BHs"/>
-                            <constraint firstAttribute="trailing" secondItem="VJw-1Y-xgS" secondAttribute="trailing" id="JCs-nC-2Ib"/>
                             <constraint firstAttribute="trailing" secondItem="klY-Az-CMO" secondAttribute="trailing" constant="32" id="VJ5-ia-Mru"/>
                             <constraint firstItem="klY-Az-CMO" firstAttribute="leading" secondItem="YYh-sd-XYM" secondAttribute="leading" constant="32" id="hhz-0H-tlB"/>
-                            <constraint firstItem="2zC-6q-aOZ" firstAttribute="top" secondItem="VJw-1Y-xgS" secondAttribute="bottom" constant="-300" id="sHF-Ms-jca"/>
-                            <constraint firstItem="VJw-1Y-xgS" firstAttribute="leading" secondItem="YYh-sd-XYM" secondAttribute="leading" id="xJP-vA-OWj"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="dateOfBirthField" destination="wj3-dC-fyf" id="uxc-YZ-Q7U"/>
-                        <outlet property="datePicker" destination="155-7E-psb" id="V2q-uF-JTD"/>
-                        <outlet property="datePickingBottomConstraint" destination="sHF-Ms-jca" id="8rI-Lu-HtG"/>
+                        <outlet property="comfirmPassword" destination="XGP-OB-c3A" id="Jcg-JN-wQV"/>
                         <outlet property="emailField" destination="bf9-f5-sha" id="09R-B4-wBc"/>
+                        <outlet property="fatherBtn" destination="J6V-N3-WBl" id="eci-sB-vxE"/>
                         <outlet property="inputTextFieldsHeightConstraint" destination="RXV-2j-Pd1" id="I3v-zm-Wm3"/>
+                        <outlet property="motherBtn" destination="6lR-3D-ldd" id="D4j-gk-uJc"/>
                         <outlet property="nameField" destination="tRB-ba-wjM" id="rBl-0y-PiS"/>
                         <outlet property="passwordField" destination="l4d-ym-Xni" id="hGg-90-20Z"/>
                         <outlet property="phoneField" destination="mpP-wM-4Ej" id="wzY-LE-jGK"/>
@@ -451,7 +453,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="calendar-icon" width="24" height="24"/>
         <image name="login-btn" width="314" height="42"/>
         <image name="login-facebook-btn" width="273" height="50"/>
         <image name="login-google-btn" width="273" height="50"/>
