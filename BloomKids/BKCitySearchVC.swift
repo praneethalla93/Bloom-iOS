@@ -13,6 +13,10 @@ class BKCitySearchVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupSearchVC()
+    }
+    
+    func setupSearchVC() {
         let storyboard = UIStoryboard(name: "BKCitySearch", bundle: nil)
         let citySearchDisplayVC = storyboard.instantiateViewController(withIdentifier: "BKCitySearchDisplayVC") as! BKCitySearchDisplayVC
         
@@ -22,17 +26,21 @@ class BKCitySearchVC: UIViewController {
         
         setupSearchBar()
         
-        
         resultSearchController?.hidesNavigationBarDuringPresentation = false
         resultSearchController?.dimsBackgroundDuringPresentation = true
         definesPresentationContext = true
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        resultSearchController?.isActive = true
+        resultSearchController?.searchBar.becomeFirstResponder()
+    }
+    
     func setupSearchBar() {
         let searchBar = resultSearchController!.searchBar
         searchBar.sizeToFit()
-//        searchBar.barTintColor = BKGlobalTintColor
-        searchBar.placeholder = "Search for places"
+        searchBar.placeholder = "Where is your home city?"
         navigationItem.titleView = resultSearchController?.searchBar
     }
 

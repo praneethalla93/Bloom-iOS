@@ -99,6 +99,6 @@ class BKCitySearchDisplayVC: UITableViewController {
 
 extension BKCitySearchDisplayVC: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        print("updateSearchResults")
+        print("key:\(searchController.searchBar.text)")
     }
 }
