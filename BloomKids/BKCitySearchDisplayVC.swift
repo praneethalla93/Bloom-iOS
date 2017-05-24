@@ -106,6 +106,12 @@ extension BKCitySearchDisplayVC: UISearchResultsUpdating {
     }
     
     func placeAutocomplete(keywords: String) {
+        guard keywords.characters.count > 0 else {
+            return
+        }
+        
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        
         let filter = GMSAutocompleteFilter()
         filter.type = .city
         
@@ -115,6 +121,7 @@ extension BKCitySearchDisplayVC: UISearchResultsUpdating {
                 print("Autocomplete error \(error)")
                 return
             }
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
             if let results = results {
                 let result = results.first
                 print("Result \(result!.attributedFullText)")
