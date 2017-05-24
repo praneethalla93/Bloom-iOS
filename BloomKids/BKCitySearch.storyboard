@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
+        <!--NavigationVC-->
         <scene sceneID="Qzz-qZ-7ow">
             <objects>
-                <navigationController id="RFK-gI-TJj" sceneMemberID="viewController">
+                <navigationController id="RFK-gI-TJj" customClass="BKNavigationVC" customModule="BloomKids" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="m7l-YP-riJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

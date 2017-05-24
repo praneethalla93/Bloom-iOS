@@ -31,6 +31,7 @@ class BKCitySearchVC: UIViewController {
     func setupSearchBar() {
         let searchBar = resultSearchController!.searchBar
         searchBar.sizeToFit()
+//        searchBar.barTintColor = BKGlobalTintColor
         searchBar.placeholder = "Search for places"
         navigationItem.titleView = resultSearchController?.searchBar
     }
