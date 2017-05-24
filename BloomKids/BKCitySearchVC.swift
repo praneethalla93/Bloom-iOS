@@ -9,27 +9,38 @@
 import UIKit
 
 class BKCitySearchVC: UIViewController {
-
+    var resultSearchController: UISearchController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        let storyboard = UIStoryboard(name: "BKCitySearch", bundle: nil)
+        let citySearchDisplayVC = storyboard.instantiateViewController(withIdentifier: "BKCitySearchDisplayVC") as! BKCitySearchDisplayVC
+        
+        resultSearchController = UISearchController(searchResultsController: citySearchDisplayVC)
+        
+        resultSearchController?.searchResultsUpdater = citySearchDisplayVC
+        
+        setupSearchBar()
+        
+        
+        resultSearchController?.hidesNavigationBarDuringPresentation = false
+        resultSearchController?.dimsBackgroundDuringPresentation = true
+        definesPresentationContext = true
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func setupSearchBar() {
+        let searchBar = resultSearchController!.searchBar
+        searchBar.sizeToFit()
+        searchBar.placeholder = "Search for places"
+        navigationItem.titleView = resultSearchController?.searchBar
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
+
+
+
+
+
+
+
+

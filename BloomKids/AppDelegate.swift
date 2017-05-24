@@ -24,18 +24,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow()
         window?.frame = UIScreen.main.bounds
         
-        if BKAuthTool.shared.shouldSwitchToMain(){
-            let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let navagitionVC = mainStoryboard.instantiateViewController(withIdentifier: "BKMainTabBarVC")
-            window?.rootViewController = navagitionVC
-        }else{
-            let authStoryboard = UIStoryboard(name: "BKAuth", bundle: nil)
-            let navagitionVC = authStoryboard.instantiateViewController(withIdentifier: "BKNavigationVC")
-            window?.rootViewController = navagitionVC
-        }
+//        if BKAuthTool.shared.shouldSwitchToMain(){
+//            let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+//            let navagitionVC = mainStoryboard.instantiateViewController(withIdentifier: "BKMainTabBarVC")
+//            window?.rootViewController = navagitionVC
+//        }else{
+//            let authStoryboard = UIStoryboard(name: "BKAuth", bundle: nil)
+//            let navagitionVC = authStoryboard.instantiateViewController(withIdentifier: "BKNavigationVC")
+//            window?.rootViewController = navagitionVC
+//        }
         
-        let storybord = UIStoryboard(name: "BKCitySearch", bundle: nil)
-        let vc = storybord.instantiateViewController(withIdentifier: "BKCitySearchNav")
+        let storyboard = UIStoryboard(name: "BKCitySearch", bundle: nil)
+        let vc = storyboard.instantiateInitialViewController()
         window?.rootViewController = vc
         window?.makeKeyAndVisible()
         

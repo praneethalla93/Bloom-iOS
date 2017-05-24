@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		732B959C6A89925E7239D316 /* Pods_BloomKids.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8EACF588830FABFF52CD389 /* Pods_BloomKids.framework */; };
+		A11DCF7D1ED623F1005E6FCE /* BKCitySearchDisplayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11DCF7C1ED623F1005E6FCE /* BKCitySearchDisplayVC.swift */; };
+		A11DCF7F1ED62B54005E6FCE /* BKCitySearch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A11DCF7E1ED62B54005E6FCE /* BKCitySearch.storyboard */; };
 		A12561561ECE6EF500C46FD1 /* BKForgotPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12561551ECE6EF500C46FD1 /* BKForgotPasswordVC.swift */; };
 		A12561581ECE6F2800C46FD1 /* BKEmailSignupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12561571ECE6F2800C46FD1 /* BKEmailSignupVC.swift */; };
 		A179F9B51ED28A4500B42540 /* BKActivityVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A179F9B41ED28A4500B42540 /* BKActivityVC.swift */; };
@@ -15,7 +17,6 @@
 		A17A7B2D1ECFCAB100D77D27 /* BKNetworkTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17A7B2C1ECFCAB100D77D27 /* BKNetworkTool.swift */; };
 		A17A7B2F1ECFD05900D77D27 /* BKAuthTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17A7B2E1ECFD05900D77D27 /* BKAuthTool.swift */; };
 		A185AE5D1ED611E2002FDF89 /* BKCitySearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A185AE5C1ED611E2002FDF89 /* BKCitySearchVC.swift */; };
-		A185AE5F1ED611F7002FDF89 /* BKCitySearch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A185AE5E1ED611F7002FDF89 /* BKCitySearch.storyboard */; };
 		A1CFEFA91ECD5BCA003DBA74 /* BKAuth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1CFEFA81ECD5BCA003DBA74 /* BKAuth.storyboard */; };
 		A1CFEFAB1ECD5D2C003DBA74 /* BKLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CFEFAA1ECD5D2C003DBA74 /* BKLoginVC.swift */; };
 		A1CFEFAE1ECD5DFB003DBA74 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CFEFAD1ECD5DFB003DBA74 /* Constants.swift */; };
@@ -30,6 +31,8 @@
 
 /* Begin PBXFileReference section */
 		25AE1343266B3A700D0D3E98 /* Pods-BloomKids.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BloomKids.release.xcconfig"; path = "Pods/Target Support Files/Pods-BloomKids/Pods-BloomKids.release.xcconfig"; sourceTree = "<group>"; };
+		A11DCF7C1ED623F1005E6FCE /* BKCitySearchDisplayVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKCitySearchDisplayVC.swift; sourceTree = "<group>"; };
+		A11DCF7E1ED62B54005E6FCE /* BKCitySearch.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BKCitySearch.storyboard; sourceTree = "<group>"; };
 		A12561551ECE6EF500C46FD1 /* BKForgotPasswordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKForgotPasswordVC.swift; sourceTree = "<group>"; };
 		A12561571ECE6F2800C46FD1 /* BKEmailSignupVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKEmailSignupVC.swift; sourceTree = "<group>"; };
 		A179F9B41ED28A4500B42540 /* BKActivityVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKActivityVC.swift; sourceTree = "<group>"; };
@@ -37,7 +40,6 @@
 		A17A7B2C1ECFCAB100D77D27 /* BKNetworkTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKNetworkTool.swift; sourceTree = "<group>"; };
 		A17A7B2E1ECFD05900D77D27 /* BKAuthTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKAuthTool.swift; sourceTree = "<group>"; };
 		A185AE5C1ED611E2002FDF89 /* BKCitySearchVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKCitySearchVC.swift; sourceTree = "<group>"; };
-		A185AE5E1ED611F7002FDF89 /* BKCitySearch.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BKCitySearch.storyboard; sourceTree = "<group>"; };
 		A1CFEFA81ECD5BCA003DBA74 /* BKAuth.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BKAuth.storyboard; sourceTree = "<group>"; };
 		A1CFEFAA1ECD5D2C003DBA74 /* BKLoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKLoginVC.swift; sourceTree = "<group>"; };
 		A1CFEFAD1ECD5DFB003DBA74 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -95,7 +97,8 @@
 			isa = PBXGroup;
 			children = (
 				A185AE5C1ED611E2002FDF89 /* BKCitySearchVC.swift */,
-				A185AE5E1ED611F7002FDF89 /* BKCitySearch.storyboard */,
+				A11DCF7C1ED623F1005E6FCE /* BKCitySearchDisplayVC.swift */,
+				A11DCF7E1ED62B54005E6FCE /* BKCitySearch.storyboard */,
 			);
 			name = OnBoarding;
 			sourceTree = "<group>";
@@ -335,7 +338,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A185AE5F1ED611F7002FDF89 /* BKCitySearch.storyboard in Resources */,
+				A11DCF7F1ED62B54005E6FCE /* BKCitySearch.storyboard in Resources */,
 				A1FC924A1ECD4F960099E68D /* LaunchScreen.storyboard in Resources */,
 				A1FC92471ECD4F960099E68D /* Assets.xcassets in Resources */,
 				A179F9B81ED28B4D00B42540 /* Activity.storyboard in Resources */,
@@ -402,6 +405,7 @@
 				A1CFEFB31ECD6011003DBA74 /* BKNavigationVC.swift in Sources */,
 				A17A7B2F1ECFD05900D77D27 /* BKAuthTool.swift in Sources */,
 				A1CFEFB01ECD5E02003DBA74 /* Headers.swift in Sources */,
+				A11DCF7D1ED623F1005E6FCE /* BKCitySearchDisplayVC.swift in Sources */,
 				A1CFEFAB1ECD5D2C003DBA74 /* BKLoginVC.swift in Sources */,
 				A17A7B2D1ECFCAB100D77D27 /* BKNetworkTool.swift in Sources */,
 				A12561561ECE6EF500C46FD1 /* BKForgotPasswordVC.swift in Sources */,
