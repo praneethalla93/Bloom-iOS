@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GooglePlaces
 
 class BKCitySearchDisplayVC: UITableViewController {
 
@@ -99,6 +100,25 @@ class BKCitySearchDisplayVC: UITableViewController {
 
 extension BKCitySearchDisplayVC: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        print("key:\(searchController.searchBar.text)")
+        if let keywords = searchController.searchBar.text {
+            placeAutocomplete(keywords: keywords)
+        }
+    }
+    
+    func placeAutocomplete(keywords: String) {
+        let filter = GMSAutocompleteFilter()
+        filter.type = .city
+        
+        let placesClient = GMSPlacesClient.shared()
+        placesClient.autocompleteQuery(keywords, bounds: nil, filter: filter, callback: {(results, error) -> Void in
+            if let error = error {
+                print("Autocomplete error \(error)")
+                return
+            }
+            if let results = results {
+                let result = results.first
+                print("Result \(result!.attributedFullText)")
+            }
+        })
     }
 }

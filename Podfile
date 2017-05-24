@@ -8,4 +8,5 @@ target 'BloomKids' do
   pod 'Alamofire', '~> 4.4'
   pod 'SVProgressHUD'
   pod 'KeychainAccess'
+  pod 'GooglePlaces'
 end

@@ -8,7 +8,7 @@
 
 import UIKit
 import SVProgressHUD
-
+import GooglePlaces
 
 let isLogin = false
 
@@ -34,6 +34,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            window?.rootViewController = navagitionVC
 //        }
         
+        
+        GMSPlacesClient.provideAPIKey("AIzaSyCcVxdaoAlpPHR00g41RRvoQsK71fVEVHs")
         let storyboard = UIStoryboard(name: "BKCitySearch", bundle: nil)
         let vc = storyboard.instantiateInitialViewController()
         window?.rootViewController = vc
