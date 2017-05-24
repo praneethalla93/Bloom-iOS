@@ -14,6 +14,8 @@
 		A179F9B81ED28B4D00B42540 /* Activity.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A179F9B61ED28B4D00B42540 /* Activity.storyboard */; };
 		A17A7B2D1ECFCAB100D77D27 /* BKNetworkTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17A7B2C1ECFCAB100D77D27 /* BKNetworkTool.swift */; };
 		A17A7B2F1ECFD05900D77D27 /* BKAuthTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17A7B2E1ECFD05900D77D27 /* BKAuthTool.swift */; };
+		A185AE5D1ED611E2002FDF89 /* BKCitySearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A185AE5C1ED611E2002FDF89 /* BKCitySearchVC.swift */; };
+		A185AE5F1ED611F7002FDF89 /* BKCitySearch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A185AE5E1ED611F7002FDF89 /* BKCitySearch.storyboard */; };
 		A1CFEFA91ECD5BCA003DBA74 /* BKAuth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1CFEFA81ECD5BCA003DBA74 /* BKAuth.storyboard */; };
 		A1CFEFAB1ECD5D2C003DBA74 /* BKLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CFEFAA1ECD5D2C003DBA74 /* BKLoginVC.swift */; };
 		A1CFEFAE1ECD5DFB003DBA74 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CFEFAD1ECD5DFB003DBA74 /* Constants.swift */; };
@@ -34,6 +36,8 @@
 		A179F9B71ED28B4D00B42540 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Activity.storyboard; sourceTree = "<group>"; };
 		A17A7B2C1ECFCAB100D77D27 /* BKNetworkTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKNetworkTool.swift; sourceTree = "<group>"; };
 		A17A7B2E1ECFD05900D77D27 /* BKAuthTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKAuthTool.swift; sourceTree = "<group>"; };
+		A185AE5C1ED611E2002FDF89 /* BKCitySearchVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKCitySearchVC.swift; sourceTree = "<group>"; };
+		A185AE5E1ED611F7002FDF89 /* BKCitySearch.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BKCitySearch.storyboard; sourceTree = "<group>"; };
 		A1CFEFA81ECD5BCA003DBA74 /* BKAuth.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BKAuth.storyboard; sourceTree = "<group>"; };
 		A1CFEFAA1ECD5D2C003DBA74 /* BKLoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKLoginVC.swift; sourceTree = "<group>"; };
 		A1CFEFAD1ECD5DFB003DBA74 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -85,6 +89,15 @@
 				A17A7B2C1ECFCAB100D77D27 /* BKNetworkTool.swift */,
 			);
 			name = Networking;
+			sourceTree = "<group>";
+		};
+		A185AE5B1ED611A7002FDF89 /* OnBoarding */ = {
+			isa = PBXGroup;
+			children = (
+				A185AE5C1ED611E2002FDF89 /* BKCitySearchVC.swift */,
+				A185AE5E1ED611F7002FDF89 /* BKCitySearch.storyboard */,
+			);
+			name = OnBoarding;
 			sourceTree = "<group>";
 		};
 		A1CFEF9B1ECD5ABB003DBA74 /* Activity */ = {
@@ -231,6 +244,7 @@
 		A1FC923E1ECD4F960099E68D /* BloomKids */ = {
 			isa = PBXGroup;
 			children = (
+				A185AE5B1ED611A7002FDF89 /* OnBoarding */,
 				A179F9AC1ED2811400B42540 /* Activity */,
 				A17A7B2B1ECFCA5800D77D27 /* Networking */,
 				A1CFEFA71ECD5BAF003DBA74 /* Auth */,
@@ -321,6 +335,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A185AE5F1ED611F7002FDF89 /* BKCitySearch.storyboard in Resources */,
 				A1FC924A1ECD4F960099E68D /* LaunchScreen.storyboard in Resources */,
 				A1FC92471ECD4F960099E68D /* Assets.xcassets in Resources */,
 				A179F9B81ED28B4D00B42540 /* Activity.storyboard in Resources */,
@@ -393,6 +408,7 @@
 				A12561581ECE6F2800C46FD1 /* BKEmailSignupVC.swift in Sources */,
 				A179F9B51ED28A4500B42540 /* BKActivityVC.swift in Sources */,
 				A1FC92401ECD4F960099E68D /* AppDelegate.swift in Sources */,
+				A185AE5D1ED611E2002FDF89 /* BKCitySearchVC.swift in Sources */,
 				A1FC8FAD1ECFF0710002F234 /* String+Extension.swift in Sources */,
 				A1CFEFAE1ECD5DFB003DBA74 /* Constants.swift in Sources */,
 			);

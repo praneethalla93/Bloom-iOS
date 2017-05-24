@@ -34,6 +34,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             window?.rootViewController = navagitionVC
         }
         
+        let storybord = UIStoryboard(name: "BKCitySearch", bundle: nil)
+        let vc = storybord.instantiateViewController(withIdentifier: "BKCitySearchNav")
+        window?.rootViewController = vc
         window?.makeKeyAndVisible()
         
         return true

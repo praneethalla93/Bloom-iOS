@@ -1,21 +1,18 @@
 //
-//  BKActivityVC.swift
+//  BKCitySearch.swift
 //  BloomKids
 //
-//  Created by Andy Tong on 5/21/17.
+//  Created by Andy Tong on 5/24/17.
 //  Copyright © 2017 Bloom Technology Inc. All rights reserved.
 //
 
 import UIKit
-import MapKit
 
-class BKActivityVC: UITableViewController {
+class BKCitySearchVC: UIViewController {
 
-    @IBAction func logout(_ sender: UIBarButtonItem) {
-        BKAuthTool.shared.logout()
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
+
         // Do any additional setup after loading the view.
     }
 
