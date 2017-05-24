@@ -53,13 +53,30 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="3Id-tl-XXU">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BKCityCell" id="3Id-tl-XXU" customClass="BKCityCell" customModule="BloomKids" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3Id-tl-XXU" id="8rO-tZ-zPW">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HzW-02-Pux">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="HzW-02-Pux" secondAttribute="trailing" id="2tz-VE-EtU"/>
+                                        <constraint firstItem="HzW-02-Pux" firstAttribute="leading" secondItem="8rO-tZ-zPW" secondAttribute="leading" id="WD9-5d-gyQ"/>
+                                        <constraint firstItem="HzW-02-Pux" firstAttribute="top" secondItem="8rO-tZ-zPW" secondAttribute="top" id="X4Y-4C-Gpz"/>
+                                        <constraint firstAttribute="bottom" secondItem="HzW-02-Pux" secondAttribute="bottom" id="h9W-so-CTt"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="cityName" destination="HzW-02-Pux" id="FcF-OT-39f"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
