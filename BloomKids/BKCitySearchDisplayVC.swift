@@ -11,9 +11,12 @@ import GooglePlaces
 
 class BKCitySearchDisplayVC: UITableViewController {
 
+    var label = UILabel()
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        label.frame = CGRect(x: 0, y: 64, width: 200, height: 20)
+        label.backgroundColor = UIColor.orange
+        self.view.addSubview(label)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -125,7 +128,19 @@ extension BKCitySearchDisplayVC: UISearchResultsUpdating {
             if let results = results {
                 let result = results.first
                 print("Result \(result!.attributedFullText)")
+                self.makeLabel(attributedStr: result!.attributedFullText)
             }
         })
+    }
+    
+    func makeLabel(attributedStr: NSAttributedString) {
+        let regularFont = UIFont.systemFont(ofSize: 17.0)
+        let boldFont = UIFont.boldSystemFont(ofSize: 17.0)
+        let attributedStr = attributedStr.mutableCopy() as! NSMutableAttributedString
+        attributedStr.enumerateAttribute(kGMSAutocompleteMatchAttribute, in: NSRange.init(location: 0, length: attributedStr.length), options: NSAttributedString.EnumerationOptions(rawValue: 0)) { (value, range, stop) in
+            let font = (value == nil) ? regularFont : boldFont
+            attributedStr.addAttribute(NSFontAttributeName, value: font, range: range)
+        }
+        label.attributedText = attributedStr
     }
 }
