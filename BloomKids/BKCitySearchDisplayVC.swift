@@ -11,7 +11,14 @@ import GooglePlaces
 
 private let cellID = "BKCityCell"
 
+
+protocol BKCitySearchDisplayVCDelegate: class {
+    func citySearchDisplayVC(vc: BKCitySearchDisplayVC, didChoose city:String, state: String)
+}
+
 class BKCitySearchDisplayVC: UITableViewController {
+    weak var delegate: BKCitySearchDisplayVCDelegate?
+    
     var cities = [NSAttributedString]()
     
     var label = UILabel()
@@ -40,7 +47,23 @@ class BKCitySearchDisplayVC: UITableViewController {
         return cell
     }
  
-
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as! BKCityCell
+        if let name = cell.attributedCityNameStr?.string {
+            let strs = name.components(separatedBy: ", ")
+            let city = strs.first
+            var state: String?
+            if strs.count == 3 {
+                state = strs[1]
+            }
+            if let city = city, let state = state {
+                delegate?.citySearchDisplayVC(vc: self, didChoose: city, state: state)
+            }
+        }
+        
+        
+    }
+    
 }
 
 
@@ -75,9 +98,9 @@ extension BKCitySearchDisplayVC: UISearchResultsUpdating {
                 results.forEach({ (result) in
                     let attributedCity = self.makeAttributedCityName(attributedStr: result.attributedFullText)
                     self.cities.append(attributedCity)
-                    self.cityNamesDidUpdate()
                 })
             }
+            self.cityNamesDidUpdate()
         })
     }
     
@@ -89,8 +112,11 @@ extension BKCitySearchDisplayVC: UISearchResultsUpdating {
             let font = (value == nil) ? regularFont : boldFont
             attributedStr.addAttribute(NSFontAttributeName, value: font, range: range)
         }
+        
         return attributedStr
     }
+    
+
     
     func cityNamesDidUpdate() {
         tableView.reloadData()
