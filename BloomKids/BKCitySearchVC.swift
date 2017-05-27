@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import KeychainAccess
 
 class BKCitySearchVC: UIViewController {
     var resultSearchController: UISearchController?
@@ -19,9 +20,9 @@ class BKCitySearchVC: UIViewController {
     func setupSearchVC() {
         let storyboard = UIStoryboard(name: "BKCitySearch", bundle: nil)
         let citySearchDisplayVC = storyboard.instantiateViewController(withIdentifier: "BKCitySearchDisplayVC") as! BKCitySearchDisplayVC
+        citySearchDisplayVC.delegate = self
         
         resultSearchController = UISearchController(searchResultsController: citySearchDisplayVC)
-        
         resultSearchController?.searchResultsUpdater = citySearchDisplayVC
         
         setupSearchBar()
@@ -46,7 +47,15 @@ class BKCitySearchVC: UIViewController {
 
 }
 
-
+extension BKCitySearchVC: BKCitySearchDisplayVCDelegate {
+    func citySearchDisplayVC(vc: BKCitySearchDisplayVC, didChoose city: String, state: String) {
+        print("city:\(city) state:\(state)")
+        let keychain = Keychain(service: BKKeychainService)
+        keychain[BKCurrentCity] = city
+        keychain[BKCurrentState] = state
+        BKAuthTool.shared.switchToMainUI()
+    }
+}
 
 
 

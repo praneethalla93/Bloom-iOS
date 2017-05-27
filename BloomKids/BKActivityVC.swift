@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import KeychainAccess
 
 class BKActivityVC: UITableViewController {
 
@@ -16,9 +17,19 @@ class BKActivityVC: UITableViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        setupTitle()
     }
 
+    func setupTitle() {
+        let keychain = Keychain(service: BKKeychainService)
+        guard let currentCity = try? keychain.getString(BKCurrentCity) else {return}
+        guard let currentSate = try? keychain.getString(BKCurrentState) else {return}
+        
+        if let currentCity = currentCity, let currentSate = currentSate {
+            navigationItem.title = "\(currentCity), \(currentSate)"
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

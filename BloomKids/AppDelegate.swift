@@ -19,26 +19,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        GMSPlacesClient.provideAPIKey("AIzaSyCcVxdaoAlpPHR00g41RRvoQsK71fVEVHs")
+        
+        
         SVProgressHUD.setDefaultStyle(.dark)
         SVProgressHUD.setMinimumDismissTimeInterval(1.0)
         window = UIWindow()
         window?.frame = UIScreen.main.bounds
-        
-//        if BKAuthTool.shared.shouldSwitchToMain(){
-//            let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-//            let navagitionVC = mainStoryboard.instantiateViewController(withIdentifier: "BKMainTabBarVC")
-//            window?.rootViewController = navagitionVC
-//        }else{
-//            let authStoryboard = UIStoryboard(name: "BKAuth", bundle: nil)
-//            let navagitionVC = authStoryboard.instantiateViewController(withIdentifier: "BKNavigationVC")
-//            window?.rootViewController = navagitionVC
-//        }
-        
-        
-        GMSPlacesClient.provideAPIKey("AIzaSyCcVxdaoAlpPHR00g41RRvoQsK71fVEVHs")
-        let storyboard = UIStoryboard(name: "BKCitySearch", bundle: nil)
-        let vc = storyboard.instantiateInitialViewController()
-        window?.rootViewController = vc
+        window?.rootViewController = BKAuthTool.shared.viewControllerForWindow()
         window?.makeKeyAndVisible()
         
         return true

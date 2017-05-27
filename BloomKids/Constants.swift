@@ -24,3 +24,5 @@ let BKShouldGoToMain = "BKShouldGoToMain"
 let BKKeychainService = "BKKeychainService"
 
 let BKUserEmailKey = "BKUserEmailKey"
+let BKCurrentCity = "BKCurrentCity"
+let BKCurrentState = "BKCurrentState"

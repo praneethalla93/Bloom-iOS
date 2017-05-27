@@ -8,7 +8,7 @@
 
 import UIKit
 import SVProgressHUD
-
+import KeychainAccess
 
 let fakeEmail = "123@gmail.com"
 let fakePassword = "123"
@@ -94,7 +94,17 @@ extension BKLoginVC: UITextFieldDelegate {
         BKAuthTool.shared.authenticate(email, password) { (success) in
             if success {
                 SVProgressHUD.dismiss()
-                BKAuthTool.shared.switchToMainUI()
+                // check if this user already chose a home city
+                let keychain = Keychain(service: BKKeychainService)
+                let currentCity = try? keychain.getString(BKCurrentCity)
+                let currentSate = try? keychain.getString(BKCurrentState)
+                if let currentCity = currentCity, let currentSate = currentSate  {
+                    if let _ = currentCity, let _ = currentSate  {
+                        BKAuthTool.shared.switchToMainUI()
+                    }
+                    
+                }
+                BKAuthTool.shared.switchToCitySearch()
             }else{
                 SVProgressHUD.showError(withStatus: "Your email or password is not matched :(")
             }

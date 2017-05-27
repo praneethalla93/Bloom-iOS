@@ -47,7 +47,7 @@
         <!--Item-->
         <scene sceneID="k8n-On-OOe">
             <objects>
-                <navigationController id="zIv-Jq-I1G" sceneMemberID="viewController">
+                <navigationController id="zIv-Jq-I1G" customClass="BKNavigationVC" customModule="BloomKids" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="BeC-Ri-Fj1"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="oub-NO-aGU">

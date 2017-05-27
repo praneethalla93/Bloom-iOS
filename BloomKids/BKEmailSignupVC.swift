@@ -99,6 +99,16 @@ extension BKEmailSignupVC {
             return
         }
         
+        guard let comfirmText = comfirmPassword.text, comfirmText.characters.count != 0, comfirmText == passwordText else {
+            print("passwordText not matched")
+            return
+        }
+        
+        guard let nameStr = nameField.text, nameStr.characters.count != 0 else {
+            print("name is incorrect")
+            return
+        }
+        
         guard let phoneStr = phoneField.text, phoneStr.characters.count != 0 else {
             print("phone # incorrect")
             return
@@ -123,7 +133,7 @@ extension BKEmailSignupVC {
         BKAuthTool.shared.signup(emailText, passwordText, nameText, phoneStr, relation: genderStr) { (success) in
             if success {
                 SVProgressHUD.showSuccess(withStatus: "Welcome!")
-                BKAuthTool.shared.switchToMainUI()
+                BKAuthTool.shared.switchToCitySearch()
             }else{
                 SVProgressHUD.showError(withStatus: "Please check the infomation you just entered")
             }
@@ -145,8 +155,20 @@ extension BKEmailSignupVC: UITextFieldDelegate {
             nameField.becomeFirstResponder()
         }
         
-        
         if textField === passwordField{
+            comfirmPassword.becomeFirstResponder()
+        }
+        
+        if textField === comfirmPassword {
+            if let comfirmText = comfirmPassword.text, comfirmText.characters.count != 0, comfirmText == passwordField.text {
+                nameField.becomeFirstResponder()
+                return true
+            }else{
+                return false
+            }
+        }
+        
+        if textField === nameField {
             phoneField.becomeFirstResponder()
         }
         
