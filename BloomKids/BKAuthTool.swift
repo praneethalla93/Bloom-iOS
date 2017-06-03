@@ -99,6 +99,7 @@ class BKAuthTool {
             try keychain.remove(BKCurrentState)
             try keychain.remove(BKCurrentCity)
             try keychain.remove(BKUserEmailKey)
+            try keychain.remove(BKHasFinishedTutorial)
         } catch _ {
             
         }
