@@ -1,22 +1,18 @@
 //
-//  BKCityCell.swift
+//  BKAutocompleteCell.swift
 //  BloomKids
 //
-//  Created by Andy Tong on 5/24/17.
+//  Created by Andy Tong on 6/1/17.
 //  Copyright © 2017 Bloom Technology Inc. All rights reserved.
 //
 
 import UIKit
 
-class BKCityCell: UITableViewCell {
-    @IBOutlet weak var cityName: UILabel! 
-    var attributedCityNameStr: NSAttributedString? {
-        didSet {
-            if let attributedCityNameStr = attributedCityNameStr {
-                cityName.attributedText = attributedCityNameStr
-            }
-        }
-    }
+class BKPlaceResultCell: UITableViewCell {
+    @IBOutlet weak var placeName: UILabel!
+    @IBOutlet weak var secondary: UILabel!
+    @IBOutlet weak var country: UILabel!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -27,5 +23,5 @@ class BKCityCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    
 }

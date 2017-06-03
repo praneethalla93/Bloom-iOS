@@ -12,7 +12,10 @@ import SVProgressHUD
 
 class BKAuthTool {
     static let shared = BKAuthTool()
-    var currentEmail: String = ""
+    var currentEmail: String?
+    var currentState: String?
+    var currentCity: String?
+
     
     func viewControllerForWindow() -> UIViewController {
 
@@ -40,18 +43,21 @@ class BKAuthTool {
             let currentCity = try? keychain.getString(BKCurrentCity)
             let currentSate = try? keychain.getString(BKCurrentState)
             
-            BKAuthTool.shared.switchToCitySearch()
             if let currentCity = currentCity, let currentSate = currentSate  {
-                if let _ = currentCity, let _ = currentSate  {
+                if let currentCity = currentCity, let currentSate = currentSate  {
+                    self.currentCity = currentCity
+                    self.currentState = currentSate
                     let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
                     let navagitionVC = mainStoryboard.instantiateViewController(withIdentifier: "BKMainTabBarVC")
                     return navagitionVC
                 }
             }
             
-            let storyboard = UIStoryboard(name: "BKCitySearch", bundle: nil)
-            let vc = storyboard.instantiateInitialViewController()
-            return vc!
+            let vc = BKPlaceSearchNavVC()
+            vc.placeDelegate = self
+            vc.resultType = .city
+            vc.placeholder = "Where is your home city?"
+            return vc
             
         }else{
             let authStoryboard = UIStoryboard(name: "BKAuth", bundle: nil)
@@ -67,7 +73,7 @@ class BKAuthTool {
     }
     
     func switchToAuthUI() {
-        clearKeychain(currentEmail)
+        clearKeychain()
         
         let authStoryboard = UIStoryboard(name: "BKAuth", bundle: nil)
         let navagitionVC = authStoryboard.instantiateViewController(withIdentifier: "BKNavigationVC")
@@ -76,16 +82,20 @@ class BKAuthTool {
     }
     
     func switchToCitySearch() {
-        let storyboard = UIStoryboard(name: "BKCitySearch", bundle: nil)
-        let vc = storyboard.instantiateInitialViewController()
+        let vc = BKPlaceSearchNavVC()
+        vc.placeDelegate = self
+        vc.resultType = .city
+        vc.placeholder = "Where is your home city?"
         let window = UIApplication.shared.keyWindow
         window?.rootViewController = vc
     }
     
-    func clearKeychain(_ currentEmail: String = "") {
+    func clearKeychain() {
         let keychain = Keychain(service: BKKeychainService)
         do {
-            try keychain.remove(currentEmail)
+            if let currentEmail = currentEmail {
+                try keychain.remove(currentEmail)
+            }
             try keychain.remove(BKCurrentState)
             try keychain.remove(BKCurrentCity)
             try keychain.remove(BKUserEmailKey)
@@ -121,8 +131,53 @@ class BKAuthTool {
             "relation": relation]
         print("parameters:\(parameters)")
         BKNetowrkTool.shared.request(.post, urlStr: BKNetworkingSignupUrlStr, parameters: parameters) { (success, data) in
+            if success {
+                self.currentEmail = email
+                let keychain = Keychain(service: BKKeychainService)
+                keychain[email] = password
+                keychain[BKUserEmailKey] = email
+            }
             completion(success)
         }
         
     }
 }
+
+
+
+extension BKAuthTool: BKPlaceAutocompleteDelegate {
+    func placeAutocompleteDidCancel(_ vc: BKPlaceAutocompleteVC) {
+        print("placeAutocompleteDidCancel")
+    }
+    func placeAutocomplete(_ vc: BKPlaceAutocompleteVC, didSelectPlace place: BKPlaceModel) {
+        guard let state = place.state else {
+            print("AUthTool:placeAutocomplete -> state is nil")
+            return
+        }
+        let keychain = Keychain(service: BKKeychainService)
+        keychain[BKCurrentCity] = place.placeName
+        keychain[BKCurrentState] = state
+        BKAuthTool.shared.switchToMainUI()
+        
+        
+    }
+    
+    func finishedTutorial() {
+        let keychain = Keychain(service: BKKeychainService)
+        keychain[BKHasFinishedTutorial] = "true"
+        
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

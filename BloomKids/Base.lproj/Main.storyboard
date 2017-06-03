@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Wex-9C-VXx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Wex-9C-VXx">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -26,14 +26,6 @@
             </objects>
             <point key="canvasLocation" x="-943" y="-249"/>
         </scene>
-        <!--BKCitySearch-->
-        <scene sceneID="bU3-lg-ACi">
-            <objects>
-                <viewControllerPlaceholder storyboardName="BKCitySearch" id="vO8-jM-jr2" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="QSs-2J-rpj" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-157" y="-307"/>
-        </scene>
         <!--Activity-->
         <scene sceneID="DmN-Sv-hxp">
             <objects>
@@ -42,7 +34,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aD6-qR-KhS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-127" y="-189"/>
+            <point key="canvasLocation" x="57" y="-689"/>
         </scene>
     </scenes>
 </document>

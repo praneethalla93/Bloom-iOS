@@ -10,16 +10,30 @@ import UIKit
 import MapKit
 import KeychainAccess
 
-class BKActivityVC: UITableViewController {
+private let cellID = "cellID"
 
+class BKActivityVC: UIViewController {
+    let categories = ["Connections", "Events"]
     @IBAction func logout(_ sender: UIBarButtonItem) {
         BKAuthTool.shared.logout()
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTitle()
+        useCategoryView()
+        
+        let keychain = Keychain(service: BKKeychainService)
+        if let _hasFinished = try? keychain.getString(BKHasFinishedTutorial), let _ = _hasFinished {
+            
+        }else{
+            let addKidVC = UIStoryboard(name: "Activity", bundle: nil).instantiateViewController(withIdentifier: "BKAddKidNavVC")
+            present(addKidVC, animated: true, completion: nil)
+        }
+
     }
 
+    
+    
     func setupTitle() {
         let keychain = Keychain(service: BKKeychainService)
         guard let currentCity = try? keychain.getString(BKCurrentCity) else {return}
@@ -30,20 +44,21 @@ class BKActivityVC: UITableViewController {
         }
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func useCategoryView() {
+        automaticallyAdjustsScrollViewInsets = false
+        var childVCs = [UIViewController]()
+        for _ in 0..<categories.count {
+            let vc = UIViewController()
+            vc.view.backgroundColor = UIColor.random()
+            childVCs.append(vc)
+        }
+        
+        var style = AHCategoryNavBarStyle()
+        style.isScrollabel = false
+        let frame = CGRect(x: 0, y: 64, width: view.bounds.width, height: view.bounds.height - 64)
+        let categoryView = AHCategoryView(frame: frame, categories: categories, childVCs: childVCs, parentVC: self, barStyle: style)
+        
+        view.addSubview(categoryView)
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

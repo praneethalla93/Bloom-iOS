@@ -18,17 +18,17 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="sbI-9J-KdF" kind="relationship" relationship="rootViewController" id="8uV-iv-4ht"/>
+                        <segue destination="sbI-9J-KdF" kind="relationship" relationship="rootViewController" id="NoZ-eN-nnv"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2su-5f-hh0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1204" y="66"/>
+            <point key="canvasLocation" x="-1634" y="56"/>
         </scene>
-        <!--City SearchVC-->
+        <!--TestVC-->
         <scene sceneID="khC-bW-yXP">
             <objects>
-                <viewController storyboardIdentifier="BKCitySearchVC" id="sbI-9J-KdF" customClass="BKCitySearchVC" customModule="BloomKids" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BKCitySearchVC" id="sbI-9J-KdF" customClass="BKTestVC" customModule="BloomKids" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jh2-Uo-oE5"/>
                         <viewControllerLayoutGuide type="bottom" id="H0o-87-540"/>
@@ -36,6 +36,16 @@
                     <view key="view" contentMode="scaleToFill" id="GI0-fB-GVZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TBb-yd-hPu">
+                                <rect key="frame" x="150" y="237" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="goSearch:" destination="sbI-9J-KdF" eventType="touchUpInside" id="vbm-u6-zgg"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="mnY-dG-NC7"/>
@@ -43,51 +53,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ewU-kK-G5I" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-291" y="57"/>
-        </scene>
-        <!--City Search DisplayVC-->
-        <scene sceneID="FnO-cp-CIo">
-            <objects>
-                <tableViewController storyboardIdentifier="BKCitySearchDisplayVC" id="L5D-or-zZq" customClass="BKCitySearchDisplayVC" customModule="BloomKids" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="l8d-au-0lY">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BKCityCell" id="3Id-tl-XXU" customClass="BKCityCell" customModule="BloomKids" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3Id-tl-XXU" id="8rO-tZ-zPW">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HzW-02-Pux">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="HzW-02-Pux" secondAttribute="trailing" id="2tz-VE-EtU"/>
-                                        <constraint firstItem="HzW-02-Pux" firstAttribute="leading" secondItem="8rO-tZ-zPW" secondAttribute="leading" id="WD9-5d-gyQ"/>
-                                        <constraint firstItem="HzW-02-Pux" firstAttribute="top" secondItem="8rO-tZ-zPW" secondAttribute="top" id="X4Y-4C-Gpz"/>
-                                        <constraint firstAttribute="bottom" secondItem="HzW-02-Pux" secondAttribute="bottom" id="h9W-so-CTt"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="cityName" destination="HzW-02-Pux" id="FcF-OT-39f"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="L5D-or-zZq" id="6Kf-Eb-SJD"/>
-                            <outlet property="delegate" destination="L5D-or-zZq" id="RKG-m0-bBV"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="pXX-fg-T30" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="787" y="40"/>
         </scene>
     </scenes>
 </document>
