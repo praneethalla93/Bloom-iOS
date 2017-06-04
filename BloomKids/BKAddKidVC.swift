@@ -9,9 +9,15 @@
 import UIKit
 import SVProgressHUD
 
+protocol BKAddKidVCDelegate: class {
+    func addKidVC(_ vc: BKAddKidVC, didAddkid kid: BKKidModel)
+}
+
 
 class BKAddKidVC: UITableViewController {
-
+    weak var delegate: BKAddKidVCDelegate?
+    
+    
     fileprivate lazy var photoHeaderVC: BKPhotoHeaderVC = BKPhotoHeaderVC()
     
     fileprivate var genderStr: String?
@@ -70,6 +76,7 @@ class BKAddKidVC: UITableViewController {
                 print("kid added with kidid:\(kidid)")
                 SVProgressHUD.showSuccess(withStatus: "Kid added")
                 BKAuthTool.shared.finishedTutorial()
+                self.delegate?.addKidVC(self, didAddkid: kidModel)
                 self.dismiss(animated: true, completion: nil)
             }else{
                 SVProgressHUD.showError(withStatus: "Fail to add kid")

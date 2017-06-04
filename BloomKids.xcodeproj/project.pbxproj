@@ -13,6 +13,11 @@
 		A1026A2D1EE27CCC00FA7366 /* AHStackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1026A2C1EE27CCC00FA7366 /* AHStackButton.swift */; };
 		A1026A301EE281C900FA7366 /* BKSportLevelVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1026A2F1EE281C900FA7366 /* BKSportLevelVC.swift */; };
 		A1026A321EE286AC00FA7366 /* BKSportLevelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1026A311EE286AC00FA7366 /* BKSportLevelCell.swift */; };
+		A10645EE1EE3B0390054267C /* BKProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10645ED1EE3B0390054267C /* BKProfileVC.swift */; };
+		A10645F01EE3B20E0054267C /* BKYourKidsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10645EF1EE3B20E0054267C /* BKYourKidsVC.swift */; };
+		A10645F31EE3B5BE0054267C /* BKKidCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10645F11EE3B5BE0054267C /* BKKidCell.swift */; };
+		A10645F41EE3B5BE0054267C /* BKKidCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A10645F21EE3B5BE0054267C /* BKKidCell.xib */; };
+		A10645F61EE3BD020054267C /* BKConnectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10645F51EE3BD020054267C /* BKConnectionVC.swift */; };
 		A11DCF7F1ED62B54005E6FCE /* BKCitySearch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A11DCF7E1ED62B54005E6FCE /* BKCitySearch.storyboard */; };
 		A12561561ECE6EF500C46FD1 /* BKForgotPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12561551ECE6EF500C46FD1 /* BKForgotPasswordVC.swift */; };
 		A12561581ECE6F2800C46FD1 /* BKEmailSignupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12561571ECE6F2800C46FD1 /* BKEmailSignupVC.swift */; };
@@ -46,6 +51,9 @@
 		A1E9D4801EE0EF8200250A94 /* BKPlaceResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E9D47F1EE0EF8200250A94 /* BKPlaceResultsController.swift */; };
 		A1E9D4821EE0F2A400250A94 /* BKTestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E9D4811EE0F2A400250A94 /* BKTestVC.swift */; };
 		A1E9D4841EE0F45800250A94 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E9D4831EE0F45800250A94 /* UIColor+Extension.swift */; };
+		A1F544111EE3D84B00D331B8 /* BKAddKidNavVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F544101EE3D84B00D331B8 /* BKAddKidNavVC.swift */; };
+		A1FA1B411EE3A0C10025143E /* BKConnect.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1FA1B3F1EE3A0C10025143E /* BKConnect.storyboard */; };
+		A1FA1B431EE3A12D0025143E /* BKProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1FA1B421EE3A12D0025143E /* BKProfile.storyboard */; };
 		A1FC8FAD1ECFF0710002F234 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FC8FAC1ECFF0710002F234 /* String+Extension.swift */; };
 		A1FC92401ECD4F960099E68D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FC923F1ECD4F960099E68D /* AppDelegate.swift */; };
 		A1FC92451ECD4F960099E68D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1FC92431ECD4F960099E68D /* Main.storyboard */; };
@@ -60,6 +68,11 @@
 		A1026A2C1EE27CCC00FA7366 /* AHStackButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AHStackButton.swift; sourceTree = "<group>"; };
 		A1026A2F1EE281C900FA7366 /* BKSportLevelVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKSportLevelVC.swift; sourceTree = "<group>"; };
 		A1026A311EE286AC00FA7366 /* BKSportLevelCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKSportLevelCell.swift; sourceTree = "<group>"; };
+		A10645ED1EE3B0390054267C /* BKProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKProfileVC.swift; sourceTree = "<group>"; };
+		A10645EF1EE3B20E0054267C /* BKYourKidsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKYourKidsVC.swift; sourceTree = "<group>"; };
+		A10645F11EE3B5BE0054267C /* BKKidCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKKidCell.swift; sourceTree = "<group>"; };
+		A10645F21EE3B5BE0054267C /* BKKidCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BKKidCell.xib; sourceTree = "<group>"; };
+		A10645F51EE3BD020054267C /* BKConnectionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKConnectionVC.swift; sourceTree = "<group>"; };
 		A11DCF7E1ED62B54005E6FCE /* BKCitySearch.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BKCitySearch.storyboard; sourceTree = "<group>"; };
 		A12561551ECE6EF500C46FD1 /* BKForgotPasswordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKForgotPasswordVC.swift; sourceTree = "<group>"; };
 		A12561571ECE6F2800C46FD1 /* BKEmailSignupVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKEmailSignupVC.swift; sourceTree = "<group>"; };
@@ -93,6 +106,9 @@
 		A1E9D47F1EE0EF8200250A94 /* BKPlaceResultsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKPlaceResultsController.swift; sourceTree = "<group>"; };
 		A1E9D4811EE0F2A400250A94 /* BKTestVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKTestVC.swift; sourceTree = "<group>"; };
 		A1E9D4831EE0F45800250A94 /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		A1F544101EE3D84B00D331B8 /* BKAddKidNavVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKAddKidNavVC.swift; sourceTree = "<group>"; };
+		A1FA1B401EE3A0C10025143E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/BKConnect.storyboard; sourceTree = "<group>"; };
+		A1FA1B421EE3A12D0025143E /* BKProfile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BKProfile.storyboard; sourceTree = "<group>"; };
 		A1FC8FAC1ECFF0710002F234 /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		A1FC923C1ECD4F960099E68D /* BloomKids.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BloomKids.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1FC923F1ECD4F960099E68D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -148,10 +164,10 @@
 		A179F9AC1ED2811400B42540 /* Activity */ = {
 			isa = PBXGroup;
 			children = (
+				A19893971EE1FE1700DDF240 /* VCs */,
 				A1026A2E1EE281A900FA7366 /* Sport */,
 				A19893A41EE2570200DDF240 /* Cell */,
 				A198939B1EE2020500DDF240 /* AddKid */,
-				A19893971EE1FE1700DDF240 /* Main */,
 				A143871B1EE1569A0050A5D1 /* AHCategoryVC */,
 			);
 			name = Activity;
@@ -174,13 +190,14 @@
 			name = OnBoarding;
 			sourceTree = "<group>";
 		};
-		A19893971EE1FE1700DDF240 /* Main */ = {
+		A19893971EE1FE1700DDF240 /* VCs */ = {
 			isa = PBXGroup;
 			children = (
 				A179F9B61ED28B4D00B42540 /* Activity.storyboard */,
 				A179F9B41ED28A4500B42540 /* BKActivityVC.swift */,
+				A10645F51EE3BD020054267C /* BKConnectionVC.swift */,
 			);
-			name = Main;
+			name = VCs;
 			sourceTree = "<group>";
 		};
 		A19893981EE1FE3600DDF240 /* Main */ = {
@@ -201,6 +218,7 @@
 				A198939E1EE2027E00DDF240 /* BKPhotoHeaderView.swift */,
 				A19893A01EE2028A00DDF240 /* BKPhotoHeaderView.xib */,
 				A19893A21EE2154A00DDF240 /* BKKidModel.swift */,
+				A1F544101EE3D84B00D331B8 /* BKAddKidNavVC.swift */,
 			);
 			name = AddKid;
 			sourceTree = "<group>";
@@ -224,16 +242,6 @@
 				A1CFEF9E1ECD5B56003DBA74 /* VCs */,
 			);
 			name = Activity;
-			sourceTree = "<group>";
-		};
-		A1CFEF9C1ECD5B46003DBA74 /* Connnect */ = {
-			isa = PBXGroup;
-			children = (
-				A1CFEFA31ECD5B8E003DBA74 /* Views */,
-				A1CFEFA21ECD5B89003DBA74 /* Models */,
-				A1CFEFA11ECD5B84003DBA74 /* VCs */,
-			);
-			name = Connnect;
 			sourceTree = "<group>";
 		};
 		A1CFEF9D1ECD5B50003DBA74 /* Profile */ = {
@@ -261,27 +269,6 @@
 			sourceTree = "<group>";
 		};
 		A1CFEFA01ECD5B61003DBA74 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Views;
-			sourceTree = "<group>";
-		};
-		A1CFEFA11ECD5B84003DBA74 /* VCs */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = VCs;
-			sourceTree = "<group>";
-		};
-		A1CFEFA21ECD5B89003DBA74 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Models;
-			sourceTree = "<group>";
-		};
-		A1CFEFA31ECD5B8E003DBA74 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 			);
@@ -326,6 +313,8 @@
 			children = (
 				A1CFEFAD1ECD5DFB003DBA74 /* Constants.swift */,
 				A1CFEFAF1ECD5E02003DBA74 /* Headers.swift */,
+				A10645F11EE3B5BE0054267C /* BKKidCell.swift */,
+				A10645F21EE3B5BE0054267C /* BKKidCell.xib */,
 			);
 			name = Other;
 			sourceTree = "<group>";
@@ -354,6 +343,24 @@
 			name = PlaceAutocomplete;
 			sourceTree = "<group>";
 		};
+		A1FA1B3D1EE3A0910025143E /* Connect */ = {
+			isa = PBXGroup;
+			children = (
+				A1FA1B3F1EE3A0C10025143E /* BKConnect.storyboard */,
+			);
+			name = Connect;
+			sourceTree = "<group>";
+		};
+		A1FA1B3E1EE3A0A20025143E /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				A1FA1B421EE3A12D0025143E /* BKProfile.storyboard */,
+				A10645ED1EE3B0390054267C /* BKProfileVC.swift */,
+				A10645EF1EE3B20E0054267C /* BKYourKidsVC.swift */,
+			);
+			name = Profile;
+			sourceTree = "<group>";
+		};
 		A1FC92331ECD4F960099E68D = {
 			isa = PBXGroup;
 			children = (
@@ -377,10 +384,11 @@
 			children = (
 				A185AE5B1ED611A7002FDF89 /* OnBoarding */,
 				A179F9AC1ED2811400B42540 /* Activity */,
+				A1FA1B3D1EE3A0910025143E /* Connect */,
+				A1FA1B3E1EE3A0A20025143E /* Profile */,
 				A17A7B2B1ECFCA5800D77D27 /* Networking */,
 				A1CFEFA71ECD5BAF003DBA74 /* Auth */,
 				A1CFEF9D1ECD5B50003DBA74 /* Profile */,
-				A1CFEF9C1ECD5B46003DBA74 /* Connnect */,
 				A1CFEF9B1ECD5ABB003DBA74 /* Activity */,
 				A1CFEFB11ECD5FE0003DBA74 /* Base + Extensions */,
 				A1CFEFAC1ECD5DE3003DBA74 /* Other */,
@@ -469,11 +477,14 @@
 				A11DCF7F1ED62B54005E6FCE /* BKCitySearch.storyboard in Resources */,
 				A19893A11EE2028A00DDF240 /* BKPhotoHeaderView.xib in Resources */,
 				A1FC924A1ECD4F960099E68D /* LaunchScreen.storyboard in Resources */,
+				A1FA1B411EE3A0C10025143E /* BKConnect.storyboard in Resources */,
 				A1E9D4751EE0D36600250A94 /* BKPlaceResultCell.xib in Resources */,
 				A1FC92471ECD4F960099E68D /* Assets.xcassets in Resources */,
 				A179F9B81ED28B4D00B42540 /* Activity.storyboard in Resources */,
+				A10645F41EE3B5BE0054267C /* BKKidCell.xib in Resources */,
 				A1FC92451ECD4F960099E68D /* Main.storyboard in Resources */,
 				A1CFEFA91ECD5BCA003DBA74 /* BKAuth.storyboard in Resources */,
+				A1FA1B431EE3A12D0025143E /* BKProfile.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -553,8 +564,12 @@
 				A1026A2B1EE27B0200FA7366 /* BKSportCell.swift in Sources */,
 				A19893A31EE2154A00DDF240 /* BKKidModel.swift in Sources */,
 				A12561581ECE6F2800C46FD1 /* BKEmailSignupVC.swift in Sources */,
+				A10645F31EE3B5BE0054267C /* BKKidCell.swift in Sources */,
 				A179F9B51ED28A4500B42540 /* BKActivityVC.swift in Sources */,
 				A1FC92401ECD4F960099E68D /* AppDelegate.swift in Sources */,
+				A10645F61EE3BD020054267C /* BKConnectionVC.swift in Sources */,
+				A10645F01EE3B20E0054267C /* BKYourKidsVC.swift in Sources */,
+				A10645EE1EE3B0390054267C /* BKProfileVC.swift in Sources */,
 				A19893A81EE2607E00DDF240 /* BKGenderCell.swift in Sources */,
 				A14387221EE156A50050A5D1 /* AHCategoryContentView.swift in Sources */,
 				A1026A301EE281C900FA7366 /* BKSportLevelVC.swift in Sources */,
@@ -562,6 +577,7 @@
 				A185AE5D1ED611E2002FDF89 /* BKPlaceAutocompleteVC.swift in Sources */,
 				A14387241EE156A50050A5D1 /* AHCategoryNavBarStyle.swift in Sources */,
 				A1FC8FAD1ECFF0710002F234 /* String+Extension.swift in Sources */,
+				A1F544111EE3D84B00D331B8 /* BKAddKidNavVC.swift in Sources */,
 				A1CFEFAE1ECD5DFB003DBA74 /* Constants.swift in Sources */,
 				A1E9D4821EE0F2A400250A94 /* BKTestVC.swift in Sources */,
 				A19893A61EE2572E00DDF240 /* BKSimpleCell.swift in Sources */,
@@ -579,6 +595,14 @@
 				A179F9B71ED28B4D00B42540 /* Base */,
 			);
 			name = Activity.storyboard;
+			sourceTree = "<group>";
+		};
+		A1FA1B3F1EE3A0C10025143E /* BKConnect.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A1FA1B401EE3A0C10025143E /* Base */,
+			);
+			name = BKConnect.storyboard;
 			sourceTree = "<group>";
 		};
 		A1FC92431ECD4F960099E68D /* Main.storyboard */ = {

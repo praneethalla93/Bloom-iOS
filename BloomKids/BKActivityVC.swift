@@ -47,11 +47,14 @@ class BKActivityVC: UIViewController {
     func useCategoryView() {
         automaticallyAdjustsScrollViewInsets = false
         var childVCs = [UIViewController]()
-        for _ in 0..<categories.count {
-            let vc = UIViewController()
-            vc.view.backgroundColor = UIColor.random()
-            childVCs.append(vc)
-        }
+        
+        let connectionVC = BKConnectionVC(style: .plain)
+        childVCs.append(connectionVC)
+        
+        let vc = UIViewController()
+        vc.view.backgroundColor = UIColor.orange
+        
+        childVCs.append(vc)
         
         var style = AHCategoryNavBarStyle()
         style.isScrollabel = false

@@ -18,6 +18,8 @@ let BKNavigationBarTitleFontSize: CGFloat = 17.0
 let BKLoginLogoTopSpace: CGFloat = 20.0
 
 let BKInputTextFieldHeight: CGFloat = UIScreen.main.bounds.size.height > 480.0 ? 35.0 : 30.0
+let BKKidCellHeight: CGFloat = 100.0
+
 
 let BKNetworkingLoginUrlStr = "http://custom-env.aqrfytx2is.us-east-1.elasticbeanstalk.com/rest/login/dologin"
 
@@ -45,5 +47,8 @@ let BKSchoolSearchCellID = "BKSchoolSearchCellID"
 let BKSimpleCellID = "BKSimpleCellID"
 let BKGenderCellID = "BKGenderCellID"
 let BKSportCellID = "BKSportCellID"
+let BKAddKidCellID = "BKAddKidCellID"
+let BKKidCellID = "BKKidCellID"
+
 let BKSportLevelCellID = "BKSportLevelCellID"
 let BKHasFinishedTutorial = "BKHasFinishedTutorial"

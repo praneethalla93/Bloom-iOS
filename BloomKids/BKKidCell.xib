@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BKKidCellID" rowHeight="110" id="KGk-i7-Jjw" customClass="BKKidCell" customModule="BloomKids" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="569" height="110"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="569" height="110"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo-placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="CwF-f5-pvx">
+                        <rect key="frame" x="16" y="15" width="79.5" height="80"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="80" id="7Mp-WI-bei"/>
+                            <constraint firstAttribute="width" secondItem="CwF-f5-pvx" secondAttribute="height" multiplier="1:1" id="J5m-Vh-3Al"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CxW-th-XuO">
+                        <rect key="frame" x="103.5" y="15" width="53" height="24"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="school" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o34-6O-67a">
+                        <rect key="frame" x="103.5" y="44.5" width="51" height="20.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="age" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AtM-5k-8wa">
+                        <rect key="frame" x="103.5" y="75" width="28.5" height="20.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="rBA-9P-cvR">
+                        <rect key="frame" x="423" y="15" width="130" height="80"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Ox9-UU-hdK">
+                                <rect key="frame" x="0.0" y="0.0" width="130" height="30"/>
+                                <subviews>
+                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="baseball-icon" translatesAutoresizingMaskIntoConstraints="NO" id="W09-ZE-ln1">
+                                        <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="W09-ZE-ln1" secondAttribute="height" multiplier="1:1" id="jt9-d4-06x"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="baseball-icon" translatesAutoresizingMaskIntoConstraints="NO" id="clf-Gk-Wsj">
+                                        <rect key="frame" x="50" y="0.0" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="clf-Gk-Wsj" secondAttribute="height" multiplier="1:1" id="noG-2d-2d1"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="baseball-icon" translatesAutoresizingMaskIntoConstraints="NO" id="SAP-YD-5Fy">
+                                        <rect key="frame" x="100" y="0.0" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="SAP-YD-5Fy" secondAttribute="height" multiplier="1:1" id="v6J-7R-ELI"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="kna-zG-2Sq">
+                                <rect key="frame" x="0.0" y="50" width="130" height="30"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="baseball-icon" translatesAutoresizingMaskIntoConstraints="NO" id="3EP-Ht-y4b">
+                                        <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="3EP-Ht-y4b" secondAttribute="height" multiplier="1:1" id="655-ud-URK"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tenis-icon" translatesAutoresizingMaskIntoConstraints="NO" id="r3h-Le-q9f">
+                                        <rect key="frame" x="50" y="0.0" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="r3h-Le-q9f" secondAttribute="height" multiplier="1:1" id="pjb-WX-fXC"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chess-icon" translatesAutoresizingMaskIntoConstraints="NO" id="dsB-Ib-Ami">
+                                        <rect key="frame" x="100" y="0.0" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="dsB-Ib-Ami" secondAttribute="height" multiplier="1:1" id="zHU-7u-ZL2"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="CxW-th-XuO" firstAttribute="leading" secondItem="CwF-f5-pvx" secondAttribute="trailing" constant="8" id="AC1-2U-QfE"/>
+                    <constraint firstItem="o34-6O-67a" firstAttribute="centerY" secondItem="CwF-f5-pvx" secondAttribute="centerY" id="ALz-bp-Tnk"/>
+                    <constraint firstItem="rBA-9P-cvR" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="ERc-c7-6bg"/>
+                    <constraint firstItem="CxW-th-XuO" firstAttribute="top" secondItem="CwF-f5-pvx" secondAttribute="top" id="GDF-lg-86X"/>
+                    <constraint firstItem="CwF-f5-pvx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="PMD-qY-dnR"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="rBA-9P-cvR" secondAttribute="trailing" constant="8" id="baM-RZ-luT"/>
+                    <constraint firstItem="AtM-5k-8wa" firstAttribute="leading" secondItem="CwF-f5-pvx" secondAttribute="trailing" constant="8" id="bvc-Cg-owL"/>
+                    <constraint firstItem="CwF-f5-pvx" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="qmH-lL-xns"/>
+                    <constraint firstItem="o34-6O-67a" firstAttribute="leading" secondItem="CwF-f5-pvx" secondAttribute="trailing" constant="8" id="rEX-I6-BOa"/>
+                    <constraint firstItem="AtM-5k-8wa" firstAttribute="bottom" secondItem="CwF-f5-pvx" secondAttribute="bottom" id="sbq-RJ-FWs"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="age" destination="AtM-5k-8wa" id="qBC-te-TCQ"/>
+                <outlet property="name" destination="CxW-th-XuO" id="iR5-eY-S9j"/>
+                <outlet property="photoView" destination="CwF-f5-pvx" id="FuZ-qt-Ui7"/>
+                <outlet property="school" destination="o34-6O-67a" id="m0m-QM-cdN"/>
+                <outlet property="sportBtn_00" destination="W09-ZE-ln1" id="fLT-a3-SOH"/>
+                <outlet property="sportBtn_01" destination="clf-Gk-Wsj" id="JDn-kS-mFe"/>
+                <outlet property="sportBtn_02" destination="SAP-YD-5Fy" id="LBe-ov-a2B"/>
+                <outlet property="sportBtn_10" destination="3EP-Ht-y4b" id="Ti2-ur-Gn6"/>
+                <outlet property="sportBtn_11" destination="r3h-Le-q9f" id="XCB-NV-1A3"/>
+                <outlet property="sportBtn_12" destination="dsB-Ib-Ami" id="UM2-ro-7jy"/>
+            </connections>
+            <point key="canvasLocation" x="158.5" y="87"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="baseball-icon" width="30" height="30"/>
+        <image name="chess-icon" width="25" height="30"/>
+        <image name="photo-placeholder" width="139" height="139"/>
+        <image name="tenis-icon" width="30" height="30"/>
+    </resources>
+</document>
