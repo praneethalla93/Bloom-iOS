@@ -28,6 +28,8 @@ let BKNetworkingSignupUrlStr = "http://custom-env.aqrfytx2is.us-east-1.elasticbe
 let BKNetworkingAddKidUrlStr = "http://custom-env.aqrfytx2is.us-east-1.elasticbeanstalk.com/rest/kid/addkid"
 let BKNetworkingGetKidUrlStr = "http://custom-env.aqrfytx2is.us-east-1.elasticbeanstalk.com/rest/kid/getkids"
 let BKNetworkingLocationDetailsUrlStr = "http://custom-env.aqrfytx2is.us-east-1.elasticbeanstalk.com/rest/location/dolocationdetails"
+let BKNetworkingActivityConnectionUrlStr = "http://custom-env.aqrfytx2is.us-east-1.elasticbeanstalk.com/rest/connection/activityConnections"
+
 
 
 let BKShouldGoToMain = "BKShouldGoToMain"

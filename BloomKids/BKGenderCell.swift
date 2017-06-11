@@ -53,18 +53,18 @@ class BKGenderCell: UITableViewCell {
         
     }
     func setGenderBtnNormal(button: UIButton) {
-        button.layer.borderColor = BKGlobalTintColor.cgColor
+        button.layer.borderColor = BKAlternativeColor.cgColor
         button.layer.borderWidth = 2.0
-        button.setTitleColor(BKGlobalTintColor, for: UIControlState.normal)
+        button.setTitleColor(BKAlternativeColor, for: UIControlState.normal)
         button.backgroundColor = UIColor.white
     }
     func setGenderBtnSelected(button: UIButton) {
         let genderStr = (button.tag == 0) ? "boy" : "girl"
         didSelectGenderBtn?(genderStr)
         
-        button.layer.borderColor = BKGlobalTintColor.cgColor
+        button.layer.borderColor = BKAlternativeColor.cgColor
         button.layer.borderWidth = 2.0
         button.setTitleColor(UIColor.white, for: UIControlState.normal)
-        button.backgroundColor = BKGlobalTintColor
+        button.backgroundColor = BKAlternativeColor
     }
 }

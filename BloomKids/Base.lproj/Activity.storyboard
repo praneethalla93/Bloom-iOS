@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -290,7 +289,7 @@
         <scene sceneID="RUt-fP-aes">
             <objects>
                 <tableViewController storyboardIdentifier="BKSportLevelVC" id="5b2-lx-OxA" customClass="BKSportLevelVC" customModule="BloomKids" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="singleLineEtched" allowsMultipleSelection="YES" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Zak-pF-IzS">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Zak-pF-IzS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -303,30 +302,19 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sej-ec-CQu">
-                                            <rect key="frame" x="16" y="8" width="301" height="27.5"/>
+                                            <rect key="frame" x="16" y="8" width="42" height="27.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DOn-4E-rEq">
-                                            <rect key="frame" x="337" y="11" width="22" height="22"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" secondItem="DOn-4E-rEq" secondAttribute="height" multiplier="1:1" id="eYb-Kf-syJ"/>
-                                            </constraints>
-                                            <state key="normal" image="sport-check-icon"/>
-                                        </button>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="DOn-4E-rEq" firstAttribute="centerY" secondItem="1uR-EJ-wah" secondAttribute="centerY" id="CGB-5O-3YZ"/>
                                         <constraint firstItem="sej-ec-CQu" firstAttribute="top" secondItem="1uR-EJ-wah" secondAttribute="topMargin" id="ZwP-m6-rji"/>
                                         <constraint firstItem="sej-ec-CQu" firstAttribute="leading" secondItem="1uR-EJ-wah" secondAttribute="leadingMargin" constant="8" id="lhS-gF-z75"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="sej-ec-CQu" secondAttribute="bottom" id="ljT-lm-Lmx"/>
-                                        <constraint firstItem="DOn-4E-rEq" firstAttribute="leading" secondItem="sej-ec-CQu" secondAttribute="trailing" constant="20" id="nDT-Ai-Ibn"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="DOn-4E-rEq" secondAttribute="trailing" constant="8" id="opZ-1L-jmb"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="checkBtn" destination="DOn-4E-rEq" id="a4n-9P-erG"/>
                                     <outlet property="sportLabel" destination="sej-ec-CQu" id="zhN-eO-xOu"/>
                                 </connections>
                             </tableViewCell>
@@ -369,6 +357,5 @@
     </scenes>
     <resources>
         <image name="sport-add-icon" width="22" height="22"/>
-        <image name="sport-check-icon" width="22" height="22"/>
     </resources>
 </document>

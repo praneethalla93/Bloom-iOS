@@ -16,6 +16,7 @@ enum BKNetworkMethod {
 
 class BKNetowrkTool {
     static let shared = BKNetowrkTool()
+    var myKids = [BKKidModel]()
     
     func request(_ method: HTTPMethod, urlStr: String, parameters: [String: Any],  completion: @escaping (_ success: Bool, _ data: Data?) ->Void ) {
         guard let url = URL(string: urlStr) else{
@@ -70,7 +71,6 @@ extension BKNetowrkTool {
         for sport in kidModel.sports {
             var sportDict = [String: String]()
             sportDict["sportname"] = sport.sportName
-            sportDict["interestLevel"] = sport.interestLevel
             sportDict["skilllevel"] = sport.skillLevel
             
             sportArr.append(sportDict)
@@ -88,6 +88,7 @@ extension BKNetowrkTool {
                     {
                         if let status = json["status"] as? Bool,
                             let kidid = json["kidid"] as? Int {
+                            self.myKids.append(kidModel)
                             completion(status, kidid)
                         }
                         
@@ -128,7 +129,7 @@ extension BKNetowrkTool {
                                 let kidModel = BKKidModel(dict: kidDict)
                                 kids.append(kidModel)
                             }
-                            
+                            self.myKids = kids
                             completion(status, kids)
                         }
                         
@@ -144,6 +145,13 @@ extension BKNetowrkTool {
             }
         }
     }
+    
+    func getActivityConnections(for kidId: Int, completion: ([BKKidActivityConnection]?) -> Void) {
+        request(.post, urlStr: BKNetworkingActivityConnectionUrlStr, parameters: ["kidid": kidId]) { (success, data) in
+            
+        }
+    }
+    
     
     func locationDetails(completion: @escaping (_ success:Bool, _ kids: [BKKidModel]?) -> Void) {
         guard let currentEmail = BKAuthTool.shared.currentEmail,

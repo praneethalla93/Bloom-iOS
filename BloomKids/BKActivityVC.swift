@@ -48,7 +48,7 @@ class BKActivityVC: UIViewController {
         automaticallyAdjustsScrollViewInsets = false
         var childVCs = [UIViewController]()
         
-        let connectionVC = BKConnectionVC(style: .plain)
+        let connectionVC = BKConnectionVC()
         childVCs.append(connectionVC)
         
         let vc = UIViewController()

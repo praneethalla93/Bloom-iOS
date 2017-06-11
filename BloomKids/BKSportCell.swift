@@ -8,6 +8,12 @@
 
 import UIKit
 
+
+private enum BKSportButtonState: Int {
+    case normal = 0
+    case selected
+}
+
 class BKSportCell: UITableViewCell {
     @IBOutlet weak var basketBallBtn: AHStackButton!
     @IBOutlet weak var footBallBtn: AHStackButton!
@@ -37,6 +43,9 @@ class BKSportCell: UITableViewCell {
     func setupButton(btn: UIButton) {
         btn.layer.masksToBounds = true
         btn.layer.cornerRadius = 10.0
+        btn.layer.backgroundColor = BKAlternativeColor.cgColor
+        btn.backgroundColor = BKAlternativeColor
+        btn.tag = BKSportButtonState.normal.rawValue
         btn.addTarget(self, action: #selector(sportBtnTapped(_:)), for: .touchUpInside)
         buttons.append(btn)
     }
@@ -54,10 +63,28 @@ class BKSportCell: UITableViewCell {
 //MARK:- Event Handling
 extension BKSportCell {
     func sportBtnTapped(_ btn: UIButton) {
-        let sportLevelVC = UIStoryboard(name: "Activity", bundle: nil).instantiateViewController(withIdentifier: "BKSportLevelVC") as! BKSportLevelVC
-        sportLevelVC.delegate = self
-        sportLevelVC.sportName = btn.titleLabel?.text ?? "Unknown Sport"
-        navigationVC?.pushViewController(sportLevelVC, animated: true)
+        if btn.tag == BKSportButtonState.normal.rawValue {
+            let sportLevelVC = UIStoryboard(name: "Activity", bundle: nil).instantiateViewController(withIdentifier: "BKSportLevelVC") as! BKSportLevelVC
+            sportLevelVC.delegate = self
+            sportLevelVC.sportName = btn.titleLabel?.text ?? "Unknown Sport"
+            navigationVC?.pushViewController(sportLevelVC, animated: true)
+        }else{
+            for i in 0..<totalSports.count {
+                let sport = totalSports[i]
+                if sport.sportName == btn.titleLabel!.text {
+                    totalSports.remove(at: i)
+                    print("a sport deleted")
+                    break
+                }
+            }
+            
+            btn.tag = BKSportButtonState.normal.rawValue
+            btn.setImage(UIImage(named: "sport-add-icon"), for: .normal)
+            btn.layer.borderWidth = 0.0
+            btn.backgroundColor = BKAlternativeColor
+            btn.setTitleColor(UIColor.white, for: .normal)
+        }
+        
     }
 }
 
@@ -71,11 +98,14 @@ extension BKSportCell: BKSportLevelVCDelegate {
         if let sport = sport {
             print("a sport added")
             totalSports.append(sport)
-            btn?.setImage(#imageLiteral(resourceName: "sport-check-icon"), for: .normal)
-        }else{
-            print("a sport deleted")
-            btn?.setImage(UIImage(named: "sport-add-icon"), for: .normal)
+            btn?.tag = BKSportButtonState.selected.rawValue
+            btn?.setImage(#imageLiteral(resourceName: "sport-selected"), for: .normal)
+            btn?.layer.borderWidth = 1.0
+            btn?.layer.borderColor = BKAlternativeColor.cgColor
+            btn?.backgroundColor = UIColor.white
+            btn?.setTitleColor(BKAlternativeColor, for: .normal)
         }
+        navigationVC?.popViewController(animated: true)
     }
 }
 

@@ -10,19 +10,5 @@ import UIKit
 
 class BKSportLevelCell: UITableViewCell {
     @IBOutlet weak var sportLabel: UILabel!
-    @IBOutlet weak var checkBtn: UIButton!
-    
-    override func awakeFromNib() {
-        
-        super.awakeFromNib()
-        
-        checkBtn.isHidden = true
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        checkBtn.isHidden = !selected
-    }
 
 }

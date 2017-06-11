@@ -17,7 +17,6 @@
 		A10645F01EE3B20E0054267C /* BKYourKidsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10645EF1EE3B20E0054267C /* BKYourKidsVC.swift */; };
 		A10645F31EE3B5BE0054267C /* BKKidCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10645F11EE3B5BE0054267C /* BKKidCell.swift */; };
 		A10645F41EE3B5BE0054267C /* BKKidCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A10645F21EE3B5BE0054267C /* BKKidCell.xib */; };
-		A10645F61EE3BD020054267C /* BKConnectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10645F51EE3BD020054267C /* BKConnectionVC.swift */; };
 		A11DCF7F1ED62B54005E6FCE /* BKCitySearch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A11DCF7E1ED62B54005E6FCE /* BKCitySearch.storyboard */; };
 		A12561561ECE6EF500C46FD1 /* BKForgotPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12561551ECE6EF500C46FD1 /* BKForgotPasswordVC.swift */; };
 		A12561581ECE6F2800C46FD1 /* BKEmailSignupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12561571ECE6F2800C46FD1 /* BKEmailSignupVC.swift */; };
@@ -39,6 +38,7 @@
 		A19893A31EE2154A00DDF240 /* BKKidModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19893A21EE2154A00DDF240 /* BKKidModel.swift */; };
 		A19893A61EE2572E00DDF240 /* BKSimpleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19893A51EE2572E00DDF240 /* BKSimpleCell.swift */; };
 		A19893A81EE2607E00DDF240 /* BKGenderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19893A71EE2607E00DDF240 /* BKGenderCell.swift */; };
+		A1B52EDB1EEC86C6000EB1CE /* BKConnectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B52EDA1EEC86C6000EB1CE /* BKConnectionVC.swift */; };
 		A1CFEFA91ECD5BCA003DBA74 /* BKAuth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1CFEFA81ECD5BCA003DBA74 /* BKAuth.storyboard */; };
 		A1CFEFAB1ECD5D2C003DBA74 /* BKLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CFEFAA1ECD5D2C003DBA74 /* BKLoginVC.swift */; };
 		A1CFEFAE1ECD5DFB003DBA74 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CFEFAD1ECD5DFB003DBA74 /* Constants.swift */; };
@@ -72,7 +72,6 @@
 		A10645EF1EE3B20E0054267C /* BKYourKidsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKYourKidsVC.swift; sourceTree = "<group>"; };
 		A10645F11EE3B5BE0054267C /* BKKidCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKKidCell.swift; sourceTree = "<group>"; };
 		A10645F21EE3B5BE0054267C /* BKKidCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BKKidCell.xib; sourceTree = "<group>"; };
-		A10645F51EE3BD020054267C /* BKConnectionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKConnectionVC.swift; sourceTree = "<group>"; };
 		A11DCF7E1ED62B54005E6FCE /* BKCitySearch.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BKCitySearch.storyboard; sourceTree = "<group>"; };
 		A12561551ECE6EF500C46FD1 /* BKForgotPasswordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKForgotPasswordVC.swift; sourceTree = "<group>"; };
 		A12561571ECE6F2800C46FD1 /* BKEmailSignupVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKEmailSignupVC.swift; sourceTree = "<group>"; };
@@ -94,6 +93,7 @@
 		A19893A21EE2154A00DDF240 /* BKKidModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKKidModel.swift; sourceTree = "<group>"; };
 		A19893A51EE2572E00DDF240 /* BKSimpleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKSimpleCell.swift; sourceTree = "<group>"; };
 		A19893A71EE2607E00DDF240 /* BKGenderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKGenderCell.swift; sourceTree = "<group>"; };
+		A1B52EDA1EEC86C6000EB1CE /* BKConnectionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKConnectionVC.swift; sourceTree = "<group>"; };
 		A1CFEFA81ECD5BCA003DBA74 /* BKAuth.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BKAuth.storyboard; sourceTree = "<group>"; };
 		A1CFEFAA1ECD5D2C003DBA74 /* BKLoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKLoginVC.swift; sourceTree = "<group>"; };
 		A1CFEFAD1ECD5DFB003DBA74 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -195,7 +195,7 @@
 			children = (
 				A179F9B61ED28B4D00B42540 /* Activity.storyboard */,
 				A179F9B41ED28A4500B42540 /* BKActivityVC.swift */,
-				A10645F51EE3BD020054267C /* BKConnectionVC.swift */,
+				A1B52EDA1EEC86C6000EB1CE /* BKConnectionVC.swift */,
 			);
 			name = VCs;
 			sourceTree = "<group>";
@@ -560,6 +560,7 @@
 				A1CFEFAB1ECD5D2C003DBA74 /* BKLoginVC.swift in Sources */,
 				A14387271EE156A50050A5D1 /* AHCategoryView.swift in Sources */,
 				A17A7B2D1ECFCAB100D77D27 /* BKNetworkTool.swift in Sources */,
+				A1B52EDB1EEC86C6000EB1CE /* BKConnectionVC.swift in Sources */,
 				A12561561ECE6EF500C46FD1 /* BKForgotPasswordVC.swift in Sources */,
 				A1026A2B1EE27B0200FA7366 /* BKSportCell.swift in Sources */,
 				A19893A31EE2154A00DDF240 /* BKKidModel.swift in Sources */,
@@ -567,7 +568,6 @@
 				A10645F31EE3B5BE0054267C /* BKKidCell.swift in Sources */,
 				A179F9B51ED28A4500B42540 /* BKActivityVC.swift in Sources */,
 				A1FC92401ECD4F960099E68D /* AppDelegate.swift in Sources */,
-				A10645F61EE3BD020054267C /* BKConnectionVC.swift in Sources */,
 				A10645F01EE3B20E0054267C /* BKYourKidsVC.swift in Sources */,
 				A10645EE1EE3B0390054267C /* BKProfileVC.swift in Sources */,
 				A19893A81EE2607E00DDF240 /* BKGenderCell.swift in Sources */,

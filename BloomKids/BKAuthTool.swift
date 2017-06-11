@@ -17,16 +17,18 @@ class BKAuthTool {
     var currentCity: String?
 
     
-    func viewControllerForWindow() -> UIViewController {
+    func viewControllerForWindow() -> UIViewController? {
 
         let keychain = Keychain(service: BKKeychainService)
         if let emailStr = try? keychain.getString(BKUserEmailKey), let email = emailStr {
             currentEmail = email
-            DispatchQueue.main.async {
+            
+            // give it a little delay so that it doesn't have to race with the code after this block
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: { 
                 if let passwordStr = try? keychain.getString(email), let password = passwordStr{
                     self.authenticate(email, password, completion: { (success) in
                         if success {
-                            //                            SVProgressHUD.dismiss()
+                            
                         }else{
                             SVProgressHUD.showError(withStatus: "login failed")
                             self.switchToAuthUI()
@@ -36,8 +38,8 @@ class BKAuthTool {
                     SVProgressHUD.showError(withStatus: "password not in keychain")
                     self.switchToAuthUI()
                 }
-                
-            }
+            })
+            
             
             // check if this user already chose a home city
             let currentCity = try? keychain.getString(BKCurrentCity)
@@ -51,20 +53,26 @@ class BKAuthTool {
                     let navagitionVC = mainStoryboard.instantiateViewController(withIdentifier: "BKMainTabBarVC")
                     return navagitionVC
                 }
+            }else{
+                let vc = BKPlaceSearchNavVC()
+                vc.placeDelegate = self
+                vc.resultType = .city
+                vc.placeholder = "Where is your home city?"
+                return vc
             }
             
-            let vc = BKPlaceSearchNavVC()
-            vc.placeDelegate = self
-            vc.resultType = .city
-            vc.placeholder = "Where is your home city?"
-            return vc
+            
             
         }else{
             let authStoryboard = UIStoryboard(name: "BKAuth", bundle: nil)
             let navagitionVC = authStoryboard.instantiateViewController(withIdentifier: "BKNavigationVC")
             return navagitionVC
         }
+        
+        
+        return nil
     }
+    
     func switchToMainUI() {
         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let navagitionVC = mainStoryboard.instantiateViewController(withIdentifier: "BKMainTabBarVC")
@@ -157,7 +165,7 @@ extension BKAuthTool: BKPlaceAutocompleteDelegate {
         let keychain = Keychain(service: BKKeychainService)
         keychain[BKCurrentCity] = place.placeName
         keychain[BKCurrentState] = state
-        BKAuthTool.shared.switchToMainUI()
+//        BKAuthTool.shared.switchToMainUI()
         
         
     }
@@ -168,8 +176,6 @@ extension BKAuthTool: BKPlaceAutocompleteDelegate {
         
     }
 }
-
-
 
 
 

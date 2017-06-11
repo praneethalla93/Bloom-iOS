@@ -47,7 +47,11 @@ class BKAddKidVC: UITableViewController {
         
     }
     func cancel(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        if navigationController != nil {
+            navigationController?.popViewController(animated: true)
+        }else{
+            dismiss(animated: true, completion: nil)
+        }
     }
     @IBAction func addKid(_ sender: UIBarButtonItem) {
         guard let gender = genderStr,
@@ -57,6 +61,12 @@ class BKAddKidVC: UITableViewController {
         let ageSr = age else {
             return
         }
+        
+        guard sports.count > 0 else {
+            SVProgressHUD.showError(withStatus: "You have to choose a sport")
+            return
+        }
+        
         
         /* {"gender":"boy",
          "school":"Free school",
@@ -82,8 +92,6 @@ class BKAddKidVC: UITableViewController {
                 SVProgressHUD.showError(withStatus: "Fail to add kid")
             }
         }
-        
-//        
 
     }
     
