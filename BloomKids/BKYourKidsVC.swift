@@ -19,6 +19,7 @@ class BKYourKidsVC: UITableViewController {
         tableView.register(kidCellNib, forCellReuseIdentifier: BKKidCellID)
         
         SVProgressHUD.show()
+        
         BKNetowrkTool.shared.locationDetails { (success, kids) in
             SVProgressHUD.dismiss()
             if let kids = kids, success {

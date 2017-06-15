@@ -115,7 +115,7 @@ class BKAuthTool {
         let vc = BKPlaceSearchNavVC()
         vc.placeDelegate = self
         vc.resultType = .city
-        vc.placeholder = "Where is your home city?"
+        vc.placeholder = "What's your home city?"
         let window = UIApplication.shared.keyWindow
         window?.rootViewController = vc
     }

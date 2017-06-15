@@ -27,6 +27,7 @@ class BKConnectionVC: UITableViewController {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: headerCellId)
         SVProgressHUD.show()
         BKNetowrkTool.shared.locationDetails { (success, kids) in
+            
             SVProgressHUD.dismiss()
             if let kids = kids, success {
                 self.kids = kids

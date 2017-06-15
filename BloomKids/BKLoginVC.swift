@@ -98,13 +98,17 @@ extension BKLoginVC: UITextFieldDelegate {
                 let keychain = Keychain(service: BKKeychainService)
                 let currentCity = try? keychain.getString(BKCurrentCity)
                 let currentSate = try? keychain.getString(BKCurrentState)
+                
                 if let currentCity = currentCity, let currentSate = currentSate  {
                     if let _ = currentCity, let _ = currentSate  {
                         BKAuthTool.shared.switchToMainUI()
                     }
                     
                 }
-                BKAuthTool.shared.switchToCitySearch()
+                
+                //Raj: added to switch to main UI.
+                //BKAuthTool.shared.switchToCitySearch()
+                BKAuthTool.shared.switchToMainUI()
             }else{
                 SVProgressHUD.showError(withStatus: "Your email or password is not matched :(")
             }
