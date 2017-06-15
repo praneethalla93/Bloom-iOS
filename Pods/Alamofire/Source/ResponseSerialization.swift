@@ -162,7 +162,6 @@ extension DataRequest {
             )
 
             dataResponse.add(self.delegate.metrics)
-
             (queue ?? DispatchQueue.main).async { completionHandler(dataResponse) }
         }
 
