@@ -33,8 +33,6 @@ class BKLoginVC: UIViewController {
             OAuthBottomConstraint.constant = 49.0
         }
         
-        
-        
     }
     @IBAction func forgotPasswordTapped(_ sender: UIButton) {
         self.performSegue(withIdentifier: "BKForgotPasswordVC", sender: nil)
@@ -51,9 +49,11 @@ class BKLoginVC: UIViewController {
         }
         authenticate(emailText, password: passwordText)
     }
+    
     @IBAction func loginFBTapped(_ sender: UIButton) {
         print("loginFBTapped")
     }
+    
     @IBAction func loginGoogleTapped(_ sender: UIButton) {
         print("loginGoogleTapped")
     }

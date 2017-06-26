@@ -25,8 +25,6 @@ class BKActivityVC: UIViewController {
         
         let keychain = Keychain(service: BKKeychainService)
         
-        
-        
         //@TODO check onboarding status
         let _hasFinished = true
         
@@ -49,6 +47,7 @@ class BKActivityVC: UIViewController {
         if let currentCity = currentCity, let currentSate = currentSate {
             navigationItem.title = "\(currentCity), \(currentSate)"
         }
+
     }
     
     func useCategoryView() {

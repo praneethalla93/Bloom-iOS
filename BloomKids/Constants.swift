@@ -54,3 +54,6 @@ let BKKidCellID = "BKKidCellID"
 
 let BKSportLevelCellID = "BKSportLevelCellID"
 let BKHasFinishedTutorial = "BKHasFinishedTutorial"
+
+//All connect screen CELLID
+

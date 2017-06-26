@@ -46,6 +46,7 @@ class BKAddKidVC: UITableViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: leftBtn)
         
     }
+    
     func cancel(_ sender: Any) {
         if navigationController != nil {
             navigationController?.popViewController(animated: true)
@@ -53,6 +54,7 @@ class BKAddKidVC: UITableViewController {
             dismiss(animated: true, completion: nil)
         }
     }
+    
     @IBAction func addKid(_ sender: UIBarButtonItem) {
         guard let gender = genderStr,
         let name = name,
@@ -67,7 +69,6 @@ class BKAddKidVC: UITableViewController {
             return
         }
         
-        
         /* {"gender":"boy",
          "school":"Free school",
          "kidName":"The son of Stone",
@@ -75,22 +76,23 @@ class BKAddKidVC: UITableViewController {
          "sportName":"Call of Duty",
          "skillLevel":"10^100"}],
          "age":"10"}
-         
          */
         
         
         let kidModel = BKKidModel(kidName: name, gender: gender, school: schoolPlace.placeName, age: ageSr, sports: sports)
         SVProgressHUD.show()
         BKNetowrkTool.shared.addKid(kidModel: kidModel) { (success, kidid) in
-            if success{
+            
+            if success {
                 print("kid added with kidid:\(kidid)")
                 SVProgressHUD.showSuccess(withStatus: "Kid added")
                 BKAuthTool.shared.finishedTutorial()
                 self.delegate?.addKidVC(self, didAddkid: kidModel)
                 self.dismiss(animated: true, completion: nil)
-            }else{
+            } else{
                 SVProgressHUD.showError(withStatus: "Fail to add kid")
             }
+            
         }
 
     }
@@ -99,8 +101,8 @@ class BKAddKidVC: UITableViewController {
 
 }
 
-
 extension BKAddKidVC {
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 6
     }
@@ -153,15 +155,14 @@ extension BKAddKidVC {
             searchVC.placeholder = "Enter your kid's school name"
             navigationController?.pushViewController(searchVC, animated: true)
         }
-        
+
     }
     
 }
 
 
-
-
 extension BKAddKidVC {
+    
     func handlePhotoHeader(_ tableView: UITableView, _ indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: BKPhotoHeaderCellID, for: indexPath)
         
@@ -184,6 +185,7 @@ extension BKAddKidVC {
         
         return cell
     }
+    
     func handleGender(_ tableView: UITableView, _ indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: BKGenderCellID, for: indexPath) as! BKGenderCell
         
@@ -211,9 +213,9 @@ extension BKAddKidVC {
         let cell = tableView.dequeueReusableCell(withIdentifier: BKSchoolSearchCellID, for: indexPath) as! BKSchoolSearchCell
         
         cell.schoolNameField.text = (self.schoolPlace == nil) ? "" : self.schoolPlace!.placeName
-        
         return cell
     }
+
     func handleSpots(_ tableView: UITableView, _ indexPath: IndexPath) -> UITableViewCell{
         let cell = tableView.dequeueReusableCell(withIdentifier: BKSportCellID, for: indexPath) as! BKSportCell
         cell.navigationVC = navigationController

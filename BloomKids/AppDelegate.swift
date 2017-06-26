@@ -29,6 +29,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = BKAuthTool.shared.viewControllerForWindow()
         window?.makeKeyAndVisible()
         
+        //set default color globablly for all tabbars
+        //UITabBar.appearance().tintColor = UIColor(red: 255/255.0, green: 255/255.0, blue: 255/255.0, alpha: 1.0)
+        UITabBar.appearance().tintColor = BKGlobalTintColor
+        UITabBar.appearance().barTintColor = UIColor.white
+        
         return true
     }
 

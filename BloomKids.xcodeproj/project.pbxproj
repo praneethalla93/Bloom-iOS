@@ -166,6 +166,7 @@
 		A179F9AC1ED2811400B42540 /* Activity */ = {
 			isa = PBXGroup;
 			children = (
+				A179F9B61ED28B4D00B42540 /* BKActivity.storyboard */,
 				A19893971EE1FE1700DDF240 /* VCs */,
 				A1026A2E1EE281A900FA7366 /* Sport */,
 				A19893A41EE2570200DDF240 /* Cell */,
@@ -195,7 +196,6 @@
 		A19893971EE1FE1700DDF240 /* VCs */ = {
 			isa = PBXGroup;
 			children = (
-				A179F9B61ED28B4D00B42540 /* BKActivity.storyboard */,
 				A179F9B41ED28A4500B42540 /* BKActivityVC.swift */,
 				A1B52EDA1EEC86C6000EB1CE /* BKConnectionVC.swift */,
 			);

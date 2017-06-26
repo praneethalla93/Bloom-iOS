@@ -14,7 +14,7 @@
         <scene sceneID="k8n-On-OOe">
             <objects>
                 <navigationController id="zIv-Jq-I1G" customClass="BKNavigationVC" customModule="BloomKids" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Activity" id="BeC-Ri-Fj1"/>
+                    <tabBarItem key="tabBarItem" title="Activity" image="activity-tabbar-icon" selectedImage="activity-tabbar-icon" id="BeC-Ri-Fj1"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="oub-NO-aGU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -356,6 +356,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="activity-tabbar-icon" width="26" height="26"/>
         <image name="sport-add-icon" width="22" height="22"/>
     </resources>
 </document>
