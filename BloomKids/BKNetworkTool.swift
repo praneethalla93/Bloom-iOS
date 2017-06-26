@@ -154,17 +154,29 @@ extension BKNetowrkTool {
     
     
     func locationDetails(completion: @escaping (_ success:Bool, _ kids: [BKKidModel]?) -> Void) {
+        
+        let currentEmail = BKAuthTool.shared.currentEmail
+        
+        /*
         guard let currentEmail = BKAuthTool.shared.currentEmail,
         let currentState = BKAuthTool.shared.currentState,
         let currentCity = BKAuthTool.shared.currentCity else {
             print("current emial or state or city not complete")
-            completion(false, nil)
-            return
+            //completion(false, nil)
+            //Raj do n't need to return for no city or email.
+            //return
+            break
         }
+        */
+        // let param be just email for getkids
+        /*
         let dict = ["email": currentEmail,
                     "city": currentCity,
                     "state": currentState]
-        request(.post, urlStr: BKNetworkingLocationDetailsUrlStr, parameters: dict) { (success, data) in
+        */
+        
+        let dict = ["email": currentEmail]
+        request(.post, urlStr: BKNetworkingGetKidUrlStr, parameters: dict) { (success, data) in
             if success {
                 do {
                     if  let data = data,
@@ -193,6 +205,7 @@ extension BKNetowrkTool {
                 completion(false, nil)
             }
         }
+        
     }
 }
 

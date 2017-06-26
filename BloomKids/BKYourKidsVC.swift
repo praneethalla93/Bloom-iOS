@@ -68,8 +68,6 @@ class BKYourKidsVC: UITableViewController {
             return cell
             
         }
-
-
     
     }
  
@@ -78,6 +76,9 @@ class BKYourKidsVC: UITableViewController {
         if indexPath.section == 0 {
             return 35.0
         }else{
+            
+            //@TOD: Raj changing height for testing
+            //return 400 + 20
             return BKKidCellHeight
         }
     }

@@ -25,7 +25,6 @@ class BKNavigationVC: UINavigationController {
         navigationBar.layer.shadowOffset = .init(width: 1.5, height: 1.5)
         navigationBar.layer.shadowOpacity = 1.0
         navigationBar.layer.masksToBounds = false
-        
 
     }
     
@@ -34,12 +33,15 @@ class BKNavigationVC: UINavigationController {
     }
     
     override func pushViewController(_ viewController: UIViewController, animated: Bool) {
+        
         if self.childViewControllers.count >= 1 {
             let barButtonItem = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.plain, target: self, action: #selector(popVC(_:)))
             viewController.navigationItem.leftBarButtonItem = barButtonItem
         }
+        
         super.pushViewController(viewController, animated: animated)
     }
+    
     func popVC(_ sender: UIBarButtonItem) {
         self.popViewController(animated: true)
     }

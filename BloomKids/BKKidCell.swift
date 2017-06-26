@@ -20,8 +20,11 @@ class BKKidCell: UITableViewCell {
     @IBOutlet weak var age: UILabel!
     @IBOutlet weak var school: UILabel!
     @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var actionBtn: UIImageView!
+    
     
     var kidModel: BKKidModel? {
+        
         didSet {
             if let kidModel = kidModel {
                 self.name.text = kidModel.kidName
@@ -40,6 +43,8 @@ class BKKidCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+        //@TODO: code to set the status of the KidCell
+        actionBtn.image = UIImage(named: "connect-icon")
     }
     
 }

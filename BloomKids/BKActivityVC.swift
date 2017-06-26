@@ -17,13 +17,21 @@ class BKActivityVC: UIViewController {
     @IBAction func logout(_ sender: UIBarButtonItem) {
         BKAuthTool.shared.logout()
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTitle()
         useCategoryView()
         
         let keychain = Keychain(service: BKKeychainService)
-        if let _hasFinished = try? keychain.getString(BKHasFinishedTutorial), let _ = _hasFinished {
+        
+        
+        
+        //@TODO check onboarding status
+        let _hasFinished = true
+        
+        //if let _hasFinished = try? keychain.getString(BKHasFinishedTutorial), let _ = _hasFinished {
+        if _hasFinished {
             
         }else{
             let addKidVC = UIStoryboard(name: "Activity", bundle: nil).instantiateViewController(withIdentifier: "BKAddKidNavVC")
@@ -31,7 +39,6 @@ class BKActivityVC: UIViewController {
         }
 
     }
-
     
     
     func setupTitle() {

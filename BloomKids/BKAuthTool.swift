@@ -188,14 +188,11 @@ extension BKAuthTool: BKPlaceAutocompleteDelegate {
         keychain[BKCurrentCity] = place.placeName
         keychain[BKCurrentState] = state
 //        BKAuthTool.shared.switchToMainUI()
-        
-        
     }
     
     func finishedTutorial() {
         let keychain = Keychain(service: BKKeychainService)
         keychain[BKHasFinishedTutorial] = "true"
-        
     }
 }
 

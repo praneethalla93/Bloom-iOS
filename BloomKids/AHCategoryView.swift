@@ -26,7 +26,6 @@ class AHCategoryView: UIView {
         self.barStyle = barStyle
         
         super.init(frame: frame)
-        
         setup()
     }
     
