@@ -14,7 +14,7 @@ class BKTestVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+       //add comment, hhg
         searchVC = BKPlaceAutocompleteVC()
         searchVC.delegate = self
 //        searchVC.resultType = .city
