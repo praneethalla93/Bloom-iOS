@@ -11,7 +11,7 @@ import UIKit
 class BKTestVC: UIViewController {
 
     var searchVC: BKPlaceAutocompleteVC!
-    
+    //add comment, hhg
     override func viewDidLoad() {
         super.viewDidLoad()
        //add comment, hhg
