@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		72D24A591F018CB5002ACD79 /* BKConnectPlayerCellVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D24A581F018CB5002ACD79 /* BKConnectPlayerCellVC.swift */; };
+		72D24A5B1F018CE6002ACD79 /* BKConnectSectionHeaderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D24A5A1F018CE6002ACD79 /* BKConnectSectionHeaderVC.swift */; };
+		72D24A5D1F018D26002ACD79 /* BKConnectSummaryHeaderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D24A5C1F018D26002ACD79 /* BKConnectSummaryHeaderVC.swift */; };
+		72D24A601F018E87002ACD79 /* BKConnectPlayerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D24A5F1F018E87002ACD79 /* BKConnectPlayerCell.swift */; };
+		72D24A621F018EE8002ACD79 /* BKConnectSummaryHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D24A611F018EE8002ACD79 /* BKConnectSummaryHeaderCell.swift */; };
+		72D24A641F01B9E7002ACD79 /* BKConnectSectionHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D24A631F01B9E7002ACD79 /* BKConnectSectionHeaderCell.swift */; };
 		72F55CE81F000EA400249296 /* BKConnectVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F55CE71F000EA400249296 /* BKConnectVC.swift */; };
 		732B959C6A89925E7239D316 /* Pods_BloomKids.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8EACF588830FABFF52CD389 /* Pods_BloomKids.framework */; };
 		A1026A091EE26D1400FA7366 /* BKSchoolSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1026A081EE26D1400FA7366 /* BKSchoolSearchCell.swift */; };
@@ -64,6 +70,12 @@
 
 /* Begin PBXFileReference section */
 		25AE1343266B3A700D0D3E98 /* Pods-BloomKids.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BloomKids.release.xcconfig"; path = "Pods/Target Support Files/Pods-BloomKids/Pods-BloomKids.release.xcconfig"; sourceTree = "<group>"; };
+		72D24A581F018CB5002ACD79 /* BKConnectPlayerCellVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKConnectPlayerCellVC.swift; sourceTree = "<group>"; };
+		72D24A5A1F018CE6002ACD79 /* BKConnectSectionHeaderVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKConnectSectionHeaderVC.swift; sourceTree = "<group>"; };
+		72D24A5C1F018D26002ACD79 /* BKConnectSummaryHeaderVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKConnectSummaryHeaderVC.swift; sourceTree = "<group>"; };
+		72D24A5F1F018E87002ACD79 /* BKConnectPlayerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKConnectPlayerCell.swift; sourceTree = "<group>"; };
+		72D24A611F018EE8002ACD79 /* BKConnectSummaryHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKConnectSummaryHeaderCell.swift; sourceTree = "<group>"; };
+		72D24A631F01B9E7002ACD79 /* BKConnectSectionHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKConnectSectionHeaderCell.swift; sourceTree = "<group>"; };
 		72F55CE71F000EA400249296 /* BKConnectVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKConnectVC.swift; sourceTree = "<group>"; };
 		A1026A081EE26D1400FA7366 /* BKSchoolSearchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKSchoolSearchCell.swift; sourceTree = "<group>"; };
 		A1026A2A1EE27B0200FA7366 /* BKSportCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKSportCell.swift; sourceTree = "<group>"; };
@@ -134,6 +146,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		72D24A571F018C73002ACD79 /* VCs */ = {
+			isa = PBXGroup;
+			children = (
+				72F55CE71F000EA400249296 /* BKConnectVC.swift */,
+				72D24A581F018CB5002ACD79 /* BKConnectPlayerCellVC.swift */,
+				72D24A5A1F018CE6002ACD79 /* BKConnectSectionHeaderVC.swift */,
+				72D24A5C1F018D26002ACD79 /* BKConnectSummaryHeaderVC.swift */,
+			);
+			name = VCs;
+			sourceTree = "<group>";
+		};
+		72D24A5E1F018E48002ACD79 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				72D24A5F1F018E87002ACD79 /* BKConnectPlayerCell.swift */,
+				72D24A611F018EE8002ACD79 /* BKConnectSummaryHeaderCell.swift */,
+				72D24A631F01B9E7002ACD79 /* BKConnectSectionHeaderCell.swift */,
+			);
+			name = Cell;
+			sourceTree = "<group>";
+		};
 		7E66A35C3CC25A8A22BD4A17 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -236,37 +269,6 @@
 			name = Cell;
 			sourceTree = "<group>";
 		};
-		A1CFEF9D1ECD5B50003DBA74 /* Profile */ = {
-			isa = PBXGroup;
-			children = (
-				A1CFEFA61ECD5B9B003DBA74 /* Views */,
-				A1CFEFA51ECD5B96003DBA74 /* Models */,
-				A1CFEFA41ECD5B92003DBA74 /* VCs */,
-			);
-			name = Profile;
-			sourceTree = "<group>";
-		};
-		A1CFEFA41ECD5B92003DBA74 /* VCs */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = VCs;
-			sourceTree = "<group>";
-		};
-		A1CFEFA51ECD5B96003DBA74 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Models;
-			sourceTree = "<group>";
-		};
-		A1CFEFA61ECD5B9B003DBA74 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Views;
-			sourceTree = "<group>";
-		};
 		A1CFEFA71ECD5BAF003DBA74 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
@@ -317,8 +319,9 @@
 		A1FA1B3D1EE3A0910025143E /* Connect */ = {
 			isa = PBXGroup;
 			children = (
+				72D24A5E1F018E48002ACD79 /* Cell */,
+				72D24A571F018C73002ACD79 /* VCs */,
 				A1FA1B3F1EE3A0C10025143E /* BKConnect.storyboard */,
-				72F55CE71F000EA400249296 /* BKConnectVC.swift */,
 			);
 			name = Connect;
 			sourceTree = "<group>";
@@ -360,7 +363,6 @@
 				A1FA1B3E1EE3A0A20025143E /* Profile */,
 				A17A7B2B1ECFCA5800D77D27 /* Networking */,
 				A1CFEFA71ECD5BAF003DBA74 /* Auth */,
-				A1CFEF9D1ECD5B50003DBA74 /* Profile */,
 				A1CFEFB11ECD5FE0003DBA74 /* Base + Extensions */,
 				A1CFEFAC1ECD5DE3003DBA74 /* Other */,
 				A1FC923F1ECD4F960099E68D /* AppDelegate.swift */,
@@ -528,6 +530,7 @@
 				A1E9D4771EE0D38100250A94 /* AHNibLoadable.swift in Sources */,
 				A143871A1EE147C30050A5D1 /* BKPlaceSearchNavVC.swift in Sources */,
 				A1E9D4801EE0EF8200250A94 /* BKPlaceResultsController.swift in Sources */,
+				72D24A5B1F018CE6002ACD79 /* BKConnectSectionHeaderVC.swift in Sources */,
 				A1E9D47E1EE0E16E00250A94 /* BKPlaceModel.swift in Sources */,
 				A1CFEFAB1ECD5D2C003DBA74 /* BKLoginVC.swift in Sources */,
 				A14387271EE156A50050A5D1 /* AHCategoryView.swift in Sources */,
@@ -542,6 +545,7 @@
 				A1FC92401ECD4F960099E68D /* AppDelegate.swift in Sources */,
 				A10645F01EE3B20E0054267C /* BKYourKidsVC.swift in Sources */,
 				A10645EE1EE3B0390054267C /* BKProfileVC.swift in Sources */,
+				72D24A591F018CB5002ACD79 /* BKConnectPlayerCellVC.swift in Sources */,
 				A19893A81EE2607E00DDF240 /* BKGenderCell.swift in Sources */,
 				A14387221EE156A50050A5D1 /* AHCategoryContentView.swift in Sources */,
 				A1026A301EE281C900FA7366 /* BKSportLevelVC.swift in Sources */,
@@ -550,10 +554,14 @@
 				A14387241EE156A50050A5D1 /* AHCategoryNavBarStyle.swift in Sources */,
 				A1FC8FAD1ECFF0710002F234 /* String+Extension.swift in Sources */,
 				A1F544111EE3D84B00D331B8 /* BKAddKidNavVC.swift in Sources */,
+				72D24A621F018EE8002ACD79 /* BKConnectSummaryHeaderCell.swift in Sources */,
+				72D24A5D1F018D26002ACD79 /* BKConnectSummaryHeaderVC.swift in Sources */,
 				A1CFEFAE1ECD5DFB003DBA74 /* Constants.swift in Sources */,
+				72D24A641F01B9E7002ACD79 /* BKConnectSectionHeaderCell.swift in Sources */,
 				A1E9D4821EE0F2A400250A94 /* BKTestVC.swift in Sources */,
 				A19893A61EE2572E00DDF240 /* BKSimpleCell.swift in Sources */,
 				A1026A091EE26D1400FA7366 /* BKSchoolSearchCell.swift in Sources */,
+				72D24A601F018E87002ACD79 /* BKConnectPlayerCell.swift in Sources */,
 				A1026A321EE286AC00FA7366 /* BKSportLevelCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

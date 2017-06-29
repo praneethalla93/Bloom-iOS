@@ -9,9 +9,13 @@
 import UIKit
 import SVProgressHUD
 
+
 class BKYourKidsVC: UITableViewController {
+    
 
     fileprivate var kids: [BKKidModel]?
+    
+    let myGroup = DispatchGroup()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,7 +24,9 @@ class BKYourKidsVC: UITableViewController {
         
         SVProgressHUD.show()
         
-        BKNetowrkTool.shared.locationDetails { (success, kids) in
+        myGroup.enter()
+        
+        BKNetowrkTool.shared.getKids { (success, kids) in
             SVProgressHUD.dismiss()
             if let kids = kids, success {
                 self.kids = kids.sorted(by: { (kid1, kid2) -> Bool in
@@ -28,8 +34,15 @@ class BKYourKidsVC: UITableViewController {
                     let kid2ID = kid2.id ?? 0
                     return kid1ID > kid2ID
                 })
-                self.tableView.reloadData()
+                
+                self.myGroup.leave()
+                
             }
+        }
+        
+        myGroup.notify(queue: .main) {
+            print("Finished all requests.")
+            self.tableView.reloadData()
         }
 
     }
@@ -84,10 +97,11 @@ class BKYourKidsVC: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         tableView.deselectRow(at: indexPath, animated: true)
+        
         if indexPath.section == 0 {
-            let addKidVC = UIStoryboard(name: "Activity", bundle: nil).instantiateViewController(withIdentifier: "BKAddKidVC") as!
-            BKAddKidVC
+            let addKidVC = UIStoryboard(name: "BKActivity", bundle: nil).instantiateViewController(withIdentifier: "BKAddKidVC") as! BKAddKidVC
             
             addKidVC.delegate = self
             navigationController?.pushViewController(addKidVC, animated: true)
@@ -97,6 +111,7 @@ class BKYourKidsVC: UITableViewController {
 }
 
 extension BKYourKidsVC: BKAddKidVCDelegate {
+    
     func addKidVC(_ vc: BKAddKidVC, didAddkid kid: BKKidModel) {
         kids?.insert(kid, at: 0)
         self.tableView.reloadData()

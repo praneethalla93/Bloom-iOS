@@ -238,7 +238,7 @@
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uwy-zQ-2OE" customClass="AHStackButton" customModule="BloomKids" customModuleProvider="target">
                                                             <rect key="frame" x="121" y="0.0" width="101" height="91"/>
                                                             <color key="backgroundColor" red="0.44705882352941173" green="0.792156862745098" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <state key="normal" title="Tenis" image="sport-add-icon"/>
+                                                            <state key="normal" title="Tennis" image="sport-add-icon"/>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CwT-Wk-ppg" customClass="AHStackButton" customModule="BloomKids" customModuleProvider="target">
                                                             <rect key="frame" x="242" y="0.0" width="101" height="91"/>

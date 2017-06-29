@@ -32,7 +32,7 @@ class BKActivityVC: UIViewController {
         if _hasFinished {
             
         }else{
-            let addKidVC = UIStoryboard(name: "Activity", bundle: nil).instantiateViewController(withIdentifier: "BKAddKidNavVC")
+            let addKidVC = UIStoryboard(name: "BKActivity", bundle: nil).instantiateViewController(withIdentifier: "BKAddKidNavVC")
             present(addKidVC, animated: true, completion: nil)
         }
 

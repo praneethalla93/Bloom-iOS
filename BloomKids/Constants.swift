@@ -30,7 +30,7 @@ let BKNetworkingGetKidUrlStr = "http://custom-env.aqrfytx2is.us-east-1.elasticbe
 let BKNetworkingLocationDetailsUrlStr = "http://custom-env.aqrfytx2is.us-east-1.elasticbeanstalk.com/rest/location/dolocationdetails"
 let BKNetworkingActivityConnectionUrlStr = "http://custom-env.aqrfytx2is.us-east-1.elasticbeanstalk.com/rest/connection/activityConnections"
 
-
+let BKNetworkingConnectionsUrlStr = "http://custom-env.aqrfytx2is.us-east-1.elasticbeanstalk.com/rest/connection/connections/"
 
 let BKShouldGoToMain = "BKShouldGoToMain"
 
@@ -56,4 +56,8 @@ let BKSportLevelCellID = "BKSportLevelCellID"
 let BKHasFinishedTutorial = "BKHasFinishedTutorial"
 
 //All connect screen CELLID
+let BKConnectSummaryHeaderCellID = "BKConnectSummaryHeaderCell"
+let BKConnectPlayerCellID = "BKConnectPlayerCell"
+let BKConnectSectionHeaderCellID = "BKConnectSectionHeaderCell"
+
 

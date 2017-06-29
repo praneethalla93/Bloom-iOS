@@ -163,15 +163,18 @@ extension AHCategoryContentView: UICollectionViewDelegate {
 
 
 extension AHCategoryContentView: AHCategoryNavBarDelegate {
+    
     func categoryNavBar(_ navBar: AHCategoryNavBar, didSwitchIndexTo toIndex: Int) {
         guard toIndex < childVCs.count else {
             return
         }
+        
         shouldNotifyNavBarProgress = false
         let indexPath = IndexPath(item: toIndex, section: 0)
         collectionView.scrollToItem(at: indexPath, at: .left, animated: false)
     }
 }
+
 
 
 

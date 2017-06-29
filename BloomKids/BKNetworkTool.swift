@@ -39,12 +39,13 @@ class BKNetowrkTool {
 
 
 extension BKNetowrkTool {
+    
     func addKid(kidModel: BKKidModel, completion: @escaping (_ sucess: Bool,_ kidid: Int?) -> Void) {
         guard let currentEmail = BKAuthTool.shared.currentEmail else {
-            print("currentEmail not complete")
-            completion(false, nil)
-            return
-        }
+        print("currentEmail not complete")
+        completion(false, nil)
+        return
+    }
         
         /*
          var kidName: String
@@ -80,72 +81,100 @@ extension BKNetowrkTool {
         
         print("kid info:\(dict)")
         
+        //let myGroup = DispatchGroup()
+        //myGroup.enter()
+        
+        
         request(.post, urlStr: BKNetworkingAddKidUrlStr, parameters: dict) { (success, data) in
-            if success {
-                do{
+        if success {
+            
+                do {
+
+            
                     if  let data = data,
-                        let json = try JSONSerialization.jsonObject(with: data) as? [String: Any]
-                    {
-                        if let status = json["status"] as? Bool,
-                            let kidid = json["kidid"] as? Int {
-                            self.myKids.append(kidModel)
-                            completion(status, kidid)
-                        }
-                        
+                    let json = try JSONSerialization.jsonObject(with: data) as? [String: Any] {
+                    if let status = json["status"] as? Bool,
+                    let kidid = json["kidid"] as? Int {
+                        self.myKids.append(kidModel)
+                        completion(status, kidid)
                     }
-                } catch {
-                    print("Error deserializing JSON: \(error)")
-                    completion(false, nil)
+                        
                 }
-                
-                
-            }else{
+            } catch {
+                print("Error deserializing JSON: \(error)")
                 completion(false, nil)
             }
             
+        }else{
+            completion(false, nil)
+        }
+            
+            print("Add kid Finished request)")
+            //myGroup.leave()
             
         }
     }
     
     // If this account haven't added a kid, then the request will be failed
     func getKids(completion: @escaping (_ success:Bool, _ kids: [BKKidModel]?) -> Void) {
+        
         guard let currentEmail = BKAuthTool.shared.currentEmail else {
             print("currentEmail not complete")
             completion(false, nil)
             return
         }
+        
         let dict = ["email": currentEmail]
+        
+        //let myGroup = DispatchGroup()
+        //myGroup.enter()
+        
+        
         request(.post, urlStr: BKNetworkingGetKidUrlStr, parameters: dict) { (success, data) in
             if success {
+            
+            /*
+            print("Request: \(String(describing: response.request))")   // original url request
+            print("Response: \(String(describing: response.response))") // http url response
+            print("Result: \(response.result)")                         // response serialization result
+            */
+            
+            print("Get Kid Finished request")
+           
                 do {
-                    if  let data = data,
-                        let json = try JSONSerialization.jsonObject(with: data) as? [String: Any]
-                    {
-                        if let status = json["status"] as? Bool,
-                        let kidsDict = json["kids"] as? [[String: Any]] {
+                        if  let data = data,
+                            let json = try JSONSerialization.jsonObject(with: data) as? [String: Any]
+                        {
+                            if let status = json["status"] as? Bool,
+                                let kidsDict = json["kids"] as? [[String: Any]] {
                             
-                            var kids = [BKKidModel]()
-                            for kidDict in kidsDict {
-                                let kidModel = BKKidModel(dict: kidDict)
-                                kids.append(kidModel)
+                                    var kids = [BKKidModel]()
+                                    for kidDict in kidsDict {
+                                    let kidModel = BKKidModel(dict: kidDict)
+                                    kids.append(kidModel)
+                                    print("GetKid name is \(kidModel.kidName)")
                             }
-                            self.myKids = kids
-                            completion(status, kids)
+                            
+                                self.myKids = kids
+                                completion(status, kids)
                         }
                         
-                    }
-                    
-                    
+                }
                 } catch {
                     completion(false, nil)
                 }
                 
-            }else{
+            } else{
                 completion(false, nil)
             }
+            
+            //print("Get kid Finished request)")
+            //myGroup.leave()
+                
         }
+        
     }
-    
+
     func getActivityConnections(for kidId: Int, completion: ([BKKidActivityConnection]?) -> Void) {
         request(.post, urlStr: BKNetworkingActivityConnectionUrlStr, parameters: ["kidid": kidId]) { (success, data) in
             
@@ -176,6 +205,7 @@ extension BKNetowrkTool {
         */
         
         let dict = ["email": currentEmail]
+        
         request(.post, urlStr: BKNetworkingGetKidUrlStr, parameters: dict) { (success, data) in
             if success {
                 do {
@@ -189,13 +219,15 @@ extension BKNetowrkTool {
                             for kidDict in kidsDict {
                                 let kidModel = BKKidModel(dict: kidDict)
                                 kids.append(kidModel)
+                                print("Kid name is \(kidModel.kidName)")
                             }
+                            
+
                             
                             completion(status, kids)
                         }
                         
                     }
-                    
                     
                 } catch {
                     completion(false, nil)
@@ -204,11 +236,55 @@ extension BKNetowrkTool {
             }else{
                 completion(false, nil)
             }
+
         }
         
     }
+    
+    
+    
+    func getKidConnections(_ kidId:Int ,completion: @escaping (_ success:Bool, _ kids: [BKKidModel]?) -> Void) {
+        
+        //let currentEmail = BKAuthTool.shared.currentEmail
+        //let kidId =
+       
+        
+        let dict = ["kidId": kidId]
+        
+        request(.post, urlStr: BKNetworkingConnectionsUrlStr, parameters: dict) { (success, data) in
+            if success {
+                do {
+                    if  let data = data,
+                        let json = try JSONSerialization.jsonObject(with: data) as? [String: Any]
+                    {
+                        if let status = json["status"] as? Bool,
+                            let kidsDict = json["kids"] as? [[String: Any]] {
+                            
+                            var kids = [BKKidModel]()
+                            for kidDict in kidsDict {
+                                let kidModel = BKKidModel(dict: kidDict)
+                                kids.append(kidModel)
+                                print("Kid name is \(kidModel.kidName)")
+                            }
+                            
+                            
+                            
+                            completion(status, kids)
+                        }
+                        
+                    }
+                    
+                } catch {
+                    completion(false, nil)
+                }
+                
+            }else{
+                completion(false, nil)
+            }
+            
+        }
+        
+    }
+
+    
 }
-
-
-
-

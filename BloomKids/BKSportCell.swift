@@ -64,7 +64,7 @@ class BKSportCell: UITableViewCell {
 extension BKSportCell {
     func sportBtnTapped(_ btn: UIButton) {
         if btn.tag == BKSportButtonState.normal.rawValue {
-            let sportLevelVC = UIStoryboard(name: "Activity", bundle: nil).instantiateViewController(withIdentifier: "BKSportLevelVC") as! BKSportLevelVC
+            let sportLevelVC = UIStoryboard(name: "BKActivity", bundle: nil).instantiateViewController(withIdentifier: "BKSportLevelVC") as! BKSportLevelVC
             sportLevelVC.delegate = self
             sportLevelVC.sportName = btn.titleLabel?.text ?? "Unknown Sport"
             navigationVC?.pushViewController(sportLevelVC, animated: true)
