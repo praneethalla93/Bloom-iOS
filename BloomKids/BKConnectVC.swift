@@ -92,6 +92,8 @@ class BKConnectVC: UITableViewController {
         
         myGroup.enter()
         
+        /*
+        
         BKNetowrkTool.shared.getKidConnections { ( kidId: currentkid.kidid ,success, kids) in
             SVProgressHUD.dismiss()
             
@@ -110,6 +112,7 @@ class BKConnectVC: UITableViewController {
                 self.myGroup.leave()
             }
         }
+    */
         
         
     }
