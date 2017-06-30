@@ -156,6 +156,18 @@
                                         <constraint firstItem="Tbx-jd-IyT" firstAttribute="top" secondItem="8Nw-1Y-OM2" secondAttribute="topMargin" constant="5" id="ufG-u1-4Ly"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="imgConnectActionButtonImage" destination="VcF-f3-mJJ" id="fWt-10-JAd"/>
+                                    <outlet property="imgPlayer" destination="Tbx-jd-IyT" id="aKK-hZ-KZj"/>
+                                    <outlet property="imgSportIcon1" destination="Gax-M2-KAC" id="eaU-R9-GnC"/>
+                                    <outlet property="imgSportIcon2" destination="VCx-9s-SMa" id="UDu-qf-DGO"/>
+                                    <outlet property="imgSportIcon3" destination="kFZ-VT-fIK" id="PMJ-yi-ivg"/>
+                                    <outlet property="imgSportIcon4" destination="m7F-4M-t18" id="UDW-sg-lJH"/>
+                                    <outlet property="imgSportIcon5" destination="X8O-3A-cvQ" id="ohk-hs-DJK"/>
+                                    <outlet property="imgSportIcon6" destination="1aj-6d-dB9" id="zJP-ux-vfn"/>
+                                    <outlet property="lblPlayerName" destination="Nl9-cv-C1h" id="9dx-mo-wsG"/>
+                                    <outlet property="lblPlayerSchoolAge" destination="Nf8-vW-xhb" id="pd3-o1-pvw"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BKConnectSectionHeaderCell" rowHeight="40" id="3zE-Bs-CT7" customClass="BKConnectSectionHeaderCell" customModule="BloomKids" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="278" width="375" height="40"/>
