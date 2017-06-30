@@ -47,10 +47,10 @@ class BKEmailSignupVC: UIViewController {
 extension BKEmailSignupVC {
     func setupGenderBtns() {
         fatherBtn.layer.masksToBounds = true
-        fatherBtn.layer.cornerRadius = fatherBtn.bounds.size.height / 2
+       // fatherBtn.layer.cornerRadius = fatherBtn.bounds.size.height / 2
         
         motherBtn.layer.masksToBounds = true
-        motherBtn.layer.cornerRadius = fatherBtn.bounds.size.height / 2
+      //  motherBtn.layer.cornerRadius = fatherBtn.bounds.size.height / 2
         
     }
     func setGenderBtnNormal(button: UIButton) {
