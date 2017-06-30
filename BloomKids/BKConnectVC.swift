@@ -17,28 +17,38 @@ class BKConnectVC: UITableViewController {
     fileprivate var myKids: [BKKidModel]?
     fileprivate var currentkidConnections: [BKKidModel]?
     fileprivate var currentkidPendingConnections: [BKKidModel]?
-    fileprivate var cuid: BKKidModel?
+    fileprivate var currentKid: BKKidModel?
     let myGroup = DispatchGroup()
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
         SVProgressHUD.show()
-
+        
+        
         loadMyKids()
+        
         
         //after successfull loading data
         
         myGroup.notify(queue: .main) {
             print("Finished all requests.")
+            self.currentKid = self.myKids?[0]
+            self.loadCurrentKidConnections()
             self.setupNavigationBar()
-            self.tableView.reloadData()
+            
+            //once dropdown menu is loaded with kids. Load current Kids connection
+            self.myGroup.notify(queue: .main) {
+                print("connection table refreshed")
+                self.tableView.reloadData()
+            }
+            
+
         }
         
-        loadMyCurrentKidConnections()
+        
         let keychain = Keychain(service: BKKeychainService)
         SVProgressHUD.dismiss()
-        
     }
     
     //Setup Navigation bar
@@ -63,7 +73,9 @@ class BKConnectVC: UITableViewController {
     
     func loadMyKids() {
         
+        
         myGroup.enter()
+        print ("entering load my kids")
         
         BKNetowrkTool.shared.locationDetails { (success, kids) in
             SVProgressHUD.dismiss()
@@ -81,39 +93,47 @@ class BKConnectVC: UITableViewController {
                 
                 self.myKids = kids
                 self.myGroup.leave()
+                print ("leaving load my kids")
             }
+            else {
+                self.myGroup.leave()
+            }
+            
+            
         }
 
         
         print( "My kids count \(String(describing: myKids?.count))")
     }
     
-    func loadMyCurrentKidConnections() {
+    func loadCurrentKidConnections() {
         
-        myGroup.enter()
+            myGroup.enter()
         
-        /*
+            print ("entering loading current kid connections")
         
-        BKNetowrkTool.shared.getKidConnections { ( kidId: currentkid.kidid ,success, kids) in
-            SVProgressHUD.dismiss()
+            if let kid = currentKid {
             
-            if let kids = kids, success {
+            BKNetowrkTool.shared.getKidConnections(kidModel: kid) { ( success, kids) in
+                SVProgressHUD.dismiss()
                 
-                //no sorting.
-                /*
-                 self.myKids = kids.sorted(by: { (kid1, kid2) -> Bool in
-                 let kid1ID = kid1.id ?? 0
-                 let kid2ID = kid2.id ?? 0
-                 return kid1ID > kid2ID
-                 })
-                 */
+                if let kids = kids, success {
+                    
+                    self.currentkidConnections = kids
+                    print ("success loading current kid connections \(self.currentkidConnections?.count)")
+                    
+                    self.myGroup.leave()
+                }
+                else {
+                    self.myGroup.leave()
+                    print ("failure loading current kid connections")
+                }
+
                 
-                self.myKids = kids
-                self.myGroup.leave()
             }
+            
         }
-    */
-        
+    
         
     }
     
@@ -132,7 +152,7 @@ extension BKConnectVC {
                 return 1
             case 1:
             
-                if let count = myKids?.count {
+                if let count = currentkidConnections?.count {
                     return count
                 }
                 else {
@@ -142,8 +162,7 @@ extension BKConnectVC {
             case 2:
                 return 1
             default:
-                return 0
-                break
+                return 1
         }
        
         return 1
@@ -169,7 +188,6 @@ extension BKConnectVC {
         
 
     }
-    
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
@@ -215,15 +233,18 @@ extension BKConnectVC {
             cell.lblConnectionCounts.text = "\(kids.count) Connected | 2 Pending"
         }
         
-        //photoHeaderVC.view.willMove(toSuperview: cell.contentView)
-        //cell.contentView.addSubview(photoHeaderVC.view)
-        //photoHeaderVC.view.frame = cell.contentView.bounds
-        //photoHeaderVC.view.didMoveToSuperview()
         return cell
     }
     
     func handlePlayerHeader(_ tableView: UITableView, _ indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: BKConnectPlayerCellID, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: BKConnectPlayerCellID, for: indexPath) as! BKConnectPlayerCell
+        
+        if let kid = currentkidConnections?[indexPath.row] {
+            //cell.imgPlayer = UIImage("")
+            cell.lblPlayerName.text = kid.kidName
+            cell.lblPlayerSchoolAge.text = "\(kid.school) , \(kid.age)"
+        }
+        
         //photoHeaderVC.view.willMove(toSuperview: cell.contentView)
         //cell.contentView.addSubview(photoHeaderVC.view)
         //photoHeaderVC.view.frame = cell.contentView.bounds
@@ -241,7 +262,7 @@ extension BKConnectVC {
         return cell
     }
     
-    
+
     /*
      
     func handleName(_ tableView: UITableView, _ indexPath: IndexPath) -> UITableViewCell {

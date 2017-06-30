@@ -13,8 +13,18 @@ class BKConnectPlayerCell: UITableViewCell {
     //@IBOutlet weak var schoolNameField: UITextField!
     
     
+    @IBOutlet weak var imgPlayer: UIImageView!
+    @IBOutlet weak var lblPlayerName: UILabel!
+    @IBOutlet weak var imgSportIcon1: UIImageView!
+    @IBOutlet weak var imgSportIcon2: UIImageView!
+    @IBOutlet weak var imgSportIcon3: UIImageView!
+    @IBOutlet weak var imgSportIcon4: UIImageView!
+    @IBOutlet weak var imgSportIcon5: UIImageView!
+    @IBOutlet weak var imgSportIcon6: UIImageView!
+    @IBOutlet weak var imgConnectActionButtonImage: UIImageView!
     
     
+    @IBOutlet weak var lblPlayerSchoolAge: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

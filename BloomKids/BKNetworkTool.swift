@@ -94,7 +94,7 @@ extension BKNetowrkTool {
                     if  let data = data,
                     let json = try JSONSerialization.jsonObject(with: data) as? [String: Any] {
                     if let status = json["status"] as? Bool,
-                    let kidid = json["kidid"] as? Int {
+                    let kidid = json["id"] as? Int {
                         self.myKids.append(kidModel)
                         completion(status, kidid)
                     }
@@ -117,15 +117,14 @@ extension BKNetowrkTool {
     
     // If this account haven't added a kid, then the request will be failed
     func getKids(completion: @escaping (_ success:Bool, _ kids: [BKKidModel]?) -> Void) {
-        
+    
         guard let currentEmail = BKAuthTool.shared.currentEmail else {
             print("currentEmail not complete")
             completion(false, nil)
             return
         }
-        
+ 
         let dict = ["email": currentEmail]
-        
         //let myGroup = DispatchGroup()
         //myGroup.enter()
         
@@ -176,7 +175,7 @@ extension BKNetowrkTool {
     }
 
     func getActivityConnections(for kidId: Int, completion: ([BKKidActivityConnection]?) -> Void) {
-        request(.post, urlStr: BKNetworkingActivityConnectionUrlStr, parameters: ["kidid": kidId]) { (success, data) in
+        request(.post, urlStr: BKNetworkingActivityConnectionUrlStr, parameters: ["id": kidId]) { (success, data) in
             
         }
     }
@@ -243,13 +242,13 @@ extension BKNetowrkTool {
     
     
     
-    func getKidConnections(_ kidId:Int ,completion: @escaping (_ success:Bool, _ kids: [BKKidModel]?) -> Void) {
+    func getKidConnections(kidModel:BKKidModel,completion: @escaping (_ success:Bool, _ kids: [BKKidModel]?) -> Void) {
         
         //let currentEmail = BKAuthTool.shared.currentEmail
         //let kidId =
        
         
-        let dict = ["kidId": kidId]
+        let dict = ["kidId": kidModel.id]
         
         request(.post, urlStr: BKNetworkingConnectionsUrlStr, parameters: dict) { (success, data) in
             if success {

@@ -46,7 +46,7 @@ struct BKKidActivityConnection {
     
     init(dict: [String: Any]) {
         self.kidname = dict["kidName"] as! String
-        self.id = dict["kidid"] as! Int
+        self.id = dict["id"] as! Int
         self.gender = dict["gender"] as! String
         self.school = dict["school"] as! String
         self.age = dict["age"] as! String
@@ -108,7 +108,7 @@ struct BKKidModel: CustomDebugStringConvertible {
     
     init(dict: [String: Any]) {
         self.kidName = dict["kidName"] as! String
-        self.id = dict["kidid"] as? Int
+        self.id = dict["id"] as? Int
         self.gender = dict["gender"] as! String
         self.school = dict["school"] as! String
         self.age = dict["age"] as! String
