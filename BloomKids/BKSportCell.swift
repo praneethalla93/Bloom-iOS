@@ -86,9 +86,11 @@ extension BKSportCell {
         }
         
     }
+
 }
 
 extension BKSportCell: BKSportLevelVCDelegate {
+    
     func sportLevel(_ vc: BKSportLevelVC, didChooseSport sport: BKSport?) {
         let sportName = vc.sportName
         
@@ -107,6 +109,7 @@ extension BKSportCell: BKSportLevelVCDelegate {
         }
         navigationVC?.popViewController(animated: true)
     }
+    
 }
 
 

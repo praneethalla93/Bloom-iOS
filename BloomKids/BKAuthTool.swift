@@ -27,7 +27,7 @@ class BKAuthTool {
         //Scenario 3. The user will be shown Auth UI if he already has the credentials with failed login
         
         
-        var showViewController = authStoryboard.instantiateViewController(withIdentifier: "BKNavigationVC")
+        let showViewController = authStoryboard.instantiateViewController(withIdentifier: "BKNavigationVC")
         
 
         let keychain = Keychain(service: BKKeychainService)

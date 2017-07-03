@@ -26,7 +26,11 @@ let BKNetworkingLoginUrlStr = "http://custom-env.aqrfytx2is.us-east-1.elasticbea
 let BKNetworkingSignupUrlStr = "http://custom-env.aqrfytx2is.us-east-1.elasticbeanstalk.com/rest/register/doregister"
 
 let BKNetworkingAddKidUrlStr = "http://custom-env.aqrfytx2is.us-east-1.elasticbeanstalk.com/rest/kid/addkid"
+
+
 let BKNetworkingGetKidUrlStr = "http://custom-env.aqrfytx2is.us-east-1.elasticbeanstalk.com/rest/kid/getkids"
+let BKNetworkingGetKidsFilteredUrlStr = "http://custom-env.aqrfytx2is.us-east-1.elasticbeanstalk.com/rest/kid/getkidsFiltered"
+
 let BKNetworkingLocationDetailsUrlStr = "http://custom-env.aqrfytx2is.us-east-1.elasticbeanstalk.com/rest/location/dolocationdetails"
 let BKNetworkingActivityConnectionUrlStr = "http://custom-env.aqrfytx2is.us-east-1.elasticbeanstalk.com/rest/connection/activityConnections"
 
@@ -51,6 +55,7 @@ let BKGenderCellID = "BKGenderCellID"
 let BKSportCellID = "BKSportCellID"
 let BKAddKidCellID = "BKAddKidCellID"
 let BKKidCellID = "BKKidCellID"
+let BKKidActionCellID = "BKKidActionCellID"
 
 let BKSportLevelCellID = "BKSportLevelCellID"
 let BKHasFinishedTutorial = "BKHasFinishedTutorial"
@@ -59,5 +64,14 @@ let BKHasFinishedTutorial = "BKHasFinishedTutorial"
 let BKConnectSummaryHeaderCellID = "BKConnectSummaryHeaderCell"
 let BKConnectPlayerCellID = "BKConnectPlayerCell"
 let BKConnectSectionHeaderCellID = "BKConnectSectionHeaderCell"
+
+//All image assets
+let BKImageConnectBtnIcon = "connect-btn-icon"
+let BKImageEditBtnIcon = "edit-btn-icon"
+let BKImageScheduleBtnIcon = "schedule-btn-icon"
+
+//All seques
+let BKConnectPlayerCellSeque = "BKConnectPlayerCellSeque"
+
 
 

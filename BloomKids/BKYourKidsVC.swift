@@ -14,13 +14,18 @@ class BKYourKidsVC: UITableViewController {
     
 
     fileprivate var kids: [BKKidModel]?
-    
     let myGroup = DispatchGroup()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        let kidCellNib = UINib(nibName: "\(BKKidActionCell.self)", bundle: nil)
+        tableView.register(kidCellNib, forCellReuseIdentifier: BKKidActionCellID)
+        /*
         let kidCellNib = UINib(nibName: "\(BKKidCell.self)", bundle: nil)
         tableView.register(kidCellNib, forCellReuseIdentifier: BKKidCellID)
+        */
         
         SVProgressHUD.show()
         
@@ -70,16 +75,29 @@ class BKYourKidsVC: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         if indexPath.section == 0 {
+            
             let cell = tableView.dequeueReusableCell(withIdentifier: BKAddKidCellID, for: indexPath)
             return cell
-        }else{
-            let cell = tableView.dequeueReusableCell(withIdentifier: BKKidCellID, for: indexPath) as! BKKidCell
             
+        } else {
+
+            let cell = tableView.dequeueReusableCell(withIdentifier: BKKidActionCellID, for: indexPath) as! BKKidActionCell
             let kidModel = kids![indexPath.row]
             cell.kidModel = kidModel
-            return cell
             
+            //cell.imgActionButtonImage.image = UIImage(named: BKImageEditBtnIcon)
+            
+            
+            cell.btnPlayerAction.setImage( UIImage(named: BKImageEditBtnIcon), for: .normal)
+            
+            // Assign the tap action which will be executed when the user taps the UIButton
+            cell.tapAction = { [weak self] (cell) in
+                self?.showAlertForRow(row: tableView.indexPath(for: cell)!.row)
+            }
+            
+            return cell
         }
     
     }
@@ -106,6 +124,24 @@ class BKYourKidsVC: UITableViewController {
             addKidVC.delegate = self
             navigationController?.pushViewController(addKidVC, animated: true)
         }
+    }
+    
+    func showAlertForRow(row: Int) {
+        
+        if let kid = kids?[row] {
+        
+            let alert = UIAlertController ( title: "BEHOLD",
+                message: "\(kid.kidName) at row \(row) was tapped!",
+                preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Gotcha!", style: UIAlertActionStyle.default, handler: { (test) -> Void in
+            self.dismiss(animated: true, completion: nil)
+                }))
+        
+            self.present( alert, animated: true, completion: nil)
+        
+        }
+            
+        
     }
 
 }

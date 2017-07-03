@@ -4,8 +4,8 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -60,11 +60,11 @@
                                     <outlet property="lblPlayerName" destination="LMK-cV-IJq" id="R14-I4-xXT"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BKConnectPlayerCell" rowHeight="90" id="IKC-QN-ZWF" customClass="BKConnectPlayerCell" customModule="BloomKids" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="188" width="375" height="90"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BKConnectPlayerCell" rowHeight="100" id="IKC-QN-ZWF" customClass="BKConnectPlayerCell" customModule="BloomKids" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="188" width="375" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IKC-QN-ZWF" id="8Nw-1Y-OM2">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo-placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="Tbx-jd-IyT" userLabel="playerImageView">
@@ -81,7 +81,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coyote Creek, 9" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nf8-vW-xhb">
-                                            <rect key="frame" x="108" y="32" width="172" height="14.5"/>
+                                            <rect key="frame" x="108" y="32" width="227" height="14.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
@@ -111,10 +111,10 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="baseball-icon" translatesAutoresizingMaskIntoConstraints="NO" id="m7F-4M-t18">
                                                     <rect key="frame" x="63" y="0.0" width="20" height="20"/>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="baseball-icon" translatesAutoresizingMaskIntoConstraints="NO" id="X8O-3A-cvQ">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="soccer-icon" translatesAutoresizingMaskIntoConstraints="NO" id="X8O-3A-cvQ">
                                                     <rect key="frame" x="84" y="0.0" width="20" height="20"/>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="baseball-icon" translatesAutoresizingMaskIntoConstraints="NO" id="1aj-6d-dB9">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cricket-icon" translatesAutoresizingMaskIntoConstraints="NO" id="1aj-6d-dB9">
                                                     <rect key="frame" x="105" y="0.0" width="20" height="20"/>
                                                 </imageView>
                                             </subviews>
@@ -123,24 +123,29 @@
                                             </constraints>
                                         </stackView>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tvF-Te-Dxi">
-                                            <rect key="frame" x="285" y="5" width="70" height="67"/>
+                                            <rect key="frame" x="340" y="5" width="30" height="67"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="connect-icon" translatesAutoresizingMaskIntoConstraints="NO" id="VcF-f3-mJJ" userLabel="actionButton">
-                                                    <rect key="frame" x="-6" y="24" width="71" height="20"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VcF-f3-mJJ" userLabel="actionButton">
+                                                    <rect key="frame" x="2" y="21" width="26" height="26"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="VcF-f3-mJJ" secondAttribute="height" multiplier="1:1" id="shm-e1-yY1"/>
+                                                    </constraints>
                                                 </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="70" id="8yb-WW-xus"/>
-                                                <constraint firstAttribute="trailing" secondItem="VcF-f3-mJJ" secondAttribute="trailing" constant="5" id="Kdn-LZ-Vim"/>
-                                                <constraint firstItem="VcF-f3-mJJ" firstAttribute="top" secondItem="tvF-Te-Dxi" secondAttribute="top" constant="24" id="X0V-yA-Qnt"/>
+                                                <constraint firstItem="VcF-f3-mJJ" firstAttribute="centerX" secondItem="tvF-Te-Dxi" secondAttribute="centerX" id="5w7-iR-4mg"/>
+                                                <constraint firstItem="VcF-f3-mJJ" firstAttribute="centerY" secondItem="tvF-Te-Dxi" secondAttribute="centerY" id="6Ca-Pg-tNe"/>
+                                                <constraint firstAttribute="width" constant="30" id="8yb-WW-xus"/>
+                                                <constraint firstAttribute="trailing" secondItem="VcF-f3-mJJ" secondAttribute="trailing" constant="2" id="Kdn-LZ-Vim"/>
+                                                <constraint firstItem="VcF-f3-mJJ" firstAttribute="leading" secondItem="tvF-Te-Dxi" secondAttribute="leading" constant="2" id="ma6-Cm-RwR"/>
                                             </constraints>
                                         </view>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="bottomMargin" secondItem="Tbx-jd-IyT" secondAttribute="bottom" constant="5" id="8Qn-bw-dwY"/>
                                         <constraint firstAttribute="bottom" secondItem="tvF-Te-Dxi" secondAttribute="bottom" constant="5" id="9ce-Lb-Gi2"/>
-                                        <constraint firstAttribute="trailing" secondItem="tvF-Te-Dxi" secondAttribute="trailing" constant="20" id="EAt-DJ-c70"/>
+                                        <constraint firstAttribute="trailing" secondItem="tvF-Te-Dxi" secondAttribute="trailing" constant="5" id="EAt-DJ-c70"/>
                                         <constraint firstItem="Nl9-cv-C1h" firstAttribute="leading" secondItem="Tbx-jd-IyT" secondAttribute="trailing" constant="15" id="FpG-mB-CZI"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="N03-uD-KOE" secondAttribute="bottom" constant="2" id="HG9-4O-XCB"/>
                                         <constraint firstItem="PPs-yH-Vrs" firstAttribute="top" secondItem="Nf8-vW-xhb" secondAttribute="bottom" constant="3" id="Hma-Kr-wjL"/>
@@ -169,27 +174,6 @@
                                     <outlet property="lblPlayerSchoolAge" destination="Nf8-vW-xhb" id="pd3-o1-pvw"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BKConnectSectionHeaderCell" rowHeight="40" id="3zE-Bs-CT7" customClass="BKConnectSectionHeaderCell" customModule="BloomKids" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="278" width="375" height="40"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3zE-Bs-CT7" id="c1a-Gf-Hd2">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Section Heading" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e9X-aX-6Dl">
-                                            <rect key="frame" x="10" y="10" width="107" height="19"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="e9X-aX-6Dl" firstAttribute="top" secondItem="c1a-Gf-Hd2" secondAttribute="top" constant="10" id="E1u-zE-maB"/>
-                                        <constraint firstAttribute="bottom" secondItem="e9X-aX-6Dl" secondAttribute="bottom" constant="10" id="FZP-J9-Guk"/>
-                                        <constraint firstItem="e9X-aX-6Dl" firstAttribute="leading" secondItem="c1a-Gf-Hd2" secondAttribute="leading" constant="10" id="Sr1-x0-xhH"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="DuO-AY-cu8" id="0uj-gF-1C5"/>
@@ -198,12 +182,52 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Playdate" id="Nnc-Xj-KPR">
                         <barButtonItem key="backBarButtonItem" id="2Ge-1P-ftp"/>
+                        <barButtonItem key="rightBarButtonItem" image="addkid-nav-icon" id="B7O-3X-afx">
+                            <color key="tintColor" red="0.44705882349999998" green="0.79215686269999996" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <segue destination="1LO-zj-dV3" kind="show" identifier="BKConnectPlayerCellSeque" id="y5f-7c-OBa"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CY8-77-17w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1924.6376811594205" y="42.391304347826093"/>
+        </scene>
+        <!--Connect Kids-->
+        <scene sceneID="V1c-nh-jbA">
+            <objects>
+                <tableViewController id="1LO-zj-dV3" userLabel="Connect Kids" customClass="BKConnectPlayerCellVC" customModule="BloomKids" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="WHS-CP-Pz4">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="gKu-cf-lhi">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gKu-cf-lhi" id="Eco-5S-gtI">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="1LO-zj-dV3" id="PVB-Rm-yoh"/>
+                            <outlet property="delegate" destination="1LO-zj-dV3" id="3ci-G4-uss"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Connect Kids" id="LAJ-IU-YDf">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="kdC-WI-8T2"/>
+                        <barButtonItem key="rightBarButtonItem" image="filter-nav-icon" id="m8C-kf-EIx">
+                            <color key="tintColor" red="0.44705882349999998" green="0.79215686269999996" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vEZ-1n-G4J" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3596" y="42.728635682158924"/>
         </scene>
         <!--PlayDate-->
         <scene sceneID="ZcK-dN-14Y">
@@ -227,12 +251,15 @@
         </scene>
     </scenes>
     <resources>
+        <image name="addkid-nav-icon" width="24" height="19"/>
         <image name="baseball-icon" width="30" height="30"/>
         <image name="basketball-icon" width="32" height="32"/>
         <image name="chess-icon" width="25" height="30"/>
-        <image name="connect-icon" width="71" height="20"/>
+        <image name="cricket-icon" width="29" height="27"/>
+        <image name="filter-nav-icon" width="21" height="21"/>
         <image name="photo-placeholder" width="139" height="139"/>
         <image name="playdate-tabbar-icon" width="25" height="20"/>
+        <image name="soccer-icon" width="31" height="31"/>
         <image name="tennis-icon" width="30" height="30"/>
     </resources>
 </document>

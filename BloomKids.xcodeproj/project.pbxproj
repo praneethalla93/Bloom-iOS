@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7206D9B61F096D2900F5A42A /* BKKidActionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7206D9B41F096D2800F5A42A /* BKKidActionCell.swift */; };
+		7206D9B71F096D2900F5A42A /* BKKidActionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7206D9B51F096D2900F5A42A /* BKKidActionCell.xib */; };
+		7298E46F1F0A0D150039AE6B /* BkConnectKidsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7298E46E1F0A0D150039AE6B /* BkConnectKidsVC.swift */; };
 		72D24A591F018CB5002ACD79 /* BKConnectPlayerCellVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D24A581F018CB5002ACD79 /* BKConnectPlayerCellVC.swift */; };
 		72D24A5B1F018CE6002ACD79 /* BKConnectSectionHeaderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D24A5A1F018CE6002ACD79 /* BKConnectSectionHeaderVC.swift */; };
 		72D24A5D1F018D26002ACD79 /* BKConnectSummaryHeaderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D24A5C1F018D26002ACD79 /* BKConnectSummaryHeaderVC.swift */; };
@@ -70,6 +73,9 @@
 
 /* Begin PBXFileReference section */
 		25AE1343266B3A700D0D3E98 /* Pods-BloomKids.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BloomKids.release.xcconfig"; path = "Pods/Target Support Files/Pods-BloomKids/Pods-BloomKids.release.xcconfig"; sourceTree = "<group>"; };
+		7206D9B41F096D2800F5A42A /* BKKidActionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKKidActionCell.swift; sourceTree = "<group>"; };
+		7206D9B51F096D2900F5A42A /* BKKidActionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BKKidActionCell.xib; sourceTree = "<group>"; };
+		7298E46E1F0A0D150039AE6B /* BkConnectKidsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BkConnectKidsVC.swift; sourceTree = "<group>"; };
 		72D24A581F018CB5002ACD79 /* BKConnectPlayerCellVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKConnectPlayerCellVC.swift; sourceTree = "<group>"; };
 		72D24A5A1F018CE6002ACD79 /* BKConnectSectionHeaderVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKConnectSectionHeaderVC.swift; sourceTree = "<group>"; };
 		72D24A5C1F018D26002ACD79 /* BKConnectSummaryHeaderVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKConnectSummaryHeaderVC.swift; sourceTree = "<group>"; };
@@ -153,6 +159,7 @@
 				72D24A581F018CB5002ACD79 /* BKConnectPlayerCellVC.swift */,
 				72D24A5A1F018CE6002ACD79 /* BKConnectSectionHeaderVC.swift */,
 				72D24A5C1F018D26002ACD79 /* BKConnectSummaryHeaderVC.swift */,
+				7298E46E1F0A0D150039AE6B /* BkConnectKidsVC.swift */,
 			);
 			name = VCs;
 			sourceTree = "<group>";
@@ -281,15 +288,17 @@
 			name = Auth;
 			sourceTree = "<group>";
 		};
-		A1CFEFAC1ECD5DE3003DBA74 /* Other */ = {
+		A1CFEFAC1ECD5DE3003DBA74 /* Common */ = {
 			isa = PBXGroup;
 			children = (
 				A1CFEFAD1ECD5DFB003DBA74 /* Constants.swift */,
 				A1CFEFAF1ECD5E02003DBA74 /* Headers.swift */,
 				A10645F11EE3B5BE0054267C /* BKKidCell.swift */,
 				A10645F21EE3B5BE0054267C /* BKKidCell.xib */,
+				7206D9B41F096D2800F5A42A /* BKKidActionCell.swift */,
+				7206D9B51F096D2900F5A42A /* BKKidActionCell.xib */,
 			);
-			name = Other;
+			name = Common;
 			sourceTree = "<group>";
 		};
 		A1CFEFB11ECD5FE0003DBA74 /* Base + Extensions */ = {
@@ -364,7 +373,7 @@
 				A17A7B2B1ECFCA5800D77D27 /* Networking */,
 				A1CFEFA71ECD5BAF003DBA74 /* Auth */,
 				A1CFEFB11ECD5FE0003DBA74 /* Base + Extensions */,
-				A1CFEFAC1ECD5DE3003DBA74 /* Other */,
+				A1CFEFAC1ECD5DE3003DBA74 /* Common */,
 				A1FC923F1ECD4F960099E68D /* AppDelegate.swift */,
 				A1FC92431ECD4F960099E68D /* Main.storyboard */,
 				A1FC92461ECD4F960099E68D /* Assets.xcassets */,
@@ -454,6 +463,7 @@
 				A1E9D4751EE0D36600250A94 /* BKPlaceResultCell.xib in Resources */,
 				A1FC92471ECD4F960099E68D /* Assets.xcassets in Resources */,
 				A179F9B81ED28B4D00B42540 /* BKActivity.storyboard in Resources */,
+				7206D9B71F096D2900F5A42A /* BKKidActionCell.xib in Resources */,
 				A10645F41EE3B5BE0054267C /* BKKidCell.xib in Resources */,
 				A1FC92451ECD4F960099E68D /* Main.storyboard in Resources */,
 				A1CFEFA91ECD5BCA003DBA74 /* BKAuth.storyboard in Resources */,
@@ -529,6 +539,7 @@
 				72F55CE81F000EA400249296 /* BKConnectVC.swift in Sources */,
 				A198939A1EE2012F00DDF240 /* BKAddKidVC.swift in Sources */,
 				A1E9D4771EE0D38100250A94 /* AHNibLoadable.swift in Sources */,
+				7298E46F1F0A0D150039AE6B /* BkConnectKidsVC.swift in Sources */,
 				A143871A1EE147C30050A5D1 /* BKPlaceSearchNavVC.swift in Sources */,
 				A1E9D4801EE0EF8200250A94 /* BKPlaceResultsController.swift in Sources */,
 				72D24A5B1F018CE6002ACD79 /* BKConnectSectionHeaderVC.swift in Sources */,
@@ -551,6 +562,7 @@
 				A14387221EE156A50050A5D1 /* AHCategoryContentView.swift in Sources */,
 				A1026A301EE281C900FA7366 /* BKSportLevelVC.swift in Sources */,
 				A198939F1EE2027E00DDF240 /* BKPhotoHeaderView.swift in Sources */,
+				7206D9B61F096D2900F5A42A /* BKKidActionCell.swift in Sources */,
 				A185AE5D1ED611E2002FDF89 /* BKPlaceAutocompleteVC.swift in Sources */,
 				A14387241EE156A50050A5D1 /* AHCategoryNavBarStyle.swift in Sources */,
 				A1FC8FAD1ECFF0710002F234 /* String+Extension.swift in Sources */,
@@ -704,11 +716,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = STBAPMKP3B;
 				INFOPLIST_FILE = BloomKids/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.strikingly.bloomkids.ios.BloomKids;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bloom.ios.BloomKids;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -719,11 +732,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = STBAPMKP3B;
 				INFOPLIST_FILE = BloomKids/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.strikingly.bloomkids.ios.BloomKids;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bloom.ios.BloomKids;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

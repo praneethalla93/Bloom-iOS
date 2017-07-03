@@ -1,18 +1,16 @@
 //
-//  BKConnectPlayerCell.swift
+//  BKKidCellAction.swift
 //  BloomKids
 //
-//  Created by Raj Sathyaseelan on 6/26/17.
+//  Created by Raj Sathyaseelan on 7/2/17.
 //  Copyright © 2017 Bloom Technology Inc. All rights reserved.
 //
 
 import UIKit
 
-class BKConnectPlayerCell: UITableViewCell {
-    
-    //@IBOutlet weak var schoolNameField: UITextField!
-    
-    
+class BKKidActionCell: UITableViewCell {
+
+
     @IBOutlet weak var imgPlayer: UIImageView!
     @IBOutlet weak var lblPlayerName: UILabel!
     @IBOutlet weak var imgSportIcon1: UIImageView!
@@ -21,10 +19,30 @@ class BKConnectPlayerCell: UITableViewCell {
     @IBOutlet weak var imgSportIcon4: UIImageView!
     @IBOutlet weak var imgSportIcon5: UIImageView!
     @IBOutlet weak var imgSportIcon6: UIImageView!
-    @IBOutlet weak var imgActionButtonImage: UIImageView!
+    @IBOutlet weak var btnPlayerAction: UIButton!
     
     
     @IBOutlet weak var lblPlayerSchoolAge: UILabel!
+    
+     var tapAction: ((UITableViewCell) -> Void)?
+    
+    var kidModel: BKKidModel? {
+        
+        didSet {
+            
+            if let kid = kidModel {
+                self.lblPlayerName.text = kid.kidName
+                self.lblPlayerSchoolAge.text = "\(kid.school) , \(kid.age)"
+                
+                /*
+                self.btnPlayerAction.setImage(UIImage(named: BKImageEditBtnIcon), for: .Normal)
+                */
+            }
+            
+        }
+    }
+    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -36,5 +54,15 @@ class BKConnectPlayerCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    @IBAction func actionButtonTapped(_ sender: Any) {
+        
+        tapAction?(self)
+        
+        
+    }
     
+    
+    
+
 }
+

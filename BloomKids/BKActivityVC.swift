@@ -13,6 +13,7 @@ import KeychainAccess
 private let cellID = "cellID"
 
 class BKActivityVC: UIViewController {
+    
     let categories = ["Connections", "Events"]
     @IBAction func logout(_ sender: UIBarButtonItem) {
         BKAuthTool.shared.logout()
@@ -23,7 +24,7 @@ class BKActivityVC: UIViewController {
         setupTitle()
         useCategoryView()
         
-        let keychain = Keychain(service: BKKeychainService)
+        //let keychain = Keychain(service: BKKeychainService)
         
         //@TODO check onboarding status
         let _hasFinished = true

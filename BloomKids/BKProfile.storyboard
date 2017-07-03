@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -229,7 +228,11 @@
                             <outlet property="delegate" destination="jtE-hr-cTo" id="xVF-EY-r0E"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Profile" id="mHz-uA-Oag"/>
+                    <navigationItem key="navigationItem" title="Profile" id="mHz-uA-Oag">
+                        <barButtonItem key="rightBarButtonItem" image="edit-nav-icon" width="20" id="fcd-Yd-H7W" userLabel="edit-bar-btn-item">
+                            <color key="tintColor" red="0.44705882352941173" green="0.792156862745098" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="userPhoto" destination="2mW-in-WSb" id="Pjg-xF-Qqu"/>
                     </connections>
@@ -238,7 +241,7 @@
             </objects>
             <point key="canvasLocation" x="1048.8" y="707.49625187406298"/>
         </scene>
-        <!--Your KidsVC-->
+        <!--Your Kids-->
         <scene sceneID="Unk-WU-EU2">
             <objects>
                 <tableViewController id="SOC-lH-Dix" customClass="BKYourKidsVC" customModule="BloomKids" customModuleProvider="target" sceneMemberID="viewController">
@@ -282,6 +285,11 @@
                             <outlet property="delegate" destination="SOC-lH-Dix" id="ZBO-nI-7gb"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Your Kids" id="Sdc-Cp-ebb">
+                        <barButtonItem key="rightBarButtonItem" image="addkid-nav-icon" id="UpU-NE-CkE" userLabel="addkid-bar-btn-item">
+                            <color key="tintColor" red="0.44705882349999998" green="0.79215686269999996" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cbv-nh-fHo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -291,7 +299,7 @@
         <scene sceneID="Z4b-zy-87j">
             <objects>
                 <navigationController id="4Mu-Ct-K2P" customClass="BKNavigationVC" customModule="BloomKids" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" id="aF8-n3-j1p"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="profile-tab-icon" selectedImage="profile-tab-icon" id="aF8-n3-j1p"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="5tN-Kb-kTt">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -307,7 +315,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="addkid-nav-icon" width="24" height="19"/>
+        <image name="edit-nav-icon" width="24" height="24"/>
         <image name="photo-placeholder" width="139" height="139"/>
+        <image name="profile-tab-icon" width="25" height="25"/>
         <image name="sport-add-icon" width="22" height="22"/>
     </resources>
 </document>

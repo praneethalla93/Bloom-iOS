@@ -13,7 +13,6 @@ import SVProgressHUD
 
 class BKConnectVC: UITableViewController {
     
-    
     fileprivate var myKids: [BKKidModel]?
     fileprivate var currentkidConnections: [BKKidModel]?
     fileprivate var currentkidPendingConnections: [BKKidModel]?
@@ -25,12 +24,13 @@ class BKConnectVC: UITableViewController {
         super.viewDidLoad()
         SVProgressHUD.show()
         
+        let kidCellNib = UINib(nibName: "\(BKKidActionCell.self)", bundle: nil)
+        tableView.register(kidCellNib, forCellReuseIdentifier: BKKidActionCellID)
         
         loadMyKids()
         
         
         //after successfull loading data
-        
         myGroup.notify(queue: .main) {
             print("Finished all requests.")
             self.currentKid = self.myKids?[0]
@@ -43,11 +43,9 @@ class BKConnectVC: UITableViewController {
                 self.tableView.reloadData()
             }
             
-
         }
         
-        
-        let keychain = Keychain(service: BKKeychainService)
+        //let keychain = Keychain(service: BKKeychainService)
         SVProgressHUD.dismiss()
     }
     
@@ -64,16 +62,26 @@ class BKConnectVC: UITableViewController {
         let menuView = BTNavigationDropdownMenu(navigationController: self.navigationController, containerView: self.navigationController!.view, title: myKids![0].kidName, items: items as [AnyObject])
         self.navigationItem.titleView = menuView
         
+        
         menuView.didSelectItemAtIndexHandler = {[weak self] (indexPath: Int) -> () in
             print("Did select item at index: \(indexPath)")
-            //self.selectedCellLabel.text = items[indexPath]
+            //@TODO: reload 
+            
+            self?.currentKid = self?.myKids?[indexPath]
+            self?.loadCurrentKidConnections()
+            
+            
+            //once dropdown menu is loaded with kids. Load current Kids connection
+            self?.myGroup.notify(queue: .main) {
+                print("connect table refreshed")
+                self?.tableView.reloadData()
+            }
+
         }
 
     }
     
     func loadMyKids() {
-        
-        
         myGroup.enter()
         print ("entering load my kids")
         
@@ -120,7 +128,7 @@ class BKConnectVC: UITableViewController {
                 if let kids = kids, success {
                     
                     self.currentkidConnections = kids
-                    print ("success loading current kid connections \(self.currentkidConnections?.count)")
+                    print ("success loading current kid connections \(String(describing: self.currentkidConnections?.count))")
                     
                     self.myGroup.leave()
                 }
@@ -152,7 +160,7 @@ extension BKConnectVC {
                 return 1
             case 1:
             
-                if let count = currentkidConnections?.count {
+                if let count = currentkidPendingConnections?.count {
                     return count
                 }
                 else {
@@ -160,12 +168,17 @@ extension BKConnectVC {
                 }
             
             case 2:
-                return 1
+                if let count = currentkidConnections?.count {
+                    return count
+                }
+                else {
+                    return 0
+            }
+
             default:
                 return 1
         }
        
-        return 1
     }
 
     
@@ -174,11 +187,11 @@ extension BKConnectVC {
         switch indexPath.section {
                 
             case 0:
-                return handleSummaryHeader(tableView, indexPath)
+                return handlePlayerSummaryHeader(tableView, indexPath)
             case 1:
-                return handlePlayerHeader(tableView, indexPath)
+                return handlePendingConnections(tableView, indexPath)
             case 2:
-                return handleSectionHeader(tableView, indexPath)
+                return handleActiveConnectoins(_:_:)(tableView, indexPath)
             default:
                 let cell = tableView.dequeueReusableCell(withIdentifier: BKSimpleCellID, for: indexPath)
                 cell.backgroundColor = UIColor.random()
@@ -193,16 +206,45 @@ extension BKConnectVC {
         
         if indexPath.section == 0 {
             return 160.0
-        }else if indexPath.section == 1{
-            return 90.0
-        }else if indexPath.section == 2{
-            return 40.0
+        }else if indexPath.section == 1 {
+            return 40
+        }else if indexPath.section == 2 {
+            return 100.0
         }else{
             return 40.0
         }
         
     }
     
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        
+        var sectionTitle = ""
+        
+        
+        if section == 0 {
+            
+            if currentKid != nil {
+                sectionTitle = "Player Summary"
+            }
+            
+        } else if section == 1 {
+            
+            if let pendingConnection = currentkidPendingConnections?.count {
+                
+                if pendingConnection > 0 {
+                    sectionTitle = "Pending Connections"
+                }
+                
+            }
+            
+        } else if section == 2 {
+            
+            sectionTitle = "Active Connections"
+        }
+        
+        return sectionTitle
+    }
+
     /*
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
@@ -216,33 +258,69 @@ extension BKConnectVC {
         
     }
     */
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "BKConnectPlayerCellSeque" {
+            // Create a new variable to store the instance of PlayerTableViewController
+            let destinationVC = segue.destination as! BKConnectPlayerCellVC
+            destinationVC.currentKid = self.currentKid
+        }
+    }
+
+    
+    func showAlertForRow(row: Int) {
+        
+        if let kid = currentkidConnections?[row] {
+            
+            let alert = UIAlertController ( title: "BEHOLD",
+                                            message: "\(kid.kidName) at row \(row) was tapped!",
+                preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Gotcha!", style: UIAlertActionStyle.default, handler: { (test) -> Void in
+                self.dismiss(animated: true, completion: nil)
+            }))
+            
+            self.present( alert, animated: true, completion: nil)
+            
+        }
+        
+        
+    }
+
 
 }
 
 //handle all cell creation here
 extension BKConnectVC {
     
-    func handleSummaryHeader(_ tableView: UITableView, _ indexPath: IndexPath) -> UITableViewCell {
+    func handlePlayerSummaryHeader(_ tableView: UITableView, _ indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: BKConnectSummaryHeaderCellID, for: indexPath) as! BKConnectSummaryHeaderCell
         
         //cell.imagePlayerPhoto
         
-        if let kids = self.myKids {
+        if let kids = self.myKids, let kidConnections = self.currentkidConnections {
             
             cell.lblPlayerName.text = kids[indexPath.row].kidName
-            cell.lblConnectionCounts.text = "\(kids.count) Connected | 2 Pending"
+            cell.lblConnectionCounts.text = "\(String(describing: kidConnections.count)) Connected | 2 Pending"
         }
         
         return cell
     }
     
-    func handlePlayerHeader(_ tableView: UITableView, _ indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: BKConnectPlayerCellID, for: indexPath) as! BKConnectPlayerCell
+    func handleActiveConnectoins(_ tableView: UITableView, _ indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: BKKidActionCellID, for: indexPath) as! BKKidActionCell
         
         if let kid = currentkidConnections?[indexPath.row] {
             //cell.imgPlayer = UIImage("")
             cell.lblPlayerName.text = kid.kidName
             cell.lblPlayerSchoolAge.text = "\(kid.school) , \(kid.age)"
+            //cell.imgActionButtonImage.image = UIImage(named: BKIma)
+            
+            cell.btnPlayerAction.setImage( UIImage(named: BKImageScheduleBtnIcon), for: .normal)
+            // Assign the tap action which will be executed when the user taps the UIButton
+            cell.tapAction = { [weak self] (cell) in
+                self?.showAlertForRow(row: tableView.indexPath(for: cell)!.row)
+            }
         }
         
         //photoHeaderVC.view.willMove(toSuperview: cell.contentView)
@@ -253,8 +331,26 @@ extension BKConnectVC {
     }
     
     
-    func handleSectionHeader(_ tableView: UITableView, _ indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: BKConnectSectionHeaderCellID, for: indexPath)
+    func handlePendingConnections(_ tableView: UITableView, _ indexPath: IndexPath) -> UITableViewCell {
+        
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: BKKidActionCellID, for: indexPath) as! BKKidActionCell
+        
+        if let kid = currentkidConnections?[indexPath.row] {
+            //cell.imgPlayer = UIImage("")
+            cell.lblPlayerName.text = kid.kidName
+            cell.lblPlayerSchoolAge.text = "\(kid.school) , \(kid.age)"
+            //cell.imgActionButtonImage.image = UIImage(named: BKImageScheduleBtnIcon)
+            
+            cell.btnPlayerAction.setImage(UIImage(named: BKImageConnectBtnIcon), for: .normal)
+            
+            // Assign the tap action which will be executed when the user taps the UIButton
+            // cell.tapAction = { [weak self] (cell) in
+            //  self?.showAlertForRow(row: tableView.indexPath(for: cell)!.row)
+            //}
+        }
+
+        
         //photoHeaderVC.view.willMove(toSuperview: cell.contentView)
         //cell.contentView.addSubview(photoHeaderVC.view)
         //photoHeaderVC.view.frame = cell.contentView.bounds
@@ -264,7 +360,6 @@ extension BKConnectVC {
     
 
     /*
-     
     func handleName(_ tableView: UITableView, _ indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: BKSimpleCellID, for: indexPath) as! BKSimpleCell
         
@@ -274,11 +369,9 @@ extension BKConnectVC {
         cell.didChangeText = {[weak self] (text) in
             self?.name = text
         }
-        
+
         return cell
     }
     */
-    
-    
     
 }

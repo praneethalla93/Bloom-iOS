@@ -84,7 +84,7 @@ class BKAddKidVC: UITableViewController {
         BKNetowrkTool.shared.addKid(kidModel: kidModel) { (success, kidid) in
             
             if success {
-                print("kid added with kidid:\(kidid)")
+                print("kid added with kidid:\(String(describing: kidid))")
                 SVProgressHUD.showSuccess(withStatus: "Kid added")
                 BKAuthTool.shared.finishedTutorial()
                 self.delegate?.addKidVC(self, didAddkid: kidModel)
@@ -176,7 +176,7 @@ extension BKAddKidVC {
     func handleName(_ tableView: UITableView, _ indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: BKSimpleCellID, for: indexPath) as! BKSimpleCell
         
-        cell.label.text = "name"
+        cell.label.text = "Name"
         cell.textField.placeholder = ""
         
         cell.didChangeText = {[weak self] (text) in
@@ -199,7 +199,7 @@ extension BKAddKidVC {
     func handleAge(_ tableView: UITableView, _ indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: BKSimpleCellID, for: indexPath) as! BKSimpleCell
         
-        cell.label.text = "age"
+        cell.label.text = "Age"
         cell.textField.placeholder = ""
         
         cell.didChangeText = {[weak self] (text) in

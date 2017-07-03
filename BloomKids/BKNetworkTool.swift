@@ -27,11 +27,20 @@ class BKNetowrkTool {
         Alamofire.request(url, method: method, parameters: parameters, encoding: JSONEncoding.default).responseJSON { (response: DataResponse) in
             var flag = false
             if let statusCode = response.result.value as? [String: Any] {
+                
+                print ("Status Code: \(statusCode)")
                 if let code = statusCode["status"] as? Bool {
                     flag = code
                 }
             }
+            
             completion(flag, response.data)
+            
+            
+            if let error = response.result.error as? AFError {
+                print("Error code \(error._code)") // statusCode private
+                
+            }
             
         }
     }
@@ -41,11 +50,12 @@ class BKNetowrkTool {
 extension BKNetowrkTool {
     
     func addKid(kidModel: BKKidModel, completion: @escaping (_ sucess: Bool,_ kidid: Int?) -> Void) {
+        
         guard let currentEmail = BKAuthTool.shared.currentEmail else {
-        print("currentEmail not complete")
-        completion(false, nil)
-        return
-    }
+            print("currentEmail not complete")
+            completion(false, nil)
+            return
+        }
         
         /*
          var kidName: String
@@ -90,7 +100,6 @@ extension BKNetowrkTool {
             
                 do {
 
-            
                     if  let data = data,
                     let json = try JSONSerialization.jsonObject(with: data) as? [String: Any] {
                     if let status = json["status"] as? Bool,
@@ -125,6 +134,7 @@ extension BKNetowrkTool {
         }
  
         let dict = ["email": currentEmail]
+        
         //let myGroup = DispatchGroup()
         //myGroup.enter()
         
@@ -173,6 +183,58 @@ extension BKNetowrkTool {
         }
         
     }
+    
+    
+    
+    // If this account haven't added a kid, then the request will be failed
+    
+    func getKidsFiltered(kidModel:BKKidModel, sportName:String, interestLevel:String, completion: @escaping (_ success:Bool, _ kids: [BKKidModel]?) -> Void) {
+        
+        var dict = ["kidid": String(describing: kidModel.id)]
+        
+        if sportName.isEmpty {
+            dict["sportname"] = sportName
+        }
+        
+        if interestLevel.isEmpty {
+            dict["skilllevel"] = sportName
+        }
+        
+        request(.post, urlStr: BKNetworkingGetKidsFilteredUrlStr, parameters: dict) { (success, data) in
+            if success {
+           
+                print("GeKidFiltered Finished request")
+                
+                do {
+                    if  let data = data,
+                        let json = try JSONSerialization.jsonObject(with: data) as? [String: Any]
+                    {
+                        if let status = json["status"] as? Bool,
+                            let kidsDict = json["kids"] as? [[String: Any]] {
+                            
+                            var kids = [BKKidModel]()
+                            for kidDict in kidsDict {
+                                let kidModel = BKKidModel(dict: kidDict)
+                                kids.append(kidModel)
+                                print("GetKid name is \(kidModel.kidName)")
+                            }
+                            
+                            self.myKids = kids
+                            completion(status, kids)
+                        }
+                        
+                    }
+                } catch {
+                    completion(false, nil)
+                }
+                
+            } else{
+                completion(false, nil)
+            }
+            
+        }
+        
+    }
 
     func getActivityConnections(for kidId: Int, completion: ([BKKidActivityConnection]?) -> Void) {
         request(.post, urlStr: BKNetworkingActivityConnectionUrlStr, parameters: ["id": kidId]) { (success, data) in
@@ -205,7 +267,7 @@ extension BKNetowrkTool {
         
         let dict = ["email": currentEmail]
         
-        request(.post, urlStr: BKNetworkingGetKidUrlStr, parameters: dict) { (success, data) in
+        request(.post, urlStr: BKNetworkingGetKidUrlStr, parameters: (dict )) { (success, data) in
             if success {
                 do {
                     if  let data = data,
@@ -242,7 +304,7 @@ extension BKNetowrkTool {
     
     
     
-    func getKidConnections(kidModel:BKKidModel,completion: @escaping (_ success:Bool, _ kids: [BKKidModel]?) -> Void) {
+    func getKidConnections(kidModel:BKKidModel, completion: @escaping (_ success:Bool, _ kids: [BKKidModel]?) -> Void) {
         
         //let currentEmail = BKAuthTool.shared.currentEmail
         //let kidId =
@@ -250,7 +312,8 @@ extension BKNetowrkTool {
         
         let dict = ["kidId": kidModel.id]
         
-        request(.post, urlStr: BKNetworkingConnectionsUrlStr, parameters: dict) { (success, data) in
+        request(.post, urlStr: BKNetworkingConnectionsUrlStr, parameters: (dict) ) { (success, data) in
+            
             if success {
                 do {
                     if  let data = data,
