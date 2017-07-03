@@ -29,8 +29,8 @@ class BKLoginVC: UIViewController {
             loginLogoTopSpaceConstraint.constant = 8.0
             OAuthBottomConstraint.constant = 0.0
         }else{
-            loginLogoTopSpaceConstraint.constant = BKLoginLogoTopSpace
-            OAuthBottomConstraint.constant = 49.0
+           // loginLogoTopSpaceConstraint.constant = BKLoginLogoTopSpace
+          //  OAuthBottomConstraint.constant = 49.0
         }
         
     }
