@@ -312,8 +312,10 @@ extension BKConnectVC {
         
         if let kid = currentkidConnections?[indexPath.row] {
             //cell.imgPlayer = UIImage("")
-            cell.lblPlayerName.text = kid.kidName
-            cell.lblPlayerSchoolAge.text = "\(kid.school) , \(kid.age)"
+            
+            cell.kidModel = kid
+            //cell.lblPlayerName.text = kid.kidName
+            //cell.lblPlayerSchoolAge.text = "\(kid.school) , \(kid.age)"
             //cell.imgActionButtonImage.image = UIImage(named: BKIma)
             
             cell.btnPlayerAction.setImage( UIImage(named: BKImageScheduleBtnIcon), for: .normal)

@@ -125,6 +125,10 @@ struct BKKidModel: CustomDebugStringConvertible {
         return "kidname:\(kidName) id:\(String(describing: id)) age:\(age) gender:\(gender) school:\(school) sports:\(sports)"
     }
     
+    var searchDescription: String {
+        return "\(kidName) \(String(describing: id)) \(age) \(gender) \(school) \(sports)"
+    }
+    
 }
 
 
