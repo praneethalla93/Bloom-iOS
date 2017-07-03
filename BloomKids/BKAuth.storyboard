@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -46,16 +47,16 @@
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="iCg-D3-8fn" userLabel="Main">
-                                <rect key="frame" x="16" y="181" width="343" height="416"/>
+                                <rect key="frame" x="16" y="179" width="343" height="488"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ZG5-U4-cq7" userLabel="Login">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="212"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ZG5-U4-cq7" userLabel="Login">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="133"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="OSs-As-kBI" userLabel="Input">
-                                                <rect key="frame" x="17" y="0.0" width="309" height="174"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="343" height="95"/>
                                                 <subviews>
-                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="saravanaraj.jobs@gmail.com" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zxg-Ox-spT">
-                                                        <rect key="frame" x="0.0" y="0.0" width="309" height="48"/>
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="saravanaraj.jobs@gmail.com" borderStyle="line" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zxg-Ox-spT">
+                                                        <rect key="frame" x="0.0" y="0.0" width="343" height="40"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
@@ -63,8 +64,8 @@
                                                             <outlet property="delegate" destination="g2T-hX-qb2" id="7hc-bc-0F2"/>
                                                         </connections>
                                                     </textField>
-                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1111" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A2S-v6-JJ9">
-                                                        <rect key="frame" x="0.0" y="63" width="309" height="48"/>
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="pass" borderStyle="line" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A2S-v6-JJ9">
+                                                        <rect key="frame" x="0.0" y="55" width="343" height="40"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
@@ -72,13 +73,6 @@
                                                             <outlet property="delegate" destination="g2T-hX-qb2" id="IbF-3Q-ZrH"/>
                                                         </connections>
                                                     </textField>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FXw-ro-arH">
-                                                        <rect key="frame" x="0.0" y="126" width="309" height="48"/>
-                                                        <state key="normal" image="sign-in-btn"/>
-                                                        <connections>
-                                                            <action selector="loginBtnTapped:" destination="g2T-hX-qb2" eventType="touchUpInside" id="0xe-zo-JPs"/>
-                                                        </connections>
-                                                    </button>
                                                 </subviews>
                                                 <constraints>
                                                     <constraint firstItem="Zxg-Ox-spT" firstAttribute="leading" secondItem="OSs-As-kBI" secondAttribute="leading" id="Wik-X4-pqy"/>
@@ -86,7 +80,7 @@
                                                 </constraints>
                                             </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1ep-gZ-hF6">
-                                                <rect key="frame" x="102" y="184" width="139" height="28"/>
+                                                <rect key="frame" x="0.0" y="105" width="343" height="28"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="28" id="rfU-G5-9ZU"/>
                                                 </constraints>
@@ -142,7 +136,7 @@
                                         </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="1fm-iD-9UU" userLabel="OAuth">
-                                        <rect key="frame" x="0.0" y="278" width="343" height="138"/>
+                                        <rect key="frame" x="0.0" y="435" width="343" height="53"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="sDG-0J-C8p" userLabel="OAuthButtons">
                                                 <rect key="frame" x="0.0" y="0.0" width="343" height="53"/>
@@ -162,12 +156,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="iCg-D3-8fn" firstAttribute="leading" secondItem="sXV-DP-9mI" secondAttribute="leading" constant="16" id="0ck-PO-uii"/>
-                            <constraint firstAttribute="trailing" secondItem="iCg-D3-8fn" secondAttribute="trailing" constant="16" id="ELr-f8-jgw"/>
-                            <constraint firstItem="bKL-Qz-xH2" firstAttribute="top" secondItem="qHU-7q-O9c" secondAttribute="bottom" constant="8" id="LEV-mc-LWW"/>
-                            <constraint firstItem="iCg-D3-8fn" firstAttribute="top" secondItem="bKL-Qz-xH2" secondAttribute="bottom" constant="20" id="TFv-RZ-s8i"/>
-                            <constraint firstItem="fG5-Ss-iRh" firstAttribute="top" secondItem="iCg-D3-8fn" secondAttribute="bottom" constant="70" id="eCp-22-vQH"/>
-                            <constraint firstItem="bKL-Qz-xH2" firstAttribute="centerX" secondItem="sXV-DP-9mI" secondAttribute="centerX" id="hFx-KX-2C0"/>
+                            <constraint firstItem="iCg-D3-8fn" firstAttribute="top" secondItem="bKL-Qz-xH2" secondAttribute="bottom" constant="20" id="Cjo-yB-WgV"/>
+                            <constraint firstItem="bKL-Qz-xH2" firstAttribute="top" secondItem="qHU-7q-O9c" secondAttribute="bottom" constant="8" symbolic="YES" id="EFl-J9-BXG"/>
+                            <constraint firstItem="iCg-D3-8fn" firstAttribute="trailing" secondItem="sXV-DP-9mI" secondAttribute="trailingMargin" id="ENK-KY-lDT"/>
+                            <constraint firstItem="iCg-D3-8fn" firstAttribute="bottom" secondItem="fG5-Ss-iRh" secondAttribute="top" id="LW7-ms-H7n"/>
+                            <constraint firstItem="iCg-D3-8fn" firstAttribute="leading" secondItem="sXV-DP-9mI" secondAttribute="leadingMargin" id="nD3-j6-fsV"/>
+                            <constraint firstItem="bKL-Qz-xH2" firstAttribute="centerX" secondItem="iCg-D3-8fn" secondAttribute="centerX" id="nmX-IO-4u0"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="BloomKids" id="eas-NK-hN3">
