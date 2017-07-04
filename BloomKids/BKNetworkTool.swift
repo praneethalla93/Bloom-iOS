@@ -49,7 +49,7 @@ class BKNetowrkTool {
 
 extension BKNetowrkTool {
     
-    func addKid(kidModel: BKKidModel, completion: @escaping (_ sucess: Bool,_ kidid: Int?) -> Void) {
+    func addKid(kidModel: BKKidModel, completion: @escaping (_ success: Bool,_ kidid: Int?) -> Void) {
         
         guard let currentEmail = BKAuthTool.shared.currentEmail else {
             print("currentEmail not complete")
@@ -57,14 +57,6 @@ extension BKNetowrkTool {
             return
         }
         
-        /*
-         var kidName: String
-         var id: String
-         var gender: String
-         var school: String
-         var sports: [BKSport]
-         var age: Int
-        */
         
         var dict = [String: Any]()
         dict["kidname"] = kidModel.kidName
@@ -96,31 +88,34 @@ extension BKNetowrkTool {
         
         
         request(.post, urlStr: BKNetworkingAddKidUrlStr, parameters: dict) { (success, data) in
-        if success {
             
-                do {
+            if success {
+                
+                    do {
 
-                    if  let data = data,
-                    let json = try JSONSerialization.jsonObject(with: data) as? [String: Any] {
-                    if let status = json["status"] as? Bool,
-                    let kidid = json["id"] as? Int {
-                        self.myKids.append(kidModel)
-                        completion(status, kidid)
+                        if  let data = data,
+                        let json = try JSONSerialization.jsonObject(with: data) as? [String: Any] {
+                        if let status = json["status"] as? Bool,
+                        let kidid = json["kidid"] as? Int {
+                            self.myKids.append(kidModel)
+                            completion(success, kidid)
+                        }
+                            
                     }
                         
+                    print("Success! add kid finished request)")
+
+                } catch {
+                    print("Error deserializing JSON: \(error)")
+                    print("Failed add kid finished request)")
+                    completion(false, nil)
+                    
                 }
-            } catch {
-                print("Error deserializing JSON: \(error)")
+                
+            }else{
                 completion(false, nil)
             }
-            
-        }else{
-            completion(false, nil)
-        }
-            
-            print("Add kid Finished request)")
-            //myGroup.leave()
-            
+                
         }
     }
     
@@ -265,7 +260,8 @@ extension BKNetowrkTool {
                     "state": currentState]
         */
         
-        let dict = ["email": currentEmail]
+        var dict = [String:String]()
+        dict = ["email": currentEmail!]
         
         request(.post, urlStr: BKNetworkingGetKidUrlStr, parameters: (dict )) { (success, data) in
             if success {
@@ -347,6 +343,64 @@ extension BKNetowrkTool {
         }
         
     }
+    
+    
+    
+    func connectionRequestor(receivingKid:BKKidModel, connectorKidId:Int, city:String, sportname:String, skilllevel:String, connectionDate:String, completion: @escaping (_ success: Bool) -> Void) {
+        
+        guard let currentEmail = BKAuthTool.shared.currentEmail else {
+            print("currentEmail not complete")
+            completion(false)
+            return
+        }
+        
+        print("currentEmail:\(currentEmail)")
+        
+    
+        
+        var dict = [String: Any]()
+        
+        dict["kidid"] = receivingKid.id
+        dict["kidname"] = receivingKid.kidName
+        dict["city"] = city
+        dict["connectorkidid"] = connectorKidId
+        dict["sportname"] = sportname
+        dict["skilllevel"] = skilllevel
+        dict["connectiondate"] = connectionDate
+        
+    
+        print("kid info:\(dict)")
+
+        request(.post, urlStr: BKNetworkingConnectionRequestorUrlStr, parameters: dict) { (success, data) in
+            if success {
+                
+                do {
+                    
+                    if  let data = data,
+                        let json = try JSONSerialization.jsonObject(with: data) as? [String: Any] {
+                        
+                        if let status = json["status"] as? Bool {
+                            
+                            //self.myKids.append(kidModel)
+                            print("ConnectionRequestor Finished request)")
+                            completion(status)
+                        
+                        }
+                    }
+                    
+                } catch {
+                    print("Error deserializing JSON: \(error)")
+                    completion(false)
+                }
+                
+            }else{
+                completion(false)
+            }
+            
+            
+        }
+    }
+
 
     
 }

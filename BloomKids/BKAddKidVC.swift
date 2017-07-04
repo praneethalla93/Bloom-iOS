@@ -25,12 +25,17 @@ class BKAddKidVC: UITableViewController {
     fileprivate var age: String?
     fileprivate var schoolPlace: BKPlaceModel?
     fileprivate weak var spotCell: BKSportCell?
+    fileprivate var newKid: BKKidModel?
+    
+    let myGroup = DispatchGroup()
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.title = "Add Kid"
+        
         
         photoHeaderVC.willMove(toParentViewController: self)
         addChildViewController(photoHeaderVC)
@@ -45,6 +50,26 @@ class BKAddKidVC: UITableViewController {
         leftBtn.addTarget(self, action: #selector(cancel(_:)), for: .touchUpInside)
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: leftBtn)
         
+        myGroup.enter()
+        
+        //after successfull addking kid
+        myGroup.notify(queue: .main) {
+            
+            
+             if self.newKid != nil {
+                print("\(String(describing: self.newKid?.kidName)) added successfully")
+                SVProgressHUD.showSuccess(withStatus: "\(String(describing: self.newKid?.kidName)) added successfully")
+                BKAuthTool.shared.finishedOnboarding()
+                
+                //cancel to returnt to your kids screen.
+                self.cancel(self)
+                
+             } else{
+                SVProgressHUD.showError(withStatus: "Failed to add kid")
+             }
+            
+        }
+        
     }
     
     func cancel(_ sender: Any) {
@@ -56,6 +81,7 @@ class BKAddKidVC: UITableViewController {
     }
     
     @IBAction func addKid(_ sender: UIBarButtonItem) {
+        
         guard let gender = genderStr,
         let name = name,
         let schoolPlace = schoolPlace,
@@ -69,31 +95,44 @@ class BKAddKidVC: UITableViewController {
             return
         }
         
-        /* {"gender":"boy",
-         "school":"Free school",
-         "kidName":"The son of Stone",
-         "sport":[{"interestLevel":"",
-         "sportName":"Call of Duty",
-         "skillLevel":"10^100"}],
-         "age":"10"}
-         */
-        
-        
         let kidModel = BKKidModel(kidName: name, gender: gender, school: schoolPlace.placeName, age: ageSr, sports: sports)
+        
+        
+        
         SVProgressHUD.show()
+        
         BKNetowrkTool.shared.addKid(kidModel: kidModel) { (success, kidid) in
+            
+            SVProgressHUD.dismiss()
+            self.myGroup.leave()
+            
+            if success {
+                self.newKid = kidModel
+                print ("success addking kid")
+            }
+            else {
+                self.newKid = nil
+                print ("failed addking kid")
+            }
+            
+            
+            /*
             
             if success {
                 print("kid added with kidid:\(String(describing: kidid))")
                 SVProgressHUD.showSuccess(withStatus: "Kid added")
                 BKAuthTool.shared.finishedTutorial()
-                self.delegate?.addKidVC(self, didAddkid: kidModel)
+                //self.delegate?.addKidVC(self, didAddkid: kidModel)
                 self.dismiss(animated: true, completion: nil)
             } else{
-                SVProgressHUD.showError(withStatus: "Fail to add kid")
+                SVProgressHUD.showError(withStatus: "Failed to add kid")
             }
+            */
+            
             
         }
+        
+        
 
     }
     

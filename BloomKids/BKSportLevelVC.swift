@@ -18,12 +18,11 @@ class BKSportLevelVC: UITableViewController {
     
     var sportName: String = "Chess"
     
-    var levels: [String] = ["Rookie", "Shining", "Star", "Rock Star"]
+    var levels: [String] = ["Rookie", "Shining Star", "Rock Star"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = sportName
-
     }
 
 

@@ -190,10 +190,11 @@ extension BKAuthTool: BKPlaceAutocompleteDelegate {
 //        BKAuthTool.shared.switchToMainUI()
     }
     
-    func finishedTutorial() {
+    func finishedOnboarding() {
         let keychain = Keychain(service: BKKeychainService)
-        keychain[BKHasFinishedTutorial] = "true"
+        keychain[BKHasFinishedOnboarding] = "true"
     }
+    
 }
 
 

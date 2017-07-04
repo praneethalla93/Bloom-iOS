@@ -30,11 +30,10 @@ let BKNetworkingAddKidUrlStr = "http://custom-env.aqrfytx2is.us-east-1.elasticbe
 
 let BKNetworkingGetKidUrlStr = "http://custom-env.aqrfytx2is.us-east-1.elasticbeanstalk.com/rest/kid/getkids"
 let BKNetworkingGetKidsFilteredUrlStr = "http://custom-env.aqrfytx2is.us-east-1.elasticbeanstalk.com/rest/kid/getkidsFiltered"
-
 let BKNetworkingLocationDetailsUrlStr = "http://custom-env.aqrfytx2is.us-east-1.elasticbeanstalk.com/rest/location/dolocationdetails"
 let BKNetworkingActivityConnectionUrlStr = "http://custom-env.aqrfytx2is.us-east-1.elasticbeanstalk.com/rest/connection/activityConnections"
-
-let BKNetworkingConnectionsUrlStr = "http://custom-env.aqrfytx2is.us-east-1.elasticbeanstalk.com/rest/connection/connections/"
+let BKNetworkingConnectionsUrlStr = "http://custom-env.aqrfytx2is.us-east-1.elasticbeanstalk.com/rest/connection/connections"
+let BKNetworkingConnectionRequestorUrlStr = "http://custom-env.aqrfytx2is.us-east-1.elasticbeanstalk.com/rest/connection/connectionRequestor"
 
 let BKShouldGoToMain = "BKShouldGoToMain"
 
@@ -58,7 +57,7 @@ let BKKidCellID = "BKKidCellID"
 let BKKidActionCellID = "BKKidActionCellID"
 
 let BKSportLevelCellID = "BKSportLevelCellID"
-let BKHasFinishedTutorial = "BKHasFinishedTutorial"
+let BKHasFinishedOnboarding = "BKHasFinishedOnboarding"
 
 //All connect screen CELLID
 let BKConnectSummaryHeaderCellID = "BKConnectSummaryHeaderCell"

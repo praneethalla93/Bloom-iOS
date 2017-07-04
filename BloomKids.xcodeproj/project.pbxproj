@@ -152,6 +152,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		724FDC581F0AE9AD0082A445 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A19893A21EE2154A00DDF240 /* BKKidModel.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		724FDC591F0AED360082A445 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				A1026A311EE286AC00FA7366 /* BKSportLevelCell.swift */,
+			);
+			name = Cell;
+			sourceTree = "<group>";
+		};
 		72D24A571F018C73002ACD79 /* VCs */ = {
 			isa = PBXGroup;
 			children = (
@@ -182,15 +198,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		A1026A2E1EE281A900FA7366 /* Sport */ = {
-			isa = PBXGroup;
-			children = (
-				A1026A2F1EE281C900FA7366 /* BKSportLevelVC.swift */,
-				A1026A311EE286AC00FA7366 /* BKSportLevelCell.swift */,
-			);
-			name = Sport;
-			sourceTree = "<group>";
-		};
 		A143871B1EE1569A0050A5D1 /* AHCategoryVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -208,9 +215,7 @@
 			children = (
 				A179F9B61ED28B4D00B42540 /* BKActivity.storyboard */,
 				A19893971EE1FE1700DDF240 /* VCs */,
-				A1026A2E1EE281A900FA7366 /* Sport */,
 				A19893A41EE2570200DDF240 /* Cell */,
-				A198939B1EE2020500DDF240 /* AddKid */,
 				A143871B1EE1569A0050A5D1 /* AHCategoryVC */,
 			);
 			name = Activity;
@@ -238,6 +243,7 @@
 			children = (
 				A179F9B41ED28A4500B42540 /* BKActivityVC.swift */,
 				A1B52EDA1EEC86C6000EB1CE /* BKConnectionVC.swift */,
+				A1026A2F1EE281C900FA7366 /* BKSportLevelVC.swift */,
 			);
 			name = VCs;
 			sourceTree = "<group>";
@@ -259,7 +265,6 @@
 				A198939C1EE2025900DDF240 /* BKPhotoHeaderVC.swift */,
 				A198939E1EE2027E00DDF240 /* BKPhotoHeaderView.swift */,
 				A19893A01EE2028A00DDF240 /* BKPhotoHeaderView.xib */,
-				A19893A21EE2154A00DDF240 /* BKKidModel.swift */,
 				A1F544101EE3D84B00D331B8 /* BKAddKidNavVC.swift */,
 			);
 			name = AddKid;
@@ -291,6 +296,7 @@
 		A1CFEFAC1ECD5DE3003DBA74 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				724FDC581F0AE9AD0082A445 /* Model */,
 				A1CFEFAD1ECD5DFB003DBA74 /* Constants.swift */,
 				A1CFEFAF1ECD5E02003DBA74 /* Headers.swift */,
 				A10645F11EE3B5BE0054267C /* BKKidCell.swift */,
@@ -338,6 +344,8 @@
 		A1FA1B3E1EE3A0A20025143E /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				A198939B1EE2020500DDF240 /* AddKid */,
+				724FDC591F0AED360082A445 /* Cell */,
 				A1FA1B421EE3A12D0025143E /* BKProfile.storyboard */,
 				A10645ED1EE3B0390054267C /* BKProfileVC.swift */,
 				A10645EF1EE3B20E0054267C /* BKYourKidsVC.swift */,

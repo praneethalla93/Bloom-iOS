@@ -19,6 +19,7 @@ class BKConnectPlayerCellVC: UITableViewController {
     fileprivate var myKidsPotentialConnections: [BKKidModel]?
     fileprivate var myKidsPotentialFilteredConnections: [BKKidModel]?
     let searchController = UISearchController(searchResultsController: nil)
+    var deleteConnecionSentdKidIndexPath: IndexPath? = nil
     
     var currentKid: BKKidModel?
     let myGroup = DispatchGroup()
@@ -32,8 +33,7 @@ class BKConnectPlayerCellVC: UITableViewController {
         tableView.register(kidCellNib, forCellReuseIdentifier: BKKidActionCellID)
         
         loadMyKidsPotentialConnections(sportNameParam: "", interestLevelParam: "")
-        
-        searchController.searchResultsUpdater = self
+        searchController.searchResultsUpdater = self as UISearchResultsUpdating
         searchController.dimsBackgroundDuringPresentation = false
         definesPresentationContext = true
         tableView.tableHeaderView = searchController.searchBar
@@ -42,13 +42,15 @@ class BKConnectPlayerCellVC: UITableViewController {
         
         searchController.searchBar.tintColor = BKGlobalTintColor
         searchController.searchBar.barTintColor = UIColor.white
-        searchController.searchBar.delegate = self
+        searchController.searchBar.delegate = self as UISearchBarDelegate
         
         //after successfull loading data
         myGroup.notify(queue: .main) {
             print("Finished all requests.")
             self.currentKid = self.myKidsPotentialConnections?[0]
+            SVProgressHUD.show()
             self.tableView.reloadData()
+            SVProgressHUD.dismiss()
             
         }
         
@@ -60,6 +62,7 @@ class BKConnectPlayerCellVC: UITableViewController {
     func loadMyKidsPotentialConnections(sportNameParam: String, interestLevelParam: String) {
         
         myGroup.enter()
+        SVProgressHUD.show()
         
         print ("entering loading current kid connections")
         
@@ -72,7 +75,6 @@ class BKConnectPlayerCellVC: UITableViewController {
                     
                     self.myKidsPotentialConnections = kids
                     print ("success loading current kid connections \(String(describing: self.myKidsPotentialConnections?.count))")
-                    
                     self.myGroup.leave()
                 }
                 else {
@@ -80,14 +82,38 @@ class BKConnectPlayerCellVC: UITableViewController {
                     print ("failure loading current kid connections")
                 }
                 
+            }
+            
+        }
+    }
+        
+    func sendConnectRequest(sendingKid: BKKidModel, receivingKid: BKKidModel) {
+        
+        myGroup.enter()
+        SVProgressHUD.show()
+        print ("entering sendConnectRequest")
+        
+        if currentKid != nil {
+            
+            BKNetowrkTool.shared.connectionRequestor(receivingKid: receivingKid, connectorKidId: sendingKid.id!, city: sendingKid.school, sportname: sendingKid.sports[0].sportName, skilllevel: sendingKid.sports[0].skillLevel, connectionDate: "07/03/2017") { ( success) in
+                
+                SVProgressHUD.dismiss()
+                
+                if success {
+                    print ("success sendConnectRequest)")
+                }
+                else {
+                    print ("failure sendConnectRequest")
+                }
+                
+                self.myGroup.leave()
                 
             }
             
         }
-        
+    
     }
 
-    
     
 }
 
@@ -184,8 +210,13 @@ extension BKConnectPlayerCellVC {
                 }
             }
             
-            
-            sectionTitle = "Connect with \(searchCount) Bloom kids."
+            if searchCount == 0 {
+                sectionTitle = "No kids available. Broaden your search"
+                
+            } else {
+                sectionTitle = "\(searchCount) BloomKids available to connect."
+            }
+
             
         }
         
@@ -223,21 +254,116 @@ extension BKConnectPlayerCellVC {
         */
     }
     
-    func showAlertForRow(row: Int) {
+    
+    
+    func showAlertforSendConnection (cell: UITableViewCell) {
         
-        if let kid = self.myKidsPotentialConnections?[row] {
+        var receivingKid: BKKidModel?
+        let indexPath = self.tableView.indexPath(for: cell)!
+        
+        
+        
+        if currentKid != nil {
             
-            let alert = UIAlertController ( title: "BEHOLD",
-                                            message: "\(kid.kidName) at row \(row) was tapped!",preferredStyle: .alert)
+            if searchController.isActive && searchController.searchBar.text != "" {
+                
+                if let potentialFilteredConnections = myKidsPotentialFilteredConnections {
+                    receivingKid = potentialFilteredConnections[indexPath.row]
+                }
+                
+            } else {
+                
+                if let potentialConnections = myKidsPotentialConnections {
+                    receivingKid = potentialConnections[indexPath.row]
+                }
+                
+            }
+            
+            let alert = UIAlertController ( title: "New connection request",
+                                            message: "Want to connect with \(receivingKid!.kidName) at row \(indexPath.row)?",preferredStyle: .actionSheet)
+            /*
             alert.addAction(UIAlertAction(title: "Gotcha!", style: UIAlertActionStyle.default, handler: { (test) -> Void in
+                self.dismiss(animated: true, completion: nil)
+            }))
+            */
+            
+            alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
+                
+                self.dismiss(animated: true, completion: nil)
+                self.sendConnectRequest(sendingKid: self.currentKid!, receivingKid: receivingKid!)
+                self.deleteConnecionSentdKidIndexPath = indexPath
+                self.handleSucessDeleteConnection(alertAction: nil)
+                //@TODO call connect requestor API
+                
+            }))
+            
+            alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: { (action: UIAlertAction!) in
+                print("Handle Cancel Logic here")
+                self.cancelConnectRequest()
                 self.dismiss(animated: true, completion: nil)
             }))
             
             self.present( alert, animated: true, completion: nil)
             
         }
-        
     }
+    
+    
+    
+    
+    
+    func handleSucessDeleteConnection(alertAction: UIAlertAction!) -> Void {
+        
+        if let indexPath = deleteConnecionSentdKidIndexPath {
+            
+            if searchController.searchBar.text != "" {
+                
+                if myKidsPotentialFilteredConnections != nil {
+                    //Remove from myKidsPotentialConnections as well before removing from Filter
+                    
+                    let kid = myKidsPotentialFilteredConnections![indexPath.row]
+                    
+                    var index = 0
+                    
+                    for forKid in myKidsPotentialConnections! {
+                        
+                        print ( "forKid.id \(String(describing: forKid.id )) || kid.id \(String(describing: kid.id ))")
+                        
+                        if forKid.id == kid.id {
+                            myKidsPotentialConnections!.remove(at: index)
+                            break
+                        }
+                        
+                        index += 1
+                    }
+                    
+                    myKidsPotentialFilteredConnections!.remove(at: indexPath.row)
+                    
+                }
+                
+            } else {
+                
+                if  myKidsPotentialConnections != nil {
+                    myKidsPotentialConnections!.remove(at: indexPath.row)
+                }
+
+            }
+            
+            
+            tableView.beginUpdates()
+            // Note that indexPath is wrapped in an array:  [indexPath]
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            deleteConnecionSentdKidIndexPath = nil
+            tableView.endUpdates()
+            
+        }
+
+    }
+    
+    func cancelConnectRequest() {
+        deleteConnecionSentdKidIndexPath = nil
+    }
+
     
     
 }
@@ -277,7 +403,7 @@ extension BKConnectPlayerCellVC {
             cell.btnPlayerAction.setImage( UIImage(named: BKImageConnectBtnIcon), for: .normal)
             // Assign the tap action which will be executed when the user taps the UIButton
             cell.tapAction = { [weak self] (cell) in
-                self?.showAlertForRow(row: tableView.indexPath(for: cell)!.row)
+                self?.showAlertforSendConnection(cell: cell)
             }
         }
         
@@ -342,12 +468,9 @@ extension BKConnectPlayerCellVC: UISearchBarDelegate {
                     //print ("Scope \(scope) || searchTech \(searchText) || kid \(kid.kidName) || sportsMarch \(sportsMatch) || Selected \(sportsMatch && kid.kidName.lowercased().contains(searchText.lowercased()))")
                     
                     print ("kidsearchabletext \(kidSearchableText) Selected \(sportsMatch && kidSearchableText.lowercased().contains(searchText.lowercased()))")
-                    
-                    
                     return  sportsMatch && kidSearchableText.lowercased().contains(searchText.lowercased())
                 }
                 
-               
             }
             
             

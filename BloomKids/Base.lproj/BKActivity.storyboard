@@ -4,9 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -16,7 +14,7 @@
                 <navigationController id="zIv-Jq-I1G" customClass="BKNavigationVC" customModule="BloomKids" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Activity" image="activity-tabbar-icon" selectedImage="activity-tabbar-icon" id="BeC-Ri-Fj1"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="oub-NO-aGU">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="oub-NO-aGU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -32,302 +30,14 @@
         <scene sceneID="5vO-sI-xGz">
             <objects>
                 <navigationController storyboardIdentifier="BKAddKidNavVC" id="rKB-C2-Kal" customClass="BKNavigationVC" customModule="BloomKids" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="AQS-Qc-QQh">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="AQS-Qc-QQh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
-                    <connections>
-                        <segue destination="NBP-C9-ySs" kind="relationship" relationship="rootViewController" id="I5a-hV-LNX"/>
-                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DiK-N5-tRV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1168" y="-1191"/>
-        </scene>
-        <!--Add KidVC-->
-        <scene sceneID="kwb-ch-BSM">
-            <objects>
-                <tableViewController storyboardIdentifier="BKAddKidVC" id="NBP-C9-ySs" customClass="BKAddKidVC" customModule="BloomKids" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="58" sectionHeaderHeight="28" sectionFooterHeight="28" id="YmG-Ml-InB">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BKPhotoHeaderCellID" rowHeight="58" id="aS0-SO-Ma5">
-                                <rect key="frame" x="0.0" y="28" width="375" height="58"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aS0-SO-Ma5" id="W6n-Zd-AnW">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="58"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BKSimpleCellID" rowHeight="44" id="SLS-Eb-4vO" customClass="BKSimpleCell" customModule="BloomKids" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="86" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SLS-Eb-4vO" id="eHv-p2-cPg">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Gkb-7l-fGe">
-                                            <rect key="frame" x="16" y="8" width="343" height="27.5"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mTy-Xr-34s">
-                                                    <rect key="frame" x="0.0" y="0.0" width="52.5" height="27.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Twk-ti-pjA">
-                                                    <rect key="frame" x="72.5" y="0.0" width="270.5" height="27.5"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="270.5" id="O3G-Or-g4a"/>
-                                                    </constraints>
-                                                    <nil key="textColor"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
-                                            </subviews>
-                                        </stackView>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="bottom" secondItem="Gkb-7l-fGe" secondAttribute="bottom" constant="8" id="5U6-Kz-gMT"/>
-                                        <constraint firstAttribute="trailing" secondItem="Gkb-7l-fGe" secondAttribute="trailing" constant="16" id="GL7-qo-NYd"/>
-                                        <constraint firstItem="Gkb-7l-fGe" firstAttribute="leading" secondItem="eHv-p2-cPg" secondAttribute="leading" constant="16" id="QOz-3l-3Vg"/>
-                                        <constraint firstItem="Gkb-7l-fGe" firstAttribute="top" secondItem="eHv-p2-cPg" secondAttribute="top" constant="8" id="qhJ-21-d7T"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="label" destination="mTy-Xr-34s" id="RZd-9Q-obb"/>
-                                    <outlet property="textField" destination="Twk-ti-pjA" id="mjz-iM-LQv"/>
-                                </connections>
-                            </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BKGenderCellID" id="NML-d6-yjg" customClass="BKGenderCell" customModule="BloomKids" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="130" width="375" height="58"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NML-d6-yjg" id="Qks-jr-Cl5">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="58"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="Ozd-MZ-z3I">
-                                            <rect key="frame" x="16" y="8" width="343" height="42"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gender " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tXp-nc-qXD">
-                                                    <rect key="frame" x="0.0" y="0.0" width="61.5" height="42"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Nbt-N2-sDl">
-                                                    <rect key="frame" x="91.5" y="0.0" width="251.5" height="42"/>
-                                                    <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CJA-YY-Hca">
-                                                            <rect key="frame" x="0.0" y="0.0" width="116" height="42"/>
-                                                            <color key="backgroundColor" red="0.44705882349999998" green="0.79215686269999996" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <state key="normal" title="Boy">
-                                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                            </state>
-                                                            <connections>
-                                                                <action selector="genderBtnTapped:" destination="NML-d6-yjg" eventType="touchUpInside" id="5uN-SD-M1r"/>
-                                                            </connections>
-                                                        </button>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IbP-Ue-Iow">
-                                                            <rect key="frame" x="136" y="0.0" width="115.5" height="42"/>
-                                                            <color key="backgroundColor" red="0.44705882349999998" green="0.79215686269999996" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <state key="normal" title="Girl">
-                                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                            </state>
-                                                            <connections>
-                                                                <action selector="genderBtnTapped:" destination="NML-d6-yjg" eventType="touchUpInside" id="VML-Qu-7ah"/>
-                                                            </connections>
-                                                        </button>
-                                                    </subviews>
-                                                </stackView>
-                                            </subviews>
-                                        </stackView>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="Ozd-MZ-z3I" secondAttribute="trailing" constant="16" id="CQR-Eo-xVW"/>
-                                        <constraint firstItem="Ozd-MZ-z3I" firstAttribute="top" secondItem="Qks-jr-Cl5" secondAttribute="top" constant="8" id="KTU-Hp-JMA"/>
-                                        <constraint firstItem="Ozd-MZ-z3I" firstAttribute="leading" secondItem="Qks-jr-Cl5" secondAttribute="leading" constant="16" id="NLD-lr-Zmk"/>
-                                        <constraint firstAttribute="bottom" secondItem="Ozd-MZ-z3I" secondAttribute="bottom" constant="8" id="TR3-Pz-btk"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="boyBtn" destination="CJA-YY-Hca" id="8ff-TN-Vnt"/>
-                                    <outlet property="girlBtn" destination="IbP-Ue-Iow" id="Dg6-zW-bBx"/>
-                                </connections>
-                            </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BKSchoolSearchCellID" rowHeight="44" id="B1v-ZR-WzJ" customClass="BKSchoolSearchCell" customModule="BloomKids" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="188" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="B1v-ZR-WzJ" id="CQN-XM-cVD">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="GQW-hF-7dh">
-                                            <rect key="frame" x="16" y="8" width="343" height="27.5"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="School" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sgE-qO-LJ7">
-                                                    <rect key="frame" x="0.0" y="0.0" width="52.5" height="27.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="D2G-Hd-heK">
-                                                    <rect key="frame" x="72.5" y="0.0" width="270.5" height="27.5"/>
-                                                    <gestureRecognizers/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="270.5" id="l0U-Cw-8dF"/>
-                                                    </constraints>
-                                                    <nil key="textColor"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
-                                            </subviews>
-                                        </stackView>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="bottom" secondItem="GQW-hF-7dh" secondAttribute="bottom" constant="8" id="Ix4-ie-9o7"/>
-                                        <constraint firstItem="GQW-hF-7dh" firstAttribute="leading" secondItem="CQN-XM-cVD" secondAttribute="leading" constant="16" id="PpF-Bb-JRa"/>
-                                        <constraint firstItem="GQW-hF-7dh" firstAttribute="top" secondItem="CQN-XM-cVD" secondAttribute="top" constant="8" id="WSX-gz-b3A"/>
-                                        <constraint firstAttribute="trailing" secondItem="GQW-hF-7dh" secondAttribute="trailing" constant="16" id="uAZ-O1-QLP"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="schoolNameField" destination="D2G-Hd-heK" id="VYv-gC-fp0"/>
-                                </connections>
-                            </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BKSportCellID" rowHeight="234" id="SZc-Tx-InA" customClass="BKSportCell" customModule="BloomKids" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="232" width="375" height="234"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SZc-Tx-InA" id="irG-1b-OkD">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="234"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="U6Y-kn-tAc">
-                                            <rect key="frame" x="16" y="16" width="343" height="202"/>
-                                            <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="3rt-mZ-BL2">
-                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="91"/>
-                                                    <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bwK-D4-pGD" customClass="AHStackButton" customModule="BloomKids" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="0.0" width="101" height="91"/>
-                                                            <color key="backgroundColor" red="0.44705882352941173" green="0.792156862745098" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <state key="normal" title="Chess" image="sport-add-icon"/>
-                                                        </button>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uWd-aB-obU" customClass="AHStackButton" customModule="BloomKids" customModuleProvider="target">
-                                                            <rect key="frame" x="121" y="0.0" width="101" height="91"/>
-                                                            <color key="backgroundColor" red="0.44705882352941173" green="0.792156862745098" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <state key="normal" title="Baseball" image="sport-add-icon"/>
-                                                        </button>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BMh-20-laS" customClass="AHStackButton" customModule="BloomKids" customModuleProvider="target">
-                                                            <rect key="frame" x="242" y="0.0" width="101" height="91"/>
-                                                            <color key="backgroundColor" red="0.44705882352941173" green="0.792156862745098" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <state key="normal" title="soccer" image="sport-add-icon"/>
-                                                        </button>
-                                                    </subviews>
-                                                </stackView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Swy-2E-Um9">
-                                                    <rect key="frame" x="0.0" y="111" width="343" height="91"/>
-                                                    <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fxR-je-Bob" customClass="AHStackButton" customModule="BloomKids" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="0.0" width="101" height="91"/>
-                                                            <color key="backgroundColor" red="0.44705882352941173" green="0.792156862745098" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <state key="normal" title="Basketball" image="sport-add-icon"/>
-                                                        </button>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uwy-zQ-2OE" customClass="AHStackButton" customModule="BloomKids" customModuleProvider="target">
-                                                            <rect key="frame" x="121" y="0.0" width="101" height="91"/>
-                                                            <color key="backgroundColor" red="0.44705882352941173" green="0.792156862745098" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <state key="normal" title="Tennis" image="sport-add-icon"/>
-                                                        </button>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CwT-Wk-ppg" customClass="AHStackButton" customModule="BloomKids" customModuleProvider="target">
-                                                            <rect key="frame" x="242" y="0.0" width="101" height="91"/>
-                                                            <color key="backgroundColor" red="0.44705882352941173" green="0.792156862745098" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <state key="normal" title="Football" image="sport-add-icon"/>
-                                                        </button>
-                                                    </subviews>
-                                                </stackView>
-                                            </subviews>
-                                        </stackView>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="bottomMargin" secondItem="U6Y-kn-tAc" secondAttribute="bottom" constant="8" id="B5c-Sj-enQ"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="U6Y-kn-tAc" secondAttribute="trailing" constant="8" id="M8W-Xm-Bxo"/>
-                                        <constraint firstItem="U6Y-kn-tAc" firstAttribute="leading" secondItem="irG-1b-OkD" secondAttribute="leadingMargin" constant="8" id="PLN-4M-5Pu"/>
-                                        <constraint firstItem="U6Y-kn-tAc" firstAttribute="top" secondItem="irG-1b-OkD" secondAttribute="topMargin" constant="8" id="XWh-02-HLa"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="baseBallBtn" destination="uWd-aB-obU" id="QPa-TA-g2d"/>
-                                    <outlet property="basketBallBtn" destination="fxR-je-Bob" id="2hD-Jq-yLG"/>
-                                    <outlet property="chessBtn" destination="bwK-D4-pGD" id="zvr-83-DMm"/>
-                                    <outlet property="footBallBtn" destination="CwT-Wk-ppg" id="GEA-sO-CHO"/>
-                                    <outlet property="soccerBtn" destination="BMh-20-laS" id="wiz-IB-yZ2"/>
-                                    <outlet property="tenisBtn" destination="Uwy-zQ-2OE" id="Q00-j1-KtK"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <sections/>
-                        <connections>
-                            <outlet property="dataSource" destination="NBP-C9-ySs" id="GyY-EN-qVo"/>
-                            <outlet property="delegate" destination="NBP-C9-ySs" id="JKQ-9M-A8h"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="RzE-j7-Ycb">
-                        <barButtonItem key="rightBarButtonItem" title="Add" id="CJS-CJ-mwX">
-                            <connections>
-                                <action selector="addKid:" destination="NBP-C9-ySs" id="Rib-3Y-jsp"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4zw-gI-ukf" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-12" y="-1275"/>
-        </scene>
-        <!--Sport LevelVC-->
-        <scene sceneID="RUt-fP-aes">
-            <objects>
-                <tableViewController storyboardIdentifier="BKSportLevelVC" id="5b2-lx-OxA" customClass="BKSportLevelVC" customModule="BloomKids" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Zak-pF-IzS">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BKSportLevelCellID" id="bBn-8t-Ptl" customClass="BKSportLevelCell" customModule="BloomKids" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bBn-8t-Ptl" id="1uR-EJ-wah">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sej-ec-CQu">
-                                            <rect key="frame" x="16" y="8" width="42" height="27.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="sej-ec-CQu" firstAttribute="top" secondItem="1uR-EJ-wah" secondAttribute="topMargin" id="ZwP-m6-rji"/>
-                                        <constraint firstItem="sej-ec-CQu" firstAttribute="leading" secondItem="1uR-EJ-wah" secondAttribute="leadingMargin" constant="8" id="lhS-gF-z75"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="sej-ec-CQu" secondAttribute="bottom" id="ljT-lm-Lmx"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="sportLabel" destination="sej-ec-CQu" id="zhN-eO-xOu"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="5b2-lx-OxA" id="C9y-at-c7c"/>
-                            <outlet property="delegate" destination="5b2-lx-OxA" id="GAy-Sy-RuT"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ifd-kQ-1TG" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="990" y="-1275"/>
         </scene>
         <!--Activity-->
         <scene sceneID="SkF-zT-sJj">
@@ -357,6 +67,5 @@
     </scenes>
     <resources>
         <image name="activity-tabbar-icon" width="26" height="26"/>
-        <image name="sport-add-icon" width="22" height="22"/>
     </resources>
 </document>

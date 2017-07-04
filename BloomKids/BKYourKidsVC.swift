@@ -34,6 +34,7 @@ class BKYourKidsVC: UITableViewController {
         BKNetowrkTool.shared.getKids { (success, kids) in
             SVProgressHUD.dismiss()
             if let kids = kids, success {
+                
                 self.kids = kids.sorted(by: { (kid1, kid2) -> Bool in
                     let kid1ID = kid1.id ?? 0
                     let kid2ID = kid2.id ?? 0
@@ -104,6 +105,7 @@ class BKYourKidsVC: UITableViewController {
  
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
         if indexPath.section == 0 {
             return 35.0
         }else{
@@ -112,6 +114,7 @@ class BKYourKidsVC: UITableViewController {
             //return 400 + 20
             return BKKidCellHeight
         }
+        
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -119,8 +122,7 @@ class BKYourKidsVC: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
         
         if indexPath.section == 0 {
-            let addKidVC = UIStoryboard(name: "BKActivity", bundle: nil).instantiateViewController(withIdentifier: "BKAddKidVC") as! BKAddKidVC
-            
+            let addKidVC = UIStoryboard(name: "BKProfile", bundle: nil).instantiateViewController(withIdentifier: "BKAddKidVC") as! BKAddKidVC
             addKidVC.delegate = self
             navigationController?.pushViewController(addKidVC, animated: true)
         }

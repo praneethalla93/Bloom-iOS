@@ -34,6 +34,7 @@ class BKConnectionVC: UITableViewController {
                 self.tableView.reloadData()
             }
         }
+        
     }
     
     override func didReceiveMemoryWarning() {
