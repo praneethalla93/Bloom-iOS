@@ -18,7 +18,7 @@ class BKConnectSectionHeaderVC: UIViewController {
         //@TODO: confirm
         photoHeaderView.frame = view.bounds
         view.addSubview(photoHeaderView)
-        
+    
     }
     
     

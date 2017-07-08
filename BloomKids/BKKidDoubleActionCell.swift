@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BKKidActionCell: UITableViewCell {
+class BKKidDoubleActionCell: UITableViewCell {
 
 
     @IBOutlet weak var imgPlayer: UIImageView!
@@ -19,10 +19,11 @@ class BKKidActionCell: UITableViewCell {
     @IBOutlet weak var imgSportIcon4: UIImageView!
     @IBOutlet weak var imgSportIcon5: UIImageView!
     @IBOutlet weak var imgSportIcon6: UIImageView!
-    @IBOutlet weak var btnPlayerAction: UIButton!
-    
-    
+    @IBOutlet weak var btnPlayerAction1: UIButton!
+    @IBOutlet weak var btnPlayerAction2: UIButton!
     @IBOutlet weak var lblPlayerSchoolAge: UILabel!
+    @IBOutlet weak var lblActionStatus: UILabel!
+    
     
      var tapAction: ((UITableViewCell) -> Void)?
     
@@ -54,14 +55,16 @@ class BKKidActionCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    @IBAction func btnPlayerActionTapped(_ sender: Any) {
+    
+    @IBAction func btnPlayerctionButton1Tapped(_ sender: Any) {
+        tapAction?(self)
+    }
+    
+    @IBAction func btnPlayerctionButton2Tapped(_ sender: Any) {
         tapAction?(self)
         
     }
-    
-    
-    
-    
+
     
 }
 

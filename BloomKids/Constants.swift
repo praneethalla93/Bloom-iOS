@@ -55,6 +55,7 @@ let BKSportCellID = "BKSportCellID"
 let BKAddKidCellID = "BKAddKidCellID"
 let BKKidCellID = "BKKidCellID"
 let BKKidActionCellID = "BKKidActionCellID"
+let BKKidDoubleActionCellID = "BKKidDoubleActionCellID"
 
 let BKSportLevelCellID = "BKSportLevelCellID"
 let BKHasFinishedOnboarding = "BKHasFinishedOnboarding"
@@ -72,5 +73,8 @@ let BKImageScheduleBtnIcon = "schedule-btn-icon"
 //All seques
 let BKConnectPlayerCellSeque = "BKConnectPlayerCellSeque"
 
+
+//Model data
+let BKBloomSports = ["All", "Tennis", "Chess", "Basketbll", "Baseball", "Cricket", "Soccer" ]
 
 

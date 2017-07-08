@@ -96,8 +96,7 @@ class BKAddKidVC: UITableViewController {
         }
         
         let kidModel = BKKidModel(kidName: name, gender: gender, school: schoolPlace.placeName, age: ageSr, sports: sports)
-        
-        
+    
         
         SVProgressHUD.show()
         

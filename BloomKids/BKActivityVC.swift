@@ -9,12 +9,14 @@
 import UIKit
 import MapKit
 import KeychainAccess
+import SVProgressHUD
 
 private let cellID = "cellID"
 
 class BKActivityVC: UIViewController {
     
     let categories = ["Connections", "Events"]
+    
     @IBAction func logout(_ sender: UIBarButtonItem) {
         BKAuthTool.shared.logout()
     }
@@ -32,7 +34,8 @@ class BKActivityVC: UIViewController {
         //if let _hasFinished = try? keychain.getString(BKHasFinishedTutorial), let _ = _hasFinished {
         if _hasFinished {
             
-        }else{
+        } else {
+            
             let addKidVC = UIStoryboard(name: "BKActivity", bundle: nil).instantiateViewController(withIdentifier: "BKAddKidNavVC")
             present(addKidVC, animated: true, completion: nil)
         }
@@ -71,4 +74,5 @@ class BKActivityVC: UIViewController {
         view.addSubview(categoryView)
     }
 
+    
 }

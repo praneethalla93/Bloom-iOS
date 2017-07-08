@@ -13,7 +13,7 @@ import SVProgressHUD
 class BKYourKidsVC: UITableViewController {
     
 
-    fileprivate var kids: [BKKidModel]?
+    fileprivate var myKids: [BKKidModel]?
     let myGroup = DispatchGroup()
     
     override func viewDidLoad() {
@@ -28,19 +28,12 @@ class BKYourKidsVC: UITableViewController {
         */
         
         SVProgressHUD.show()
-        
         myGroup.enter()
         
-        BKNetowrkTool.shared.getKids { (success, kids) in
+        BKNetowrkTool.shared.getMyKids { (success, kids) in
             SVProgressHUD.dismiss()
-            if let kids = kids, success {
-                
-                self.kids = kids.sorted(by: { (kid1, kid2) -> Bool in
-                    let kid1ID = kid1.id ?? 0
-                    let kid2ID = kid2.id ?? 0
-                    return kid1ID > kid2ID
-                })
-                
+            if let myKids = kids, success {
+                self.myKids = myKids
                 self.myGroup.leave()
                 
             }
@@ -68,8 +61,8 @@ class BKYourKidsVC: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             return 1
-        }else{
-            return kids?.count ?? 0
+        } else {
+            return self.myKids?.count ?? 0
         }
         
     }
@@ -83,16 +76,13 @@ class BKYourKidsVC: UITableViewController {
             return cell
             
         } else {
-
             let cell = tableView.dequeueReusableCell(withIdentifier: BKKidActionCellID, for: indexPath) as! BKKidActionCell
-            let kidModel = kids![indexPath.row]
+            let kidModel = self.myKids![indexPath.row]
             cell.kidModel = kidModel
             
             //cell.imgActionButtonImage.image = UIImage(named: BKImageEditBtnIcon)
             
-            
             cell.btnPlayerAction.setImage( UIImage(named: BKImageEditBtnIcon), for: .normal)
-            
             // Assign the tap action which will be executed when the user taps the UIButton
             cell.tapAction = { [weak self] (cell) in
                 self?.showAlertForRow(row: tableView.indexPath(for: cell)!.row)
@@ -130,7 +120,7 @@ class BKYourKidsVC: UITableViewController {
     
     func showAlertForRow(row: Int) {
         
-        if let kid = kids?[row] {
+        if let kid = self.myKids?[row] {
         
             let alert = UIAlertController ( title: "BEHOLD",
                 message: "\(kid.kidName) at row \(row) was tapped!",
@@ -151,7 +141,7 @@ class BKYourKidsVC: UITableViewController {
 extension BKYourKidsVC: BKAddKidVCDelegate {
     
     func addKidVC(_ vc: BKAddKidVC, didAddkid kid: BKKidModel) {
-        kids?.insert(kid, at: 0)
+        self.myKids?.insert(kid, at: 0)
         self.tableView.reloadData()
         navigationController?.popViewController(animated: true)
         print("didAddkid")

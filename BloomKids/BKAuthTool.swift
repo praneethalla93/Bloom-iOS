@@ -11,6 +11,7 @@ import KeychainAccess
 import SVProgressHUD
 
 class BKAuthTool {
+    
     static let shared = BKAuthTool()
     var currentEmail: String?
     var currentState: String?
@@ -26,10 +27,7 @@ class BKAuthTool {
         //Scenario 2. The user will be shown Main UI if he already has the credentials with successful login
         //Scenario 3. The user will be shown Auth UI if he already has the credentials with failed login
         
-        
         let showViewController = authStoryboard.instantiateViewController(withIdentifier: "BKNavigationVC")
-        
-
         let keychain = Keychain(service: BKKeychainService)
         
         if let emailStr = try? keychain.getString(BKUserEmailKey), let email = emailStr {
@@ -39,6 +37,7 @@ class BKAuthTool {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: { 
                 if let passwordStr = try? keychain.getString(email), let password = passwordStr{
                     self.authenticate(email, password, completion: { (success) in
+                        
                         if success {
                             
                             //let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
@@ -47,7 +46,8 @@ class BKAuthTool {
                             
                         }else{
                             SVProgressHUD.showError(withStatus: "login failed")
-                            self.switchToAuthUI()
+                            self.switchToMainUI()
+                            //self.switchToAuthUI()
                         }
                     })
                     
@@ -56,6 +56,7 @@ class BKAuthTool {
                     SVProgressHUD.showError(withStatus: "password not in keychain")
                     self.switchToAuthUI()
                 }
+
             })
             
             
@@ -79,7 +80,6 @@ class BKAuthTool {
                 return vc
             }
             */
-            
             
         }
         
@@ -140,15 +140,20 @@ class BKAuthTool {
     
     func authenticate(_ email: String, _ password: String, completion: @escaping (_ success: Bool)->Void) {
         let parameter = ["email": email, "password": password]
+        print("Parameters : \(parameter)")
+        
         BKNetowrkTool.shared.request(.post, urlStr: BKNetworkingLoginUrlStr, parameters: parameter) { (success, data) in
+            
             if success {
                 let keychain = Keychain(service: BKKeychainService)
                 self.currentEmail = email
                 keychain[email] = password
                 keychain[BKUserEmailKey] = email
+                completion(success)
+            } else {
+                completion(false)
             }
             
-            completion(success)
         }
     }
     

@@ -38,7 +38,7 @@ class BKConnectPlayerCellVC: UITableViewController {
         definesPresentationContext = true
         tableView.tableHeaderView = searchController.searchBar
         
-        searchController.searchBar.scopeButtonTitles = ["All", "Tennis", "Chess", "Basketbll", "Baseball", "Cricket", "Soccer" ]
+        searchController.searchBar.scopeButtonTitles = BKBloomSports
         
         searchController.searchBar.tintColor = BKGlobalTintColor
         searchController.searchBar.barTintColor = UIColor.white
@@ -79,7 +79,7 @@ class BKConnectPlayerCellVC: UITableViewController {
                 }
                 else {
                     self.myGroup.leave()
-                    print ("failure loading current kid connections")
+                    print ("failure loading potential new connections")
                 }
                 
             }
@@ -94,6 +94,12 @@ class BKConnectPlayerCellVC: UITableViewController {
         print ("entering sendConnectRequest")
         
         if currentKid != nil {
+            
+            let date = Date()
+            let formatter = DateFormatter()
+            formatter.dateFormat = "mm/dd/yyyy"
+            
+            let result = formatter.string(from: date)
             
             BKNetowrkTool.shared.connectionRequestor(receivingKid: receivingKid, connectorKidId: sendingKid.id!, city: sendingKid.school, sportname: sendingKid.sports[0].sportName, skilllevel: sendingKid.sports[0].skillLevel, connectionDate: "07/03/2017") { ( success) in
                 

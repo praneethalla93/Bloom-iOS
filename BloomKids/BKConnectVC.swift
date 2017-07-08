@@ -68,6 +68,7 @@ class BKConnectVC: UITableViewController {
             //@TODO: reload 
             
             self?.currentKid = self?.myKids?[indexPath]
+            BKNetowrkTool.shared.myCurrentKid =  self?.currentKid
             self?.loadCurrentKidConnections()
             
             
@@ -122,8 +123,8 @@ class BKConnectVC: UITableViewController {
         
             if let kid = currentKid {
             
-            BKNetowrkTool.shared.getKidConnections(kidModel: kid) { ( success, kids) in
-                SVProgressHUD.dismiss()
+                BKNetowrkTool.shared.getKidConnections(kidModel: kid) { ( success, kids) in
+                    SVProgressHUD.dismiss()
                 
                 if let kids = kids, success {
                     

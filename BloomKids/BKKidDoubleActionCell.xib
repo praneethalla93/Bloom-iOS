@@ -12,11 +12,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BKKidCellAction" customModule="BloomKids" customModuleProvider="target"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BKKidActionCellID" rowHeight="100" id="j6q-P8-nCo" userLabel="BKKidActionCell" customClass="BKKidActionCell" customModule="BloomKids" customModuleProvider="target">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BKKidDoubleActionCellID" rowHeight="100" id="j6q-P8-nCo" userLabel="BKKidDoubleActionCell" customClass="BKKidDoubleActionCell" customModule="BloomKids" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="j6q-P8-nCo" id="OkW-81-c7z">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="89.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo-placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="glw-M7-KpX" userLabel="playerImageView">
@@ -32,7 +32,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="School, Age" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lfd-5W-sK5">
-                        <rect key="frame" x="86.5" y="38.5" width="243.5" height="16"/>
+                        <rect key="frame" x="86.5" y="38.5" width="228.5" height="16"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
@@ -74,29 +74,51 @@
                         </constraints>
                     </stackView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o2g-qS-Yy8">
-                        <rect key="frame" x="335" y="10" width="30" height="69.5"/>
+                        <rect key="frame" x="320" y="10" width="45" height="69.5"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8u7-mj-fZO" userLabel="actionButton">
-                                <rect key="frame" x="2" y="21.5" width="25" height="25"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="24W-nd-M44"/>
-                                    <constraint firstAttribute="width" secondItem="8u7-mj-fZO" secondAttribute="height" multiplier="1:1" id="77v-19-YAe"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="2"/>
-                                <state key="normal" image="connect-btn-icon">
-                                    <color key="titleColor" red="0.44705882352941173" green="0.792156862745098" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" red="0.44705882349999998" green="0.79215686269999996" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="btnPlayerActionTapped:" destination="j6q-P8-nCo" eventType="touchUpInside" id="gQt-p8-sU2"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="M4h-f4-Fd2">
+                                <rect key="frame" x="0.0" y="0.0" width="45" height="69.5"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8u7-mj-fZO" userLabel="btnPlayerAction1">
+                                        <rect key="frame" x="0.0" y="0.0" width="45" height="16.5"/>
+                                        <color key="backgroundColor" red="0.44705882352941173" green="0.79607843137254897" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                        <state key="normal" title="Accept">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="btnPlayerctionButton1Tapped:" destination="j6q-P8-nCo" eventType="touchUpInside" id="hLp-sg-SkJ"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Accepted" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ziR-kl-Obm" userLabel="lblActionStatus">
+                                        <rect key="frame" x="0.0" y="26.5" width="45" height="16.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                                        <color key="textColor" red="0.44705882352941173" green="0.79607843137254897" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lfS-jj-E0c" userLabel="btnPlayerAction2">
+                                        <rect key="frame" x="0.0" y="53" width="45" height="16.5"/>
+                                        <color key="backgroundColor" red="0.44705882352941173" green="0.79607843137254897" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                        <state key="normal" title="Decline">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="btnPlayerctionButton2Tapped:" destination="j6q-P8-nCo" eventType="touchUpInside" id="4h9-94-nTj"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="30" id="MoB-32-nMY"/>
-                            <constraint firstItem="8u7-mj-fZO" firstAttribute="centerX" secondItem="o2g-qS-Yy8" secondAttribute="centerX" id="bHJ-ve-miv"/>
-                            <constraint firstItem="8u7-mj-fZO" firstAttribute="centerY" secondItem="o2g-qS-Yy8" secondAttribute="centerY" id="qIZ-WJ-Aoq"/>
+                            <constraint firstAttribute="trailing" secondItem="M4h-f4-Fd2" secondAttribute="trailing" id="58M-lz-0yx"/>
+                            <constraint firstAttribute="bottom" secondItem="M4h-f4-Fd2" secondAttribute="bottom" id="Ag2-4p-LLO"/>
+                            <constraint firstAttribute="width" constant="45" id="MoB-32-nMY"/>
+                            <constraint firstItem="M4h-f4-Fd2" firstAttribute="leading" secondItem="o2g-qS-Yy8" secondAttribute="leading" id="wVM-hE-35P"/>
+                            <constraint firstItem="M4h-f4-Fd2" firstAttribute="top" secondItem="o2g-qS-Yy8" secondAttribute="top" id="xuK-8t-ueh"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -121,7 +143,8 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="btnPlayerAction" destination="8u7-mj-fZO" id="YXl-iq-knH"/>
+                <outlet property="btnPlayerAction1" destination="8u7-mj-fZO" id="1mJ-o0-Fk7"/>
+                <outlet property="btnPlayerAction2" destination="lfS-jj-E0c" id="8xG-d9-WRG"/>
                 <outlet property="imgPlayer" destination="glw-M7-KpX" id="efh-U5-dYh"/>
                 <outlet property="imgSportIcon1" destination="wkI-bc-Jwa" id="Smv-wR-Vp5"/>
                 <outlet property="imgSportIcon2" destination="1iF-G6-epQ" id="1Vx-0c-p7p"/>
@@ -129,6 +152,7 @@
                 <outlet property="imgSportIcon4" destination="wCy-Yz-zej" id="oy7-vb-3G7"/>
                 <outlet property="imgSportIcon5" destination="MkE-uO-sfX" id="Rph-RO-Qyh"/>
                 <outlet property="imgSportIcon6" destination="KHH-tX-FDq" id="5vr-z3-1kO"/>
+                <outlet property="lblActionStatus" destination="ziR-kl-Obm" id="Gi6-9B-O6o"/>
                 <outlet property="lblPlayerName" destination="wff-5W-X9g" id="2Yb-7f-2M8"/>
                 <outlet property="lblPlayerSchoolAge" destination="Lfd-5W-sK5" id="zoC-T1-M8U"/>
             </connections>
@@ -139,7 +163,6 @@
         <image name="baseball-icon" width="30" height="30"/>
         <image name="basketball-icon" width="32" height="32"/>
         <image name="chess-icon" width="25" height="30"/>
-        <image name="connect-btn-icon" width="38" height="30"/>
         <image name="cricket-icon" width="29" height="27"/>
         <image name="photo-placeholder" width="139" height="139"/>
         <image name="soccer-icon" width="31" height="31"/>
