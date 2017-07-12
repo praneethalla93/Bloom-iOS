@@ -8,6 +8,7 @@
 
 import Foundation
 import Alamofire
+import KeychainAccess
 
 enum BKNetworkMethod {
     case POST
@@ -19,6 +20,7 @@ class BKNetowrkTool {
     static let shared = BKNetowrkTool()
     fileprivate  var kids: [BKKidModel]?
     fileprivate  var currentKid: BKKidModel?
+    var currentEmail: String?
     
     let myGroup = DispatchGroup()
     
@@ -82,6 +84,7 @@ class BKNetowrkTool {
             }
             
         }
+
     }
     
     
@@ -90,9 +93,42 @@ class BKNetowrkTool {
 
 extension BKNetowrkTool {
     
+    
+    func authenticate(email: String,password: String, completion: @escaping (_ success: Bool)->Void) {
+        
+        /*
+        var parameter = [String: Any]()
+        parameter["email"] = email
+        parameter["password"] = password
+        */
+        
+        let parameter = ["email": email, "password": password]
+        
+        print("Parameters : \(parameter)")
+        
+        request(.post, urlStr: BKNetworkingLoginUrlStr, parameters: parameter) { (success, data) in
+            
+            //@TODO temporarily disabling authentication
+        
+        
+            if success {
+                
+                print("key chain email set \(email)")
+                let keychain = Keychain(service: BKKeychainService)
+                self.currentEmail = email
+                keychain[BKUserEmailKey] = email
+                keychain[email] = password
+                completion(success)
+            } else {
+                completion(false)
+            }
+            
+        }
+    }
+    
     func addKid(kidModel: BKKidModel, completion: @escaping (_ success: Bool,_ kidid: Int?) -> Void) {
         
-        guard let currentEmail = BKAuthTool.shared.currentEmail else {
+        guard let currentEmail = self.currentEmail else {
             print("currentEmail not complete")
             completion(false, nil)
             return
@@ -139,7 +175,7 @@ extension BKNetowrkTool {
                             }
                             
                             self.myKids!.append(kidModel)
-                            completion(success, kidid)
+                            completion(status, kidid)
                         }
 
                     }
@@ -168,7 +204,7 @@ extension BKNetowrkTool {
             return
         }
         
-        guard let currentEmail = BKAuthTool.shared.currentEmail else {
+        guard let currentEmail = self.currentEmail else {
             print("currentEmail not complete")
             completion(false, nil)
             return
@@ -186,23 +222,23 @@ extension BKNetowrkTool {
                 print("Get Kid Finished request")
            
                 do {
-                        if  let data = data,
-                            let json = try JSONSerialization.jsonObject(with: data) as? [String: Any] {
+                    if  let data = data,
+                        let json = try JSONSerialization.jsonObject(with: data) as? [String: Any] {
+                        
+                        if let status = json["status"] as? Bool,
+                            let kidsDict = json["kids"] as? [[String: Any]] {
                             
-                            if let status = json["status"] as? Bool,
-                                let kidsDict = json["kids"] as? [[String: Any]] {
-                                
-                                var kids = [BKKidModel]()
-                                for kidDict in kidsDict {
-                                let kidModel = BKKidModel(dict: kidDict)
-                                kids.append(kidModel)
-                                print("GetKid name is \(kidModel.kidName)")
-                            }
-                            
-                            self.myKids = kids
-                            self.currentKid = self.myKids![0]
-                            completion(status, kids)
+                            var kids = [BKKidModel]()
+                            for kidDict in kidsDict {
+                            let kidModel = BKKidModel(dict: kidDict)
+                            kids.append(kidModel)
+                            print("GetKid name is \(kidModel.kidName)")
                         }
+                        
+                        self.myKids = kids
+                        self.currentKid = self.myKids![0]
+                        completion(status, kids)
+                    }
                         
                 }
                 } catch {
@@ -213,6 +249,37 @@ extension BKNetowrkTool {
                 completion(false, nil)
             }
 
+        }
+        
+    }
+    
+    //forgotPassword API call to rest password with Sign In email
+    func forgotPassword(email: String, completion: @escaping (_ success:Bool) -> Void) {
+
+        let dict = ["email": email]
+        
+        request(.post, urlStr: BKNetworkingForgotPasswordUrlStr, parameters: dict) { (success, data) in
+            
+            if success {
+                print("Forgot password request")
+                
+                do {
+                    if  let data = data,
+                        let json = try JSONSerialization.jsonObject(with: data) as? [String: Any] {
+                        
+                        if let status = json["status"] as? Bool {
+                            completion(status)
+                        }
+
+                    }
+                } catch {
+                    completion(false)
+                }
+
+            } else {
+                completion(false)
+            }
+            
         }
         
     }
@@ -315,7 +382,7 @@ extension BKNetowrkTool {
     
     func locationDetails(completion: @escaping (_ success:Bool, _ kids: [BKKidModel]?) -> Void) {
         
-        let currentEmail = BKAuthTool.shared.currentEmail
+        let currentEmail = self.currentEmail
         
         /*
         guard let currentEmail = BKAuthTool.shared.currentEmail,
@@ -415,26 +482,23 @@ extension BKNetowrkTool {
     
     func connectionRequestor(receivingKid:BKKidModel, connectorKidId:Int, city:String, sportname:String, skilllevel:String, connectionDate:String, completion: @escaping (_ success: Bool) -> Void) {
         
-        guard let currentEmail = BKAuthTool.shared.currentEmail else {
+        guard let currentEmail = self.currentEmail else {
             print("currentEmail not complete")
             completion(false)
             return
         }
         
         print("currentEmail:\(currentEmail)")
-        
-        
         var dict = [String: Any]()
         
-        dict["kidid"] = receivingKid.id
+        dict["kidid"] = connectorKidId
         dict["kidname"] = receivingKid.kidName
         dict["city"] = city
-        dict["connectorkidid"] = connectorKidId
+        dict["connectorkidid"] = receivingKid.id
         dict["sportname"] = sportname
         dict["skilllevel"] = skilllevel
         dict["connectiondate"] = connectionDate
         
-    
         print("kid info:\(dict)")
 
         request(.post, urlStr: BKNetworkingConnectionRequestorUrlStr, parameters: dict) { (success, data) in
@@ -444,13 +508,11 @@ extension BKNetowrkTool {
                     
                     if  let data = data,
                         let json = try JSONSerialization.jsonObject(with: data) as? [String: Any] {
-                        
                         if let status = json["status"] as? Bool {
-                            
                             print("ConnectionRequestor Finished request)")
                             completion(status)
-                        
                         }
+                        
                     }
                     
                 } catch {
@@ -462,10 +524,70 @@ extension BKNetowrkTool {
                 completion(false)
             }
             
+        }
+        
+    }
+    
+    
+    
+    
+    func connectionResponder(connectResponse: BKConnectResponse, completion: @escaping (_ success: Bool) -> Void) {
+        
+        guard let currentEmail = self.currentEmail else {
+            print("currentEmail not complete")
+            completion(false)
+            return
+        }
+        
+        print("currentEmail:\(currentEmail)")
+        
+        var dict = [String: Any]()
+        
+        dict["connresponderkidid"] = connectResponse.connresponderKidId
+
+        dict["connResponderacceptance"] = connectResponse.responseAcceptStatus
+        dict["connectionrequestorkidid"] =  connectResponse.connectionRequestorKidId
+
+        dict["sportname"] = connectResponse.sport?.sportName
+        dict["skilllevel"] = connectResponse.sport?.skillLevel
+        dict["city"] =  connectResponse.city
+        dict["kidname"] = connectResponse.kidName
+        dict["connectiondate"] = connectResponse.connectionDate
+        
+        print("kid info:\(dict)")
+        
+        request(.post, urlStr: BKNetworkingConnectionResponderUrlStr, parameters: dict) { (success, data) in
+            if success {
+                
+                do {
+                    
+                    if  let data = data,
+                        let json = try JSONSerialization.jsonObject(with: data) as? [String: Any] {
+                        if let status = json["status"] as? Bool {
+                            print("connectionResponder Finished request)")
+                            completion(status)
+                        }
+                        
+                    }
+                    
+                } catch {
+                    print("Error deserializing JSON: \(error)")
+                    completion(false)
+                }
+                
+            }else{
+                completion(false)
+            }
             
         }
+        
+    }
+    
+    
+    func cleanObjects() {
+        self.kids = nil
+        self.currentKid = nil
+        self.currentEmail = ""
     }
 
-
-    
 }

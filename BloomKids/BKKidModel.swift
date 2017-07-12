@@ -8,9 +8,6 @@
 
 import Foundation
 
-
-
-
 enum BKKidConnectionSate: Int {
     case requestSent = 100
     case requestPending = 101
@@ -40,7 +37,6 @@ struct BKKidActivityConnection {
     let id: Int
     let connectionState: Int
     let sport: BKSport?
-    
 
     init(kidName: String, gender: String, school: String, age: String, sport: BKSport, id: Int, connectionState: BKKidConnectionSate, date: String, city: String, ownerId: Int) {
         self.kidname = kidName
@@ -66,6 +62,7 @@ struct BKKidActivityConnection {
         self.date = dict["date"] as! String
         self.city = dict["city"] as! String
         var sportName = dict["sportName"] as? String
+        
         var skillLevel = dict["skillLevel"] as? String
         
         if sportName == nil {
@@ -78,11 +75,57 @@ struct BKKidActivityConnection {
         }
         
         self.sport = BKSport(dict: ["sportName" : sportName!, "skillLevel": skillLevel!])
-        
-        
+    }
+}
+
+
+struct BKConnectResponse {
+    
+    var connresponderKidId: Int
+    var responseAcceptStatus: Bool
+    var connectionRequestorKidId: Int
+    var city: String
+    var kidName: String
+    var connectionDate: String
+    let sport: BKSport?
+
+    init(connresponderKidId: Int, responseAcceptStatus: Bool, connectionRequestorKidId: Int, sport: BKSport, city: String, kidName: String, connectionDate: String) {
+        self.connresponderKidId = connresponderKidId
+        self.responseAcceptStatus = responseAcceptStatus
+        self.connectionRequestorKidId = connectionRequestorKidId
+        self.city = city
+        self.kidName = kidName
+        self.connectionDate = connectionDate
+        self.sport = sport
     }
 
+    init(dict: [String: Any]) {
+        self.connresponderKidId = dict["connresponderkidid"] as! Int
+        self.responseAcceptStatus = dict["connResponderacceptance"] as! Bool
+        self.connectionRequestorKidId = dict["connectionrequestorkidid"] as! Int
+        
+        self.city = dict["city"] as! String
+        
+        self.kidName = dict["kidname"] as! String
+        self.connectionDate = dict["connectiondate"] as! String
+        
+        var sportName = dict["sportname"] as? String
+        var skillLevel = dict["skilllevel"] as? String
+        
+        
+        if sportName == nil {
+            sportName = "Chess"
+        }
+        
+        if skillLevel == nil {
+            skillLevel = "Rookie"
+        }
+        
+        self.sport = BKSport(dict: ["sportName" : sportName!, "skillLevel": skillLevel!])
+    }
+    
 }
+
 
 struct BKSport: CustomDebugStringConvertible {
     var sportName: String
@@ -141,10 +184,6 @@ struct BKKidModel: CustomDebugStringConvertible {
     var searchDescription: String {
         return "\(kidName) \(String(describing: id)) \(age) \(gender) \(school) \(sports)"
     }
-    
-    
-    
-    
     
 }
 

@@ -22,11 +22,8 @@ let BKKidCellHeight: CGFloat = 100.0
 
 
 let BKNetworkingLoginUrlStr = "http://custom-env.aqrfytx2is.us-east-1.elasticbeanstalk.com/rest/login/dologin"
-
 let BKNetworkingSignupUrlStr = "http://custom-env.aqrfytx2is.us-east-1.elasticbeanstalk.com/rest/register/doregister"
-
 let BKNetworkingAddKidUrlStr = "http://custom-env.aqrfytx2is.us-east-1.elasticbeanstalk.com/rest/kid/addkid"
-
 
 let BKNetworkingGetKidUrlStr = "http://custom-env.aqrfytx2is.us-east-1.elasticbeanstalk.com/rest/kid/getkids"
 let BKNetworkingGetKidsFilteredUrlStr = "http://custom-env.aqrfytx2is.us-east-1.elasticbeanstalk.com/rest/kid/getkidsFiltered"
@@ -34,12 +31,16 @@ let BKNetworkingLocationDetailsUrlStr = "http://custom-env.aqrfytx2is.us-east-1.
 let BKNetworkingActivityConnectionUrlStr = "http://custom-env.aqrfytx2is.us-east-1.elasticbeanstalk.com/rest/connection/activityConnections"
 let BKNetworkingConnectionsUrlStr = "http://custom-env.aqrfytx2is.us-east-1.elasticbeanstalk.com/rest/connection/connections"
 let BKNetworkingConnectionRequestorUrlStr = "http://custom-env.aqrfytx2is.us-east-1.elasticbeanstalk.com/rest/connection/connectionRequestor"
+let BKNetworkingConnectionResponderUrlStr = "http://custom-env.aqrfytx2is.us-east-1.elasticbeanstalk.com/rest/connection/connectionResponder"
+let BKNetworkingForgotPasswordUrlStr = "http://custom-env.aqrfytx2is.us-east-1.elasticbeanstalk.com/rest/password/forgotpassword"
+
 
 let BKShouldGoToMain = "BKShouldGoToMain"
 
 let BKKeychainService = "BKKeychainService"
 
 let BKUserEmailKey = "BKUserEmailKey"
+let BKUserPasswordKey = "BKUserEmailKey"
 let BKCurrentCity = "BKCurrentCity"
 let BKCurrentState = "BKCurrentState"
 
@@ -72,7 +73,6 @@ let BKImageScheduleBtnIcon = "schedule-btn-icon"
 
 //All seques
 let BKConnectPlayerCellSeque = "BKConnectPlayerCellSeque"
-
 
 //Model data
 let BKBloomSports = ["All", "Tennis", "Chess", "Basketbll", "Baseball", "Cricket", "Soccer" ]

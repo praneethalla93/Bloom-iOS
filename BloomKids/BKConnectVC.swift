@@ -13,10 +13,8 @@ import SVProgressHUD
 
 class BKConnectVC: UITableViewController {
     
-    fileprivate var myKids: [BKKidModel]?
     fileprivate var currentkidConnections: [BKKidModel]?
     fileprivate var currentkidPendingConnections: [BKKidModel]?
-    fileprivate var currentKid: BKKidModel?
     let myGroup = DispatchGroup()
     
     override func viewDidLoad() {
@@ -29,11 +27,13 @@ class BKConnectVC: UITableViewController {
         
         loadMyKids()
         
-        
         //after successfull loading data
         myGroup.notify(queue: .main) {
             print("Finished all requests.")
-            self.currentKid = self.myKids?[0]
+            
+            var currentKid = BKNetowrkTool.shared.myCurrentKid
+        
+            
             self.loadCurrentKidConnections()
             self.setupNavigationBar()
             
@@ -55,6 +55,8 @@ class BKConnectVC: UITableViewController {
         //let items = ["Most Popular", "Latest", "Trending", "Nearest", "Top Picks"]
         var items = [AnyObject]()
         
+        let myKids = BKNetowrkTool.shared.myKids
+        
         for  kid in myKids! {
             items.append(kid.kidName as AnyObject)
         }
@@ -62,15 +64,13 @@ class BKConnectVC: UITableViewController {
         let menuView = BTNavigationDropdownMenu(navigationController: self.navigationController, containerView: self.navigationController!.view, title: myKids![0].kidName, items: items as [AnyObject])
         self.navigationItem.titleView = menuView
         
-        
         menuView.didSelectItemAtIndexHandler = {[weak self] (indexPath: Int) -> () in
             print("Did select item at index: \(indexPath)")
-            //@TODO: reload 
+            //@TODO: reload
+            let myKids = BKNetowrkTool.shared.myKids
             
-            self?.currentKid = self?.myKids?[indexPath]
-            BKNetowrkTool.shared.myCurrentKid =  self?.currentKid
+            BKNetowrkTool.shared.myCurrentKid = myKids?[indexPath]
             self?.loadCurrentKidConnections()
-            
             
             //once dropdown menu is loaded with kids. Load current Kids connection
             self?.myGroup.notify(queue: .main) {
@@ -82,14 +82,17 @@ class BKConnectVC: UITableViewController {
 
     }
     
-    func loadMyKids() {
+    func loadMyKids() -> [BKKidModel] {
         myGroup.enter()
         print ("entering load my kids")
         
+        var myKids: [BKKidModel]?
+        myKids = [BKKidModel]()
+        
         BKNetowrkTool.shared.locationDetails { (success, kids) in
             SVProgressHUD.dismiss()
-            
-            if let kids = kids, success {
+        
+            if let myKids = kids, success {
                 
                 //no sorting.
                 /*
@@ -100,19 +103,20 @@ class BKConnectVC: UITableViewController {
                 })
                 */
                 
-                self.myKids = kids
                 self.myGroup.leave()
                 print ("leaving load my kids")
+                
+                        print( "My kids count \(String(describing: myKids.count))")
             }
             else {
                 self.myGroup.leave()
+                myKids = [BKKidModel]()
             }
             
             
         }
-
         
-        print( "My kids count \(String(describing: myKids?.count))")
+        return myKids!
     }
     
     func loadCurrentKidConnections() {
@@ -121,7 +125,7 @@ class BKConnectVC: UITableViewController {
         
             print ("entering loading current kid connections")
         
-            if let kid = currentKid {
+            if let kid = BKNetowrkTool.shared.myCurrentKid {
             
                 BKNetowrkTool.shared.getKidConnections(kidModel: kid) { ( success, kids) in
                     SVProgressHUD.dismiss()
@@ -135,6 +139,7 @@ class BKConnectVC: UITableViewController {
                 }
                 else {
                     self.myGroup.leave()
+                    self.currentkidConnections = nil
                     print ("failure loading current kid connections")
                 }
 
@@ -224,7 +229,7 @@ extension BKConnectVC {
         
         if section == 0 {
             
-            if currentKid != nil {
+            if BKNetowrkTool.shared.myCurrentKid != nil {
                 sectionTitle = "Player Summary"
             }
             
@@ -246,6 +251,23 @@ extension BKConnectVC {
         return sectionTitle
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        myGroup.enter()
+        //setupNavigationBar()
+        
+        //menuView.performSelector(onMainThread: <#T##Selector#>, with: <#T##Any?#>, waitUntilDone: <#T##Bool#>)
+        
+        myGroup.leave()
+        
+        myGroup.notify(queue: .main) {
+            self.tableView.reloadData()
+        }
+        
+        
+    }
+
     /*
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
@@ -265,7 +287,8 @@ extension BKConnectVC {
         if segue.identifier == "BKConnectPlayerCellSeque" {
             // Create a new variable to store the instance of PlayerTableViewController
             let destinationVC = segue.destination as! BKConnectPlayerCellVC
-            destinationVC.currentKid = self.currentKid
+            //@TODO temporarily commented
+            //destinationVC.currentKid = BKNetowrkTool.shared.myCurrentKid
         }
     }
 
@@ -299,10 +322,10 @@ extension BKConnectVC {
         
         //cell.imagePlayerPhoto
         
-        if let kids = self.myKids, let kidConnections = self.currentkidConnections {
-            
-            cell.lblPlayerName.text = kids[indexPath.row].kidName
-            cell.lblConnectionCounts.text = "\(String(describing: kidConnections.count)) Connected | 2 Pending"
+        if let currentKid = BKNetowrkTool.shared.myCurrentKid {
+            let connectionCount = self.currentkidConnections?.count ?? 0
+            cell.lblPlayerName.text = "\(currentKid.kidName) | \(String(describing: currentKid.age))"
+            cell.lblConnectionCounts.text = "\(String(describing: connectionCount)) Connections"
         }
         
         return cell

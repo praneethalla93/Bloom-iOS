@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -55,7 +54,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="OSs-As-kBI" userLabel="Input">
                                                 <rect key="frame" x="0.0" y="0.0" width="343" height="95"/>
                                                 <subviews>
-                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="saravanaraj.jobs@gmail.com" borderStyle="line" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zxg-Ox-spT">
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zxg-Ox-spT">
                                                         <rect key="frame" x="0.0" y="0.0" width="343" height="40"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -64,7 +63,7 @@
                                                             <outlet property="delegate" destination="g2T-hX-qb2" id="7hc-bc-0F2"/>
                                                         </connections>
                                                     </textField>
-                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="pass" borderStyle="line" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A2S-v6-JJ9">
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A2S-v6-JJ9">
                                                         <rect key="frame" x="0.0" y="55" width="343" height="40"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -313,7 +312,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="BWp-Ft-ckT"/>
                                 </constraints>
-                                <state key="normal" image="sign-up-btn.1x"/>
+                                <state key="normal" image="sign-up-btn"/>
                                 <connections>
                                     <action selector="signupBtnTapped:" destination="MZG-T2-Y9y" eventType="touchUpInside" id="dPI-H2-e1T"/>
                                 </connections>
@@ -442,6 +441,6 @@
         <image name="mom1x" width="269" height="153"/>
         <image name="reset-password-btn" width="309" height="48"/>
         <image name="sign-in-btn" width="309" height="48"/>
-        <image name="sign-up-btn.1x" width="924" height="144"/>
+        <image name="sign-up-btn" width="924" height="144"/>
     </resources>
 </document>

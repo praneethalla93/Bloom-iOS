@@ -26,93 +26,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BloomKids/BKConnectVC.swift"
-            timestampString = "521192572.139749"
+            timestampString = "521319428.915606"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "77"
-            endingLineNumber = "77"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
             landmarkName = "setupNavigationBar()"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "BloomKids/BKConnectPlayerCellVC.swift"
-            timestampString = "520890739.043024"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "339"
-            endingLineNumber = "339"
-            landmarkName = "handleSucessDeleteConnection(alertAction:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "BloomKids/BKConnectPlayerCellVC.swift"
-            timestampString = "520890739.043024"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "300"
-            endingLineNumber = "300"
-            landmarkName = "showAlertforSendConnection(cell:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "BloomKids/BKConnectPlayerCellVC.swift"
-            timestampString = "520890739.043024"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "323"
-            endingLineNumber = "323"
-            landmarkName = "handleSucessDeleteConnection(alertAction:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "BloomKids.BKConnectPlayerCellVC.handleSucessDeleteConnection (alertAction : Swift.ImplicitlyUnwrappedOptional&lt;__ObjC.UIAlertAction&gt;) -&gt; ()"
-                  moduleName = "BloomKids"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/rsathyaseelan/Google%20Drive/Business_Opportunity/Bloom/BloomKids/iOS/Bloom-iOS-master/Bloom-iOS/BloomKids/BKConnectPlayerCellVC.swift"
-                  timestampString = "521192573.398877"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "323"
-                  endingLineNumber = "323"
-                  offsetFromSymbolStart = "35">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "BloomKids.BKConnectPlayerCellVC.handleSucessDeleteConnection (alertAction : Swift.ImplicitlyUnwrappedOptional&lt;__ObjC.UIAlertAction&gt;) -&gt; ()"
-                  moduleName = "BloomKids"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/rsathyaseelan/Google%20Drive/Business_Opportunity/Bloom/BloomKids/iOS/Bloom-iOS-master/Bloom-iOS/BloomKids/BKConnectPlayerCellVC.swift"
-                  timestampString = "521192573.403582"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "323"
-                  endingLineNumber = "323"
-                  offsetFromSymbolStart = "93">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -122,156 +42,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BloomKids/BKNetworkTool.swift"
-            timestampString = "521186584.622526"
+            timestampString = "521276547.455537"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "123"
-            endingLineNumber = "123"
+            startingLineNumber = "157"
+            endingLineNumber = "157"
             landmarkName = "addKid(kidModel:completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "BloomKids/BKConnectPlayerCellVC.swift"
-            timestampString = "520921387.870106"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "412"
-            endingLineNumber = "412"
-            landmarkName = "handlePotentialConnections(_:_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "BloomKids/BKYourKidsVC.swift"
-            timestampString = "521191104.557288"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "BloomKids/BKConnectVC.swift"
-            timestampString = "521192629.730628"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "126"
-            endingLineNumber = "126"
-            landmarkName = "loadCurrentKidConnections()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "BloomKids.BKConnectVC.loadCurrentKidConnections () -&gt; ()"
-                  moduleName = "BloomKids"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/rsathyaseelan/Google%20Drive/Business_Opportunity/Bloom/BloomKids/iOS/Bloom-iOS-master/Bloom-iOS/BloomKids/BKConnectVC.swift"
-                  timestampString = "521192629.968385"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "126"
-                  endingLineNumber = "126"
-                  offsetFromSymbolStart = "902">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "BloomKids.BKConnectVC.(loadCurrentKidConnections () -&gt; ()).(closure #1)"
-                  moduleName = "BloomKids"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/rsathyaseelan/Google%20Drive/Business_Opportunity/Bloom/BloomKids/iOS/Bloom-iOS-master/Bloom-iOS/BloomKids/BKConnectVC.swift"
-                  timestampString = "521192629.973343"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "127"
-                  endingLineNumber = "127"
-                  offsetFromSymbolStart = "30">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "BloomKids/BKNetworkTool.swift"
-            timestampString = "521192669.855742"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "381"
-            endingLineNumber = "381"
-            landmarkName = "getKidConnections(kidModel:completion:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "BloomKids.BKNetowrkTool.getKidConnections (kidModel : BloomKids.BKKidModel, completion : (Swift.Bool, Swift.Optional&lt;Swift.Array&lt;BloomKids.BKKidModel&gt;&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "BloomKids"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/rsathyaseelan/Google%20Drive/Business_Opportunity/Bloom/BloomKids/iOS/Bloom-iOS-master/Bloom-iOS/BloomKids/BKNetworkTool.swift"
-                  timestampString = "521192669.872648"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "381"
-                  endingLineNumber = "381"
-                  offsetFromSymbolStart = "588">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "BloomKids.BKNetowrkTool.(getKidConnections (kidModel : BloomKids.BKKidModel, completion : (Swift.Bool, Swift.Optional&lt;Swift.Array&lt;BloomKids.BKKidModel&gt;&gt;) -&gt; ()) -&gt; ()).(closure #1)"
-                  moduleName = "BloomKids"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/rsathyaseelan/Google%20Drive/Business_Opportunity/Bloom/BloomKids/iOS/Bloom-iOS-master/Bloom-iOS/BloomKids/BKNetworkTool.swift"
-                  timestampString = "521192669.875274"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "384"
-                  endingLineNumber = "384"
-                  offsetFromSymbolStart = "46">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "BloomKids/BKNetworkTool.swift"
-            timestampString = "521192688.057692"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "384"
-            endingLineNumber = "384"
-            landmarkName = "getKidConnections(kidModel:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

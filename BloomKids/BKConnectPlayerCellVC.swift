@@ -20,8 +20,6 @@ class BKConnectPlayerCellVC: UITableViewController {
     fileprivate var myKidsPotentialFilteredConnections: [BKKidModel]?
     let searchController = UISearchController(searchResultsController: nil)
     var deleteConnecionSentdKidIndexPath: IndexPath? = nil
-    
-    var currentKid: BKKidModel?
     let myGroup = DispatchGroup()
     
     override func viewDidLoad() {
@@ -47,7 +45,7 @@ class BKConnectPlayerCellVC: UITableViewController {
         //after successfull loading data
         myGroup.notify(queue: .main) {
             print("Finished all requests.")
-            self.currentKid = self.myKidsPotentialConnections?[0]
+            //self.currentKid = self.myKidsPotentialConnections?[0]
             SVProgressHUD.show()
             self.tableView.reloadData()
             SVProgressHUD.dismiss()
@@ -66,7 +64,7 @@ class BKConnectPlayerCellVC: UITableViewController {
         
         print ("entering loading current kid connections")
         
-        if let kid = currentKid {
+        if let kid = BKNetowrkTool.shared.myCurrentKid {
             
             BKNetowrkTool.shared.getKidsFiltered(kidModel: kid, sportName: sportNameParam, interestLevel: interestLevelParam) { ( success, kids) in
                 SVProgressHUD.dismiss()
@@ -87,21 +85,21 @@ class BKConnectPlayerCellVC: UITableViewController {
         }
     }
         
-    func sendConnectRequest(sendingKid: BKKidModel, receivingKid: BKKidModel) {
+    func sendConnectRequest(receivingKid: BKKidModel) {
         
         myGroup.enter()
         SVProgressHUD.show()
         print ("entering sendConnectRequest")
         
-        if currentKid != nil {
+        if let currentKid = BKNetowrkTool.shared.myCurrentKid {
             
             let date = Date()
             let formatter = DateFormatter()
             formatter.dateFormat = "mm/dd/yyyy"
             
-            let result = formatter.string(from: date)
+            let todayDate = formatter.string(from: date)
             
-            BKNetowrkTool.shared.connectionRequestor(receivingKid: receivingKid, connectorKidId: sendingKid.id!, city: sendingKid.school, sportname: sendingKid.sports[0].sportName, skilllevel: sendingKid.sports[0].skillLevel, connectionDate: "07/03/2017") { ( success) in
+            BKNetowrkTool.shared.connectionRequestor(receivingKid: receivingKid, connectorKidId: currentKid.id!, city: receivingKid.school, sportname: receivingKid.sports[0].sportName, skilllevel: receivingKid.sports[0].skillLevel, connectionDate: todayDate) { ( success) in
                 
                 SVProgressHUD.dismiss()
                 
@@ -142,8 +140,6 @@ extension BKConnectPlayerCellVC {
                 } else {
                     return 0
                 }
-                
-
                 
             }
             else {
@@ -198,7 +194,7 @@ extension BKConnectPlayerCellVC {
         
         if section == 0 {
             
-            if currentKid != nil {
+            if BKNetowrkTool.shared.myCurrentKid != nil {
                 
                 if searchController.isActive && searchController.searchBar.text != "" {
                     
@@ -267,9 +263,7 @@ extension BKConnectPlayerCellVC {
         var receivingKid: BKKidModel?
         let indexPath = self.tableView.indexPath(for: cell)!
         
-        
-        
-        if currentKid != nil {
+        if let currentKid = BKNetowrkTool.shared.myCurrentKid {
             
             if searchController.isActive && searchController.searchBar.text != "" {
                 
@@ -296,7 +290,9 @@ extension BKConnectPlayerCellVC {
             alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
                 
                 self.dismiss(animated: true, completion: nil)
-                self.sendConnectRequest(sendingKid: self.currentKid!, receivingKid: receivingKid!)
+                
+                print("Sending connect request CurrentKid | \(currentKid.id) \(currentKid.kidName) | \(String(describing: receivingKid!.id)) \(receivingKid!.kidName)")
+                self.sendConnectRequest(receivingKid: receivingKid!)
                 self.deleteConnecionSentdKidIndexPath = indexPath
                 self.handleSucessDeleteConnection(alertAction: nil)
                 //@TODO call connect requestor API
@@ -313,10 +309,6 @@ extension BKConnectPlayerCellVC {
             
         }
     }
-    
-    
-    
-    
     
     func handleSucessDeleteConnection(alertAction: UIAlertAction!) -> Void {
         
@@ -355,13 +347,11 @@ extension BKConnectPlayerCellVC {
 
             }
             
-            
             tableView.beginUpdates()
             // Note that indexPath is wrapped in an array:  [indexPath]
             tableView.deleteRows(at: [indexPath], with: .automatic)
             deleteConnecionSentdKidIndexPath = nil
             tableView.endUpdates()
-            
         }
 
     }

@@ -25,7 +25,8 @@ class BKKidDoubleActionCell: UITableViewCell {
     @IBOutlet weak var lblActionStatus: UILabel!
     
     
-     var tapAction: ((UITableViewCell) -> Void)?
+    var tapAction1: ((UITableViewCell) -> Void)?
+    var tapAction2: ((UITableViewCell) -> Void)?
     
     var kidModel: BKKidModel? {
         
@@ -41,6 +42,7 @@ class BKKidDoubleActionCell: UITableViewCell {
             }
             
         }
+        
     }
     
 
@@ -55,13 +57,12 @@ class BKKidDoubleActionCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    
     @IBAction func btnPlayerctionButton1Tapped(_ sender: Any) {
-        tapAction?(self)
+        tapAction1?(self)
     }
     
     @IBAction func btnPlayerctionButton2Tapped(_ sender: Any) {
-        tapAction?(self)
+        tapAction2?(self)
         
     }
 

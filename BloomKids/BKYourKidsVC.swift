@@ -12,8 +12,6 @@ import SVProgressHUD
 
 class BKYourKidsVC: UITableViewController {
     
-
-    fileprivate var myKids: [BKKidModel]?
     let myGroup = DispatchGroup()
     
     override func viewDidLoad() {
@@ -22,10 +20,6 @@ class BKYourKidsVC: UITableViewController {
         
         let kidCellNib = UINib(nibName: "\(BKKidActionCell.self)", bundle: nil)
         tableView.register(kidCellNib, forCellReuseIdentifier: BKKidActionCellID)
-        /*
-        let kidCellNib = UINib(nibName: "\(BKKidCell.self)", bundle: nil)
-        tableView.register(kidCellNib, forCellReuseIdentifier: BKKidCellID)
-        */
         
         SVProgressHUD.show()
         myGroup.enter()
@@ -33,12 +27,11 @@ class BKYourKidsVC: UITableViewController {
         BKNetowrkTool.shared.getMyKids { (success, kids) in
             SVProgressHUD.dismiss()
             if let myKids = kids, success {
-                self.myKids = myKids
                 self.myGroup.leave()
                 
             }
         }
-        
+
         myGroup.notify(queue: .main) {
             print("Finished all requests.")
             self.tableView.reloadData()
@@ -62,7 +55,7 @@ class BKYourKidsVC: UITableViewController {
         if section == 0 {
             return 1
         } else {
-            return self.myKids?.count ?? 0
+            return BKNetowrkTool.shared.myKids?.count ?? 0
         }
         
     }
@@ -77,7 +70,7 @@ class BKYourKidsVC: UITableViewController {
             
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: BKKidActionCellID, for: indexPath) as! BKKidActionCell
-            let kidModel = self.myKids![indexPath.row]
+            let kidModel = BKNetowrkTool.shared.myKids![indexPath.row]
             cell.kidModel = kidModel
             
             //cell.imgActionButtonImage.image = UIImage(named: BKImageEditBtnIcon)
@@ -120,7 +113,7 @@ class BKYourKidsVC: UITableViewController {
     
     func showAlertForRow(row: Int) {
         
-        if let kid = self.myKids?[row] {
+        if let kid = BKNetowrkTool.shared.myKids?[row] {
         
             let alert = UIAlertController ( title: "BEHOLD",
                 message: "\(kid.kidName) at row \(row) was tapped!",
@@ -132,7 +125,6 @@ class BKYourKidsVC: UITableViewController {
             self.present( alert, animated: true, completion: nil)
         
         }
-            
         
     }
 
@@ -141,11 +133,12 @@ class BKYourKidsVC: UITableViewController {
 extension BKYourKidsVC: BKAddKidVCDelegate {
     
     func addKidVC(_ vc: BKAddKidVC, didAddkid kid: BKKidModel) {
-        self.myKids?.insert(kid, at: 0)
+        BKNetowrkTool.shared.myKids?.insert(kid, at: 0)
         self.tableView.reloadData()
         navigationController?.popViewController(animated: true)
         print("didAddkid")
     }
+    
 }
 
 
