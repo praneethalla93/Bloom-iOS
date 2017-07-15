@@ -88,11 +88,12 @@ public struct DownloadResponseSerializer<Value>: DownloadResponseSerializerProto
 
 extension Request {
     var timeline: Timeline {
+        let requestStartTime = self.startTime ?? CFAbsoluteTimeGetCurrent()
         let requestCompletedTime = self.endTime ?? CFAbsoluteTimeGetCurrent()
         let initialResponseTime = self.delegate.initialResponseTime ?? requestCompletedTime
 
         return Timeline(
-            requestStartTime: self.startTime ?? CFAbsoluteTimeGetCurrent(),
+            requestStartTime: requestStartTime,
             initialResponseTime: initialResponseTime,
             requestCompletedTime: requestCompletedTime,
             serializationCompletedTime: CFAbsoluteTimeGetCurrent()
@@ -162,6 +163,7 @@ extension DataRequest {
             )
 
             dataResponse.add(self.delegate.metrics)
+
             (queue ?? DispatchQueue.main).async { completionHandler(dataResponse) }
         }
 
