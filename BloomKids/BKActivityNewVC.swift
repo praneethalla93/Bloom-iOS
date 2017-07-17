@@ -14,20 +14,20 @@ import BTNavigationDropdownMenu
 class BKActivityNewVC: UITableViewController {
 
     var activityConnections: [BKKidActivityConnection]?
-    
     let myGroup = DispatchGroup()
-
+    var menuView: BTNavigationDropdownMenu?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let kidCellNib = UINib(nibName: "\(BKKidDoubleActionCell.self)", bundle: nil)
         tableView.register(kidCellNib, forCellReuseIdentifier: BKKidDoubleActionCellID)
+        initialLoadAndReload()
+        
+        /*
         SVProgressHUD.show()
-        
         myGroup.enter()
-        
         loadMyKids()
-        
         
         //after successfull loading data
         myGroup.notify(queue: .main) {
@@ -43,62 +43,91 @@ class BKActivityNewVC: UITableViewController {
             }
             
         }
-        
+
         //let keychain = Keychain(service: BKKeychainService)
         SVProgressHUD.dismiss()
+        */
     }
     
     @IBAction func logout(_ sender: UIBarButtonItem) {
         BKAuthTool.shared.logout()
     }
     
+    func initialLoadAndReload() {
+        
+        SVProgressHUD.show()
+        myGroup.enter()
+        loadMyKids()
+        
+        //after successfull loading data
+        myGroup.notify(queue: .main) {
+            
+            print("Finished all requests.")
+            //@TODO: complete requests
+            self.setupNavigationBar()
+            self.loadActivityConnections()
+            
+            //once dropdown menu is loaded with kids. Load current Kids connection
+            self.myGroup.notify(queue: .main) {
+                print("connection table refreshed")
+                self.tableView.reloadData()
+            }
+            
+        }
+        
+        SVProgressHUD.dismiss()
+
+    }
     
     //Setup Navigation bar
     func loadMyKids() {
         
         BKNetowrkTool.shared.getMyKids { (success, kids) in
-        SVProgressHUD.dismiss()
-        
-        if let kids = kids, success {
-            //@TODO after success load
-            print( "kids count : \(kids.count)")
-            self.myGroup.leave()
-        } else {
-            self.myGroup.leave()
+            SVProgressHUD.dismiss()
+            
+            if let kids = kids, success {
+                //@TODO after success load
+                print( "kids count : \(kids.count)")
+                self.myGroup.leave()
+            } else {
+                self.myGroup.leave()
+            }
+
         }
-        
-        
-        }
+
     }
 
     
     //Setup Navigation bar
     func setupNavigationBar() {
-        
         var items = [AnyObject]()
-        
         let myKids = BKNetowrkTool.shared.myKids
         
         for  kid in myKids! {
             items.append(kid.kidName as AnyObject)
         }
         
-        let menuView = BTNavigationDropdownMenu(navigationController: self.navigationController, containerView: self.navigationController!.view, title: myKids![0].kidName, items: items as [AnyObject])
+        var title = ""
+        
+        if let currentKid = BKNetowrkTool.shared.myCurrentKid {
+            title = currentKid.kidName
+        } else {
+            title = items[0] as! String
+        }
+        
+        self.menuView = BTNavigationDropdownMenu(navigationController: self.navigationController, containerView: self.navigationController!.view, title: title, items: items)
         self.navigationItem.titleView = menuView
-        
-        
-        menuView.didSelectItemAtIndexHandler = {[weak self] (indexPath: Int) -> () in
+    
+        self.menuView?.didSelectItemAtIndexHandler = {[weak self] (indexPath: Int) -> () in
             print("Did select item at index: \(indexPath)")
             //@TODO: reload
             BKNetowrkTool.shared.myCurrentKid = BKNetowrkTool.shared.myKids?[indexPath]
-            
             self?.loadActivityConnections()
             //once dropdown menu is loaded with kids. Load current Kids connection
             self?.myGroup.notify(queue: .main) {
                 print("connect table refreshed")
                 self?.tableView.reloadData()
             }
-            
         }
         
     }
@@ -106,30 +135,30 @@ class BKActivityNewVC: UITableViewController {
     func loadActivityConnections() {
         
         print ("entering load activity connections")
-        myGroup.enter()
         
-        BKNetowrkTool.shared.getActivityConnections() { (success, activityConnectionsResult) in
-        
-            self.myGroup.leave()
-            SVProgressHUD.dismiss()
-            
-            if let activityConnectList = activityConnectionsResult, success {
+        //if self.selectedKidName.isEmpty || selectedKidName != BKNetowrkTool.shared.myCurrentKid?.kidName {
+            myGroup.enter()
+            BKNetowrkTool.shared.getActivityConnections() { (success, activityConnectionsResult) in
                 
-                self.activityConnections = activityConnectList
-                print ("success loading activity connections \(String(describing: self.activityConnections?.count))")
-                print( "Activity connection count \(String(describing: self.activityConnections?.count))")
+                self.myGroup.leave()
+                SVProgressHUD.dismiss()
+                
+                if let activityConnectList = activityConnectionsResult, success {
+                    self.activityConnections = activityConnectList
+                    print ("success loading activity connections \(String(describing: self.activityConnections?.count))")
+                    print( "Activity connection count \(String(describing: self.activityConnections?.count))")
+                }
+                else {
+                    self.activityConnections = nil
+                    print ("failure loadActivityConnections")
+                }
                 
             }
-            else {
-                self.activityConnections = nil
-                print ("failure loadActivityConnections")
-            }
-            
-        }
-        
-        
+
+        //}
         
     }
+
 }
 
 extension BKActivityNewVC {
@@ -153,7 +182,6 @@ extension BKActivityNewVC {
         }
         
     }
-    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -193,35 +221,50 @@ extension BKActivityNewVC {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        tableView.reloadData()
+        //tableView.reloadData()
+        
+        if BKNetowrkTool.shared.myCurrentKid != nil {
+            initialLoadAndReload()
+        }
+        
+        
     }
     
-    func showAlertForRow(activityConnection: BKKidActivityConnection, row: Int, decision: String) {
+    func showAlertForRow( row: Int, decision: String) {
         
-        let myKids = BKNetowrkTool.shared.myKids
-        
-        if let kid = myKids?[row] {
+        //let myKids = BKNetowrkTool.shared.myKids
+        if let activityConnection = self.activityConnections?[row] {
             
-            let alert = UIAlertController ( title: "New connection request",
-                                            message: "Want to connect with \(activityConnection.kidname) at row \(row)?",preferredStyle: .actionSheet)
+            var acceptFlag = false
+            
+            if decision == BKConnectAcceptRespone {
+                acceptFlag = true
+            }
+            
+            let alert = UIAlertController ( title: "New Connection Response",
+                                            message: "Are you sure you Want to \(decision) connection reuest from \(activityConnection.kidname)", preferredStyle: .actionSheet)
             
             alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
                 self.dismiss(animated: true, completion: nil)
                 print("Sending connect request activityConnection | \(activityConnection.id)")
-                self.sendConnectResponse(activityConnection: activityConnection, acceptDecision: true)
                 
-                //self.handleCellUpdates(alertAction: nil)
+                self.myGroup.enter()
+                self.sendConnectResponse(row: row, acceptDecision: acceptFlag)
+                self.myGroup.notify(queue: .main) {
+                    print("Refresh cells for \(activityConnection.kidname)")
+                    self.tableView.reloadData()
+                }
+
                 //@TODO call connect requestor API
             }))
             
             alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: { (action: UIAlertAction!) in
                 print("Handle reject Logic here")
                 self.dismiss(animated: true, completion: nil)
-                self.sendConnectResponse(activityConnection: activityConnection, acceptDecision: false)
-                //self.cancelConnectRequest()
+                //self.sendConnectResponse(row: row, acceptDecision: false)
                 
             }))
-            
+
             self.present( alert, animated: true, completion: nil)
         }
 
@@ -244,82 +287,69 @@ extension BKActivityNewVC {
                 
                 // Assign the tap action which will be executed when the user taps the UIButton
                 cell.tapAction1 = { [weak self] (cell) in
-                    self?.showAlertForRow(activityConnection: activityConnection,row: tableView.indexPath(for: cell)!.row, decision: "Accept")
+                    self?.showAlertForRow(row: tableView.indexPath(for: cell)!.row, decision: BKConnectAcceptRespone)
                 }
                 
                 cell.tapAction2 = { [weak self] (cell) in
-                    self?.showAlertForRow(activityConnection: activityConnection, row: tableView.indexPath(for: cell)!.row, decision: "Decline")
+                    self?.showAlertForRow( row: tableView.indexPath(for: cell)!.row, decision: BKConnectDeclineRespone)
                 }
             
             
                 cell.lblPlayerName.text = "\(activityConnection.kidname) || \(activityConnection.id)"
                 cell.lblPlayerSchoolAge.text = "\(activityConnection.school) | Age: \(activityConnection.age) | \(activityConnection.date)"
                 cell.imgSportIcon1.image = #imageLiteral(resourceName: "chess-icon")
-                
-                //@TODO set icons for sports based on player sport
-                if ( activityConnection.connectionState == BKKidConnectionSate.requestSent.rawValue || activityConnection.connectionState == BKKidConnectionSate.requestSent.rawValue ) {
-                    cell.lblActionStatus.text = "Pending"
-                    cell.btnPlayerAction1.isHidden = true
-                    cell.btnPlayerAction2.isHidden = true
-                }
-                else if (activityConnection.connectionState == BKKidConnectionSate.requestPending.rawValue ) {
-                    cell.lblActionStatus.isHidden = true
- 
-                }
-                else if (
-                    activityConnection.connectionState == BKKidConnectionSate.connected.rawValue) {
-                    cell.lblActionStatus.text = "Connected"
-                    cell.btnPlayerAction1.isHidden = true
-                    cell.btnPlayerAction2.isHidden = true
-                    
-                } else if (activityConnection.connectionState == BKKidConnectionSate.rejected.rawValue ) {
-                    
-                    //@TODO showing pending for rejected connections too
-                    cell.lblActionStatus.text = "Pending"
-                    cell.btnPlayerAction1.isHidden = true
-                    cell.btnPlayerAction2.isHidden = true
-                    
-                }
-                
+                cell.lblActionStatus.text = activityConnection.connectionStateDescription
+                cell.lblActionStatus.isHidden = activityConnection.actionLabelHidden
+                cell.btnPlayerAction1.isHidden = activityConnection.btn1Hidden
+                cell.btnPlayerAction2.isHidden = activityConnection.btn2Hidden
             }
-            
+
         }
         
         return cell
     }
     
-    func sendConnectResponse(activityConnection: BKKidActivityConnection, acceptDecision: Bool) {
-        
-        myGroup.enter()
+    func sendConnectResponse(row: Int, acceptDecision: Bool) {
         SVProgressHUD.show()
         print ("entering sendConnectResponse")
         
-        if let currentKid = BKNetowrkTool.shared.myCurrentKid {
+        if var activityConnection = self.activityConnections?[row], let currentKid = BKNetowrkTool.shared.myCurrentKid {
             
             let date = Date()
             let formatter = DateFormatter()
-            formatter.dateFormat = "mm/dd/yyyy"
+            formatter.dateFormat = "MM/dd/yyyy"
             
             let todayDate = formatter.string(from: date)
-            let connectResponse = BKConnectResponse(connresponderKidId: activityConnection.id, responseAcceptStatus: acceptDecision, connectionRequestorKidId: activityConnection.ownerId!, sport: activityConnection.sport!, city: activityConnection.city, kidName: activityConnection.kidname, connectionDate: todayDate)
-            //BKNetowrkTool.shared.connectionResponder(connectResponse: <#T##BKConnectResponse#>, completion: <#T##(Bool) -> Void#>)
+            let connectResponse = BKConnectResponse(connresponderKidId: currentKid.id!, responseAcceptStatus: acceptDecision, connectionRequestorKidId: activityConnection.id, sport: activityConnection.sport!, city: activityConnection.city, kidName: activityConnection.kidname, connectionDate: todayDate)
             
-            BKNetowrkTool.shared.connectionResponder( connectResponse: connectResponse) { ( success) in
+            BKNetowrkTool.shared.connectionResponder( connectResponse: connectResponse) { (success) in
                 
                 SVProgressHUD.dismiss()
                 
                 if success {
                     print ("success sendConnectResponse)")
+                    activityConnection.connectionState = BKKidConnectionSate.connected.rawValue
+                    
+                    if acceptDecision {
+                        activityConnection.connectionState = BKKidConnectionSate.connected.rawValue
+                    } else {
+                        activityConnection.connectionState = BKKidConnectionSate.rejected.rawValue
+                    }
+                    
+                    self.activityConnections?[row] = activityConnection
                 }
                 else {
                     print ("failure sendConnectResponse")
                 }
                 
                 self.myGroup.leave()
-                
             }
             
+            
+            
         }
+        
+       
 
     }
     

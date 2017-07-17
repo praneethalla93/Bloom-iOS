@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="eaI-WC-5Ww">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Events-->
+        <scene sceneID="xDI-eX-n9d">
+            <objects>
+                <tableViewController title="Events" id="YYg-DY-1vM" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="GEq-uB-gD9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="QF1-Wn-ys4">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QF1-Wn-ys4" id="5he-dU-dyC">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="YYg-DY-1vM" id="bir-TR-L3S"/>
+                            <outlet property="delegate" destination="YYg-DY-1vM" id="byX-s9-4TM"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="OFE-xi-n7C"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KOR-RV-Hdz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1004" y="-18.440779610194905"/>
+        </scene>
+        <!--Events-->
+        <scene sceneID="tUp-tV-oX2">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eaI-WC-5Ww" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Events" image="schedule-tabbar-icon" selectedImage="schedule-tabbar-icon" id="Dej-RF-LDH"/>
+                    <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dAL-pN-1RC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="YYg-DY-1vM" kind="relationship" relationship="rootViewController" id="JH0-rH-4s5"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cV9-vg-OXs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="64.799999999999997" y="-18.440779610194905"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="schedule-tabbar-icon" width="25" height="25"/>
+    </resources>
+</document>

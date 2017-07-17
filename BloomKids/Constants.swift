@@ -20,7 +20,6 @@ let BKLoginLogoTopSpace: CGFloat = 20.0
 let BKInputTextFieldHeight: CGFloat = UIScreen.main.bounds.size.height > 480.0 ? 35.0 : 30.0
 let BKKidCellHeight: CGFloat = 100.0
 
-
 let BKNetworkingLoginUrlStr = "http://custom-env.aqrfytx2is.us-east-1.elasticbeanstalk.com/rest/login/dologin"
 let BKNetworkingSignupUrlStr = "http://custom-env.aqrfytx2is.us-east-1.elasticbeanstalk.com/rest/register/doregister"
 let BKNetworkingAddKidUrlStr = "http://custom-env.aqrfytx2is.us-east-1.elasticbeanstalk.com/rest/kid/addkid"
@@ -34,18 +33,13 @@ let BKNetworkingConnectionRequestorUrlStr = "http://custom-env.aqrfytx2is.us-eas
 let BKNetworkingConnectionResponderUrlStr = "http://custom-env.aqrfytx2is.us-east-1.elasticbeanstalk.com/rest/connection/connectionResponder"
 let BKNetworkingForgotPasswordUrlStr = "http://custom-env.aqrfytx2is.us-east-1.elasticbeanstalk.com/rest/password/forgotpassword"
 
-
 let BKShouldGoToMain = "BKShouldGoToMain"
-
 let BKKeychainService = "BKKeychainService"
-
 let BKUserEmailKey = "BKUserEmailKey"
 let BKUserPasswordKey = "BKUserEmailKey"
 let BKCurrentCity = "BKCurrentCity"
 let BKCurrentState = "BKCurrentState"
-
 let BKSportBtnToSportLevelVCSegue = "BKSportBtnToSportLevelVCSegue"
-
 let BKPlaceResultCellID = "BKPlaceResultCellID"
 let BKPlaceAutocompleteCountry: String? = "US"
 let BKPhotoHeaderCellID = "BKPhotoHeaderCellID"
@@ -70,6 +64,10 @@ let BKConnectSectionHeaderCellID = "BKConnectSectionHeaderCell"
 let BKImageConnectBtnIcon = "connect-btn-icon"
 let BKImageEditBtnIcon = "edit-btn-icon"
 let BKImageScheduleBtnIcon = "schedule-btn-icon"
+
+// Connection request decision
+let BKConnectAcceptRespone = "Accept"
+let BKConnectDeclineRespone = "Decline"
 
 //All seques
 let BKConnectPlayerCellSeque = "BKConnectPlayerCellSeque"

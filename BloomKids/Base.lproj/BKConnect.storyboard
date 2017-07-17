@@ -23,7 +23,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="160"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HGl-Rg-otZ" id="wR6-ik-3zO">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="160"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="159.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" distribution="equalSpacing" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="6JM-Jc-gq6">
@@ -64,7 +64,7 @@
                                 <rect key="frame" x="0.0" y="188" width="375" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IKC-QN-ZWF" id="8Nw-1Y-OM2">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo-placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="Tbx-jd-IyT" userLabel="playerImageView">
@@ -125,7 +125,7 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tvF-Te-Dxi">
                                             <rect key="frame" x="340" y="5" width="30" height="67"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VcF-f3-mJJ" userLabel="actionButton">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="schedule-btn-icon" translatesAutoresizingMaskIntoConstraints="NO" id="VcF-f3-mJJ" userLabel="actionButton">
                                                     <rect key="frame" x="2" y="21" width="26" height="26"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="VcF-f3-mJJ" secondAttribute="height" multiplier="1:1" id="shm-e1-yY1"/>
@@ -249,6 +249,7 @@
         <image name="filter-nav-icon" width="21" height="21"/>
         <image name="photo-placeholder" width="139" height="139"/>
         <image name="playdate-tabbar-icon" width="25" height="20"/>
+        <image name="schedule-btn-icon" width="43" height="43"/>
         <image name="soccer-icon" width="31" height="31"/>
         <image name="tennis-icon" width="30" height="30"/>
     </resources>

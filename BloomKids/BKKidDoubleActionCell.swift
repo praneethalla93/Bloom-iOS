@@ -44,7 +44,6 @@ class BKKidDoubleActionCell: UITableViewCell {
         }
         
     }
-    
 
     override func awakeFromNib() {
         super.awakeFromNib()

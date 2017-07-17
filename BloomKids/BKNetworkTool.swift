@@ -359,7 +359,8 @@ extension BKNetowrkTool {
                             var activityConnections = [BKKidActivityConnection]()
                             
                             for activity in kidsDict {
-                                let activityConnect = BKKidActivityConnection(dict: activity)
+                                var activityConnect = BKKidActivityConnection(dict: activity)
+                                activityConnect.connectionState = activityConnect.connectionState
                                 activityConnections.append(activityConnect)
                                 print("Activity connection kid name name is \(activityConnect.kidname)")
                             }
@@ -529,8 +530,6 @@ extension BKNetowrkTool {
     }
     
     
-    
-    
     func connectionResponder(connectResponse: BKConnectResponse, completion: @escaping (_ success: Bool) -> Void) {
         
         guard let currentEmail = self.currentEmail else {
@@ -543,22 +542,21 @@ extension BKNetowrkTool {
         
         var dict = [String: Any]()
         
-        dict["connresponderkidid"] = connectResponse.connresponderKidId
-
-        dict["connResponderacceptance"] = connectResponse.responseAcceptStatus
-        dict["connectionrequestorkidid"] =  connectResponse.connectionRequestorKidId
-
+        dict["connResponderKidId"] = connectResponse.connresponderKidId
+        dict["connResponderAcceptance"] = connectResponse.responseAcceptStatus
+        dict["connectionRequestorKidId"] =  connectResponse.connectionRequestorKidId
         dict["sportname"] = connectResponse.sport?.sportName
         dict["skilllevel"] = connectResponse.sport?.skillLevel
         dict["city"] =  connectResponse.city
         dict["kidname"] = connectResponse.kidName
         dict["connectiondate"] = connectResponse.connectionDate
-        
+
         print("kid info:\(dict)")
         
         request(.post, urlStr: BKNetworkingConnectionResponderUrlStr, parameters: dict) { (success, data) in
+
             if success {
-                
+
                 do {
                     
                     if  let data = data,
@@ -575,14 +573,13 @@ extension BKNetowrkTool {
                     completion(false)
                 }
                 
-            }else{
+            } else {
                 completion(false)
             }
             
         }
         
     }
-    
     
     func cleanObjects() {
         self.kids = nil

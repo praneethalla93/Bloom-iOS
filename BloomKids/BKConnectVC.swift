@@ -24,7 +24,12 @@ class BKConnectVC: UITableViewController {
         
         let kidCellNib = UINib(nibName: "\(BKKidActionCell.self)", bundle: nil)
         tableView.register(kidCellNib, forCellReuseIdentifier: BKKidActionCellID)
+        initialLoadAndReload()
         
+    }
+    
+    func initialLoadAndReload() {
+
         loadMyKids()
         
         //after successfull loading data
@@ -32,11 +37,9 @@ class BKConnectVC: UITableViewController {
             print("Finished all requests.")
             
             var currentKid = BKNetowrkTool.shared.myCurrentKid
-        
-            
             self.loadCurrentKidConnections()
             self.setupNavigationBar()
-            
+
             //once dropdown menu is loaded with kids. Load current Kids connection
             self.myGroup.notify(queue: .main) {
                 print("connection table refreshed")
@@ -45,7 +48,6 @@ class BKConnectVC: UITableViewController {
             
         }
         
-        //let keychain = Keychain(service: BKKeychainService)
         SVProgressHUD.dismiss()
     }
     
@@ -61,14 +63,21 @@ class BKConnectVC: UITableViewController {
             items.append(kid.kidName as AnyObject)
         }
         
-        let menuView = BTNavigationDropdownMenu(navigationController: self.navigationController, containerView: self.navigationController!.view, title: myKids![0].kidName, items: items as [AnyObject])
+        var title = ""
+        
+        if let currentKid = BKNetowrkTool.shared.myCurrentKid {
+            title = currentKid.kidName
+        } else {
+            title = items[0] as! String
+        }
+        
+        let menuView = BTNavigationDropdownMenu(navigationController: self.navigationController, containerView: self.navigationController!.view, title: title, items: items as [AnyObject])
         self.navigationItem.titleView = menuView
         
         menuView.didSelectItemAtIndexHandler = {[weak self] (indexPath: Int) -> () in
             print("Did select item at index: \(indexPath)")
             //@TODO: reload
             let myKids = BKNetowrkTool.shared.myKids
-            
             BKNetowrkTool.shared.myCurrentKid = myKids?[indexPath]
             self?.loadCurrentKidConnections()
             
@@ -93,20 +102,9 @@ class BKConnectVC: UITableViewController {
             SVProgressHUD.dismiss()
         
             if let myKids = kids, success {
-                
-                //no sorting.
-                /*
-                self.myKids = kids.sorted(by: { (kid1, kid2) -> Bool in
-                    let kid1ID = kid1.id ?? 0
-                    let kid2ID = kid2.id ?? 0
-                    return kid1ID > kid2ID
-                })
-                */
-                
                 self.myGroup.leave()
                 print ("leaving load my kids")
-                
-                        print( "My kids count \(String(describing: myKids.count))")
+                print( "My kids count \(String(describing: myKids.count))")
             }
             else {
                 self.myGroup.leave()
@@ -197,7 +195,7 @@ extension BKConnectVC {
             case 1:
                 return handlePendingConnections(tableView, indexPath)
             case 2:
-                return handleActiveConnectoins(_:_:)(tableView, indexPath)
+                return handleActiveConnections(_:_:)(tableView, indexPath)
             default:
                 let cell = tableView.dequeueReusableCell(withIdentifier: BKSimpleCellID, for: indexPath)
                 cell.backgroundColor = UIColor.random()
@@ -253,19 +251,7 @@ extension BKConnectVC {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        myGroup.enter()
-        //setupNavigationBar()
-        
-        //menuView.performSelector(onMainThread: <#T##Selector#>, with: <#T##Any?#>, waitUntilDone: <#T##Bool#>)
-        
-        myGroup.leave()
-        
-        myGroup.notify(queue: .main) {
-            self.tableView.reloadData()
-        }
-        
-        
+        initialLoadAndReload()
     }
 
     /*
@@ -331,7 +317,7 @@ extension BKConnectVC {
         return cell
     }
     
-    func handleActiveConnectoins(_ tableView: UITableView, _ indexPath: IndexPath) -> UITableViewCell {
+    func handleActiveConnections(_ tableView: UITableView, _ indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: BKKidActionCellID, for: indexPath) as! BKKidActionCell
         
         if let kid = currentkidConnections?[indexPath.row] {

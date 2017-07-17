@@ -42,7 +42,6 @@ class BKActivityVC: UIViewController {
 
     }
     
-    
     func setupTitle() {
         let keychain = Keychain(service: BKKeychainService)
         guard let currentCity = try? keychain.getString(BKCurrentCity) else {return}

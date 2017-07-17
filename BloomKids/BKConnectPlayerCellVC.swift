@@ -95,7 +95,7 @@ class BKConnectPlayerCellVC: UITableViewController {
             
             let date = Date()
             let formatter = DateFormatter()
-            formatter.dateFormat = "mm/dd/yyyy"
+            formatter.dateFormat = "MM/dd/yyyy"
             
             let todayDate = formatter.string(from: date)
             
@@ -291,7 +291,7 @@ extension BKConnectPlayerCellVC {
                 
                 self.dismiss(animated: true, completion: nil)
                 
-                print("Sending connect request CurrentKid | \(currentKid.id) \(currentKid.kidName) | \(String(describing: receivingKid!.id)) \(receivingKid!.kidName)")
+                print("Sending connect request CurrentKid | \(String(describing: currentKid.id)) \(currentKid.kidName) | \(String(describing: receivingKid!.id)) \(receivingKid!.kidName)")
                 self.sendConnectRequest(receivingKid: receivingKid!)
                 self.deleteConnecionSentdKidIndexPath = indexPath
                 self.handleSucessDeleteConnection(alertAction: nil)

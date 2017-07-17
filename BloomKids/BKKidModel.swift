@@ -24,10 +24,8 @@ struct BKProfile {
     let dob: String
 }
 
-
 struct BKKidActivityConnection {
-    
-    var ownerId: Int?
+
     let date: String
     let gender: String
     let school: String
@@ -35,7 +33,44 @@ struct BKKidActivityConnection {
     let kidname: String
     let age: String
     let id: Int
-    let connectionState: Int
+    
+    var connectionState: Int {
+        
+        didSet {
+            
+            print( "New connection state is \(connectionState)")
+            
+            if ( self.connectionState == BKKidConnectionSate.requestSent.rawValue || self.connectionState == BKKidConnectionSate.rejected.rawValue ) {
+                
+                self.connectionStateDescription = "Pending"
+                self.actionLabelHidden = false
+                self.btn1Hidden = true
+                self.btn2Hidden = true
+            }
+            else if (self.connectionState == BKKidConnectionSate.requestPending.rawValue ) {
+                self.connectionStateDescription = ""
+                self.actionLabelHidden = true
+                self.btn1Hidden = false
+                self.btn2Hidden = false
+            }
+            else if ( self.connectionState == BKKidConnectionSate.connected.rawValue ) {
+                self.connectionStateDescription = "Accepted"
+                self.actionLabelHidden = false
+                self.btn1Hidden = true
+                self.btn2Hidden = true
+                
+            }
+
+        }
+        
+    }
+
+    
+    var connectionStateDescription: String
+    var btn1Hidden: Bool
+    var btn2Hidden: Bool
+    var actionLabelHidden: Bool
+    
     let sport: BKSport?
 
     init(kidName: String, gender: String, school: String, age: String, sport: BKSport, id: Int, connectionState: BKKidConnectionSate, date: String, city: String, ownerId: Int) {
@@ -46,9 +81,15 @@ struct BKKidActivityConnection {
         self.sport = sport
         self.id = id
         self.connectionState = connectionState.rawValue
+        
         self.date = date
-        self.ownerId = ownerId
         self.city = city
+        
+        //to manage status for the tableviewcell
+        self.connectionStateDescription = ""
+        self.btn1Hidden = false
+        self.btn2Hidden = false
+        self.actionLabelHidden = false
     }
     
     init(dict: [String: Any]) {
@@ -75,7 +116,17 @@ struct BKKidActivityConnection {
         }
         
         self.sport = BKSport(dict: ["sportName" : sportName!, "skillLevel": skillLevel!])
+        
+        //to manage status for the tableviewcell
+        self.connectionStateDescription = ""
+        self.btn1Hidden = false
+        self.btn2Hidden = false
+        self.actionLabelHidden = false
+        
+        
+        
     }
+    
 }
 
 
@@ -97,6 +148,7 @@ struct BKConnectResponse {
         self.kidName = kidName
         self.connectionDate = connectionDate
         self.sport = sport
+        
     }
 
     init(dict: [String: Any]) {

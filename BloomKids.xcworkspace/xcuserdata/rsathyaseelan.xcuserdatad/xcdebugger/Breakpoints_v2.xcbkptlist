@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BloomKids/BKConnectVC.swift"
-            timestampString = "521319428.915606"
+            timestampString = "521854998.438733"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "81"
-            endingLineNumber = "81"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
             landmarkName = "setupNavigationBar()"
             landmarkType = "7">
          </BreakpointContent>

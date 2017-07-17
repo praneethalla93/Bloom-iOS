@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		7206D9B61F096D2900F5A42A /* BKKidActionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7206D9B41F096D2800F5A42A /* BKKidActionCell.swift */; };
 		7206D9B71F096D2900F5A42A /* BKKidActionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7206D9B51F096D2900F5A42A /* BKKidActionCell.xib */; };
+		72890CD01F1C632100C43792 /* BKEvents.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 72890CCF1F1C632100C43792 /* BKEvents.storyboard */; };
 		72D24A591F018CB5002ACD79 /* BKConnectPlayerCellVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D24A581F018CB5002ACD79 /* BKConnectPlayerCellVC.swift */; };
 		72D24A5B1F018CE6002ACD79 /* BKConnectSectionHeaderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D24A5A1F018CE6002ACD79 /* BKConnectSectionHeaderVC.swift */; };
 		72D24A5D1F018D26002ACD79 /* BKConnectSummaryHeaderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D24A5C1F018D26002ACD79 /* BKConnectSummaryHeaderVC.swift */; };
@@ -77,6 +78,7 @@
 		25AE1343266B3A700D0D3E98 /* Pods-BloomKids.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BloomKids.release.xcconfig"; path = "Pods/Target Support Files/Pods-BloomKids/Pods-BloomKids.release.xcconfig"; sourceTree = "<group>"; };
 		7206D9B41F096D2800F5A42A /* BKKidActionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKKidActionCell.swift; sourceTree = "<group>"; };
 		7206D9B51F096D2900F5A42A /* BKKidActionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BKKidActionCell.xib; sourceTree = "<group>"; };
+		72890CCF1F1C632100C43792 /* BKEvents.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BKEvents.storyboard; sourceTree = "<group>"; };
 		72D24A581F018CB5002ACD79 /* BKConnectPlayerCellVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKConnectPlayerCellVC.swift; sourceTree = "<group>"; };
 		72D24A5A1F018CE6002ACD79 /* BKConnectSectionHeaderVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKConnectSectionHeaderVC.swift; sourceTree = "<group>"; };
 		72D24A5C1F018D26002ACD79 /* BKConnectSummaryHeaderVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKConnectSummaryHeaderVC.swift; sourceTree = "<group>"; };
@@ -172,6 +174,22 @@
 				A1026A311EE286AC00FA7366 /* BKSportLevelCell.swift */,
 			);
 			name = Cell;
+			sourceTree = "<group>";
+		};
+		72890CCD1F1C62F900C43792 /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				72890CCE1F1C630300C43792 /* VCs */,
+				72890CCF1F1C632100C43792 /* BKEvents.storyboard */,
+			);
+			name = Events;
+			sourceTree = "<group>";
+		};
+		72890CCE1F1C630300C43792 /* VCs */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = VCs;
 			sourceTree = "<group>";
 		};
 		72D24A571F018C73002ACD79 /* VCs */ = {
@@ -388,6 +406,7 @@
 		A1FC923E1ECD4F960099E68D /* BloomKids */ = {
 			isa = PBXGroup;
 			children = (
+				72890CCD1F1C62F900C43792 /* Events */,
 				A185AE5B1ED611A7002FDF89 /* OnBoarding */,
 				A179F9AC1ED2811400B42540 /* Activity */,
 				A1FA1B3D1EE3A0910025143E /* Connect */,
@@ -480,6 +499,7 @@
 			files = (
 				A11DCF7F1ED62B54005E6FCE /* BKCitySearch.storyboard in Resources */,
 				72F8340E1F0CB53D002F9627 /* BKKidDoubleActionCell.xib in Resources */,
+				72890CD01F1C632100C43792 /* BKEvents.storyboard in Resources */,
 				A19893A11EE2028A00DDF240 /* BKPhotoHeaderView.xib in Resources */,
 				A1FC924A1ECD4F960099E68D /* LaunchScreen.storyboard in Resources */,
 				A1FA1B411EE3A0C10025143E /* BKConnect.storyboard in Resources */,
