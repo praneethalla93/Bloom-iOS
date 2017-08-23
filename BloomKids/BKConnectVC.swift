@@ -36,7 +36,7 @@ class BKConnectVC: UITableViewController {
         myGroup.notify(queue: .main) {
             print("Finished all requests.")
             
-            var currentKid = BKNetowrkTool.shared.myCurrentKid
+            //var currentKid = BKNetowrkTool.shared.myCurrentKid
             self.loadCurrentKidConnections()
             self.setupNavigationBar()
 
@@ -91,12 +91,9 @@ class BKConnectVC: UITableViewController {
 
     }
     
-    func loadMyKids() -> [BKKidModel] {
+    func loadMyKids() {
         myGroup.enter()
         print ("entering load my kids")
-        
-        var myKids: [BKKidModel]?
-        myKids = [BKKidModel]()
         
         BKNetowrkTool.shared.locationDetails { (success, kids) in
             SVProgressHUD.dismiss()
@@ -108,13 +105,11 @@ class BKConnectVC: UITableViewController {
             }
             else {
                 self.myGroup.leave()
-                myKids = [BKKidModel]()
             }
             
             
         }
         
-        return myKids!
     }
     
     func loadCurrentKidConnections() {
@@ -272,7 +267,7 @@ extension BKConnectVC {
         
         if segue.identifier == "BKConnectPlayerCellSeque" {
             // Create a new variable to store the instance of PlayerTableViewController
-            let destinationVC = segue.destination as! BKConnectPlayerCellVC
+            //let destinationVC = segue.destination as! BKConnectPlayerCellVC
             //@TODO temporarily commented
             //destinationVC.currentKid = BKNetowrkTool.shared.myCurrentKid
         }
@@ -321,6 +316,7 @@ extension BKConnectVC {
         let cell = tableView.dequeueReusableCell(withIdentifier: BKKidActionCellID, for: indexPath) as! BKKidActionCell
         
         if let kid = currentkidConnections?[indexPath.row] {
+            
             //cell.imgPlayer = UIImage("")
             
             cell.kidModel = kid
@@ -333,6 +329,7 @@ extension BKConnectVC {
             cell.tapAction = { [weak self] (cell) in
                 self?.showAlertForRow(row: tableView.indexPath(for: cell)!.row)
             }
+            
         }
         
         //photoHeaderVC.view.willMove(toSuperview: cell.contentView)
@@ -344,7 +341,6 @@ extension BKConnectVC {
     
     
     func handlePendingConnections(_ tableView: UITableView, _ indexPath: IndexPath) -> UITableViewCell {
-        
         
         let cell = tableView.dequeueReusableCell(withIdentifier: BKKidActionCellID, for: indexPath) as! BKKidActionCell
         

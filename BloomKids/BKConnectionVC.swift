@@ -21,10 +21,9 @@ class BKConnectionVC: UITableViewController {
         
         let kidCellNib = UINib(nibName: "\(BKKidCell.self)", bundle: nil)
         tableView.register(kidCellNib, forCellReuseIdentifier: BKKidCellID)
-        
         tableView.contentInset.bottom = 49
-        
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: headerCellId)
+
         SVProgressHUD.show()
         BKNetowrkTool.shared.locationDetails { (success, kids) in
             
@@ -34,7 +33,7 @@ class BKConnectionVC: UITableViewController {
                 self.tableView.reloadData()
             }
         }
-        
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -50,13 +49,14 @@ class BKConnectionVC: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         if section == 0 {
             return 1
         }else{
             return kids?.count ?? 0
         }
+
     }
-    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -75,9 +75,8 @@ class BKConnectionVC: UITableViewController {
             
             
             return cell
-        }else{
+        } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: BKKidCellID, for: indexPath) as! BKKidCell
-            
             let kidModel = kids![indexPath.row]
             cell.kidModel = kidModel
             return cell
@@ -85,9 +84,10 @@ class BKConnectionVC: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
         if indexPath.section == 0 {
             return 35.0
-        }else{
+        } else {
             return BKKidCellHeight
         }
     }

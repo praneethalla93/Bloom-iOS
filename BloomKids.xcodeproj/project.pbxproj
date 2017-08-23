@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		7206D9B61F096D2900F5A42A /* BKKidActionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7206D9B41F096D2800F5A42A /* BKKidActionCell.swift */; };
 		7206D9B71F096D2900F5A42A /* BKKidActionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7206D9B51F096D2900F5A42A /* BKKidActionCell.xib */; };
+		720B663E1F4CE828000A50C6 /* BKEventDoubleActionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 720B663D1F4CE828000A50C6 /* BKEventDoubleActionCell.xib */; };
+		720B66401F4CE836000A50C6 /* BKEventDoubleActionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 720B663F1F4CE836000A50C6 /* BKEventDoubleActionCell.swift */; };
+		72366B9E1F479F7000799302 /* BKEventsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72366B9D1F479F7000799302 /* BKEventsVC.swift */; };
 		72890CD01F1C632100C43792 /* BKEvents.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 72890CCF1F1C632100C43792 /* BKEvents.storyboard */; };
 		72D24A591F018CB5002ACD79 /* BKConnectPlayerCellVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D24A581F018CB5002ACD79 /* BKConnectPlayerCellVC.swift */; };
 		72D24A5B1F018CE6002ACD79 /* BKConnectSectionHeaderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D24A5A1F018CE6002ACD79 /* BKConnectSectionHeaderVC.swift */; };
@@ -78,6 +81,9 @@
 		25AE1343266B3A700D0D3E98 /* Pods-BloomKids.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BloomKids.release.xcconfig"; path = "Pods/Target Support Files/Pods-BloomKids/Pods-BloomKids.release.xcconfig"; sourceTree = "<group>"; };
 		7206D9B41F096D2800F5A42A /* BKKidActionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKKidActionCell.swift; sourceTree = "<group>"; };
 		7206D9B51F096D2900F5A42A /* BKKidActionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BKKidActionCell.xib; sourceTree = "<group>"; };
+		720B663D1F4CE828000A50C6 /* BKEventDoubleActionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BKEventDoubleActionCell.xib; sourceTree = "<group>"; };
+		720B663F1F4CE836000A50C6 /* BKEventDoubleActionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKEventDoubleActionCell.swift; sourceTree = "<group>"; };
+		72366B9D1F479F7000799302 /* BKEventsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKEventsVC.swift; sourceTree = "<group>"; };
 		72890CCF1F1C632100C43792 /* BKEvents.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BKEvents.storyboard; sourceTree = "<group>"; };
 		72D24A581F018CB5002ACD79 /* BKConnectPlayerCellVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKConnectPlayerCellVC.swift; sourceTree = "<group>"; };
 		72D24A5A1F018CE6002ACD79 /* BKConnectSectionHeaderVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKConnectSectionHeaderVC.swift; sourceTree = "<group>"; };
@@ -188,6 +194,7 @@
 		72890CCE1F1C630300C43792 /* VCs */ = {
 			isa = PBXGroup;
 			children = (
+				72366B9D1F479F7000799302 /* BKEventsVC.swift */,
 			);
 			name = VCs;
 			sourceTree = "<group>";
@@ -222,6 +229,8 @@
 				7206D9B51F096D2900F5A42A /* BKKidActionCell.xib */,
 				72F8340F1F0CB54B002F9627 /* BKKidDoubleActionCell.swift */,
 				72F8340D1F0CB53D002F9627 /* BKKidDoubleActionCell.xib */,
+				720B663F1F4CE836000A50C6 /* BKEventDoubleActionCell.swift */,
+				720B663D1F4CE828000A50C6 /* BKEventDoubleActionCell.xib */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -501,6 +510,7 @@
 				72F8340E1F0CB53D002F9627 /* BKKidDoubleActionCell.xib in Resources */,
 				72890CD01F1C632100C43792 /* BKEvents.storyboard in Resources */,
 				A19893A11EE2028A00DDF240 /* BKPhotoHeaderView.xib in Resources */,
+				720B663E1F4CE828000A50C6 /* BKEventDoubleActionCell.xib in Resources */,
 				A1FC924A1ECD4F960099E68D /* LaunchScreen.storyboard in Resources */,
 				A1FA1B411EE3A0C10025143E /* BKConnect.storyboard in Resources */,
 				A1E9D4751EE0D36600250A94 /* BKPlaceResultCell.xib in Resources */,
@@ -581,6 +591,7 @@
 				A198939D1EE2025900DDF240 /* BKPhotoHeaderVC.swift in Sources */,
 				A1026A2D1EE27CCC00FA7366 /* AHStackButton.swift in Sources */,
 				72FF82311F05C3B000A460CB /* BKConnectPlayerCell.swift in Sources */,
+				720B66401F4CE836000A50C6 /* BKEventDoubleActionCell.swift in Sources */,
 				72F55CE81F000EA400249296 /* BKConnectVC.swift in Sources */,
 				A198939A1EE2012F00DDF240 /* BKAddKidVC.swift in Sources */,
 				A1E9D4771EE0D38100250A94 /* AHNibLoadable.swift in Sources */,
@@ -597,6 +608,7 @@
 				A19893A31EE2154A00DDF240 /* BKKidModel.swift in Sources */,
 				A12561581ECE6F2800C46FD1 /* BKEmailSignupVC.swift in Sources */,
 				A10645F31EE3B5BE0054267C /* BKKidCell.swift in Sources */,
+				72366B9E1F479F7000799302 /* BKEventsVC.swift in Sources */,
 				A179F9B51ED28A4500B42540 /* BKActivityVC.swift in Sources */,
 				A1FC92401ECD4F960099E68D /* AppDelegate.swift in Sources */,
 				A10645F01EE3B20E0054267C /* BKYourKidsVC.swift in Sources */,

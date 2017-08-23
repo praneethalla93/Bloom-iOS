@@ -11,9 +11,8 @@ target 'BloomKids' do
   pod 'KeychainAccess'
   pod 'GooglePlaces'
   pod 'BTNavigationDropdownMenu'
-  
+  pod 'JTAppleCalendar'
   
   #pod 'BTNavigationDropdownMenu', :git => 'https://github.com/PhamBaTho/BTNavigationDropdownMenu.git', :branch => 'swift-3.0'
-  
 
 end

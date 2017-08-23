@@ -70,8 +70,7 @@ struct BKKidActivityConnection {
     var btn1Hidden: Bool
     var btn2Hidden: Bool
     var actionLabelHidden: Bool
-    
-    let sport: BKSport?
+    var sport: BKSport?
 
     init(kidName: String, gender: String, school: String, age: String, sport: BKSport, id: Int, connectionState: BKKidConnectionSate, date: String, city: String, ownerId: Int) {
         self.kidname = kidName
@@ -115,14 +114,13 @@ struct BKKidActivityConnection {
             skillLevel = "Rookie"
         }
         
-        self.sport = BKSport(dict: ["sportName" : sportName!, "skillLevel": skillLevel!])
+        self.sport? = BKSport(dict: ["sportName" : sportName!, "skillLevel": skillLevel!])
         
         //to manage status for the tableviewcell
         self.connectionStateDescription = ""
         self.btn1Hidden = false
         self.btn2Hidden = false
         self.actionLabelHidden = false
-        
         
         
     }
@@ -182,7 +180,6 @@ struct BKConnectResponse {
 struct BKSport: CustomDebugStringConvertible {
     var sportName: String
     var skillLevel: String
-    
     
     init(dict: [String: String]) {
         self.sportName = dict["sportName"]!

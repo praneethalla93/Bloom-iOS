@@ -26,9 +26,8 @@ class BKYourKidsVC: UITableViewController {
         
         BKNetowrkTool.shared.getMyKids { (success, kids) in
             SVProgressHUD.dismiss()
-            if let myKids = kids, success {
+            if success {
                 self.myGroup.leave()
-                
             }
         }
 
@@ -73,9 +72,11 @@ class BKYourKidsVC: UITableViewController {
             let kidModel = BKNetowrkTool.shared.myKids![indexPath.row]
             cell.kidModel = kidModel
             
-            //cell.imgActionButtonImage.image = UIImage(named: BKImageEditBtnIcon)
             
+            
+            //cell.imgActionButtonImage.image = UIImage(named: BKImageEditBtnIcon)
             cell.btnPlayerAction.setImage( UIImage(named: BKImageEditBtnIcon), for: .normal)
+            
             // Assign the tap action which will be executed when the user taps the UIButton
             cell.tapAction = { [weak self] (cell) in
                 self?.showAlertForRow(row: tableView.indexPath(for: cell)!.row)

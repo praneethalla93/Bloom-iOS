@@ -13,12 +13,14 @@ class BKKidActionCell: UITableViewCell {
 
     @IBOutlet weak var imgPlayer: UIImageView!
     @IBOutlet weak var lblPlayerName: UILabel!
-    @IBOutlet weak var imgSportIcon1: UIImageView!
-    @IBOutlet weak var imgSportIcon2: UIImageView!
-    @IBOutlet weak var imgSportIcon3: UIImageView!
-    @IBOutlet weak var imgSportIcon4: UIImageView!
-    @IBOutlet weak var imgSportIcon5: UIImageView!
-    @IBOutlet weak var imgSportIcon6: UIImageView!
+    
+    @IBOutlet weak var imgChessIcon: UIImageView!
+    @IBOutlet weak var imgBasketballIcon: UIImageView!
+    @IBOutlet weak var imgTennisIcon: UIImageView!
+    @IBOutlet weak var imgBaseballIcon: UIImageView!
+    @IBOutlet weak var imgSoccerIcon: UIImageView!
+    @IBOutlet weak var imgCricketIcon: UIImageView!
+    
     @IBOutlet weak var btnPlayerAction: UIButton!
     
     
@@ -37,6 +39,44 @@ class BKKidActionCell: UITableViewCell {
                 /*
                 self.btnPlayerAction.setImage(UIImage(named: BKImageEditBtnIcon), for: .Normal)
                 */
+                
+                print("Sports count : \(kid.sports.count)")
+                
+                self.imgChessIcon.isHidden = true
+                self.imgCricketIcon.isHidden = true
+                self.imgBaseballIcon.isHidden = true
+                self.imgBasketballIcon.isHidden = true
+                self.imgTennisIcon.isHidden = true
+                self.imgSoccerIcon.isHidden = true
+                
+                for sport in kid.sports {
+                    
+                    switch sport.sportName.lowercased() {
+                        
+                    case "basketball":
+                        self.imgBasketballIcon.isHidden = false
+                        print("kid.kidName \(kid.kidName) \(sport.sportName)" )
+                    case "baseball":
+                        self.imgBaseballIcon.isHidden = false
+                        print("kid.kidName \(kid.kidName) \(sport.sportName)" )
+                    case "chess":
+                        self.imgChessIcon.isHidden = false
+                        print("kid.kidName \(kid.kidName) \(sport.sportName)" )
+                    case "cricket":
+                        self.imgCricketIcon.isHidden = false
+                        print("kid.kidName \(kid.kidName) \(sport.sportName)" )
+                    case "soccer":
+                        self.imgSoccerIcon.isHidden = false
+                        print("kid.kidName \(kid.kidName) \(sport.sportName)" )
+                    case "tennis":
+                        self.imgTennisIcon.isHidden = false
+                        print("kid.kidName \(kid.kidName) \(sport.sportName)" )
+                    default:
+                        print("No Match: kid.kidName \(kid.kidName) \(sport.sportName)" )
+                    }
+                    
+                }
+
             }
             
         }

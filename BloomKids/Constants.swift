@@ -73,6 +73,6 @@ let BKConnectDeclineRespone = "Decline"
 let BKConnectPlayerCellSeque = "BKConnectPlayerCellSeque"
 
 //Model data
-let BKBloomSports = ["All", "Tennis", "Chess", "Basketbll", "Baseball", "Cricket", "Soccer" ]
+let BKBloomSports = ["All", "Tennis", "Chess", "Basketball", "Baseball", "Cricket", "Soccer" ]
 
 
