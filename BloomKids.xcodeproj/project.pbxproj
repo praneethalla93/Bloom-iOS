@@ -12,6 +12,7 @@
 		720B663E1F4CE828000A50C6 /* BKEventDoubleActionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 720B663D1F4CE828000A50C6 /* BKEventDoubleActionCell.xib */; };
 		720B66401F4CE836000A50C6 /* BKEventDoubleActionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 720B663F1F4CE836000A50C6 /* BKEventDoubleActionCell.swift */; };
 		72366B9E1F479F7000799302 /* BKEventsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72366B9D1F479F7000799302 /* BKEventsVC.swift */; };
+		7242BD3C1F4E9D120041C033 /* BKEventsSummaryHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7242BD3B1F4E9D120041C033 /* BKEventsSummaryHeaderCell.swift */; };
 		72890CD01F1C632100C43792 /* BKEvents.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 72890CCF1F1C632100C43792 /* BKEvents.storyboard */; };
 		72D24A591F018CB5002ACD79 /* BKConnectPlayerCellVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D24A581F018CB5002ACD79 /* BKConnectPlayerCellVC.swift */; };
 		72D24A5B1F018CE6002ACD79 /* BKConnectSectionHeaderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D24A5A1F018CE6002ACD79 /* BKConnectSectionHeaderVC.swift */; };
@@ -84,6 +85,7 @@
 		720B663D1F4CE828000A50C6 /* BKEventDoubleActionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BKEventDoubleActionCell.xib; sourceTree = "<group>"; };
 		720B663F1F4CE836000A50C6 /* BKEventDoubleActionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKEventDoubleActionCell.swift; sourceTree = "<group>"; };
 		72366B9D1F479F7000799302 /* BKEventsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKEventsVC.swift; sourceTree = "<group>"; };
+		7242BD3B1F4E9D120041C033 /* BKEventsSummaryHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKEventsSummaryHeaderCell.swift; sourceTree = "<group>"; };
 		72890CCF1F1C632100C43792 /* BKEvents.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BKEvents.storyboard; sourceTree = "<group>"; };
 		72D24A581F018CB5002ACD79 /* BKConnectPlayerCellVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKConnectPlayerCellVC.swift; sourceTree = "<group>"; };
 		72D24A5A1F018CE6002ACD79 /* BKConnectSectionHeaderVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKConnectSectionHeaderVC.swift; sourceTree = "<group>"; };
@@ -164,6 +166,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7242BD3D1F4E9D1C0041C033 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				7242BD3B1F4E9D120041C033 /* BKEventsSummaryHeaderCell.swift */,
+			);
+			name = Cell;
+			sourceTree = "<group>";
+		};
 		724FDC581F0AE9AD0082A445 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -185,6 +195,7 @@
 		72890CCD1F1C62F900C43792 /* Events */ = {
 			isa = PBXGroup;
 			children = (
+				7242BD3D1F4E9D1C0041C033 /* Cell */,
 				72890CCE1F1C630300C43792 /* VCs */,
 				72890CCF1F1C632100C43792 /* BKEvents.storyboard */,
 			);
@@ -599,6 +610,7 @@
 				A1E9D4801EE0EF8200250A94 /* BKPlaceResultsController.swift in Sources */,
 				72D24A5B1F018CE6002ACD79 /* BKConnectSectionHeaderVC.swift in Sources */,
 				A1E9D47E1EE0E16E00250A94 /* BKPlaceModel.swift in Sources */,
+				7242BD3C1F4E9D120041C033 /* BKEventsSummaryHeaderCell.swift in Sources */,
 				A1CFEFAB1ECD5D2C003DBA74 /* BKLoginVC.swift in Sources */,
 				A14387271EE156A50050A5D1 /* AHCategoryView.swift in Sources */,
 				A17A7B2D1ECFCAB100D77D27 /* BKNetworkTool.swift in Sources */,

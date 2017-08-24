@@ -14,7 +14,6 @@ import SVProgressHUD
 private let cellID = "cellID"
 
 class BKActivityVC: UIViewController {
-    
     let categories = ["Connections", "Events"]
     
     @IBAction func logout(_ sender: UIBarButtonItem) {

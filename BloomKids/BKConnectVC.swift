@@ -14,7 +14,9 @@ import SVProgressHUD
 class BKConnectVC: UITableViewController {
     
     fileprivate var currentkidConnections: [BKKidModel]?
-    fileprivate var currentkidPendingConnections: [BKKidModel]?
+    //fileprivate var currentkidPendingConnections: [BKKidModel]?
+    fileprivate var pendingConnections: [BKKidActivityConnection]?
+    
     let myGroup = DispatchGroup()
     
     override func viewDidLoad() {
@@ -23,7 +25,10 @@ class BKConnectVC: UITableViewController {
         SVProgressHUD.show()
         
         let kidCellNib = UINib(nibName: "\(BKKidActionCell.self)", bundle: nil)
-        tableView.register(kidCellNib, forCellReuseIdentifier: BKKidActionCellID)
+        self.tableView.register(kidCellNib, forCellReuseIdentifier: BKKidActionCellID)
+        
+        let kidDoubleActionCellNib = UINib(nibName: "\(BKKidDoubleActionCell.self)", bundle: nil)
+        self.tableView.register(kidDoubleActionCellNib, forCellReuseIdentifier: BKKidDoubleActionCellID)
         initialLoadAndReload()
         
     }
@@ -37,7 +42,9 @@ class BKConnectVC: UITableViewController {
             print("Finished all requests.")
             
             //var currentKid = BKNetowrkTool.shared.myCurrentKid
+            
             self.loadCurrentKidConnections()
+            self.loadPendingConnections()
             self.setupNavigationBar()
 
             //once dropdown menu is loaded with kids. Load current Kids connection
@@ -45,7 +52,7 @@ class BKConnectVC: UITableViewController {
                 print("connection table refreshed")
                 self.tableView.reloadData()
             }
-            
+
         }
         
         SVProgressHUD.dismiss()
@@ -126,6 +133,7 @@ class BKConnectVC: UITableViewController {
                 if let kids = kids, success {
                     
                     self.currentkidConnections = kids
+                    
                     print ("success loading current kid connections \(String(describing: self.currentkidConnections?.count))")
                     
                     self.myGroup.leave()
@@ -144,6 +152,36 @@ class BKConnectVC: UITableViewController {
         
     }
     
+    
+    func loadPendingConnections() {
+        
+        print ("entering load activity connections")
+        
+        //if self.selectedKidName.isEmpty || selectedKidName != BKNetowrkTool.shared.myCurrentKid?.kidName {
+        myGroup.enter()
+        BKNetowrkTool.shared.getActivityConnections() { (success, activityConnectionsResult) in
+            
+            self.myGroup.leave()
+            SVProgressHUD.dismiss()
+            
+            if let activityConnectList = activityConnectionsResult, success {
+                
+                self.pendingConnections = activityConnectList.filter {$0.connectionState == BKKidConnectionSate.requestPending.rawValue }
+                print ("success loading activity connections \(String(describing: self.pendingConnections?.count))")
+                print( "Activity connection count \(String(describing: self.pendingConnections?.count))")
+            }
+            else {
+                self.pendingConnections = nil
+                print ("failure loadPendingConnections")
+            }
+            
+        }
+        
+        //}
+        
+    }
+
+    
 }
 
 
@@ -159,7 +197,7 @@ extension BKConnectVC {
                 return 1
             case 1:
             
-                if let count = currentkidPendingConnections?.count {
+                if let count = pendingConnections?.count {
                     return count
                 }
                 else {
@@ -188,6 +226,7 @@ extension BKConnectVC {
             case 0:
                 return handlePlayerSummaryHeader(tableView, indexPath)
             case 1:
+                //return handlePendingConnections(tableView, indexPath)
                 return handlePendingConnections(tableView, indexPath)
             case 2:
                 return handleActiveConnections(_:_:)(tableView, indexPath)
@@ -206,7 +245,7 @@ extension BKConnectVC {
         if indexPath.section == 0 {
             return 160.0
         }else if indexPath.section == 1 {
-            return 40
+            return 100.0
         }else if indexPath.section == 2 {
             return 100.0
         }else{
@@ -228,10 +267,10 @@ extension BKConnectVC {
             
         } else if section == 1 {
             
-            if let pendingConnection = currentkidPendingConnections?.count {
+            if let pendingConnection = pendingConnections?.count {
                 
                 if pendingConnection > 0 {
-                    sectionTitle = "Pending Connections"
+                    sectionTitle = "Pending Response"
                 }
                 
             }
@@ -274,21 +313,63 @@ extension BKConnectVC {
     }
 
     
-    func showAlertForRow(row: Int) {
+    func showAlertForRow(section: Int, row: Int, decision: String="") {
         
-        if let kid = currentkidConnections?[row] {
+        if ( section == 1 ) {
             
-            let alert = UIAlertController ( title: "BEHOLD",
-                                            message: "\(kid.kidName) at row \(row) was tapped!",
-                preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Gotcha!", style: UIAlertActionStyle.default, handler: { (test) -> Void in
-                self.dismiss(animated: true, completion: nil)
-            }))
+            if let activityConnection = self.pendingConnections?[row] {
+                
+                var acceptFlag = false
+                
+                if decision == BKConnectAcceptRespone {
+                    acceptFlag = true
+                }
+                
+                let alert = UIAlertController ( title: "New Connection Response",
+                                                message: "Are you sure you Want to \(decision) connection reuest from \(activityConnection.kidname)", preferredStyle: .actionSheet)
+                
+                alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
+                    self.dismiss(animated: true, completion: nil)
+                    print("Sending connect request activityConnection | \(activityConnection.id)")
+                    
+                    self.myGroup.enter()
+                    self.sendConnectResponse(row: row, acceptDecision: acceptFlag)
+                    self.myGroup.notify(queue: .main) {
+                        print("Refresh cells for \(activityConnection.kidname)")
+                        self.tableView.reloadData()
+                    }
+                    
+                    //@TODO call connect requestor API
+                }))
+                
+                alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: { (action: UIAlertAction!) in
+                    print("Handle reject Logic here")
+                    self.dismiss(animated: true, completion: nil)
+                    //self.sendConnectResponse(row: row, acceptDecision: false)
+                    
+                }))
+                
+                self.present( alert, animated: true, completion: nil)
+            }
             
-            self.present( alert, animated: true, completion: nil)
             
         }
+        else if ( section == 2 ) {
         
+            if let kid = currentkidConnections?[row] {
+            
+                let alert = UIAlertController ( title: "BEHOLD",
+                                            message: "\(kid.kidName) at row \(row) was tapped!",
+                    preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Gotcha!", style: UIAlertActionStyle.default, handler: { (test) -> Void in
+                    self.dismiss(animated: true, completion: nil)
+                }))
+            
+                self.present( alert, animated: true, completion: nil)
+            
+            }
+            
+        }
         
     }
 
@@ -317,21 +398,18 @@ extension BKConnectVC {
         
         if let kid = currentkidConnections?[indexPath.row] {
             
-            //cell.imgPlayer = UIImage("")
-            
-            cell.kidModel = kid
+            //cell.kidModel = kid.a
             //cell.lblPlayerName.text = kid.kidName
             //cell.lblPlayerSchoolAge.text = "\(kid.school) , \(kid.age)"
             //cell.imgActionButtonImage.image = UIImage(named: BKIma)
-            
+            cell.kidModel = kid
             cell.btnPlayerAction.setImage( UIImage(named: BKImageScheduleBtnIcon), for: .normal)
             // Assign the tap action which will be executed when the user taps the UIButton
             cell.tapAction = { [weak self] (cell) in
-                self?.showAlertForRow(row: tableView.indexPath(for: cell)!.row)
+                self?.showAlertForRow(section: 2, row: tableView.indexPath(for: cell)!.row)
             }
             
         }
-        
         //photoHeaderVC.view.willMove(toSuperview: cell.contentView)
         //cell.contentView.addSubview(photoHeaderVC.view)
         //photoHeaderVC.view.frame = cell.contentView.bounds
@@ -340,33 +418,6 @@ extension BKConnectVC {
     }
     
     
-    func handlePendingConnections(_ tableView: UITableView, _ indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: BKKidActionCellID, for: indexPath) as! BKKidActionCell
-        
-        if let kid = currentkidConnections?[indexPath.row] {
-            //cell.imgPlayer = UIImage("")
-            cell.lblPlayerName.text = kid.kidName
-            cell.lblPlayerSchoolAge.text = "\(kid.school) , \(kid.age)"
-            //cell.imgActionButtonImage.image = UIImage(named: BKImageScheduleBtnIcon)
-            
-            cell.btnPlayerAction.setImage(UIImage(named: BKImageConnectBtnIcon), for: .normal)
-            
-            // Assign the tap action which will be executed when the user taps the UIButton
-            // cell.tapAction = { [weak self] (cell) in
-            //  self?.showAlertForRow(row: tableView.indexPath(for: cell)!.row)
-            //}
-        }
-
-        
-        //photoHeaderVC.view.willMove(toSuperview: cell.contentView)
-        //cell.contentView.addSubview(photoHeaderVC.view)
-        //photoHeaderVC.view.frame = cell.contentView.bounds
-        //photoHeaderVC.view.didMoveToSuperview()
-        return cell
-    }
-    
-
     /*
     func handleName(_ tableView: UITableView, _ indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: BKSimpleCellID, for: indexPath) as! BKSimpleCell
@@ -383,3 +434,88 @@ extension BKConnectVC {
     */
     
 }
+
+extension BKConnectVC {
+    
+    func handlePendingConnections(_ tableView: UITableView, _ indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: BKKidDoubleActionCellID, for: indexPath) as! BKKidDoubleActionCell
+        
+        if self.pendingConnections != nil {
+            
+            cell.btnPlayerAction1.setImage(UIImage(named: "accept-btn-icon"), for: .normal)
+            cell.btnPlayerAction2.setImage(UIImage(named: "decline-btn-icon"), for: .normal)
+            
+            if let activityConnection = self.pendingConnections?[indexPath.row] {
+                
+                // Assign the tap action which will be executed when the user taps the UIButton
+                cell.tapAction1 = { [weak self] (cell) in
+                    self?.showAlertForRow(section: 1, row: tableView.indexPath(for: cell)!.row, decision: BKConnectAcceptRespone)
+                }
+                
+                cell.tapAction2 = { [weak self] (cell) in
+                    self?.showAlertForRow( section: 1, row: tableView.indexPath(for: cell)!.row, decision: BKConnectDeclineRespone)
+                }
+                
+                
+                cell.lblPlayerName.text = "\(activityConnection.kidname) || \(activityConnection.id)"
+                cell.lblPlayerSchoolAge.text = "\(activityConnection.school) | Age: \(activityConnection.age) | \(activityConnection.date)"
+                cell.imgSportIcon1.image = #imageLiteral(resourceName: "chess-icon")
+                cell.lblActionStatus.text = activityConnection.connectionStateDescription
+                cell.lblActionStatus.isHidden = activityConnection.actionLabelHidden
+                cell.btnPlayerAction1.isHidden = activityConnection.btn1Hidden
+                cell.btnPlayerAction2.isHidden = activityConnection.btn2Hidden
+            }
+
+        }
+        
+        return cell
+    }
+    
+    func sendConnectResponse(row: Int, acceptDecision: Bool) {
+        SVProgressHUD.show()
+        print ("entering sendConnectResponse")
+        
+        if var activityConnection = self.pendingConnections?[row], let currentKid = BKNetowrkTool.shared.myCurrentKid {
+            
+            let date = Date()
+            let formatter = DateFormatter()
+            formatter.dateFormat = "MM/dd/yyyy"
+            
+            let todayDate = formatter.string(from: date)
+            let connectResponse = BKConnectResponse(connresponderKidId: currentKid.id!, responseAcceptStatus: acceptDecision, connectionRequestorKidId: activityConnection.id, sport: activityConnection.sport!, city: activityConnection.city, kidName: activityConnection.kidname, connectionDate: todayDate)
+            
+            BKNetowrkTool.shared.connectionResponder( connectResponse: connectResponse) { (success) in
+                
+                SVProgressHUD.dismiss()
+                
+                if success {
+                    print ("success sendConnectResponse)")
+                    activityConnection.connectionState = BKKidConnectionSate.connected.rawValue
+                    
+                    if acceptDecision {
+                        activityConnection.connectionState = BKKidConnectionSate.connected.rawValue
+                    } else {
+                        activityConnection.connectionState = BKKidConnectionSate.rejected.rawValue
+                    }
+                    
+                    self.pendingConnections?[row] = activityConnection
+                }
+                else {
+                    print ("failure sendConnectResponse")
+                }
+                
+                self.myGroup.leave()
+            }
+            
+            
+            
+        }
+        
+        
+        
+    }
+    
+    
+}
+

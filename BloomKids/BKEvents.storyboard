@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="eaI-WC-5Ww">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="tjT-WZ-jfT">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -40,7 +40,6 @@
         <!--View Controller-->
         <scene sceneID="AVK-Kc-Oqp">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cwi-gd-yh2" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="EE5-mN-lxL" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gPg-Gy-DCc"/>
@@ -130,14 +129,14 @@
                         </constraints>
                     </view>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cwi-gd-yh2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2636" y="33"/>
+            <point key="canvasLocation" x="3575.1999999999998" y="32.833583208395808"/>
         </scene>
-        <!--Events-->
+        <!--Navigation Controller-->
         <scene sceneID="tUp-tV-oX2">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eaI-WC-5Ww" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Events" image="schedule-tabbar-icon" selectedImage="schedule-tabbar-icon" id="Dej-RF-LDH"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="dAL-pN-1RC">
@@ -156,13 +155,13 @@
         <!--Event-->
         <scene sceneID="6WI-6Q-4qO">
             <objects>
-                <tableViewController title="Connect" id="Y5W-UF-FGB" userLabel="Event" customClass="BKConnectVC" customModule="BloomKids" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Connect" id="Y5W-UF-FGB" userLabel="Event" customClass="BKEventsVC" customModule="BloomKids" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="why-uA-zgd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BKConnectSummaryHeaderCell" rowHeight="160" id="cAM-U3-Vqc" userLabel="BKEventSummaryHeaderCell" customClass="BKEventSummaryHeaderCell">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BKConnectSummaryHeaderCell" rowHeight="160" id="cAM-U3-Vqc" userLabel="BKEventsSummaryHeaderCell" customClass="BKEventsSummaryHeaderCell" customModule="BloomKids" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="160"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cAM-U3-Vqc" id="kXh-34-GMl">
@@ -219,7 +218,27 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dZp-LZ-9Z8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1924.6376811594205" y="42.391304347826093"/>
+            <point key="canvasLocation" x="2863.1999999999998" y="41.829085457271368"/>
+        </scene>
+        <!--Events-->
+        <scene sceneID="mXJ-d8-fbr">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tjT-WZ-jfT" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Events" image="schedule-tabbar-icon" selectedImage="schedule-tabbar-icon" id="Dej-RF-LDH"/>
+                    <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="uWO-KK-DaD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Y5W-UF-FGB" kind="relationship" relationship="rootViewController" id="1WY-aO-JfX"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h5A-f2-fI3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1924" y="41.829085457271368"/>
         </scene>
     </scenes>
     <resources>

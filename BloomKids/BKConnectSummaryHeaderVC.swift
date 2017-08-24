@@ -6,15 +6,6 @@
 //  Copyright © 2017 Bloom Technology Inc. All rights reserved.
 //
 
-
-//
-//  BKPhotoHeaderVC.swift
-//  BloomKids
-//
-//  Created by Andy Tong on 6/2/17.
-//  Copyright © 2017 Bloom Technology Inc. All rights reserved.
-//
-
 import UIKit
 
 class BKConnectSummaryHeaderVC: UIViewController {
