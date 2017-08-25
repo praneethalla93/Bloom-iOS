@@ -19,19 +19,22 @@ let BKLoginLogoTopSpace: CGFloat = 20.0
 
 let BKInputTextFieldHeight: CGFloat = UIScreen.main.bounds.size.height > 480.0 ? 35.0 : 30.0
 let BKKidCellHeight: CGFloat = 100.0
+let BKNetowrkBaseUrlStr = "http://custom-env.aqrfytx2is.us-east-1.elasticbeanstalk.com"
+let BKNetworkingLoginUrlStr = "\(BKNetowrkBaseUrlStr)/rest/login/dologin"
+let BKNetworkingSignupUrlStr = "\(BKNetowrkBaseUrlStr)/rest/register/doregister"
+let BKNetworkingAddKidUrlStr = "\(BKNetowrkBaseUrlStr)/rest/kid/addkid"
 
-let BKNetworkingLoginUrlStr = "http://custom-env.aqrfytx2is.us-east-1.elasticbeanstalk.com/rest/login/dologin"
-let BKNetworkingSignupUrlStr = "http://custom-env.aqrfytx2is.us-east-1.elasticbeanstalk.com/rest/register/doregister"
-let BKNetworkingAddKidUrlStr = "http://custom-env.aqrfytx2is.us-east-1.elasticbeanstalk.com/rest/kid/addkid"
-
-let BKNetworkingGetKidUrlStr = "http://custom-env.aqrfytx2is.us-east-1.elasticbeanstalk.com/rest/kid/getkids"
-let BKNetworkingGetKidsFilteredUrlStr = "http://custom-env.aqrfytx2is.us-east-1.elasticbeanstalk.com/rest/kid/getkidsFiltered"
-let BKNetworkingLocationDetailsUrlStr = "http://custom-env.aqrfytx2is.us-east-1.elasticbeanstalk.com/rest/location/dolocationdetails"
-let BKNetworkingActivityConnectionUrlStr = "http://custom-env.aqrfytx2is.us-east-1.elasticbeanstalk.com/rest/connection/activityConnections"
-let BKNetworkingConnectionsUrlStr = "http://custom-env.aqrfytx2is.us-east-1.elasticbeanstalk.com/rest/connection/connections"
-let BKNetworkingConnectionRequestorUrlStr = "http://custom-env.aqrfytx2is.us-east-1.elasticbeanstalk.com/rest/connection/connectionRequestor"
-let BKNetworkingConnectionResponderUrlStr = "http://custom-env.aqrfytx2is.us-east-1.elasticbeanstalk.com/rest/connection/connectionResponder"
-let BKNetworkingForgotPasswordUrlStr = "http://custom-env.aqrfytx2is.us-east-1.elasticbeanstalk.com/rest/password/forgotpassword"
+let BKNetworkingGetKidUrlStr = "\(BKNetowrkBaseUrlStr)/rest/kid/getkids"
+let BKNetworkingGetKidsFilteredUrlStr = "\(BKNetowrkBaseUrlStr)/rest/kid/getkidsFiltered"
+let BKNetworkingLocationDetailsUrlStr = "\(BKNetowrkBaseUrlStr)/rest/location/dolocationdetails"
+let BKNetworkingActivityConnectionUrlStr = "\(BKNetowrkBaseUrlStr)/rest/connection/activityConnections"
+let BKNetworkingConnectionsUrlStr = "\(BKNetowrkBaseUrlStr)/rest/connection/connections"
+let BKNetworkingConnectionRequestorUrlStr = "\(BKNetowrkBaseUrlStr)/rest/connection/connectionRequestor"
+let BKNetworkingConnectionResponderUrlStr = "\(BKNetowrkBaseUrlStr)/rest/connection/connectionResponder"
+let BKNetworkingForgotPasswordUrlStr = "\(BKNetowrkBaseUrlStr)/rest/password/forgotpassword"
+let BKNetworkingActivityScheduleUrlStr = "\(BKNetowrkBaseUrlStr)/rest/schedule/activitySchedules"
+let BKNetworkingScheduleRequestorUrlStr = "\(BKNetowrkBaseUrlStr)/rest/schedule/scheduleRequestor"
+let BKNetworkingScheduleResponderUrlStr = "\(BKNetowrkBaseUrlStr)/rest/schedule/scheduleResponder"
 
 let BKShouldGoToMain = "BKShouldGoToMain"
 let BKKeychainService = "BKKeychainService"

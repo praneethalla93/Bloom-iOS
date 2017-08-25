@@ -381,27 +381,55 @@ extension BKNetowrkTool {
     
     }
     
+    func getActivityEvents(completion: @escaping (_ success:Bool, [BKKidActivitySchedule]?) -> Void) {
+        var dict = [String: Any]()
+        
+        if myCurrentKid != nil {
+            dict["kidid"]  = myCurrentKid?.id
+        } else {
+            completion(false, nil)
+        }
+        
+        request(.post, urlStr: BKNetworkingActivityScheduleUrlStr, parameters: dict) { (success, data) in
+            if success {
+                print("getActivityEvents Finished request")
+                
+                do {
+                    if  let data = data,
+                        let json = try JSONSerialization.jsonObject(with: data) as? [String: Any] {
+                        
+                        if let status = json["status"] as? Bool,
+                            let kidsDict = json["kids"] as? [[String: Any]] {
+                            
+                            var activityEvents = [BKKidActivitySchedule]()
+                            
+                            for activity in kidsDict {
+                                
+                                var activityEvent = BKKidActivitySchedule(dict: activity)
+                                activityEvent.connectionState = activityEvent.connectionState
+                                activityEvents.append(activityEvent)
+                                print("getActivityEvents kid name name is \(activityEvent.kidName)")
+                            }
+                            
+                            completion(status, activityEvents)
+                        }
+                        
+                    }
+                } catch {
+                    completion(false, nil)
+                }
+                
+            } else{
+                completion(false, nil)
+            }
+            
+        }
+        
+    }
+    
     func locationDetails(completion: @escaping (_ success:Bool, _ kids: [BKKidModel]?) -> Void) {
         
         let currentEmail = self.currentEmail
-        
-        /*
-        guard let currentEmail = BKAuthTool.shared.currentEmail,
-        let currentState = BKAuthTool.shared.currentState,
-        let currentCity = BKAuthTool.shared.currentCity else {
-            print("current emial or state or city not complete")
-            //completion(false, nil)
-            //Raj do n't need to return for no city or email.
-            //return
-            break
-        }
-        */
-        // let param be just email for getkids
-        /*
-        let dict = ["email": currentEmail,
-                    "city": currentCity,
-                    "state": currentState]
-        */
         
         var dict = [String:String]()
         dict = ["email": currentEmail!]
@@ -580,6 +608,52 @@ extension BKNetowrkTool {
         }
         
     }
+    
+    func scheduleResponder(scheduleResponse: BKScheduleResponse, completion: @escaping (_ success: Bool) -> Void) {
+        
+      
+        var dict = [String: Any]()
+        
+        dict["scheduleresponderkidid"] = scheduleResponse.responderKidId
+        dict["schedulerequestorkidid"] = scheduleResponse.requesterKidId
+        dict["scheduleresponderacceptance"] =  scheduleResponse.acceptanceStatus
+        dict["schedulerequestorskilllevel"] =  scheduleResponse.requesterSkillLevel
+        dict["schedulerequestorsportname"] =  scheduleResponse.sportName
+        dict["schedulerequestorlocation"] =  scheduleResponse.location
+        dict["scheduleresponderkidname"] =  scheduleResponse.responderKidName
+        dict["schedulerequestortime"] =  scheduleResponse.time
+        dict["schedulerequestordate"] =  scheduleResponse.date
+        
+        print("event response info:\(dict)")
+        
+        request(.post, urlStr: BKNetworkingScheduleResponderUrlStr, parameters: dict) { (success, data) in
+            
+            if success {
+                
+                do {
+                    
+                    if  let data = data,
+                        let json = try JSONSerialization.jsonObject(with: data) as? [String: Any] {
+                        if let status = json["status"] as? Bool {
+                            print("connectionResponder Finished request)")
+                            completion(status)
+                        }
+                        
+                    }
+                    
+                } catch {
+                    print("Error deserializing JSON: \(error)")
+                    completion(false)
+                }
+                
+            } else {
+                completion(false)
+            }
+            
+        }
+
+    }
+
     
     func cleanObjects() {
         self.kids = nil
