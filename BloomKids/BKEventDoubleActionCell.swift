@@ -14,11 +14,6 @@ class BKEventDoubleActionCell: UITableViewCell {
     @IBOutlet weak var imgPlayer: UIImageView!
     @IBOutlet weak var lblPlayerName: UILabel!
     @IBOutlet weak var imgSportIcon1: UIImageView!
-    @IBOutlet weak var imgSportIcon2: UIImageView!
-    @IBOutlet weak var imgSportIcon3: UIImageView!
-    @IBOutlet weak var imgSportIcon4: UIImageView!
-    @IBOutlet weak var imgSportIcon5: UIImageView!
-    @IBOutlet weak var imgSportIcon6: UIImageView!
     @IBOutlet weak var btnPlayerAction1: UIButton!
     @IBOutlet weak var btnPlayerAction2: UIButton!
     @IBOutlet weak var lblPlayerSchoolAge: UILabel!

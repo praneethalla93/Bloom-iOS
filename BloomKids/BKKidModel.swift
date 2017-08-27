@@ -197,7 +197,7 @@ struct BKConnectResponse {
     var connectionDate: String
     let sport: BKSport?
     
-    init(connresponderKidId: Int, responseAcceptStatus: Bool, connectionRequestorKidId: Int, sport: BKSport, city: String, kidName: String, connectionDate: String) {
+    init(connresponderKidId: Int, responseAcceptStatus: Bool, connectionRequestorKidId: Int, sport: BKSport?, city: String, kidName: String, connectionDate: String) {
         self.connresponderKidId = connresponderKidId
         self.responseAcceptStatus = responseAcceptStatus
         self.connectionRequestorKidId = connectionRequestorKidId
@@ -325,7 +325,6 @@ struct BKKidActivitySchedule {
         self.location = dict["location"] as! String
         self.sportName = dict["sportname"] as! String
         self.connectionState = Int(dict["scheduleconnectionstate"] as! String)!
-        
     }
     
 }

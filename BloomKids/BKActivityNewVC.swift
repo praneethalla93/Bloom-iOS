@@ -320,7 +320,7 @@ extension BKActivityNewVC {
             formatter.dateFormat = "MM/dd/yyyy"
             
             let todayDate = formatter.string(from: date)
-            let connectResponse = BKConnectResponse(connresponderKidId: currentKid.id!, responseAcceptStatus: acceptDecision, connectionRequestorKidId: activityConnection.id, sport: activityConnection.sport!, city: activityConnection.city, kidName: activityConnection.kidname, connectionDate: todayDate)
+            let connectResponse = BKConnectResponse(connresponderKidId: currentKid.id!, responseAcceptStatus: acceptDecision, connectionRequestorKidId: activityConnection.id, sport: (activityConnection.sport), city: activityConnection.city, kidName: activityConnection.kidname, connectionDate: todayDate)
             
             BKNetowrkTool.shared.connectionResponder( connectResponse: connectResponse) { (success) in
                 
