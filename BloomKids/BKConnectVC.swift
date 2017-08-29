@@ -16,6 +16,7 @@ class BKConnectVC: UITableViewController {
     fileprivate var currentkidConnections: [BKKidModel]?
     //fileprivate var currentkidPendingConnections: [BKKidModel]?
     fileprivate var pendingConnections: [BKKidActivityConnection]?
+    fileprivate var schoolPlace: BKPlaceModel?
     
     let myGroup = DispatchGroup()
     
@@ -30,7 +31,6 @@ class BKConnectVC: UITableViewController {
         let kidDoubleActionCellNib = UINib(nibName: "\(BKKidDoubleActionCell.self)", bundle: nil)
         self.tableView.register(kidDoubleActionCellNib, forCellReuseIdentifier: BKKidDoubleActionCellID)
         initialLoadAndReload()
-        
     }
     
     func initialLoadAndReload() {
@@ -277,7 +277,7 @@ extension BKConnectVC {
             
         } else if section == 2 {
             
-            sectionTitle = "Active Connections"
+            sectionTitle = "Schedule a playdate with your buddy"
         }
         
         return sectionTitle
@@ -301,6 +301,19 @@ extension BKConnectVC {
         
     }
     */
+    
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        if indexPath.section == 2 {
+            let eventSchedulerVC = UIStoryboard(name: "BKConnect", bundle: nil).instantiateViewController(withIdentifier: "BKEventScheduler") as! BKEventSchedulerVC
+            eventSchedulerVC.delegate = self
+            navigationController?.pushViewController(eventSchedulerVC, animated: true)
+        }
+        
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -357,6 +370,8 @@ extension BKConnectVC {
         else if ( section == 2 ) {
         
             if let kid = currentkidConnections?[row] {
+                
+                /*
             
                 let alert = UIAlertController ( title: "BEHOLD",
                                             message: "\(kid.kidName) at row \(row) was tapped!",
@@ -366,7 +381,13 @@ extension BKConnectVC {
                 }))
             
                 self.present( alert, animated: true, completion: nil)
-            
+                */
+                
+                
+                let eventSchedulerVC = UIStoryboard(name: "BKConnect", bundle: nil).instantiateViewController(withIdentifier: "BKEventScheduler") as! BKEventSchedulerVC
+                eventSchedulerVC.delegate = self
+                navigationController?.pushViewController(eventSchedulerVC, animated: true)
+
             }
             
         }
@@ -397,11 +418,7 @@ extension BKConnectVC {
         let cell = tableView.dequeueReusableCell(withIdentifier: BKKidActionCellID, for: indexPath) as! BKKidActionCell
         
         if let kid = currentkidConnections?[indexPath.row] {
-            
-            //cell.kidModel = kid.a
-            //cell.lblPlayerName.text = kid.kidName
-            //cell.lblPlayerSchoolAge.text = "\(kid.school) , \(kid.age)"
-            //cell.imgActionButtonImage.image = UIImage(named: BKIma)
+        
             cell.kidModel = kid
             cell.btnPlayerAction.setImage( UIImage(named: BKImageScheduleBtnIcon), for: .normal)
             // Assign the tap action which will be executed when the user taps the UIButton
@@ -468,7 +485,7 @@ extension BKConnectVC {
             }
 
         }
-        
+
         return cell
     }
     
@@ -516,6 +533,39 @@ extension BKConnectVC {
         
     }
     
+    
+}
+
+extension BKConnectVC: BKEventSchedulerDelegate {
+    
+    /*
+    func addKidVC(_ vc: BKAddKidVC, didAddkid kid: BKKidModel) {
+        BKNetowrkTool.shared.myKids?.insert(kid, at: 0)
+        self.tableView.reloadData()
+        navigationController?.popViewController(animated: true)
+        print("didAddkid")
+    }
+    */
+    
+    func scheduleEventVC(_ vc: BKEventSchedulerVC, didAddkid kid: BKKidModel) {
+        //TBD
+        
+    }
+    
+}
+
+
+extension BKConnectVC: BKPlaceAutocompleteDelegate {
+    
+    func placeAutocompleteDidCancel(_ vc: BKPlaceAutocompleteVC) {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    func placeAutocomplete(_ vc: BKPlaceAutocompleteVC, didSelectPlace place: BKPlaceModel) {
+        self.schoolPlace = place
+        navigationController?.popViewController(animated: true)
+        self.tableView.reloadData()
+    }
     
 }
 

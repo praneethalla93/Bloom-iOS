@@ -11,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BKKidCellAction" customModule="BloomKids" customModuleProvider="target"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BKKidDoubleActionCellID" rowHeight="77" id="j6q-P8-nCo" userLabel="BKKidDoubleActionCell" customClass="BKEventDoubleActionCell">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BKEventDoubleActionCellID" rowHeight="77" id="j6q-P8-nCo" userLabel="BKEventDoubleActionCell" customClass="BKEventDoubleActionCell" customModule="BloomKids" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="385" height="100"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="j6q-P8-nCo" id="OkW-81-c7z">
@@ -67,7 +67,7 @@
                                                     <constraint firstAttribute="width" constant="20" id="rTC-Q9-hQt"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="245" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="REn-sd-Pip" userLabel="Lbl dummy placeholder">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="245" text=" " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="REn-sd-Pip" userLabel="Lbl dummy placeholder">
                                                 <rect key="frame" x="62" y="0.0" width="138.5" height="20"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -127,13 +127,14 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="btnPlayerAction1" destination="8u7-mj-fZO" id="1mJ-o0-Fk7"/>
-                <outlet property="btnPlayerAction2" destination="lfS-jj-E0c" id="8xG-d9-WRG"/>
+                <outlet property="btnPlayerAction1" destination="8u7-mj-fZO" id="wzt-Pa-pCs"/>
+                <outlet property="btnPlayerAction2" destination="lfS-jj-E0c" id="673-ev-n3l"/>
                 <outlet property="imgPlayer" destination="glw-M7-KpX" id="efh-U5-dYh"/>
-                <outlet property="imgSportIcon1" destination="wkI-bc-Jwa" id="Smv-wR-Vp5"/>
+                <outlet property="imgSportIcon" destination="wkI-bc-Jwa" id="O6s-cr-e6f"/>
                 <outlet property="lblActionStatus" destination="ziR-kl-Obm" id="Gi6-9B-O6o"/>
+                <outlet property="lblEventDateTime" destination="Lfd-5W-sK5" id="GiP-9x-ipU"/>
+                <outlet property="lblEventLocation" destination="I2o-Xh-VdS" id="1rH-AE-c2T"/>
                 <outlet property="lblPlayerName" destination="wff-5W-X9g" id="2Yb-7f-2M8"/>
-                <outlet property="lblPlayerSchoolAge" destination="Lfd-5W-sK5" id="zoC-T1-M8U"/>
             </connections>
             <point key="canvasLocation" x="52.5" y="128"/>
         </tableViewCell>

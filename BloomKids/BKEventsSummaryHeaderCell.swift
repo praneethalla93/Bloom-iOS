@@ -14,6 +14,7 @@ class BKEventsSummaryHeaderCell : UITableViewCell {
     
     @IBOutlet weak var imagePlayerPhoto: UIImageView!
     @IBOutlet weak var lblPlayerName: UILabel!
+    @IBOutlet weak var lblSchoolAge: UILabel!
     @IBOutlet weak var lblConnectionCounts: UILabel!
     
     override func awakeFromNib() {
@@ -27,5 +28,6 @@ class BKEventsSummaryHeaderCell : UITableViewCell {
         
         // Configure the view for the selected state
     }
-    
+
+
 }

@@ -8,21 +8,18 @@
 
 import UIKit
 
-protocol BKSportLevelVCDelegate: class {
-    func sportLevel(_ vc: BKSportLevelVC, didChooseSport sport: BKSport?)
+protocol BKSportDelegate: class {
+    func sportLevel(_ vc: BKSportVC, didChooseSport sportName: String?)
 }
 
 
-class BKSportLevelVC: UITableViewController {
-    weak var delegate: BKSportLevelVCDelegate?
-    
-    var sportName: String = "Chess"
+class BKSportVC: UITableViewController {
+    weak var delegate: BKSportDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = sportName
+        self.title = "Select Sport"
     }
-
 
     // MARK: - Table view data source
 
@@ -32,13 +29,13 @@ class BKSportLevelVC: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return BKSportLevels.count
+        return BKBloomSports.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: BKSportLevelCellID, for: indexPath) as! BKSportLevelCell
-        cell.sportLabel.text = BKSportLevels[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: BKSportCellID, for: indexPath)
+        cell.textLabel?.text = BKBloomSports[indexPath.row]
         return cell
     }
     
@@ -58,17 +55,11 @@ class BKSportLevelVC: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let cell = tableView.cellForRow(at: indexPath) as? BKSportLevelCell else {return}
-        /*
-         var sportName: String
-         var skillLevel: String
-         */
-        let dict = ["sportName": self.sportName,
-                    "skillLevel": cell.sportLabel.text!]
-        let sportModel = BKSport(dict: dict)
-        delegate?.sportLevel(self, didChooseSport: sportModel)
+        
+        guard let cell = tableView.cellForRow(at: indexPath) else {return}
+        delegate?.sportLevel(self, didChooseSport: cell.textLabel?.text)
+        
     }
-    
     
     
 }

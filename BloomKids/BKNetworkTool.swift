@@ -25,7 +25,7 @@ class BKNetowrkTool {
     let myGroup = DispatchGroup()
     
     var myKids: [BKKidModel]? {
-        
+
         get {
             return self.kids
         }
@@ -92,7 +92,6 @@ class BKNetowrkTool {
 
 
 extension BKNetowrkTool {
-    
     
     func authenticate(email: String,password: String, completion: @escaping (_ success: Bool)->Void) {
         

@@ -54,6 +54,12 @@ let BKAddKidCellID = "BKAddKidCellID"
 let BKKidCellID = "BKKidCellID"
 let BKKidActionCellID = "BKKidActionCellID"
 let BKKidDoubleActionCellID = "BKKidDoubleActionCellID"
+let BKEventDoubleActionCellID = "BKEventDoubleActionCellID"
+
+let BKStartDateCellID =  "BKStartDateCellID"
+let BKEndDateCellID =  "BKEndDateCellID"
+let BKLocationCellID =  "BKLocationCellID"
+
 
 let BKSportLevelCellID = "BKSportLevelCellID"
 let BKHasFinishedOnboarding = "BKHasFinishedOnboarding"
@@ -77,5 +83,6 @@ let BKConnectPlayerCellSeque = "BKConnectPlayerCellSeque"
 
 //Model data
 let BKBloomSports = ["All", "Tennis", "Chess", "Basketball", "Baseball", "Cricket", "Soccer" ]
+var BKSportLevels = ["Rookie", "Shining Star", "Rock Star"]
 
 

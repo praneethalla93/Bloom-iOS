@@ -99,8 +99,7 @@ class BKKidActionCell: UITableViewCell {
         
     }
     
-    
-    
+
     
     
 }

@@ -48,7 +48,6 @@ struct BKSport: CustomDebugStringConvertible {
 
 
 struct BKKidModel: CustomDebugStringConvertible {
-
     var kidName: String
     var id: Int?
     var gender: String
@@ -58,7 +57,7 @@ struct BKKidModel: CustomDebugStringConvertible {
     
     
     init(kidName: String, gender: String, school: String, age: String, sports: [BKSport], id: Int? = nil) {
-        self.kidName = kidName
+        self.kidName = kidName.capitalized
         self.gender = gender
         self.school = school
         self.age = age
@@ -67,7 +66,7 @@ struct BKKidModel: CustomDebugStringConvertible {
     }
     
     init(dict: [String: Any]) {
-        self.kidName = dict["kidName"] as! String
+        self.kidName = (dict["kidName"] as! String).capitalized
         self.id = dict["id"] as? Int
         self.gender = dict["gender"] as! String
         self.school = dict["school"] as! String
@@ -91,6 +90,7 @@ struct BKKidModel: CustomDebugStringConvertible {
     }
 
 }
+
 
 struct BKKidActivityConnection {
     let date: String
@@ -138,7 +138,7 @@ struct BKKidActivityConnection {
     var sport: BKSport?
     
     init(kidName: String, gender: String, school: String, age: String, sport: BKSport, id: Int, connectionState: BKKidConnectionSate, date: String, city: String, ownerId: Int) {
-        self.kidname = kidName
+        self.kidname = kidName.capitalized
         self.gender = gender
         self.school = school
         self.age = age
@@ -156,7 +156,7 @@ struct BKKidActivityConnection {
     }
     
     init(dict: [String: Any]) {
-        self.kidname = dict["kidname"] as! String
+        self.kidname = (dict["kidname"] as! String).capitalized
         self.id = dict["id"] as! Int
         self.gender = dict["gender"] as! String
         self.school = dict["school"] as! String
@@ -187,7 +187,6 @@ struct BKKidActivityConnection {
 
 }
 
-
 struct BKConnectResponse {
     var connresponderKidId: Int
     var responseAcceptStatus: Bool
@@ -202,7 +201,7 @@ struct BKConnectResponse {
         self.responseAcceptStatus = responseAcceptStatus
         self.connectionRequestorKidId = connectionRequestorKidId
         self.city = city
-        self.kidName = kidName
+        self.kidName = kidName.capitalized
         self.connectionDate = connectionDate
         self.sport = sport
     }
@@ -214,7 +213,7 @@ struct BKConnectResponse {
         
         self.city = dict["city"] as! String
         
-        self.kidName = dict["kidname"] as! String
+        self.kidName = (dict["kidname"] as! String).capitalized
         self.connectionDate = dict["connectiondate"] as! String
         
         var sportName = dict["sportname"] as? String
@@ -237,8 +236,8 @@ struct BKKidActivitySchedule {
     
     let id: Int
     let kidName: String
-    let dateSchedule: String
-    let timeSchedule: String
+    let date: String
+    let time: String
     let gender: String
     let age: String
     let school: String
@@ -256,7 +255,6 @@ struct BKKidActivitySchedule {
             print( "New connection state is \(connectionState)")
             
             if ( self.connectionState == BKEventConnectionSate.requestSent.rawValue || self.connectionState == BKEventConnectionSate.declined.rawValue ) {
-                
                 self.connectionStateDescription = "Pending"
                 self.actionLabelHidden = false
                 self.btn1Hidden = true
@@ -282,22 +280,34 @@ struct BKKidActivitySchedule {
             }
             
         }
-        
+
     }
 
+    var convertedDate: Date {
+        //formattedDate	String	"07/08/17 10:00"
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM/dd/yy'T'HH:mm"
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        //dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+        dateFormatter.timeZone = NSTimeZone.local
+        
+        let formattedDate = "\(date)T\(time)"
+        let convertedDate = dateFormatter.date(from: formattedDate)!
+        print("formattedDate  \(formattedDate ) :: convertedDate \(convertedDate)")
+        return convertedDate
+    }
     
     init(id: Int, kidName: String, dateSchedule: String, timeSchedule: String, gender: String, age: String, school: String, location: String, sportName: String, connectionState: BKEventConnectionSate) {
         self.id = id
-        self.kidName = kidName
-        self.dateSchedule = dateSchedule
-        self.timeSchedule = timeSchedule
+        self.kidName = kidName.capitalized
+        self.date = dateSchedule
+        self.time = timeSchedule
         self.gender = gender
         self.age = age
         self.school = school
         self.location = location
         self.sportName = sportName
         self.connectionState = connectionState.rawValue
-        
         
         //to manage status for the tableviewcell
         self.connectionStateDescription = ""
@@ -315,10 +325,11 @@ struct BKKidActivitySchedule {
         self.actionLabelHidden = false
         
         self.id = dict["id"] as! Int
-        self.kidName = dict["kidname"] as! String
+        self.kidName = (dict["kidname"] as! String).capitalized
         
-        self.dateSchedule = dict["dateschedule"] as! String
-        self.timeSchedule = dict["timeschedule"] as! String
+        
+        self.date = dict["dateschedule"] as! String
+        self.time = dict["timeschedule"] as! String
         self.gender = dict["gender"] as! String
         self.age = dict["age"] as! String
         self.school = dict["school"] as! String
@@ -329,9 +340,7 @@ struct BKKidActivitySchedule {
     
 }
 
-
 struct BKScheduleResponse {
-    
     var responderKidId: Int
     var responderKidName: String
     var requesterKidId: Int
@@ -369,6 +378,18 @@ struct BKScheduleResponse {
         self.date = dict["schedulerequestordate"] as! String
         self.time = dict["schedulerequestortime"] as! String
     }
+    
+    /*
+    var convertedDate: Date {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm"
+        let formattedDate = "\(date)'T'\(time)"
+        let convertedDate = dateFormatter.date(from: formattedDate)!
+        print("convertedDate \(convertedDate)")
+        return convertedDate
+    }
+    */
+
 
 }
 

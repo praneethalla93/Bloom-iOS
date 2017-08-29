@@ -13,6 +13,8 @@
 		720B66401F4CE836000A50C6 /* BKEventDoubleActionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 720B663F1F4CE836000A50C6 /* BKEventDoubleActionCell.swift */; };
 		72366B9E1F479F7000799302 /* BKEventsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72366B9D1F479F7000799302 /* BKEventsVC.swift */; };
 		7242BD3C1F4E9D120041C033 /* BKEventsSummaryHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7242BD3B1F4E9D120041C033 /* BKEventsSummaryHeaderCell.swift */; };
+		7260D0561F54C9A700299935 /* BKSportlVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7260D0551F54C9A700299935 /* BKSportlVC.swift */; };
+		7260D0581F54D82E00299935 /* BKEventSchedulerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7260D0571F54D82E00299935 /* BKEventSchedulerVC.swift */; };
 		72890CD01F1C632100C43792 /* BKEvents.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 72890CCF1F1C632100C43792 /* BKEvents.storyboard */; };
 		72D24A591F018CB5002ACD79 /* BKConnectPlayerCellVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D24A581F018CB5002ACD79 /* BKConnectPlayerCellVC.swift */; };
 		72D24A5B1F018CE6002ACD79 /* BKConnectSectionHeaderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D24A5A1F018CE6002ACD79 /* BKConnectSectionHeaderVC.swift */; };
@@ -86,6 +88,8 @@
 		720B663F1F4CE836000A50C6 /* BKEventDoubleActionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKEventDoubleActionCell.swift; sourceTree = "<group>"; };
 		72366B9D1F479F7000799302 /* BKEventsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKEventsVC.swift; sourceTree = "<group>"; };
 		7242BD3B1F4E9D120041C033 /* BKEventsSummaryHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKEventsSummaryHeaderCell.swift; sourceTree = "<group>"; };
+		7260D0551F54C9A700299935 /* BKSportlVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKSportlVC.swift; sourceTree = "<group>"; };
+		7260D0571F54D82E00299935 /* BKEventSchedulerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKEventSchedulerVC.swift; sourceTree = "<group>"; };
 		72890CCF1F1C632100C43792 /* BKEvents.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BKEvents.storyboard; sourceTree = "<group>"; };
 		72D24A581F018CB5002ACD79 /* BKConnectPlayerCellVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKConnectPlayerCellVC.swift; sourceTree = "<group>"; };
 		72D24A5A1F018CE6002ACD79 /* BKConnectSectionHeaderVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKConnectSectionHeaderVC.swift; sourceTree = "<group>"; };
@@ -213,6 +217,8 @@
 		72D24A571F018C73002ACD79 /* VCs */ = {
 			isa = PBXGroup;
 			children = (
+				7260D0571F54D82E00299935 /* BKEventSchedulerVC.swift */,
+				7260D0551F54C9A700299935 /* BKSportlVC.swift */,
 				72F55CE71F000EA400249296 /* BKConnectVC.swift */,
 				72D24A581F018CB5002ACD79 /* BKConnectPlayerCellVC.swift */,
 				72D24A5A1F018CE6002ACD79 /* BKConnectSectionHeaderVC.swift */,
@@ -605,6 +611,7 @@
 				720B66401F4CE836000A50C6 /* BKEventDoubleActionCell.swift in Sources */,
 				72F55CE81F000EA400249296 /* BKConnectVC.swift in Sources */,
 				A198939A1EE2012F00DDF240 /* BKAddKidVC.swift in Sources */,
+				7260D0561F54C9A700299935 /* BKSportlVC.swift in Sources */,
 				A1E9D4771EE0D38100250A94 /* AHNibLoadable.swift in Sources */,
 				A143871A1EE147C30050A5D1 /* BKPlaceSearchNavVC.swift in Sources */,
 				A1E9D4801EE0EF8200250A94 /* BKPlaceResultsController.swift in Sources */,
@@ -621,6 +628,7 @@
 				A12561581ECE6F2800C46FD1 /* BKEmailSignupVC.swift in Sources */,
 				A10645F31EE3B5BE0054267C /* BKKidCell.swift in Sources */,
 				72366B9E1F479F7000799302 /* BKEventsVC.swift in Sources */,
+				7260D0581F54D82E00299935 /* BKEventSchedulerVC.swift in Sources */,
 				A179F9B51ED28A4500B42540 /* BKActivityVC.swift in Sources */,
 				A1FC92401ECD4F960099E68D /* AppDelegate.swift in Sources */,
 				A10645F01EE3B20E0054267C /* BKYourKidsVC.swift in Sources */,

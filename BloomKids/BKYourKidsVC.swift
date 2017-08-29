@@ -73,7 +73,6 @@ class BKYourKidsVC: UITableViewController {
             cell.kidModel = kidModel
             
             
-            
             //cell.imgActionButtonImage.image = UIImage(named: BKImageEditBtnIcon)
             cell.btnPlayerAction.setImage( UIImage(named: BKImageEditBtnIcon), for: .normal)
             
@@ -110,19 +109,19 @@ class BKYourKidsVC: UITableViewController {
             addKidVC.delegate = self
             navigationController?.pushViewController(addKidVC, animated: true)
         }
+        
     }
     
     func showAlertForRow(row: Int) {
         
         if let kid = BKNetowrkTool.shared.myKids?[row] {
         
-            let alert = UIAlertController ( title: "BEHOLD",
+            let alert = UIAlertController ( title: "Edit Kid",
                 message: "\(kid.kidName) at row \(row) was tapped!",
                 preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Gotcha!", style: UIAlertActionStyle.default, handler: { (test) -> Void in
+                alert.addAction(UIAlertAction(title: "Edit Kid", style: UIAlertActionStyle.default, handler: { (test) -> Void in
             self.dismiss(animated: true, completion: nil)
                 }))
-        
             self.present( alert, animated: true, completion: nil)
         
         }
