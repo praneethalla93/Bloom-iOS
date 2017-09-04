@@ -2,7 +2,7 @@
 //  BKKidModel.swift
 //  BloomKids
 //
-//  Created by Andy Tong on 6/2/17.
+//  Created by Raj Sathyaseelan on 6/2/17.
 //  Copyright © 2017 Bloom Technology Inc. All rights reserved.
 //
 
@@ -254,29 +254,93 @@ struct BKKidActivitySchedule {
             
             print( "New connection state is \(connectionState)")
             
+            self.connectionStateDescription = "Expired"
+            self.actionLabelHidden = false
+            self.btn1Hidden = true
+            self.btn2Hidden = true
+            
+            let eventDateTime = "\(self.date)T\(self.time)"
+            
             if ( self.connectionState == BKEventConnectionSate.requestSent.rawValue || self.connectionState == BKEventConnectionSate.declined.rawValue ) {
+                
                 self.connectionStateDescription = "Pending"
-                self.actionLabelHidden = false
-                self.btn1Hidden = true
-                self.btn2Hidden = true
+                
+                let formatter = DateFormatter()
+                // initially set the format based on your datepicker date
+                formatter.dateFormat = "MM/dd/yy'T'HH:mm"
+                
+                if let eventDate = formatter.date(from: eventDateTime)  {
+                    
+                    print( "event date \(eventDate)")
+                    
+                    if ( eventDate < Date() ) {
+                        self.connectionStateDescription = "Expired"
+                    }
+                    
+                } else {
+                    
+                    formatter.dateFormat = "E, d MMM yyyy'T'h:mm a"
+                    
+                    if let newEventDate = formatter.date(from: eventDateTime) {
+                        
+                        print( "new event date \(newEventDate)")
+                        
+                        if ( newEventDate < Date() ) {
+                            self.connectionStateDescription = "Expired"
+                        }
+                        
+                    }
+                    
+                }
+                
+                
             }
             else if (self.connectionState == BKEventConnectionSate.declined.rawValue ) {
                 self.connectionStateDescription = "Declined"
-                self.actionLabelHidden = false
-                self.btn1Hidden = true
-                self.btn2Hidden = true
             }
             else if (self.connectionState == BKEventConnectionSate.requestPending.rawValue ) {
-                self.connectionStateDescription = ""
-                self.actionLabelHidden = true
-                self.btn1Hidden = false
-                self.btn2Hidden = false
+                    
+                let formatter = DateFormatter()
+                // initially set the format based on your datepicker date
+                formatter.dateFormat = "MM/dd/yy'T'HH:mm"
+                    
+                if let eventDate = formatter.date(from: eventDateTime)  {
+                        
+                    print( "event date \(eventDate)")
+                        
+                    if ( eventDate > Date() ) {
+                        self.connectionStateDescription = ""
+                        self.actionLabelHidden = true
+                        self.btn1Hidden = false
+                        self.btn2Hidden = false
+                    } else {
+                        self.connectionStateDescription = "Expired"
+                    }
+                    
+                } else {
+                        
+                    formatter.dateFormat = "E, d MMM yyyy'T'h:mm a"
+                        
+                    if let newEventDate = formatter.date(from: eventDateTime) {
+                            
+                        print( "new event date \(newEventDate)")
+                            
+                        if ( newEventDate > Date() ) {
+                            self.connectionStateDescription = ""
+                            self.actionLabelHidden = true
+                            self.btn1Hidden = false
+                            self.btn2Hidden = false
+                        } else {
+                            self.connectionStateDescription = "Expired"
+                        }
+
+                    }
+                        
+                }
+               
             }
             else if ( self.connectionState == BKEventConnectionSate.accepted.rawValue ) {
                 self.connectionStateDescription = "Accepted"
-                self.actionLabelHidden = false
-                self.btn1Hidden = true
-                self.btn2Hidden = true
             }
             
         }
@@ -292,9 +356,23 @@ struct BKKidActivitySchedule {
         dateFormatter.timeZone = NSTimeZone.local
         
         let formattedDate = "\(date)T\(time)"
-        let convertedDate = dateFormatter.date(from: formattedDate)!
-        print("formattedDate  \(formattedDate ) :: convertedDate \(convertedDate)")
-        return convertedDate
+        
+        if let convertedDate = dateFormatter.date(from: formattedDate) {
+            print("formattedDate  \(formattedDate ) :: convertedDate \(convertedDate)")
+            return convertedDate
+            
+        } else {
+            dateFormatter.dateFormat = "E, d MMM yyyy'T'h:mm a"
+            
+            if let newconvertedDate =  dateFormatter.date(from: formattedDate) {
+                print("formattedDate  \(formattedDate ) :: convertedDate \(newconvertedDate)")
+                return newconvertedDate
+            }
+
+        }
+        
+        return Date()
+        
     }
     
     init(id: Int, kidName: String, dateSchedule: String, timeSchedule: String, gender: String, age: String, school: String, location: String, sportName: String, connectionState: BKEventConnectionSate) {

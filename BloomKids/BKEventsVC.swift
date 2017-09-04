@@ -25,12 +25,9 @@ class BKEventsVC: UITableViewController {
         super.viewDidLoad()
         SVProgressHUD.show()
         
-    
-        
         let eventDoubleActionCellNib = UINib(nibName: "\(BKEventDoubleActionCell.self)", bundle: nil)
         self.tableView.register(eventDoubleActionCellNib, forCellReuseIdentifier: BKEventDoubleActionCellID)
         initialLoadAndReload()
-        
     }
     
     func initialLoadAndReload() {
@@ -82,15 +79,16 @@ class BKEventsVC: UITableViewController {
         self.navigationItem.titleView = menuView
         
         menuView.didSelectItemAtIndexHandler = {[weak self] (indexPath: Int) -> () in
+            
             print("Did select item at index: \(indexPath)")
             //@TODO: reload
             let myKids = BKNetowrkTool.shared.myKids
             BKNetowrkTool.shared.myCurrentKid = myKids?[indexPath]
             self?.loadActivityEvents()
             
-            //once dropdown menu is loaded with kids. Load current Kids connection
+            //once dropdown menu is loaded with kids. Load events
             self?.myGroup.notify(queue: .main) {
-                print("connect table refreshed")
+                print("event table refreshed")
                 self?.tableView.reloadData()
             }
             
@@ -114,7 +112,6 @@ class BKEventsVC: UITableViewController {
                 self.myGroup.leave()
             }
             
-            
         }
         
     }
@@ -128,28 +125,31 @@ class BKEventsVC: UITableViewController {
         myGroup.enter()
         BKNetowrkTool.shared.getActivityEvents() { (success, activityEventsResult) in
             
-            self.myGroup.leave()
-            SVProgressHUD.dismiss()
-            
             if let activityEventList = activityEventsResult, success {
                 
                 let currentDateTime = Date()
                 
-                self.pendingEvents = activityEventList.filter{ $0.connectionState == BKEventConnectionSate.requestPending.rawValue}
+                self.pendingEvents = activityEventList.filter{ $0.connectionState == BKEventConnectionSate.requestPending.rawValue && $0.convertedDate > currentDateTime}
                 self.upcomingEvents = activityEventList.filter{ $0.convertedDate > currentDateTime && $0.connectionState == BKEventConnectionSate.accepted.rawValue}
                 self.pastEvents = activityEventList.filter{ $0.convertedDate < currentDateTime }
                 
                 //override filter
                 //self.upcomingEvents = activityEventList
                 
-                
-                print ("success loading activity events \(String(describing: self.upcomingEvents?.count))")
-                print( "Activity events count \(String(describing: self.upcomingEvents?.count))")
+                print ("success loading upcoming events \(String(describing: self.upcomingEvents?.count))")
+                print( "success loading pending events \(String(describing: self.pendingEvents?.count))")
+                print( "success loading past events \(String(describing: self.pastEvents?.count))")
             }
             else {
                 self.upcomingEvents = nil
+                self.pastEvents = nil
+                self.pendingEvents = nil
+                self.tableView.reloadData()
                 print ("failure loadActivityEvents")
             }
+            
+            self.myGroup.leave()
+            SVProgressHUD.dismiss()
 
         }
         
@@ -162,7 +162,7 @@ class BKEventsVC: UITableViewController {
 extension BKEventsVC {
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 4
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -180,6 +180,13 @@ extension BKEventsVC {
             
         case 2:
             if let count = upcomingEvents?.count {
+                return count
+            }
+            else {
+                return 0
+            }
+        case 3:
+            if let count = pastEvents?.count {
                 return count
             }
             else {
@@ -211,8 +218,6 @@ extension BKEventsVC {
             return cell
         }
         
-        
-        
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -223,10 +228,13 @@ extension BKEventsVC {
             return 100.0
         }else if indexPath.section == 2 {
             return 100.0
-        }else{
+        }else if indexPath.section == 3 {
+            return 100.0
+        }
+        else{
             return 40.0
         }
-        
+   
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -245,17 +253,33 @@ extension BKEventsVC {
             if let pendingEventCount = pendingEvents?.count {
                 
                 if pendingEventCount > 0 {
-                    sectionTitle = "Awaiting Response"
+                    sectionTitle = "Awaiting your response"
                 }
                 
             }
             
         } else if section == 2 {
-            sectionTitle = "Upcoming Events"
+            
+            if let upComingEventCount = upcomingEvents?.count {
+                
+                if upComingEventCount > 0 {
+                    sectionTitle = "Upcoming Events"
+                }
+                
+            }
+            
+            
         } else if section == 3 {
-            sectionTitle = "Past Events"
+            
+            if let pastEventCount = pastEvents?.count {
+                
+                if pastEventCount > 0 {
+                    sectionTitle = "Past Events"
+                }
+                
+            }
+            
         }
-    
 
         return sectionTitle
     }
@@ -264,20 +288,6 @@ extension BKEventsVC {
         super.viewWillAppear(animated)
         initialLoadAndReload()
     }
-    
-    /*
-     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-     
-     // for school search
-     if indexPath.section == 4 {
-     let searchVC = BKPlaceAutocompleteVC()
-     searchVC.delegate = self
-     searchVC.placeholder = "Enter your kid's school name"
-     navigationController?.pushViewController(searchVC, animated: true)
-     }
-     
-     }
-     */
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -301,8 +311,8 @@ extension BKEventsVC {
                     acceptFlag = true
                 }
                 
-                let alert = UIAlertController ( title: "New Connection Response",
-                                                message: "Are you sure you Want to \(decision) connection reuest from \(activitySchedule.kidName)", preferredStyle: .actionSheet)
+                let alert = UIAlertController ( title: "New PlayDate Confirm",
+                                                message: "Are you sure you want to \(decision) playdate reuest from \(activitySchedule.kidName)", preferredStyle: .actionSheet)
                 
                 alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
                     self.dismiss(animated: true, completion: nil)
@@ -321,7 +331,6 @@ extension BKEventsVC {
                 alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: { (action: UIAlertAction!) in
                     print("Handle reject Logic here")
                     self.dismiss(animated: true, completion: nil)
-                    //self.sendConnectResponse(row: row, acceptDecision: false)
                     
                 }))
                 
@@ -330,25 +339,9 @@ extension BKEventsVC {
             
             
         }
-        else if ( section == 2 ) {
-            
-            if let kid = upcomingEvents?[row] {
-                
-                let alert = UIAlertController ( title: "BEHOLD",
-                                                message: "\(kid.kidName) at row \(row) was tapped!",
-                    preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Gotcha!", style: UIAlertActionStyle.default, handler: { (test) -> Void in
-                    self.dismiss(animated: true, completion: nil)
-                }))
-                
-                self.present( alert, animated: true, completion: nil)
-                
-            }
-            
-        }
+
         
     }
-    
     
 }
 
@@ -358,14 +351,13 @@ extension BKEventsVC {
     func handleEventSummaryHeader(_ tableView: UITableView, _ indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: BKConnectSummaryHeaderCellID, for: indexPath) as! BKEventsSummaryHeaderCell
         
-        //cell.imagePlayerPhoto
-        
         if let currentKid = BKNetowrkTool.shared.myCurrentKid {
             let upcomingEventsCount = self.upcomingEvents?.count ?? 0
             let pendingEventsCount = self.pendingEvents?.count ?? 0
+            let pastEventsCount = self.pastEvents?.count ?? 0
             cell.lblPlayerName.text = "\(currentKid.kidName) | Age: \(String(describing: currentKid.age))"
             cell.lblSchoolAge.text = currentKid.school
-            cell.lblConnectionCounts.text = "\(String(describing: pendingEventsCount)) Pending | \(String(describing: upcomingEventsCount)) Upcoming"
+            cell.lblConnectionCounts.text = "Play Dates: \(String(describing: pendingEventsCount)) Pending | \(String(describing: upcomingEventsCount)) Upcoming | \(String(describing: pastEventsCount)) Past |"
             
         }
 
@@ -374,7 +366,6 @@ extension BKEventsVC {
     
     
     func handleEvents(section: Int, _ tableView: UITableView, _ indexPath: IndexPath) -> UITableViewCell {
-        
         
         var events: [BKKidActivitySchedule]?
         
@@ -393,16 +384,15 @@ extension BKEventsVC {
         let cell = tableView.dequeueReusableCell(withIdentifier: BKEventDoubleActionCellID, for: indexPath) as! BKEventDoubleActionCell
         
         if let activity = events?[indexPath.row] {
-
             cell.activitySchedule = activity
             
             // Assign the tap action which will be executed when the user taps the UIButton
             cell.tapAction1 = { [weak self] (cell) in
-                self?.showAlertForRow(section: 2, row: tableView.indexPath(for: cell)!.row)
+                self?.showAlertForRow(section: 1, row: tableView.indexPath(for: cell)!.row, decision: BKConnectAcceptRespone)
             }
             
             cell.tapAction2 = { [weak self] (cell) in
-                self?.showAlertForRow(section: 2, row: tableView.indexPath(for: cell)!.row)
+                self?.showAlertForRow(section: 1, row: tableView.indexPath(for: cell)!.row, decision: BKConnectDeclineRespone)
             }
             
         }
@@ -414,33 +404,6 @@ extension BKEventsVC {
 
 extension BKEventsVC {
     
-    func handlePendingEvents(_ tableView: UITableView, _ indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: BKEventDoubleActionCellID, for: indexPath) as! BKEventDoubleActionCell
-        
-        if let activity = self.pendingEvents?[indexPath.row] {
-            
-            cell.activitySchedule = activity
-            
-            
-            // Assign the tap action which will be executed when the user taps the UIButton
-            cell.activitySchedule?.connectionState = activity.connectionState
-            
-            cell.tapAction1 = { [weak self] (cell) in
-                self?.showAlertForRow(section: 2, row: tableView.indexPath(for: cell)!.row)
-            }
-            
-            cell.tapAction2 = { [weak self] (cell) in
-                self?.showAlertForRow(section: 2, row: tableView.indexPath(for: cell)!.row)
-            }
-            
-            
-            
-        }
-
-        
-        return cell
-    }
     
     func sendEventResponse(row: Int, acceptDecision: Bool) {
         SVProgressHUD.show()
@@ -448,7 +411,6 @@ extension BKEventsVC {
         
         if var activitySchedule = self.pendingEvents?[row], let currentKid = BKNetowrkTool.shared.myCurrentKid {
             
-            let date = Date()
             let formatter = DateFormatter()
             formatter.dateFormat = "MM/dd/yyyy"
             
@@ -479,12 +441,8 @@ extension BKEventsVC {
                 self.myGroup.leave()
             }
             
-            
-            
         }
-        
-        
-        
+
     }
     
 }

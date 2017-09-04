@@ -495,7 +495,7 @@
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5KS-4W-yNu" customClass="AHStackButton" customModule="BloomKids" customModuleProvider="target">
                                                             <rect key="frame" x="242" y="0.0" width="101" height="91"/>
                                                             <color key="backgroundColor" red="0.44705882349999998" green="0.79215686269999996" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <state key="normal" title="soccer" image="sport-add-icon"/>
+                                                            <state key="normal" title="Soccer" image="sport-add-icon"/>
                                                         </button>
                                                     </subviews>
                                                 </stackView>

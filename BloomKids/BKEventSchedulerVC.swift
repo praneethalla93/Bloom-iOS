@@ -8,34 +8,35 @@
 
 import UIKit
 import SVProgressHUD
+import Foundation
 
 protocol BKEventSchedulerDelegate: class {
-    
-    func scheduleEventVC(_ vc: BKEventSchedulerVC, didAddkid kid: BKKidModel)
-    
+    func scheduleEventVC(_ vc: BKEventSchedulerVC, eventReveivingKid kid: BKKidModel)
 }
 
 
 class BKEventSchedulerVC: UITableViewController {
     weak var delegate: BKEventSchedulerDelegate?
-    
+    var eventReceivingKid: BKKidModel?
     
     fileprivate lazy var photoHeaderVC: BKPhotoHeaderVC = BKPhotoHeaderVC()
     fileprivate var eventLocation: BKPlaceModel?
+    fileprivate var eventSport: String?
+    fileprivate var eventDate: String?
+    
     fileprivate var newKid: BKKidModel?
+    fileprivate var locationTextField: UITextField?
+    fileprivate var sportTextField: UITextField?
+    fileprivate var scheduleBtn: UIButton?
+    fileprivate var eventDatePicker: UIDatePicker?
+    fileprivate var eventScheduleStatus = false
     
     let myGroup = DispatchGroup()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "Schedule PlayDate"
-        
-        photoHeaderVC.willMove(toParentViewController: self)
-        addChildViewController(photoHeaderVC)
-        photoHeaderVC.didMove(toParentViewController: self)
-        
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cellId")
+        self.title = "PlayDate"
         
         let leftBtn = UIButton(type: .custom)
         leftBtn.setTitle("Cancel", for: .normal)
@@ -44,90 +45,100 @@ class BKEventSchedulerVC: UITableViewController {
         leftBtn.addTarget(self, action: #selector(cancel(_:)), for: .touchUpInside)
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: leftBtn)
         
+        self.scheduleBtn = UIButton(type: .custom)
+        scheduleBtn?.setTitle("Schedule", for: .normal)
+        scheduleBtn?.setTitleColor(UIColor.white, for: .normal)
+        scheduleBtn?.sizeToFit()
+        scheduleBtn?.addTarget(self, action: #selector(schedule(_:)), for: .touchUpInside)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: scheduleBtn!)
         myGroup.enter()
+        scheduleBtn?.setTitleColor(UIColor.gray, for: .disabled)
+        scheduleBtn?.isEnabled = false
         
-        //after successfull addking kid
+        //TODO: after successfull scheduling event
         myGroup.notify(queue: .main) {
             
-            
-             if self.newKid != nil {
+            if self.eventScheduleStatus {
                 print("\(String(describing: self.newKid?.kidName)) added successfully")
-                SVProgressHUD.showSuccess(withStatus: "\(String(describing: self.newKid?.kidName)) added successfully")
-                BKAuthTool.shared.finishedOnboarding()
-                
-                //cancel to returnt to your kids screen.
+                SVProgressHUD.showSuccess(withStatus: "Playdate successfully scheduled with \(String(describing: self.newKid?.kidName))")
+                //cancel to return to playdate screen
                 self.cancel(self)
                 
-             } else{
-                SVProgressHUD.showError(withStatus: "Failed to add kid")
-             }
-            
+            } else{
+                SVProgressHUD.showError(withStatus: "Event Schedule failed. Try again.")
+            }
+
         }
 
     }
     
-    func cancel(_ sender: Any) {
-        if navigationController != nil {
-            navigationController?.popViewController(animated: true)
-        }else{
-            dismiss(animated: true, completion: nil)
+    func editingChanged() {
+        
+        
+        guard
+            let location = locationTextField?.text, !location.isEmpty,
+            let sport = self.eventSport, !sport.isEmpty
+        else {
+                scheduleBtn?.isEnabled = false
+                return
         }
+        
+        scheduleBtn?.isEnabled = true
     }
     
-    @IBAction func addKid(_ sender: UIBarButtonItem) {
+    func cancel(_ sender: Any) {
         
-        /*
-        guard let gender = genderStr,
-        let name = name,
-        let schoolPlace = schoolPlace,
-        let sports = spotCell?.totalSports,
-        let ageSr = age else {
-            return
+        if navigationController != nil {
+            navigationController?.popViewController(animated: true)
+        } else {
+            dismiss(animated: true, completion: nil)
         }
         
-        guard sports.count > 0 else {
-            SVProgressHUD.showError(withStatus: "You have to choose a sport")
-            return
-        }
-        
-        let kidModel = BKKidModel(kidName: name, gender: gender, school: schoolPlace.placeName, age: ageSr, sports: sports)
+    }
     
+    @IBAction func schedule(_ sender: UIBarButtonItem) {
         
+        print ("schedule button clicked")
         SVProgressHUD.show()
         
-        BKNetowrkTool.shared.addKid(kidModel: kidModel) { (success, kidid) in
+        let currentKid = BKNetowrkTool.shared.myCurrentKid
+        var location = ""
+        
+        if let eventLoc = self.eventLocation {
+            location = "\( eventLoc.placeName) \r\n \(eventLoc.secondary!)"
+        }
+        
+        
+        
+        let eventDate = self.eventDatePicker?.date
+        let formatter = DateFormatter()
+        // initially set the format based on your datepicker date
+        formatter.dateFormat = "MM/dd/yy"
+        let eventDateStr = formatter.string(from: eventDate!)
+        
+        //then again set the date format whhich type of output you need
+        formatter.dateFormat = "HH:mm"
+        // again convert your date to string
+        let eventTimeStr = formatter.string(from: eventDate!)
+        
+        BKNetowrkTool.shared.scheduleEvent(kidName: (currentKid?.kidName)!, kidId: (currentKid?.id)!, sportName: self.eventSport!, location: location, responderKidId: (eventReceivingKid?.id)!, eventDate: eventDateStr, eventTime: eventTimeStr) { (success) in
+            
             
             SVProgressHUD.dismiss()
             self.myGroup.leave()
+            self.eventScheduleStatus = success
             
             if success {
-                self.newKid = kidModel
-                print ("success addking kid")
+                print ("success scheduling event")
+                
             }
             else {
-                self.newKid = nil
-                print ("failed addking kid")
+                print ("failure scheduling event")
             }
             
-            
-            /*
-            
-            if success {
-                print("kid added with kidid:\(String(describing: kidid))")
-                SVProgressHUD.showSuccess(withStatus: "Kid added")
-                BKAuthTool.shared.finishedTutorial()
-                //self.delegate?.addKidVC(self, didAddkid: kidModel)
-                self.dismiss(animated: true, completion: nil)
-            } else{
-                SVProgressHUD.showError(withStatus: "Failed to add kid")
-            }
-            */
-            
-            
+   
         }
         
-        
-        */
     }
     
 
@@ -137,130 +148,190 @@ class BKEventSchedulerVC: UITableViewController {
 extension BKEventSchedulerVC {
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 4
+        return 3
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print("section : \(section) : row = 1.")
         return 1
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         switch indexPath.section {
         case 0:
             return handleStartDate(tableView, indexPath)
         case 1:
-            return handleEndDate(tableView, indexPath)
-        case 2:
             return handleLocation(tableView, indexPath)
-        case 3:
-            return handleSports(tableView, indexPath)
+        case 2:
+            return handleEventSports(tableView, indexPath)
         default:
-            break
+            let cell = tableView.dequeueReusableCell(withIdentifier: BKSimpleCellID, for: indexPath)
+            cell.backgroundColor = UIColor.random()
+            print("Default row created")
+            return cell
         }
     
-        let cell = tableView.dequeueReusableCell(withIdentifier: BKSimpleCellID, for: indexPath)
-        cell.backgroundColor = UIColor.random()
-        return cell
-
     }
-
+    
+   
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 0{
-            return 200.0
-        }else if indexPath.section == 5{
-            return 200.0
-        }else{
-            return 50.0
+        
+        var width: CGFloat
+        
+        if indexPath.section == 0 {
+            width = 70.0
+        } else if (indexPath.section == 1 || indexPath.section == 2) {
+            width = 50.0
+        } else{
+            width = 50.00
         }
+        
+        return width
     }
     
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         // for school search
-        if indexPath.section == 4 {
+        if indexPath.section == 1 {
             let searchVC = BKPlaceAutocompleteVC()
             searchVC.delegate = self
-            searchVC.placeholder = "Enter your kid's school name"
+            searchVC.placeholder = "Enter event location"
             navigationController?.pushViewController(searchVC, animated: true)
+        }
+        else if indexPath.section == 2 {
+            let eventSportVC = BKEventSportSelectVC()
+            eventSportVC.delegate = self
+            navigationController?.pushViewController(eventSportVC, animated: true)
+        }
+        else {
+            print("section row selecte :: \(indexPath.section) \(indexPath.row)")
         }
 
     }
     
-}
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        
+        var sectionTitle = ""
+        
+        if section == 0 {
+            
+            if eventReceivingKid != nil {
+                sectionTitle = "Schedule play date with \(eventReceivingKid!.kidName)"
+            } else {
+                sectionTitle = "Schedule play date"
+            }
+            
+        }
+        return sectionTitle
+    }
 
+}
 
 extension BKEventSchedulerVC {
     
     func handleStartDate(_ tableView: UITableView, _ indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: BKStartDateCellID, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: BKStartDateCellID, for: indexPath) as! BKEventStartDateCell
         
-        /*
-        photoHeaderVC.view.willMove(toSuperview: cell.contentView)
-        cell.contentView.addSubview(photoHeaderVC.view)
-        photoHeaderVC.view.frame = cell.contentView.bounds
-        photoHeaderVC.view.didMoveToSuperview()
-        */
+        cell.startDatePicker.minimumDate = Date()
+        
+        print ("date :: \(Date())")
+        
+        //cell.startDatePicker.maximumDate = cell.startDatePicker.maximumDate! + 180
+        self.eventDatePicker =  cell.startDatePicker
         return cell
     }
-    
-    func handleEndDate(_ tableView: UITableView, _ indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: BKEndDateCellID, for: indexPath)
-        
-        /*
-         photoHeaderVC.view.willMove(toSuperview: cell.contentView)
-         cell.contentView.addSubview(photoHeaderVC.view)
-         photoHeaderVC.view.frame = cell.contentView.bounds
-         photoHeaderVC.view.didMoveToSuperview()
-         */
-        return cell
-    }
-    
     
     func handleLocation(_ tableView: UITableView, _ indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: BKLocationCellID, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: BKLocationCellID, for: indexPath) as! BKEventLocationCell
+     
+        cell.txtEventLocation.text = (self.eventLocation == nil) ? "" : self.eventLocation?.placeName
         
-        /*
-        cell.label.text = "Name"
-        cell.textField.placeholder = ""
+        // Assign the tap action which will be executed when the user taps the UIButton
         
-        cell.didChangeText = {[weak self] (text) in
-            self?.name = text
+        cell.tapAction = { [weak self] (cell) in
+            self?.showAlertForRow(section: 1, row: tableView.indexPath(for: cell)!.row)
         }
-        */
+        
+        locationTextField = cell.txtEventLocation
         
         return cell
     }
 
-    func handleSports(_ tableView: UITableView, _ indexPath: IndexPath) -> UITableViewCell{
+    func handleEventSports(_ tableView: UITableView, _ indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: BKSportCellID, for: indexPath)
-        /*
-        cell.navigationVC = navigationController
-        BKSportCell = cell
-        */
+        let cell = tableView.dequeueReusableCell(withIdentifier: BKEventSportCellID, for: indexPath) as!
+            BKEventSportCell
+        
+        cell.textSport.text = (self.eventSport == nil) ? "" : self.eventSport
+        
+        
+        // Assign the tap action which will be executed when the user taps the UIButton
+        cell.tapAction = { [weak self] (cell) in
+            self?.showAlertForRow(section: 2, row: tableView.indexPath(for: cell)!.row)
+        }
+        
+        sportTextField = cell.textSport
         return cell
     }
+    
+    
+    func showAlertForRow(section: Int, row: Int, decision: String="") {
+        
+        if ( section == 1 ) {
+            let searchVC = BKPlaceAutocompleteVC()
+            searchVC.delegate = self
+            searchVC.placeholder = "Enter event location"
+            navigationController?.pushViewController(searchVC, animated: true)
+        }
+        else if ( section == 2 ) {
+            let eventSportVC = BKEventSportSelectVC()
+            eventSportVC.delegate = self
+            navigationController?.pushViewController(eventSportVC, animated: true)
+        }
+        
+    }
+
 
 }
 
-
 extension BKEventSchedulerVC: BKPlaceAutocompleteDelegate {
+    
     func placeAutocompleteDidCancel(_ vc: BKPlaceAutocompleteVC) {
+        editingChanged()
+        locationTextField?.resignFirstResponder()
         navigationController?.popViewController(animated: true)
     }
-    
     
     func placeAutocomplete(_ vc: BKPlaceAutocompleteVC, didSelectPlace place: BKPlaceModel) {
         self.eventLocation = place
-        navigationController?.popViewController(animated: true)
         self.tableView.reloadData()
+        locationTextField?.resignFirstResponder()
+        editingChanged()
+        navigationController?.popViewController(animated: true)
     }
 
 }
 
+extension BKEventSchedulerVC: BKEventSportSelectDelegate {
+    
+    func sportDidCancel(_ vc: BKEventSportSelectVC) {
+        
+        editingChanged()
+        sportTextField?.resignFirstResponder()
+        navigationController?.popViewController(animated: true)
+    }
+    
+    func sportSelect(_ vc: BKEventSportSelectVC, didChooseSport sportName: String?) {
+        self.eventSport = sportName
+        print("EVent Sport Selected")
+        sportTextField?.resignFirstResponder()
+        self.tableView.reloadData()
+        editingChanged()
+        navigationController?.popViewController(animated: true)
+    }
 
-
-
+}

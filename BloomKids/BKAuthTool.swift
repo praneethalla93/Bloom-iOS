@@ -2,7 +2,7 @@
 //  BKAuthTool.swift
 //  BloomKids
 //
-//  Created by Andy Tong on 5/19/17.
+//  Created by Raj Sathyaseelan on 5/19/17.
 //  Copyright © 2017 Bloom Technology Inc. All rights reserved.
 //
 
@@ -181,7 +181,7 @@ extension BKAuthTool: BKPlaceAutocompleteDelegate {
         let keychain = Keychain(service: BKKeychainService)
         keychain[BKHasFinishedOnboarding] = "true"
     }
-    
+
 }
 
 

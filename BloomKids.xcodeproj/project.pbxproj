@@ -13,7 +13,10 @@
 		720B66401F4CE836000A50C6 /* BKEventDoubleActionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 720B663F1F4CE836000A50C6 /* BKEventDoubleActionCell.swift */; };
 		72366B9E1F479F7000799302 /* BKEventsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72366B9D1F479F7000799302 /* BKEventsVC.swift */; };
 		7242BD3C1F4E9D120041C033 /* BKEventsSummaryHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7242BD3B1F4E9D120041C033 /* BKEventsSummaryHeaderCell.swift */; };
-		7260D0561F54C9A700299935 /* BKSportlVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7260D0551F54C9A700299935 /* BKSportlVC.swift */; };
+		7259404E1F56281D0028C108 /* BKEventStartDateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7259404D1F56281D0028C108 /* BKEventStartDateCell.swift */; };
+		725940501F562C130028C108 /* BKEventLocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7259404F1F562C130028C108 /* BKEventLocationCell.swift */; };
+		725940521F5630050028C108 /* BKEventSportCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725940511F5630050028C108 /* BKEventSportCell.swift */; };
+		7260D0561F54C9A700299935 /* BKEventSportSelectVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7260D0551F54C9A700299935 /* BKEventSportSelectVC.swift */; };
 		7260D0581F54D82E00299935 /* BKEventSchedulerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7260D0571F54D82E00299935 /* BKEventSchedulerVC.swift */; };
 		72890CD01F1C632100C43792 /* BKEvents.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 72890CCF1F1C632100C43792 /* BKEvents.storyboard */; };
 		72D24A591F018CB5002ACD79 /* BKConnectPlayerCellVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D24A581F018CB5002ACD79 /* BKConnectPlayerCellVC.swift */; };
@@ -88,7 +91,10 @@
 		720B663F1F4CE836000A50C6 /* BKEventDoubleActionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKEventDoubleActionCell.swift; sourceTree = "<group>"; };
 		72366B9D1F479F7000799302 /* BKEventsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKEventsVC.swift; sourceTree = "<group>"; };
 		7242BD3B1F4E9D120041C033 /* BKEventsSummaryHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKEventsSummaryHeaderCell.swift; sourceTree = "<group>"; };
-		7260D0551F54C9A700299935 /* BKSportlVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKSportlVC.swift; sourceTree = "<group>"; };
+		7259404D1F56281D0028C108 /* BKEventStartDateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKEventStartDateCell.swift; sourceTree = "<group>"; };
+		7259404F1F562C130028C108 /* BKEventLocationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKEventLocationCell.swift; sourceTree = "<group>"; };
+		725940511F5630050028C108 /* BKEventSportCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKEventSportCell.swift; sourceTree = "<group>"; };
+		7260D0551F54C9A700299935 /* BKEventSportSelectVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKEventSportSelectVC.swift; sourceTree = "<group>"; };
 		7260D0571F54D82E00299935 /* BKEventSchedulerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKEventSchedulerVC.swift; sourceTree = "<group>"; };
 		72890CCF1F1C632100C43792 /* BKEvents.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BKEvents.storyboard; sourceTree = "<group>"; };
 		72D24A581F018CB5002ACD79 /* BKConnectPlayerCellVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKConnectPlayerCellVC.swift; sourceTree = "<group>"; };
@@ -218,7 +224,7 @@
 			isa = PBXGroup;
 			children = (
 				7260D0571F54D82E00299935 /* BKEventSchedulerVC.swift */,
-				7260D0551F54C9A700299935 /* BKSportlVC.swift */,
+				7260D0551F54C9A700299935 /* BKEventSportSelectVC.swift */,
 				72F55CE71F000EA400249296 /* BKConnectVC.swift */,
 				72D24A581F018CB5002ACD79 /* BKConnectPlayerCellVC.swift */,
 				72D24A5A1F018CE6002ACD79 /* BKConnectSectionHeaderVC.swift */,
@@ -231,6 +237,9 @@
 			isa = PBXGroup;
 			children = (
 				72FF82301F05C3B000A460CB /* BKConnectPlayerCell.swift */,
+				7259404D1F56281D0028C108 /* BKEventStartDateCell.swift */,
+				7259404F1F562C130028C108 /* BKEventLocationCell.swift */,
+				725940511F5630050028C108 /* BKEventSportCell.swift */,
 				72D24A611F018EE8002ACD79 /* BKConnectSummaryHeaderCell.swift */,
 				72D24A631F01B9E7002ACD79 /* BKConnectSectionHeaderCell.swift */,
 			);
@@ -596,6 +605,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7259404E1F56281D0028C108 /* BKEventStartDateCell.swift in Sources */,
 				A1E9D4741EE0D36600250A94 /* BKPlaceResultCell.swift in Sources */,
 				72F8340A1F0C2BC9002F9627 /* BKActivityNewVC.swift in Sources */,
 				A14387231EE156A50050A5D1 /* AHCategoryNavBar.swift in Sources */,
@@ -611,7 +621,7 @@
 				720B66401F4CE836000A50C6 /* BKEventDoubleActionCell.swift in Sources */,
 				72F55CE81F000EA400249296 /* BKConnectVC.swift in Sources */,
 				A198939A1EE2012F00DDF240 /* BKAddKidVC.swift in Sources */,
-				7260D0561F54C9A700299935 /* BKSportlVC.swift in Sources */,
+				7260D0561F54C9A700299935 /* BKEventSportSelectVC.swift in Sources */,
 				A1E9D4771EE0D38100250A94 /* AHNibLoadable.swift in Sources */,
 				A143871A1EE147C30050A5D1 /* BKPlaceSearchNavVC.swift in Sources */,
 				A1E9D4801EE0EF8200250A94 /* BKPlaceResultsController.swift in Sources */,
@@ -621,11 +631,13 @@
 				A1CFEFAB1ECD5D2C003DBA74 /* BKLoginVC.swift in Sources */,
 				A14387271EE156A50050A5D1 /* AHCategoryView.swift in Sources */,
 				A17A7B2D1ECFCAB100D77D27 /* BKNetworkTool.swift in Sources */,
+				725940521F5630050028C108 /* BKEventSportCell.swift in Sources */,
 				A1B52EDB1EEC86C6000EB1CE /* BKConnectionVC.swift in Sources */,
 				A12561561ECE6EF500C46FD1 /* BKForgotPasswordVC.swift in Sources */,
 				A1026A2B1EE27B0200FA7366 /* BKSportCell.swift in Sources */,
 				A19893A31EE2154A00DDF240 /* BKKidModel.swift in Sources */,
 				A12561581ECE6F2800C46FD1 /* BKEmailSignupVC.swift in Sources */,
+				725940501F562C130028C108 /* BKEventLocationCell.swift in Sources */,
 				A10645F31EE3B5BE0054267C /* BKKidCell.swift in Sources */,
 				72366B9E1F479F7000799302 /* BKEventsVC.swift in Sources */,
 				7260D0581F54D82E00299935 /* BKEventSchedulerVC.swift in Sources */,

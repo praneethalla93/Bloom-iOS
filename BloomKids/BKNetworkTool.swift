@@ -2,7 +2,7 @@
 //  BKNetworkTool.swift
 //  BloomKids
 //
-//  Created by Andy Tong on 5/19/17.
+//  Created by Raj Sathyaseelan on 5/19/17.
 //  Copyright © 2017 Bloom Technology Inc. All rights reserved.
 //
 
@@ -16,7 +16,6 @@ enum BKNetworkMethod {
 }
 
 class BKNetowrkTool {
-    
     static let shared = BKNetowrkTool()
     fileprivate  var kids: [BKKidModel]?
     fileprivate  var currentKid: BKKidModel?
@@ -635,6 +634,48 @@ extension BKNetowrkTool {
                         let json = try JSONSerialization.jsonObject(with: data) as? [String: Any] {
                         if let status = json["status"] as? Bool {
                             print("connectionResponder Finished request)")
+                            completion(status)
+                        }
+                        
+                    }
+                    
+                } catch {
+                    print("Error deserializing JSON: \(error)")
+                    completion(false)
+                }
+                
+            } else {
+                completion(false)
+            }
+            
+        }
+
+    }
+    
+    
+    func scheduleEvent(kidName: String, kidId: Int, sportName: String, location: String, responderKidId: Int, eventDate: String, eventTime: String, completion: @escaping (_ success: Bool) -> Void) {
+
+        var dict = [String: Any]()
+        dict["schedulerequestorkidname"] = kidName
+        dict["schedulerequestorkidid"] = kidId
+        dict["schedulerequestorsport"] = sportName
+        dict["schedulerequestorlocation"] = location
+        dict["scheduleresponderkidid"] = responderKidId
+        dict["date"] = eventDate
+        dict["time"] = eventTime
+        
+        print("scheduleEvent parameter info:\(dict)")
+        
+        request(.post, urlStr: BKNetworkingScheduleRequestorUrlStr, parameters: dict) { (success, data) in
+            
+            if success {
+                
+                do {
+                    
+                    if  let data = data,
+                        let json = try JSONSerialization.jsonObject(with: data) as? [String: Any] {
+                        if let status = json["status"] as? Bool {
+                            print("schedule Event  request)")
                             completion(status)
                         }
                         

@@ -2,7 +2,7 @@
 //  BKAddKidVC.swift
 //  BloomKids
 //
-//  Created by Andy Tong on 6/2/17.
+//  Created by Raj Sathyaseelan on 6/2/17.
 //  Copyright © 2017 Bloom Technology Inc. All rights reserved.
 //
 
@@ -24,7 +24,7 @@ class BKAddKidVC: UITableViewController {
     fileprivate var name: String?
     fileprivate var age: String?
     fileprivate var schoolPlace: BKPlaceModel?
-    fileprivate weak var spotCell: BKSportCell?
+    fileprivate weak var sportCell: BKSportCell?
     fileprivate var newKid: BKKidModel?
     
     let myGroup = DispatchGroup()
@@ -35,7 +35,6 @@ class BKAddKidVC: UITableViewController {
         super.viewDidLoad()
         
         self.title = "Add Kid"
-        
         
         photoHeaderVC.willMove(toParentViewController: self)
         addChildViewController(photoHeaderVC)
@@ -85,7 +84,7 @@ class BKAddKidVC: UITableViewController {
         guard let gender = genderStr,
         let name = name,
         let schoolPlace = schoolPlace,
-        let sports = spotCell?.totalSports,
+        let sports = sportCell?.totalSports,
         let ageSr = age else {
             return
         }
@@ -114,24 +113,7 @@ class BKAddKidVC: UITableViewController {
                 print ("failed addking kid")
             }
             
-            
-            /*
-            
-            if success {
-                print("kid added with kidid:\(String(describing: kidid))")
-                SVProgressHUD.showSuccess(withStatus: "Kid added")
-                BKAuthTool.shared.finishedTutorial()
-                //self.delegate?.addKidVC(self, didAddkid: kidModel)
-                self.dismiss(animated: true, completion: nil)
-            } else{
-                SVProgressHUD.showError(withStatus: "Failed to add kid")
-            }
-            */
-            
-            
         }
-        
-        
 
     }
     
@@ -162,7 +144,7 @@ extension BKAddKidVC {
         case 4:
             return handleSchool(tableView, indexPath)
         case 5:
-            return handleSpots(tableView, indexPath)
+            return handleSports(tableView, indexPath)
         default:
             break
         }
@@ -175,9 +157,10 @@ extension BKAddKidVC {
 
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 0{
+        
+        if indexPath.section == 0 {
             return 200.0
-        }else if indexPath.section == 5{
+        }else if indexPath.section == 5 {
             return 200.0
         }else{
             return 50.0
@@ -186,6 +169,7 @@ extension BKAddKidVC {
     
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         // for school search
         if indexPath.section == 4 {
             let searchVC = BKPlaceAutocompleteVC()
@@ -254,10 +238,10 @@ extension BKAddKidVC {
         return cell
     }
 
-    func handleSpots(_ tableView: UITableView, _ indexPath: IndexPath) -> UITableViewCell{
+    func handleSports(_ tableView: UITableView, _ indexPath: IndexPath) -> UITableViewCell{
         let cell = tableView.dequeueReusableCell(withIdentifier: BKSportCellID, for: indexPath) as! BKSportCell
         cell.navigationVC = navigationController
-        spotCell = cell
+        sportCell = cell
         return cell
     }
 

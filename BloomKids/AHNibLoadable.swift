@@ -2,8 +2,8 @@
 //  AHNibLoadable.swift
 //  AHCategoryVC
 //
-//  Created by Andy Tong on 6/1/17.
-//  Copyright © 2017 Andy Tong. All rights reserved.
+//  Created by Raj Sathyaseelan on 6/1/17.
+//  Copyright © 2017 Raj Sathyaseelan. All rights reserved.
 //
 
 import UIKit

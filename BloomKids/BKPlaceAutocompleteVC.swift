@@ -2,7 +2,7 @@
 //  BKCitySearch.swift
 //  BloomKids
 //
-//  Created by Andy Tong on 5/24/17.
+//  Created by Raj Sathyaseelan on 5/24/17.
 //  Copyright © 2017 Bloom Technology Inc. All rights reserved.
 //
 
@@ -29,12 +29,9 @@ class BKPlaceAutocompleteVC: UIViewController {
     
     // can include a keyword that appear in the results, could be the user's current city
     var includesKeyword: String?
-    
     weak var delegate: BKPlaceAutocompleteDelegate?
     
     fileprivate(set) var searchResultsController: BKPlaceResultsController!
-    
-    
     fileprivate(set) var resultSearchController: UISearchController!
     
     
@@ -75,8 +72,7 @@ class BKPlaceAutocompleteVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        
+    
         // A hack to get rid of backButton/leftButton
         let barBtn = UIBarButtonItem()
         barBtn.customView = UIView()

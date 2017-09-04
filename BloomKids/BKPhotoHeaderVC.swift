@@ -2,7 +2,7 @@
 //  BKPhotoHeaderVC.swift
 //  BloomKids
 //
-//  Created by Andy Tong on 6/2/17.
+//  Created by Raj Sathyaseelan on 6/2/17.
 //  Copyright © 2017 Bloom Technology Inc. All rights reserved.
 //
 

@@ -11,7 +11,6 @@ import UIKit
 class BKEventsSummaryHeaderCell : UITableViewCell {
     //@IBOutlet weak var schoolNameField: UITextField!
     
-    
     @IBOutlet weak var imagePlayerPhoto: UIImageView!
     @IBOutlet weak var lblPlayerName: UILabel!
     @IBOutlet weak var lblSchoolAge: UILabel!
@@ -28,6 +27,5 @@ class BKEventsSummaryHeaderCell : UITableViewCell {
         
         // Configure the view for the selected state
     }
-
 
 }

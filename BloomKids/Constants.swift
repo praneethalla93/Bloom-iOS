@@ -2,7 +2,7 @@
 //  Constants.swift
 //  BloomKids
 //
-//  Created by Andy Tong on 5/17/17.
+//  Created by Raj Sathyaseelan on 5/17/17.
 //  Copyright © 2017 Bloom Technology Inc. All rights reserved.
 //
 
@@ -59,7 +59,9 @@ let BKEventDoubleActionCellID = "BKEventDoubleActionCellID"
 let BKStartDateCellID =  "BKStartDateCellID"
 let BKEndDateCellID =  "BKEndDateCellID"
 let BKLocationCellID =  "BKLocationCellID"
-
+let BKEventSportCellID = "BKEventSportCellID"
+let BKEventSportSelectCellID = "BKEventSportSelectCellID"
+let BKScheduleButtonCellID = "BKScheduleButtonCellID"
 
 let BKSportLevelCellID = "BKSportLevelCellID"
 let BKHasFinishedOnboarding = "BKHasFinishedOnboarding"

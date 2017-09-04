@@ -14,7 +14,6 @@ import SVProgressHUD
 class BKConnectVC: UITableViewController {
     
     fileprivate var currentkidConnections: [BKKidModel]?
-    //fileprivate var currentkidPendingConnections: [BKKidModel]?
     fileprivate var pendingConnections: [BKKidActivityConnection]?
     fileprivate var schoolPlace: BKPlaceModel?
     
@@ -226,7 +225,6 @@ extension BKConnectVC {
             case 0:
                 return handlePlayerSummaryHeader(tableView, indexPath)
             case 1:
-                //return handlePendingConnections(tableView, indexPath)
                 return handlePendingConnections(tableView, indexPath)
             case 2:
                 return handleActiveConnections(_:_:)(tableView, indexPath)
@@ -258,7 +256,6 @@ extension BKConnectVC {
         
         var sectionTitle = ""
         
-        
         if section == 0 {
             
             if BKNetowrkTool.shared.myCurrentKid != nil {
@@ -287,20 +284,6 @@ extension BKConnectVC {
         super.viewWillAppear(animated)
         initialLoadAndReload()
     }
-
-    /*
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        // for school search
-        if indexPath.section == 4 {
-            let searchVC = BKPlaceAutocompleteVC()
-            searchVC.delegate = self
-            searchVC.placeholder = "Enter your kid's school name"
-            navigationController?.pushViewController(searchVC, animated: true)
-        }
-        
-    }
-    */
     
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -310,7 +293,10 @@ extension BKConnectVC {
         if indexPath.section == 2 {
             let eventSchedulerVC = UIStoryboard(name: "BKConnect", bundle: nil).instantiateViewController(withIdentifier: "BKEventScheduler") as! BKEventSchedulerVC
             eventSchedulerVC.delegate = self
+            eventSchedulerVC.eventReceivingKid = self.currentkidConnections![indexPath.row]
             navigationController?.pushViewController(eventSchedulerVC, animated: true)
+        } else {
+            print ("selected index: \(indexPath.section)")
         }
         
     }
@@ -371,21 +357,9 @@ extension BKConnectVC {
         
             if let kid = currentkidConnections?[row] {
                 
-                /*
-            
-                let alert = UIAlertController ( title: "BEHOLD",
-                                            message: "\(kid.kidName) at row \(row) was tapped!",
-                    preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Gotcha!", style: UIAlertActionStyle.default, handler: { (test) -> Void in
-                    self.dismiss(animated: true, completion: nil)
-                }))
-            
-                self.present( alert, animated: true, completion: nil)
-                */
-                
-                
                 let eventSchedulerVC = UIStoryboard(name: "BKConnect", bundle: nil).instantiateViewController(withIdentifier: "BKEventScheduler") as! BKEventSchedulerVC
                 eventSchedulerVC.delegate = self
+                eventSchedulerVC.eventReceivingKid = kid
                 navigationController?.pushViewController(eventSchedulerVC, animated: true)
 
             }
@@ -427,13 +401,13 @@ extension BKConnectVC {
             }
             
         }
+        
         //photoHeaderVC.view.willMove(toSuperview: cell.contentView)
         //cell.contentView.addSubview(photoHeaderVC.view)
         //photoHeaderVC.view.frame = cell.contentView.bounds
         //photoHeaderVC.view.didMoveToSuperview()
         return cell
     }
-    
     
     /*
     func handleName(_ tableView: UITableView, _ indexPath: IndexPath) -> UITableViewCell {
@@ -473,7 +447,6 @@ extension BKConnectVC {
                 cell.tapAction2 = { [weak self] (cell) in
                     self?.showAlertForRow( section: 1, row: tableView.indexPath(for: cell)!.row, decision: BKConnectDeclineRespone)
                 }
-                
                 
                 cell.lblPlayerName.text = "\(activityConnection.kidname) || \(activityConnection.id)"
                 cell.lblPlayerSchoolAge.text = "\(activityConnection.school) | Age: \(activityConnection.age) | \(activityConnection.date)"
@@ -547,7 +520,7 @@ extension BKConnectVC: BKEventSchedulerDelegate {
     }
     */
     
-    func scheduleEventVC(_ vc: BKEventSchedulerVC, didAddkid kid: BKKidModel) {
+    func scheduleEventVC(_ vc: BKEventSchedulerVC, eventReveivingKid kid: BKKidModel) {
         //TBD
         
     }
