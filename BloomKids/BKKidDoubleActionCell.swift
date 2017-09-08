@@ -33,7 +33,8 @@ class BKKidDoubleActionCell: UITableViewCell {
         didSet {
             
             if let kid = kidModel {
-                self.lblPlayerName.text = "\(kid.kidName) ID: \(String(describing: kid.id))"
+                //self.lblPlayerName.text = "\(kid.kidName) ID: \(String(describing: kid.id))"
+                self.lblPlayerName.text = kid.kidName
                 self.lblPlayerSchoolAge.text = "\(kid.school) , \(kid.age)"
                 
                 /*

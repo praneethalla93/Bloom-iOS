@@ -22,7 +22,8 @@ class BKConnectVC: UITableViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        SVProgressHUD.show()
+        
+                SVProgressHUD.show()
         
         let kidCellNib = UINib(nibName: "\(BKKidActionCell.self)", bundle: nil)
         self.tableView.register(kidCellNib, forCellReuseIdentifier: BKKidActionCellID)
@@ -42,19 +43,38 @@ class BKConnectVC: UITableViewController {
             
             //var currentKid = BKNetowrkTool.shared.myCurrentKid
             
-            self.loadCurrentKidConnections()
-            self.loadPendingConnections()
-            self.setupNavigationBar()
+            if BKNetowrkTool.shared.myKids != nil {
+                
+                
+                self.loadCurrentKidConnections()
+                self.loadPendingConnections()
+                self.setupNavigationBar()
 
-            //once dropdown menu is loaded with kids. Load current Kids connection
-            self.myGroup.notify(queue: .main) {
-                print("connection table refreshed")
-                self.tableView.reloadData()
+                //once dropdown menu is loaded with kids. Load current Kids connection
+                self.myGroup.notify(queue: .main) {
+                    print("connection table refreshed")
+                    
+                    
+                    self.tableView.reloadData()
+                    
+                    if (self.currentkidConnections != nil && self.currentkidConnections!.count == 0 ) && ( self.pendingConnections != nil && self.pendingConnections!.count == 0) {
+                        self.switchToConnectPlayerUI()
+                    }
+                    
+                }
+                
             }
-
+            
+            SVProgressHUD.dismiss()
         }
         
-        SVProgressHUD.dismiss()
+        
+    }
+    
+    func switchToConnectPlayerUI() {
+        let profileStoryboard = UIStoryboard(name: "BKConnect", bundle: nil)
+        let connectPlayerVC = profileStoryboard.instantiateViewController(withIdentifier: "BKConnectPlayrVC") as! BKConnectPlayerVC
+        self.navigationController?.pushViewController(connectPlayerVC, animated: false)
     }
     
     //Setup Navigation bar
@@ -101,7 +121,8 @@ class BKConnectVC: UITableViewController {
         myGroup.enter()
         print ("entering load my kids")
         
-        BKNetowrkTool.shared.locationDetails { (success, kids) in
+        //TODO: Big problem
+        BKNetowrkTool.shared.getMyKids { (success, kids) in
             SVProgressHUD.dismiss()
         
             if let myKids = kids, success {
@@ -129,11 +150,15 @@ class BKConnectVC: UITableViewController {
                 BKNetowrkTool.shared.getKidConnections(kidModel: kid) { ( success, kids) in
                     SVProgressHUD.dismiss()
                 
-                if let kids = kids, success {
+                if success {
                     
-                    self.currentkidConnections = kids
-                    
-                    print ("success loading current kid connections \(String(describing: self.currentkidConnections?.count))")
+                    if let kids = kids {
+                        self.currentkidConnections = kids
+                        print ("success loading current kid connections \(String(describing: self.currentkidConnections?.count))")
+                    } else {
+                        print("No connections")
+                        self.switchToConnectPlayerUI()
+                    }
                     
                     self.myGroup.leave()
                 }
@@ -325,7 +350,7 @@ extension BKConnectVC {
                 }
                 
                 let alert = UIAlertController ( title: "New Connection Response",
-                                                message: "Are you sure you Want to \(decision) connection reuest from \(activityConnection.kidname)", preferredStyle: .actionSheet)
+                                                message: "Are you sure you Want to \(decision) connection request from \(activityConnection.kidname)", preferredStyle: .actionSheet)
                 
                 alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
                     self.dismiss(animated: true, completion: nil)
@@ -333,6 +358,7 @@ extension BKConnectVC {
                     
                     self.myGroup.enter()
                     self.sendConnectResponse(row: row, acceptDecision: acceptFlag)
+                    
                     self.myGroup.notify(queue: .main) {
                         print("Refresh cells for \(activityConnection.kidname)")
                         self.tableView.reloadData()
@@ -473,7 +499,9 @@ extension BKConnectVC {
             formatter.dateFormat = "MM/dd/yyyy"
             
             let todayDate = formatter.string(from: date)
-            let connectResponse = BKConnectResponse(connresponderKidId: currentKid.id!, responseAcceptStatus: acceptDecision, connectionRequestorKidId: activityConnection.id, sport: activityConnection.sport!, city: activityConnection.city, kidName: activityConnection.kidname, connectionDate: todayDate)
+          
+            
+            let connectResponse = BKConnectResponse(connresponderKidId: currentKid.id!, responseAcceptStatus: acceptDecision, connectionRequestorKidId: activityConnection.id, sport: activityConnection.sport, city: activityConnection.city, kidName: activityConnection.kidname, connectionDate: todayDate)
             
             BKNetowrkTool.shared.connectionResponder( connectResponse: connectResponse) { (success) in
                 
@@ -493,6 +521,7 @@ extension BKConnectVC {
                 }
                 else {
                     print ("failure sendConnectResponse")
+                    SVProgressHUD.showError(withStatus: "Connect Response failed.")
                 }
                 
                 self.myGroup.leave()
@@ -511,14 +540,7 @@ extension BKConnectVC {
 
 extension BKConnectVC: BKEventSchedulerDelegate {
     
-    /*
-    func addKidVC(_ vc: BKAddKidVC, didAddkid kid: BKKidModel) {
-        BKNetowrkTool.shared.myKids?.insert(kid, at: 0)
-        self.tableView.reloadData()
-        navigationController?.popViewController(animated: true)
-        print("didAddkid")
-    }
-    */
+
     
     func scheduleEventVC(_ vc: BKEventSchedulerVC, eventReveivingKid kid: BKKidModel) {
         //TBD

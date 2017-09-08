@@ -21,8 +21,6 @@ protocol BKPlaceAutocompleteDelegate: class {
     func placeAutocompleteDidCancel(_ vc: BKPlaceAutocompleteVC)
 }
 
-
-
 class BKPlaceAutocompleteVC: UIViewController {
     var resultType: BKPlaceResultType = .noFilter
     var placeholder: String = "Where is your home city?"
@@ -34,12 +32,11 @@ class BKPlaceAutocompleteVC: UIViewController {
     fileprivate(set) var searchResultsController: BKPlaceResultsController!
     fileprivate(set) var resultSearchController: UISearchController!
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         searchResultsController = BKPlaceResultsController(style: .plain)
+        
         searchResultsController.didSelectPlace = {[weak self] placeModel in
             guard self != nil else {
                 return
@@ -50,15 +47,12 @@ class BKPlaceAutocompleteVC: UIViewController {
         self.view.backgroundColor = UIColor.white
         navigationItem.hidesBackButton = true
         navigationItem.setHidesBackButton(true, animated: false)
-        
-        
         setupSearchVC()
     }
     
-    
     func setupSearchVC() {
-        
         resultSearchController = UISearchController(searchResultsController: searchResultsController)
+        
         resultSearchController?.searchResultsUpdater = self
         
         setupSearchBar()
@@ -70,6 +64,7 @@ class BKPlaceAutocompleteVC: UIViewController {
         definesPresentationContext = true
     }
     
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     
@@ -77,22 +72,32 @@ class BKPlaceAutocompleteVC: UIViewController {
         let barBtn = UIBarButtonItem()
         barBtn.customView = UIView()
         self.navigationItem.leftBarButtonItem = barBtn
+        print("view did appear")
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
+        print("view did layout")
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        print("view did appear for search")
+        
+        self.resultSearchController?.isActive = true
+        
         // give it a break and then get it back, it works!!
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()) { 
-            self.resultSearchController?.searchBar.becomeFirstResponder()
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() ) {
+            print("become first responder")
+            
+            let searchBar = self.resultSearchController?.searchBar
+            searchBar?.becomeFirstResponder()
         }
         
+        //self.resultSearchController.searchBar.becomeFirstResponder()
+        
     }
-
     
     func setupSearchBar() {
         let searchBar = resultSearchController!.searchBar
@@ -106,13 +111,14 @@ class BKPlaceAutocompleteVC: UIViewController {
 
 
 extension BKPlaceAutocompleteVC: UISearchBarDelegate {
+    
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         delegate?.placeAutocompleteDidCancel(self)
     }
 }
 
-
 extension BKPlaceAutocompleteVC: UISearchResultsUpdating {
+    
     func updateSearchResults(for searchController: UISearchController) {
         if let keywords = searchController.searchBar.text {
             placeAutocomplete(keywords: keywords)
@@ -142,6 +148,7 @@ extension BKPlaceAutocompleteVC: UISearchResultsUpdating {
                 self.processResults(results: results)
             }
         })
+        
     }
     
     func processResults(results: [GMSAutocompletePrediction]) {
@@ -152,6 +159,7 @@ extension BKPlaceAutocompleteVC: UISearchResultsUpdating {
             var secondary: String?
             var state: String?
             var country: String?
+            
             if let secondaryText = result.attributedSecondaryText?.string{
                 var components = secondaryText.components(separatedBy: ", ")
                 
@@ -159,7 +167,7 @@ extension BKPlaceAutocompleteVC: UISearchResultsUpdating {
                     // there's a keyword to filter but this secondaryText doesn't contain it, skip!
                     continue
                 }
-                
+
                 country = components.popLast()
                 secondary = components.joined(separator: ", ")
                 state = components.last
@@ -172,6 +180,7 @@ extension BKPlaceAutocompleteVC: UISearchResultsUpdating {
         if places.count > 0 {
             searchResultsController.places = places
         }
+
     }
     
 }

@@ -32,7 +32,8 @@ class BKProfileVC: UITableViewController {
             return 1
         }
         else if section == 1 {
-            return 3
+            //TODO: Settings and 
+            return 1
         }
         else if section == 2 {
             return 1

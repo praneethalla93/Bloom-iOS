@@ -19,7 +19,7 @@
 		7260D0561F54C9A700299935 /* BKEventSportSelectVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7260D0551F54C9A700299935 /* BKEventSportSelectVC.swift */; };
 		7260D0581F54D82E00299935 /* BKEventSchedulerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7260D0571F54D82E00299935 /* BKEventSchedulerVC.swift */; };
 		72890CD01F1C632100C43792 /* BKEvents.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 72890CCF1F1C632100C43792 /* BKEvents.storyboard */; };
-		72D24A591F018CB5002ACD79 /* BKConnectPlayerCellVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D24A581F018CB5002ACD79 /* BKConnectPlayerCellVC.swift */; };
+		72D24A591F018CB5002ACD79 /* BKConnectPlayerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D24A581F018CB5002ACD79 /* BKConnectPlayerVC.swift */; };
 		72D24A5B1F018CE6002ACD79 /* BKConnectSectionHeaderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D24A5A1F018CE6002ACD79 /* BKConnectSectionHeaderVC.swift */; };
 		72D24A5D1F018D26002ACD79 /* BKConnectSummaryHeaderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D24A5C1F018D26002ACD79 /* BKConnectSummaryHeaderVC.swift */; };
 		72D24A621F018EE8002ACD79 /* BKConnectSummaryHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D24A611F018EE8002ACD79 /* BKConnectSummaryHeaderCell.swift */; };
@@ -48,7 +48,6 @@
 		A14387241EE156A50050A5D1 /* AHCategoryNavBarStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A143871E1EE156A50050A5D1 /* AHCategoryNavBarStyle.swift */; };
 		A14387251EE156A50050A5D1 /* AHCategoryProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = A143871F1EE156A50050A5D1 /* AHCategoryProtocols.swift */; };
 		A14387271EE156A50050A5D1 /* AHCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14387211EE156A50050A5D1 /* AHCategoryView.swift */; };
-		A179F9B51ED28A4500B42540 /* BKActivityVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A179F9B41ED28A4500B42540 /* BKActivityVC.swift */; };
 		A179F9B81ED28B4D00B42540 /* BKActivity.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A179F9B61ED28B4D00B42540 /* BKActivity.storyboard */; };
 		A17A7B2D1ECFCAB100D77D27 /* BKNetworkTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17A7B2C1ECFCAB100D77D27 /* BKNetworkTool.swift */; };
 		A17A7B2F1ECFD05900D77D27 /* BKAuthTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17A7B2E1ECFD05900D77D27 /* BKAuthTool.swift */; };
@@ -60,7 +59,7 @@
 		A19893A31EE2154A00DDF240 /* BKKidModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19893A21EE2154A00DDF240 /* BKKidModel.swift */; };
 		A19893A61EE2572E00DDF240 /* BKSimpleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19893A51EE2572E00DDF240 /* BKSimpleCell.swift */; };
 		A19893A81EE2607E00DDF240 /* BKGenderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19893A71EE2607E00DDF240 /* BKGenderCell.swift */; };
-		A1B52EDB1EEC86C6000EB1CE /* BKConnectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B52EDA1EEC86C6000EB1CE /* BKConnectionVC.swift */; };
+		A1B52EDB1EEC86C6000EB1CE /* BKCongratsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B52EDA1EEC86C6000EB1CE /* BKCongratsVC.swift */; };
 		A1CFEFA91ECD5BCA003DBA74 /* BKAuth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1CFEFA81ECD5BCA003DBA74 /* BKAuth.storyboard */; };
 		A1CFEFAB1ECD5D2C003DBA74 /* BKLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CFEFAA1ECD5D2C003DBA74 /* BKLoginVC.swift */; };
 		A1CFEFAE1ECD5DFB003DBA74 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CFEFAD1ECD5DFB003DBA74 /* Constants.swift */; };
@@ -73,7 +72,6 @@
 		A1E9D4801EE0EF8200250A94 /* BKPlaceResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E9D47F1EE0EF8200250A94 /* BKPlaceResultsController.swift */; };
 		A1E9D4821EE0F2A400250A94 /* BKTestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E9D4811EE0F2A400250A94 /* BKTestVC.swift */; };
 		A1E9D4841EE0F45800250A94 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E9D4831EE0F45800250A94 /* UIColor+Extension.swift */; };
-		A1F544111EE3D84B00D331B8 /* BKAddKidNavVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F544101EE3D84B00D331B8 /* BKAddKidNavVC.swift */; };
 		A1FA1B411EE3A0C10025143E /* BKConnect.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1FA1B3F1EE3A0C10025143E /* BKConnect.storyboard */; };
 		A1FA1B431EE3A12D0025143E /* BKProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1FA1B421EE3A12D0025143E /* BKProfile.storyboard */; };
 		A1FC8FAD1ECFF0710002F234 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FC8FAC1ECFF0710002F234 /* String+Extension.swift */; };
@@ -97,7 +95,7 @@
 		7260D0551F54C9A700299935 /* BKEventSportSelectVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKEventSportSelectVC.swift; sourceTree = "<group>"; };
 		7260D0571F54D82E00299935 /* BKEventSchedulerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKEventSchedulerVC.swift; sourceTree = "<group>"; };
 		72890CCF1F1C632100C43792 /* BKEvents.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BKEvents.storyboard; sourceTree = "<group>"; };
-		72D24A581F018CB5002ACD79 /* BKConnectPlayerCellVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKConnectPlayerCellVC.swift; sourceTree = "<group>"; };
+		72D24A581F018CB5002ACD79 /* BKConnectPlayerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKConnectPlayerVC.swift; sourceTree = "<group>"; };
 		72D24A5A1F018CE6002ACD79 /* BKConnectSectionHeaderVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKConnectSectionHeaderVC.swift; sourceTree = "<group>"; };
 		72D24A5C1F018D26002ACD79 /* BKConnectSummaryHeaderVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKConnectSummaryHeaderVC.swift; sourceTree = "<group>"; };
 		72D24A611F018EE8002ACD79 /* BKConnectSummaryHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKConnectSummaryHeaderCell.swift; sourceTree = "<group>"; };
@@ -125,11 +123,10 @@
 		A143871E1EE156A50050A5D1 /* AHCategoryNavBarStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AHCategoryNavBarStyle.swift; sourceTree = "<group>"; };
 		A143871F1EE156A50050A5D1 /* AHCategoryProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AHCategoryProtocols.swift; sourceTree = "<group>"; };
 		A14387211EE156A50050A5D1 /* AHCategoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AHCategoryView.swift; sourceTree = "<group>"; };
-		A179F9B41ED28A4500B42540 /* BKActivityVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKActivityVC.swift; sourceTree = "<group>"; };
 		A179F9B71ED28B4D00B42540 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/BKActivity.storyboard; sourceTree = "<group>"; };
 		A17A7B2C1ECFCAB100D77D27 /* BKNetworkTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKNetworkTool.swift; sourceTree = "<group>"; };
 		A17A7B2E1ECFD05900D77D27 /* BKAuthTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKAuthTool.swift; sourceTree = "<group>"; };
-		A185AE5C1ED611E2002FDF89 /* BKPlaceAutocompleteVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKPlaceAutocompleteVC.swift; sourceTree = "<group>"; };
+		A185AE5C1ED611E2002FDF89 /* BKPlaceAutocompleteVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKPlaceAutocompleteVC.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		A19893991EE2012F00DDF240 /* BKAddKidVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKAddKidVC.swift; sourceTree = "<group>"; };
 		A198939C1EE2025900DDF240 /* BKPhotoHeaderVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKPhotoHeaderVC.swift; sourceTree = "<group>"; };
 		A198939E1EE2027E00DDF240 /* BKPhotoHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKPhotoHeaderView.swift; sourceTree = "<group>"; };
@@ -137,7 +134,7 @@
 		A19893A21EE2154A00DDF240 /* BKKidModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKKidModel.swift; sourceTree = "<group>"; };
 		A19893A51EE2572E00DDF240 /* BKSimpleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKSimpleCell.swift; sourceTree = "<group>"; };
 		A19893A71EE2607E00DDF240 /* BKGenderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKGenderCell.swift; sourceTree = "<group>"; };
-		A1B52EDA1EEC86C6000EB1CE /* BKConnectionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKConnectionVC.swift; sourceTree = "<group>"; };
+		A1B52EDA1EEC86C6000EB1CE /* BKCongratsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKCongratsVC.swift; sourceTree = "<group>"; };
 		A1CFEFA81ECD5BCA003DBA74 /* BKAuth.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BKAuth.storyboard; sourceTree = "<group>"; };
 		A1CFEFAA1ECD5D2C003DBA74 /* BKLoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKLoginVC.swift; sourceTree = "<group>"; };
 		A1CFEFAD1ECD5DFB003DBA74 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -150,7 +147,6 @@
 		A1E9D47F1EE0EF8200250A94 /* BKPlaceResultsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKPlaceResultsController.swift; sourceTree = "<group>"; };
 		A1E9D4811EE0F2A400250A94 /* BKTestVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKTestVC.swift; sourceTree = "<group>"; };
 		A1E9D4831EE0F45800250A94 /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
-		A1F544101EE3D84B00D331B8 /* BKAddKidNavVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKAddKidNavVC.swift; sourceTree = "<group>"; };
 		A1FA1B401EE3A0C10025143E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/BKConnect.storyboard; sourceTree = "<group>"; };
 		A1FA1B421EE3A12D0025143E /* BKProfile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BKProfile.storyboard; sourceTree = "<group>"; };
 		A1FC8FAC1ECFF0710002F234 /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
@@ -202,6 +198,17 @@
 			name = Cell;
 			sourceTree = "<group>";
 		};
+		72663CB41F5E19FD00902EB3 /* VCs */ = {
+			isa = PBXGroup;
+			children = (
+				A1B52EDA1EEC86C6000EB1CE /* BKCongratsVC.swift */,
+				A1CFEFAA1ECD5D2C003DBA74 /* BKLoginVC.swift */,
+				A12561551ECE6EF500C46FD1 /* BKForgotPasswordVC.swift */,
+				A12561571ECE6F2800C46FD1 /* BKEmailSignupVC.swift */,
+			);
+			name = VCs;
+			sourceTree = "<group>";
+		};
 		72890CCD1F1C62F900C43792 /* Events */ = {
 			isa = PBXGroup;
 			children = (
@@ -226,7 +233,7 @@
 				7260D0571F54D82E00299935 /* BKEventSchedulerVC.swift */,
 				7260D0551F54C9A700299935 /* BKEventSportSelectVC.swift */,
 				72F55CE71F000EA400249296 /* BKConnectVC.swift */,
-				72D24A581F018CB5002ACD79 /* BKConnectPlayerCellVC.swift */,
+				72D24A581F018CB5002ACD79 /* BKConnectPlayerVC.swift */,
 				72D24A5A1F018CE6002ACD79 /* BKConnectSectionHeaderVC.swift */,
 				72D24A5C1F018D26002ACD79 /* BKConnectSummaryHeaderVC.swift */,
 			);
@@ -312,9 +319,7 @@
 		A19893971EE1FE1700DDF240 /* VCs */ = {
 			isa = PBXGroup;
 			children = (
-				A179F9B41ED28A4500B42540 /* BKActivityVC.swift */,
 				72F834091F0C2BC9002F9627 /* BKActivityNewVC.swift */,
-				A1B52EDA1EEC86C6000EB1CE /* BKConnectionVC.swift */,
 			);
 			name = VCs;
 			sourceTree = "<group>";
@@ -324,7 +329,6 @@
 			children = (
 				A11DCF7E1ED62B54005E6FCE /* BKCitySearch.storyboard */,
 				A1E9D4811EE0F2A400250A94 /* BKTestVC.swift */,
-				A14387191EE147C30050A5D1 /* BKPlaceSearchNavVC.swift */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -335,7 +339,6 @@
 				A1026A2F1EE281C900FA7366 /* BKSportLevelVC.swift */,
 				A19893991EE2012F00DDF240 /* BKAddKidVC.swift */,
 				A198939C1EE2025900DDF240 /* BKPhotoHeaderVC.swift */,
-				A1F544101EE3D84B00D331B8 /* BKAddKidNavVC.swift */,
 				A10645ED1EE3B0390054267C /* BKProfileVC.swift */,
 				A10645EF1EE3B20E0054267C /* BKYourKidsVC.swift */,
 			);
@@ -356,9 +359,7 @@
 		A1CFEFA71ECD5BAF003DBA74 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
-				A1CFEFAA1ECD5D2C003DBA74 /* BKLoginVC.swift */,
-				A12561551ECE6EF500C46FD1 /* BKForgotPasswordVC.swift */,
-				A12561571ECE6F2800C46FD1 /* BKEmailSignupVC.swift */,
+				72663CB41F5E19FD00902EB3 /* VCs */,
 				A1CFEFA81ECD5BCA003DBA74 /* BKAuth.storyboard */,
 				A17A7B2E1ECFD05900D77D27 /* BKAuthTool.swift */,
 			);
@@ -390,6 +391,7 @@
 		A1E9D4781EE0D6E400250A94 /* PlaceAutocomplete */ = {
 			isa = PBXGroup;
 			children = (
+				A14387191EE147C30050A5D1 /* BKPlaceSearchNavVC.swift */,
 				A185AE5C1ED611E2002FDF89 /* BKPlaceAutocompleteVC.swift */,
 				A1E9D4761EE0D38100250A94 /* AHNibLoadable.swift */,
 				A1E9D4721EE0D36600250A94 /* BKPlaceResultCell.swift */,
@@ -632,7 +634,7 @@
 				A14387271EE156A50050A5D1 /* AHCategoryView.swift in Sources */,
 				A17A7B2D1ECFCAB100D77D27 /* BKNetworkTool.swift in Sources */,
 				725940521F5630050028C108 /* BKEventSportCell.swift in Sources */,
-				A1B52EDB1EEC86C6000EB1CE /* BKConnectionVC.swift in Sources */,
+				A1B52EDB1EEC86C6000EB1CE /* BKCongratsVC.swift in Sources */,
 				A12561561ECE6EF500C46FD1 /* BKForgotPasswordVC.swift in Sources */,
 				A1026A2B1EE27B0200FA7366 /* BKSportCell.swift in Sources */,
 				A19893A31EE2154A00DDF240 /* BKKidModel.swift in Sources */,
@@ -641,11 +643,10 @@
 				A10645F31EE3B5BE0054267C /* BKKidCell.swift in Sources */,
 				72366B9E1F479F7000799302 /* BKEventsVC.swift in Sources */,
 				7260D0581F54D82E00299935 /* BKEventSchedulerVC.swift in Sources */,
-				A179F9B51ED28A4500B42540 /* BKActivityVC.swift in Sources */,
 				A1FC92401ECD4F960099E68D /* AppDelegate.swift in Sources */,
 				A10645F01EE3B20E0054267C /* BKYourKidsVC.swift in Sources */,
 				A10645EE1EE3B0390054267C /* BKProfileVC.swift in Sources */,
-				72D24A591F018CB5002ACD79 /* BKConnectPlayerCellVC.swift in Sources */,
+				72D24A591F018CB5002ACD79 /* BKConnectPlayerVC.swift in Sources */,
 				A19893A81EE2607E00DDF240 /* BKGenderCell.swift in Sources */,
 				A14387221EE156A50050A5D1 /* AHCategoryContentView.swift in Sources */,
 				A1026A301EE281C900FA7366 /* BKSportLevelVC.swift in Sources */,
@@ -654,7 +655,6 @@
 				A185AE5D1ED611E2002FDF89 /* BKPlaceAutocompleteVC.swift in Sources */,
 				A14387241EE156A50050A5D1 /* AHCategoryNavBarStyle.swift in Sources */,
 				A1FC8FAD1ECFF0710002F234 /* String+Extension.swift in Sources */,
-				A1F544111EE3D84B00D331B8 /* BKAddKidNavVC.swift in Sources */,
 				72D24A621F018EE8002ACD79 /* BKConnectSummaryHeaderCell.swift in Sources */,
 				72D24A5D1F018D26002ACD79 /* BKConnectSummaryHeaderVC.swift in Sources */,
 				A1CFEFAE1ECD5DFB003DBA74 /* Constants.swift in Sources */,

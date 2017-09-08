@@ -198,7 +198,7 @@
         <!--Connect Kids-->
         <scene sceneID="V1c-nh-jbA">
             <objects>
-                <tableViewController id="1LO-zj-dV3" userLabel="Connect Kids" customClass="BKConnectPlayerCellVC" customModule="BloomKids" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="BKConnectPlayerVC" id="1LO-zj-dV3" userLabel="Connect Kids" customClass="BKConnectPlayerVC" customModule="BloomKids" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="WHS-CP-Pz4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -217,7 +217,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vEZ-1n-G4J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3596" y="42.728635682158924"/>
+            <point key="canvasLocation" x="2641" y="42"/>
         </scene>
         <!--PlayDate-->
         <scene sceneID="ZcK-dN-14Y">
@@ -374,6 +374,7 @@
                                                     </state>
                                                     <connections>
                                                         <action selector="textButtonTapped:" destination="9Ff-xH-fIO" eventType="touchUpInside" id="jMn-aL-Xza"/>
+                                                        <segue destination="0i5-lE-P1Y" kind="show" id="51L-3j-frh"/>
                                                     </connections>
                                                 </button>
                                             </subviews>

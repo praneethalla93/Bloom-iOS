@@ -28,7 +28,34 @@ struct BKProfile {
     let city: String
     let state: String
     let phone: String
+    let relation: String?
     let dob: String
+    var kids: [BKKidModel]
+    
+    init(email: String, dict: [String: Any], kids: [BKKidModel]) {
+        self.email = email
+        self.parentName = (dict["parentName"] as! String).capitalized
+        self.city = (dict["city"] as! String)
+        self.state = (dict["state"] as! String)
+        self.phone = (dict["phone"] as! String)
+        self.dob = (dict["dob"] as! String)
+        self.relation = (dict["relation"] as? String)
+        self.kids = kids
+        
+        /*
+        let kidsDict = dict["kids"] as! [[String: Any]]
+        
+        
+        
+        for dict in kidsDict {
+            
+            let kid = BKKidModel(dict: dict)
+            kids.append(kid)
+        }
+        */
+        
+    }
+    
 }
 
 struct BKSport: CustomDebugStringConvertible {

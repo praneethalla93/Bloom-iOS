@@ -32,7 +32,8 @@ class BKEventDoubleActionCell: UITableViewCell {
             
             if let activity = activitySchedule {
                 
-                self.lblPlayerName.text = "\(activity.kidName) ID: \(String(describing: activity.id))"
+                //self.lblPlayerName.text = "\(activity.kidName) ID: \(String(describing: activity.id))"
+                self.lblPlayerName.text = activity.kidName
                 self.lblEventDateTime.text = "\(activity.date) \(activity.time)"
                 
                 self.lblEventLocation.text = activity.location

@@ -15,7 +15,8 @@ class BKAuthTool {
     static let shared = BKAuthTool()
     var currentState: String?
     var currentCity: String?
-
+    var showViewController: UIViewController?
+    var authVC: BKNavigationVC?
     
     func viewControllerForWindow() -> UIViewController? {
         
@@ -24,7 +25,7 @@ class BKAuthTool {
         //Scenario 1. The user will be shown Auth UI if he does not already have the credentials.
         //Scenario 2. The user will be shown Main UI if he already has the credentials with successful login
         //Scenario 3. The user will be shown Auth UI if he already has the credentials with failed login
-        let showViewController = authStoryboard.instantiateViewController(withIdentifier: "BKNavigationVC")
+        showViewController = authStoryboard.instantiateViewController(withIdentifier: "BKNavigationVC")
         let keychain = Keychain(service: BKKeychainService)
         
         if let emailStr = try? keychain.getString(BKUserEmailKey), let email = emailStr {
@@ -34,6 +35,7 @@ class BKAuthTool {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
                 
                 if let passwordStr = try? keychain.getString(email), let password = passwordStr {
+                    
                     BKNetowrkTool.shared.authenticate(email: email, password: password, completion: { (success) in
                         
                         if success {
@@ -41,16 +43,15 @@ class BKAuthTool {
                             //let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
                             //showViewController = mainStoryboard.instantiateViewController(withIdentifier: "BKMainTabBarVC")
                             self.switchToMainUI()
-                            
                         }else{
-                            SVProgressHUD.showError(withStatus: "login failed")
-                            self.switchToMainUI()
-                            //self.switchToAuthUI()
+                            SVProgressHUD.showError(withStatus: "Login failed")
+                            //TODO: login failed. stay in Auth UI
+                            self.switchToAuthUI()
                         }
+
                     })
                     
-                    
-                }else{
+                } else {
                     SVProgressHUD.showError(withStatus: "password not in keychain")
                     self.switchToAuthUI()
                 }
@@ -80,35 +81,71 @@ class BKAuthTool {
             
         }
         
-        /*else{
-            let authStoryboard = UIStoryboard(name: "BKAuth", bundle: nil)
-            let showViewController = authStoryboard.instantiateViewController(withIdentifier: "BKNavigationVC")
-            
-        }*/
+       
         return showViewController
     }
     
     func switchToMainUI() {
-        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let navagitionVC = mainStoryboard.instantiateViewController(withIdentifier: "BKMainTabBarVC")
-        let window = UIApplication.shared.keyWindow
-        window?.rootViewController = navagitionVC
+        
+        //create profile if it's empty
+        
+        if BKNetowrkTool.shared.myProfile == nil {
+            
+            BKNetowrkTool.shared.getFamilyDetails(kidId: BKNetowrkTool.shared.myCurrentKid?.id, email: BKNetowrkTool.shared.currentEmail, mode: "email", completion: { (success, profile) in
+                
+                if success {
+                    //TODO: access profile data if needed
+                    let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                    let navagitionVC = mainStoryboard.instantiateViewController(withIdentifier: "BKMainTabBarVC")
+                    let window = UIApplication.shared.keyWindow
+                    window?.rootViewController = navagitionVC
+                } else {
+                    SVProgressHUD.showError(withStatus: "Login failed")
+                    
+                    //TODO: login failed. stay in Auth UI
+                    self.switchToAuthUI()
+                }
+
+            })
+        }
+       
     }
     
     func switchToAuthUI() {
         let authStoryboard = UIStoryboard(name: "BKAuth", bundle: nil)
-        let navagitionVC = authStoryboard.instantiateViewController(withIdentifier: "BKNavigationVC")
+        authVC = authStoryboard.instantiateViewController(withIdentifier: "BKNavigationVC") as? BKNavigationVC
         let window = UIApplication.shared.keyWindow
-        window?.rootViewController = navagitionVC
+        window?.rootViewController = authVC
     }
     
     func switchToCitySearch() {
-        let vc = BKPlaceSearchNavVC()
-        vc.placeDelegate = self
+        let vc = BKPlaceAutocompleteVC()
+        //vc.placeDelegate = self
+        vc.delegate = self
         vc.resultType = .city
         vc.placeholder = "What's your home city?"
-        let window = UIApplication.shared.keyWindow
-        window?.rootViewController = vc
+        //let window = UIApplication.shared.keyWindow
+        //window?.rootViewController = vc
+        authVC?.pushViewController(vc, animated: false)
+    }
+    
+    func switchToCongratsUI() {
+        let authStoryboard = UIStoryboard(name: "BKAuth", bundle: nil)
+        let congratsVC = authStoryboard.instantiateViewController(withIdentifier: "BKCongratsVC")
+        authVC?.pushViewController(congratsVC, animated: false)
+    }
+    
+    func switchToAddKidUI() {
+        let profileStoryboard = UIStoryboard(name: "BKProfile", bundle: nil)
+        let addKidVC = profileStoryboard.instantiateViewController(withIdentifier: "BKAddKidVC") as! BKAddKidVC
+        addKidVC.mode = "ONBOARD"
+        authVC?.pushViewController(addKidVC, animated: false)
+    }
+    
+    func switchToConnectPlayerUI(navigationController: UINavigationController?) {
+        let connectStoryboard = UIStoryboard(name: "BKConnect", bundle: nil)
+        let connectPlayerVC = connectStoryboard.instantiateViewController(withIdentifier: "BKConnectPlayerVC")
+        navigationController?.pushViewController(connectPlayerVC, animated: false)
     }
     
     func clearKeychain() {
@@ -132,33 +169,7 @@ class BKAuthTool {
         switchToAuthUI()
     }
     
-    
-    func signup(_ email: String, _ password: String, _ parentName: String,_ phone: String, relation: String, completion: @escaping (_ success: Bool)->Void) {
-        let parameters = [
-            "email": email,
-            "parentname": parentName,
-            "password": password,
-            "phone": phone,
-            "relation": relation]
-        
-        print("parameters:\(parameters)")
-        BKNetowrkTool.shared.request(.post, urlStr: BKNetworkingSignupUrlStr, parameters: parameters) { (success, data) in
-            
-            if success {
-                BKNetowrkTool.shared.currentEmail = email
-                let keychain = Keychain(service: BKKeychainService)
-                keychain[email] = password
-                keychain[BKUserEmailKey] = email
-            }
-            
-            completion(success)
-        }
-        
-    }
-
 }
-
-
 
 extension BKAuthTool: BKPlaceAutocompleteDelegate {
     
@@ -167,14 +178,18 @@ extension BKAuthTool: BKPlaceAutocompleteDelegate {
     }
     
     func placeAutocomplete(_ vc: BKPlaceAutocompleteVC, didSelectPlace place: BKPlaceModel) {
+        
         guard let state = place.state else {
             print("AUthTool:placeAutocomplete -> state is nil")
             return
         }
+        
         let keychain = Keychain(service: BKKeychainService)
         keychain[BKCurrentCity] = place.placeName
         keychain[BKCurrentState] = state
-        //BKAuthTool.shared.switchToMainUI()
+
+        switchToCongratsUI()
+        
     }
     
     func finishedOnboarding() {

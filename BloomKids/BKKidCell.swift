@@ -27,8 +27,7 @@ class BKKidCell: UITableViewCell {
             
             if let kid = kidModel {
                 self.lblPlayerName.text = kid.kidName
-                self.lblPlayerSchoolAge.text = "\(kid.school) , \(kid.age)"
-                
+                self.lblPlayerSchoolAge.text = "\(kid.school) | \(kid.age)"
             }
             
         }
@@ -46,9 +45,6 @@ class BKKidCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
-    
-    
-    
     
 }
 

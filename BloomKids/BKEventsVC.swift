@@ -38,17 +38,20 @@ class BKEventsVC: UITableViewController {
         myGroup.notify(queue: .main) {
             print("Finished all requests.")
             
-            //var currentKid = BKNetowrkTool.shared.myCurrentKid
             
-            self.loadActivityEvents()
-            //self.loadPendingConnections()
-            self.setupNavigationBar()
-            
-            //once dropdown menu is loaded with kids. Load current Kids connection
-            self.myGroup.notify(queue: .main) {
-                print("connection table refreshed")
-                self.tableView.reloadData()
+            if BKNetowrkTool.shared.myKids != nil {
+                self.loadActivityEvents()
+                //self.loadPendingConnections()
+                self.setupNavigationBar()
+                
+                //once dropdown menu is loaded with kids. Load current Kids connection
+                self.myGroup.notify(queue: .main) {
+                    print("connection table refreshed")
+                    self.tableView.reloadData()
+                }
             }
+            
+            
             
         }
 
@@ -263,7 +266,7 @@ extension BKEventsVC {
             if let upComingEventCount = upcomingEvents?.count {
                 
                 if upComingEventCount > 0 {
-                    sectionTitle = "Upcoming Events"
+                    sectionTitle = "Upcoming PlayDates"
                 }
                 
             }
@@ -274,7 +277,7 @@ extension BKEventsVC {
             if let pastEventCount = pastEvents?.count {
                 
                 if pastEventCount > 0 {
-                    sectionTitle = "Past Events"
+                    sectionTitle = "Past PlayDates"
                 }
                 
             }
@@ -321,6 +324,7 @@ extension BKEventsVC {
                     self.myGroup.enter()
                     self.sendEventResponse(row: row, acceptDecision: acceptFlag)
                     self.myGroup.notify(queue: .main) {
+                        self.pendingEvents?.remove(at: row)
                         print("Refresh cells for \(activitySchedule.kidName)")
                         self.tableView.reloadData()
                     }
@@ -419,7 +423,6 @@ extension BKEventsVC {
             let eventResponse = BKScheduleResponse(responderKidId: currentKid.id!, responderKidName: currentKid.kidName, requesterKidId: activitySchedule.id, acceptanceStatus: acceptDecision, requesterSkillLevel: 5, sportName: activitySchedule.sportName, location: activitySchedule.location, date: activitySchedule.date, time: activitySchedule.time)
             
             BKNetowrkTool.shared.scheduleResponder( scheduleResponse: eventResponse) { (success) in
-                
                 SVProgressHUD.dismiss()
                 
                 if success {

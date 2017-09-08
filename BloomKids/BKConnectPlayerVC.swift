@@ -13,7 +13,7 @@ import KeychainAccess
 import SVProgressHUD
 
 
-class BKConnectPlayerCellVC: UITableViewController {
+class BKConnectPlayerVC: UITableViewController {
         
         
     fileprivate var myKidsPotentialConnections: [BKKidModel]?
@@ -37,7 +37,6 @@ class BKConnectPlayerCellVC: UITableViewController {
         tableView.tableHeaderView = searchController.searchBar
         
         searchController.searchBar.scopeButtonTitles = BKBloomSports
-        
         searchController.searchBar.tintColor = BKGlobalTintColor
         searchController.searchBar.barTintColor = UIColor.white
         searchController.searchBar.delegate = self as UISearchBarDelegate
@@ -122,7 +121,7 @@ class BKConnectPlayerCellVC: UITableViewController {
 }
 
 
-extension BKConnectPlayerCellVC {
+extension BKConnectPlayerVC {
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -365,7 +364,7 @@ extension BKConnectPlayerCellVC {
 }
 
 //handle all cell creation here
-extension BKConnectPlayerCellVC {
+extension BKConnectPlayerVC {
     
   
     func handlePotentialConnections(_ tableView: UITableView, _ indexPath: IndexPath) -> UITableViewCell {
@@ -409,7 +408,7 @@ extension BKConnectPlayerCellVC {
     
 }
 
-extension BKConnectPlayerCellVC: UISearchResultsUpdating {
+extension BKConnectPlayerVC: UISearchResultsUpdating {
     
     func updateSearchResults(for searchController: UISearchController) {
         //filterContentForSearchText(searchController.searchBar.text!)
@@ -424,7 +423,7 @@ extension BKConnectPlayerCellVC: UISearchResultsUpdating {
 
 }
 
-extension BKConnectPlayerCellVC: UISearchBarDelegate {
+extension BKConnectPlayerVC: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
         filterContentForSearchText(searchText: searchBar.text!, scope: searchBar.scopeButtonTitles![selectedScope])

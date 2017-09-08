@@ -17,7 +17,6 @@ class BKYourKidsVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         let kidCellNib = UINib(nibName: "\(BKKidActionCell.self)", bundle: nil)
         tableView.register(kidCellNib, forCellReuseIdentifier: BKKidActionCellID)
         
@@ -37,6 +36,8 @@ class BKYourKidsVC: UITableViewController {
         }
 
     }
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -58,7 +59,6 @@ class BKYourKidsVC: UITableViewController {
         }
         
     }
-
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -107,7 +107,7 @@ class BKYourKidsVC: UITableViewController {
         if indexPath.section == 0 {
             let addKidVC = UIStoryboard(name: "BKProfile", bundle: nil).instantiateViewController(withIdentifier: "BKAddKidVC") as! BKAddKidVC
             addKidVC.delegate = self
-            navigationController?.pushViewController(addKidVC, animated: true)
+            self.navigationController?.pushViewController(addKidVC, animated: true)
         }
         
     }
@@ -127,13 +127,17 @@ class BKYourKidsVC: UITableViewController {
         }
         
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tableView.reloadData()
+    }
 
 }
 
 extension BKYourKidsVC: BKAddKidVCDelegate {
     
     func addKidVC(_ vc: BKAddKidVC, didAddkid kid: BKKidModel) {
-        BKNetowrkTool.shared.myKids?.insert(kid, at: 0)
         self.tableView.reloadData()
         navigationController?.popViewController(animated: true)
         print("didAddkid")

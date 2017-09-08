@@ -18,12 +18,23 @@ class BKEmailSignupVC: UIViewController {
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var fatherBtn: UIButton!
     @IBOutlet weak var motherBtn: UIButton!
+    
+    var signUpTestFlag = true
+    let myGroup = DispatchGroup()
 
     weak var currentGender: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         inputTextFieldsHeightConstraint.constant = BKInputTextFieldHeight
         setupGenderBtns()
+        
+        if signUpTestFlag {
+            emailField.text = "raj.sathyaseelan@gmail.com"
+            passwordField.text = "Bloom123"
+            comfirmPassword.text = "Bloom123"
+            nameField.text = "Jimmy Buck"
+            phoneField.text = "415.917.9672"
+        }
 
     }
     
@@ -38,27 +49,28 @@ class BKEmailSignupVC: UIViewController {
         self.view.endEditing(true)
     }
     
-    
-
 }
 
 
 //MARK:- Setups
 extension BKEmailSignupVC {
+    
     func setupGenderBtns() {
         fatherBtn.layer.masksToBounds = true
-       // fatherBtn.layer.cornerRadius = fatherBtn.bounds.size.height / 2
+        fatherBtn.layer.cornerRadius = fatherBtn.bounds.size.height / 2
         
         motherBtn.layer.masksToBounds = true
-      //  motherBtn.layer.cornerRadius = fatherBtn.bounds.size.height / 2
+        motherBtn.layer.cornerRadius = fatherBtn.bounds.size.height / 2
         
     }
+    
     func setGenderBtnNormal(button: UIButton) {
         button.layer.borderColor = BKGlobalTintColor.cgColor
         button.layer.borderWidth = 2.0
         button.setTitleColor(BKGlobalTintColor, for: UIControlState.normal)
         button.backgroundColor = UIColor.white
     }
+    
     func setGenderBtnSelected(button: UIButton) {
         currentGender = button
         button.layer.borderColor = BKGlobalTintColor.cgColor
@@ -66,12 +78,15 @@ extension BKEmailSignupVC {
         button.setTitleColor(UIColor.white, for: UIControlState.normal)
         button.backgroundColor = BKGlobalTintColor
     }
+    
 }
 
 
 //MARK:- Controls
 extension BKEmailSignupVC {
+    
     @IBAction func genderTapped(_ sender: UIButton) {
+        
         if sender === fatherBtn {
             setGenderBtnSelected(button: fatherBtn)
             setGenderBtnNormal(button: motherBtn)
@@ -79,63 +94,71 @@ extension BKEmailSignupVC {
             setGenderBtnSelected(button: motherBtn)
             setGenderBtnNormal(button: fatherBtn)
         }
+        
     }
     
     
     @IBAction func signupBtnTapped(_ sender: UIButton) {
+        
         guard let emailText = emailField.text, emailText.isValidEmail() else {
             print("email incorrect")
+            SVProgressHUD.showError(withStatus: "email address is incorrect")
             return
         }
         
         guard let nameText = nameField.text, nameText.characters.count != 0 else {
             print("name incorrect")
+            SVProgressHUD.showError(withStatus: "parent name is incorrect")
             return
         }
         
         
         guard let passwordText = passwordField.text, passwordText.characters.count != 0 else {
             print("passwrod incorrect")
+            SVProgressHUD.showError(withStatus: "Password is empty.")
             return
         }
         
         guard let comfirmText = comfirmPassword.text, comfirmText.characters.count != 0, comfirmText == passwordText else {
-            print("passwordText not matched")
-            return
-        }
-        
-        guard let nameStr = nameField.text, nameStr.characters.count != 0 else {
-            print("name is incorrect")
+            SVProgressHUD.showError(withStatus: "Password does not match.")
             return
         }
         
         guard let phoneStr = phoneField.text, phoneStr.characters.count != 0 else {
             print("phone # incorrect")
-            return
-        }
-        
-        var flag = true
-        for ch in phoneStr.characters {
-            if Int(ch.description) == nil {
-                flag = false
-                break
-            }
-        }
-        
-        guard flag else {
-            print("phone number is incorrect")
+            SVProgressHUD.showError(withStatus: "Phone number is empty")
             return
         }
         
         let genderStr = currentGender.titleLabel!.text!
         
+        self.myGroup.enter()
+        
         SVProgressHUD.show()
-        BKAuthTool.shared.signup(emailText, passwordText, nameText, phoneStr, relation: genderStr) { (success) in
+        BKNetowrkTool.shared.signup(emailText, passwordText, nameText, phoneStr, relation: genderStr) { (success, statusCode) in
+            
+            self.myGroup.leave()
+            
             if success {
                 SVProgressHUD.showSuccess(withStatus: "Welcome!")
+                BKNetowrkTool.shared.currentEmail = emailText
                 BKAuthTool.shared.switchToCitySearch()
-            }else{
-                SVProgressHUD.showError(withStatus: "Please check the infomation you just entered")
+                
+                
+            } else {
+                
+                if (statusCode == 201) {
+                    SVProgressHUD.showError(withStatus: "Email Id already signed up. Try forgot password.")
+                } else {
+                    SVProgressHUD.showError(withStatus: "Please check the infomation you just entered")
+                }
+
+            }
+            
+            //after successfull loading data
+            self.myGroup.notify(queue: .main) {
+                print("Finished all requests.")
+                //var currentKid = BKNetowrkTool.shared.myCurrentKid
             }
         }
         
@@ -147,6 +170,7 @@ extension BKEmailSignupVC {
 extension BKEmailSignupVC: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
         if textField === nameField{
             nameField.resignFirstResponder()
         }

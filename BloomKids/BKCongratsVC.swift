@@ -9,12 +9,13 @@
 import UIKit
 import SVProgressHUD
 
-
 private let headerCellId = "headerCellId"
 
-class BKConnectionVC: UITableViewController {
+class BKCongratsVC: UITableViewController {
     
     fileprivate var kids: [BKKidModel]?
+    
+    let myGroup = DispatchGroup()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +26,8 @@ class BKConnectionVC: UITableViewController {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: headerCellId)
 
         SVProgressHUD.show()
-        BKNetowrkTool.shared.locationDetails { (success, kids) in
+        
+        BKNetowrkTool.shared.locationDetails() { (success, kids) in
             
             SVProgressHUD.dismiss()
             if let kids = kids, success {
@@ -61,6 +63,7 @@ class BKConnectionVC: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if indexPath.section == 0 {
+            
             let cell = tableView.dequeueReusableCell(withIdentifier: headerCellId, for: indexPath)
             
             let numberOfKids = self.kids?.count ?? 0
@@ -68,8 +71,7 @@ class BKConnectionVC: UITableViewController {
                 let headerLabel = UILabel()
                 headerLabel.frame = CGRect(x: 16, y: 0, width: cell.contentView.bounds.size.width, height: cell.contentView.bounds.size.height)
                 
-                headerLabel.text = "\(numberOfKids) Bloom kids in your city"
-                
+                headerLabel.text = "Congrats! \(numberOfKids) Bloom kids in your city"
                 cell.contentView.addSubview(headerLabel)
             }
             
@@ -81,6 +83,7 @@ class BKConnectionVC: UITableViewController {
             cell.kidModel = kidModel
             return cell
         }
+        
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -90,8 +93,23 @@ class BKConnectionVC: UITableViewController {
         } else {
             return BKKidCellHeight
         }
+        
     }
     
+    
+    
+    @IBAction func nextBtnTapped(_ sender: UIBarButtonItem) {
+        //switchToAddKidUI()
+        BKAuthTool.shared.switchToMainUI()
+    }
+    
+    func switchToAddKidUI() {
+        let profileStoryboard = UIStoryboard(name: "BKProfile", bundle: nil)
+        let addKidVC = profileStoryboard.instantiateViewController(withIdentifier: "BKAddKidVC") as! BKAddKidVC
+        addKidVC.mode = "ONBOARD"
+        addKidVC.delegate = self as BKAddKidVCDelegate
+        navigationController?.pushViewController(addKidVC, animated: true)
+    }
     
     /*
      // Override to support conditional editing of the table view.
@@ -139,3 +157,14 @@ class BKConnectionVC: UITableViewController {
      */
     
 }
+
+extension BKCongratsVC: BKAddKidVCDelegate {
+    
+    func addKidVC(_ vc: BKAddKidVC, didAddkid kid: BKKidModel) {
+        //self.tableView.reloadData()
+        navigationController?.popViewController(animated: true)
+        print("didAddkid")
+    }
+    
+}
+

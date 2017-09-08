@@ -17,14 +17,22 @@ let myGroup = DispatchGroup()
 class BKLoginVC: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var OAuthBottomConstraint: NSLayoutConstraint!
-    @IBOutlet weak var loginLogoTopSpaceConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var googleLoginBtn: UIButton!
+    @IBOutlet weak var facebookLoginBtn: UIButton!
+    
+    //@IBOutlet weak var OAuthBottomConstraint: NSLayoutConstraint!
+    //@IBOutlet weak var loginLogoTopSpaceConstraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        /*
         let size = UIScreen.main.bounds.size
         
+        
         if size.height < 481.0 {
+            
             // iPhone 4S, iPad Air, and all devices using @1x resolution
             loginLogoTopSpaceConstraint.constant = 8.0
             OAuthBottomConstraint.constant = 0.0
@@ -32,6 +40,11 @@ class BKLoginVC: UIViewController {
            // loginLogoTopSpaceConstraint.constant = BKLoginLogoTopSpace
           //  OAuthBottomConstraint.constant = 49.0
         }
+        */
+        
+        //TODO: temporarily hiding Google and Facebook Btn
+        googleLoginBtn.isHidden = true
+        facebookLoginBtn.isHidden = true
         
         //initial email and password from key chain.
         
@@ -51,7 +64,13 @@ class BKLoginVC: UIViewController {
         self.performSegue(withIdentifier: "BKForgotPasswordVC", sender: nil)
     }
     
+
     @IBAction func signupBtnTapped(_ sender: UIBarButtonItem) {
+        self.performSegue(withIdentifier: "BKEmailSignupVC", sender: nil)
+    }
+  
+    
+    @IBAction func signupBtnFormTapped(_ sender: Any) {
         self.performSegue(withIdentifier: "BKEmailSignupVC", sender: nil)
     }
 
@@ -65,7 +84,6 @@ class BKLoginVC: UIViewController {
         
         myGroup.enter()
         updateKeyChain(email: emailText, password: passwordText)
-        
         authenticate(emailText, password: passwordText)
         
         //TODO to activities after login.
@@ -143,7 +161,6 @@ extension BKLoginVC: UITextFieldDelegate {
                 }
                 
                 //Raj: added to switch to main UI.
-                //BKAuthTool.shared.switchToCitySearch()
                 BKAuthTool.shared.switchToMainUI()
             } else {
                 SVProgressHUD.showError(withStatus: "Your email or password is incorrect. Try resetting your password")

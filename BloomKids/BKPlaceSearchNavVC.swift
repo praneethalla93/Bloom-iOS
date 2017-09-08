@@ -14,9 +14,10 @@ class BKPlaceSearchNavVC: BKNavigationVC {
     var resultType: BKPlaceResultType = .city
     
     weak var placeDelegate: BKPlaceAutocompleteDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        searchVC = BKPlaceAutocompleteVC()
+        //searchVC = BKPlaceAutocompleteVC()
         searchVC.delegate = placeDelegate
         searchVC.resultType = resultType
         searchVC.placeholder = placeholder
@@ -24,6 +25,5 @@ class BKPlaceSearchNavVC: BKNavigationVC {
         self.pushViewController(searchVC, animated: false)
         // Do any additional setup after loading the view.
     }
-
 
 }

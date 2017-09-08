@@ -35,6 +35,7 @@ let BKNetworkingForgotPasswordUrlStr = "\(BKNetowrkBaseUrlStr)/rest/password/for
 let BKNetworkingActivityScheduleUrlStr = "\(BKNetowrkBaseUrlStr)/rest/schedule/activitySchedules"
 let BKNetworkingScheduleRequestorUrlStr = "\(BKNetowrkBaseUrlStr)/rest/schedule/scheduleRequestor"
 let BKNetworkingScheduleResponderUrlStr = "\(BKNetowrkBaseUrlStr)/rest/schedule/scheduleResponder"
+let BKGetFamilyDetailsUrlStr = "\(BKNetowrkBaseUrlStr)/rest/connection/family"
 
 let BKShouldGoToMain = "BKShouldGoToMain"
 let BKKeychainService = "BKKeychainService"

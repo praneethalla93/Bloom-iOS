@@ -16,25 +16,32 @@ protocol BKAddKidVCDelegate: class {
 
 class BKAddKidVC: UITableViewController {
     weak var delegate: BKAddKidVCDelegate?
-    
+    var mode: String? // 1. ONBOARD 2. ADD 3. EDIT
     
     fileprivate lazy var photoHeaderVC: BKPhotoHeaderVC = BKPhotoHeaderVC()
-    
     fileprivate var genderStr: String?
     fileprivate var name: String?
     fileprivate var age: String?
     fileprivate var schoolPlace: BKPlaceModel?
     fileprivate weak var sportCell: BKSportCell?
     fileprivate var newKid: BKKidModel?
+    fileprivate var searchNavVC: BKPlaceSearchNavVC?
     
     let myGroup = DispatchGroup()
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         self.title = "Add Kid"
+        
+        if let mode = self.mode {
+            
+            if ( mode == "EDIT") {
+                self.title = "Edit Kid"
+            }
+            
+        }
         
         photoHeaderVC.willMove(toParentViewController: self)
         addChildViewController(photoHeaderVC)
@@ -54,14 +61,24 @@ class BKAddKidVC: UITableViewController {
         //after successfull addking kid
         myGroup.notify(queue: .main) {
             
-            
              if self.newKid != nil {
-                print("\(String(describing: self.newKid?.kidName)) added successfully")
-                SVProgressHUD.showSuccess(withStatus: "\(String(describing: self.newKid?.kidName)) added successfully")
+                print("\(String(describing: self.newKid!.kidName)) added successfully")
+                SVProgressHUD.showSuccess(withStatus: "\(String(describing: self.newKid!.kidName)) added successfully")
                 BKAuthTool.shared.finishedOnboarding()
+
+                //cancel to return to your kids screen.
                 
-                //cancel to returnt to your kids screen.
-                self.cancel(self)
+                if let mode = self.mode {
+                    
+                    if ( mode == "ADD" || mode == "EDIT") {
+                        self.cancel(self)
+                    } else {
+                        BKAuthTool.shared.switchToMainUI()
+                    }
+                    
+                } else {
+                    self.cancel(self)
+                }
                 
              } else{
                 SVProgressHUD.showError(withStatus: "Failed to add kid")
@@ -74,7 +91,7 @@ class BKAddKidVC: UITableViewController {
     func cancel(_ sender: Any) {
         if navigationController != nil {
             navigationController?.popViewController(animated: true)
-        }else{
+        }else {
             dismiss(animated: true, completion: nil)
         }
     }
@@ -95,8 +112,6 @@ class BKAddKidVC: UITableViewController {
         }
         
         let kidModel = BKKidModel(kidName: name, gender: gender, school: schoolPlace.placeName, age: ageSr, sports: sports)
-    
-        
         SVProgressHUD.show()
         
         BKNetowrkTool.shared.addKid(kidModel: kidModel) { (success, kidid) in
@@ -174,8 +189,23 @@ extension BKAddKidVC {
         if indexPath.section == 4 {
             let searchVC = BKPlaceAutocompleteVC()
             searchVC.delegate = self
-            searchVC.placeholder = "Enter your kid's school name"
-            navigationController?.pushViewController(searchVC, animated: true)
+            searchVC.resultType = .noFilter
+            searchVC.placeholder = "Enter school name"
+            self.navigationController?.pushViewController(searchVC, animated: true)
+            
+            /*
+            self.searchNavVC = BKPlaceSearchNavVC()
+            searchNavVC?.placeDelegate = self
+            //vc.resultType = .city
+            searchNavVC?.resultType = .noFilter
+            searchNavVC?.placeholder = "Enter your school name?"
+            searchNavVC?.searchVC =  BKPlaceAutocompleteVC()
+            searchNavVC?.pushViewController(searchNavVC!.searchVC, animated: false)
+            */
+            
+            //let window = UIApplication.shared.keyWindow
+            //window?.rootViewController = searchNavVC
+            
         }
 
     }
@@ -233,7 +263,6 @@ extension BKAddKidVC {
     
     func handleSchool(_ tableView: UITableView, _ indexPath: IndexPath) -> UITableViewCell{
         let cell = tableView.dequeueReusableCell(withIdentifier: BKSchoolSearchCellID, for: indexPath) as! BKSchoolSearchCell
-        
         cell.schoolNameField.text = (self.schoolPlace == nil) ? "" : self.schoolPlace!.placeName
         return cell
     }
@@ -249,13 +278,16 @@ extension BKAddKidVC {
 
 
 extension BKAddKidVC: BKPlaceAutocompleteDelegate {
+    
     func placeAutocompleteDidCancel(_ vc: BKPlaceAutocompleteVC) {
         navigationController?.popViewController(animated: true)
+        //self.searchNavVC?.popViewController(animated: true)
     }
     
     func placeAutocomplete(_ vc: BKPlaceAutocompleteVC, didSelectPlace place: BKPlaceModel) {
         self.schoolPlace = place
         navigationController?.popViewController(animated: true)
+        //self.searchNavVC?.popViewController(animated: true)
         self.tableView.reloadData()
     }
 }

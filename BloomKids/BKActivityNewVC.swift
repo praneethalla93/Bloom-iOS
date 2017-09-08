@@ -20,10 +20,11 @@ class BKActivityNewVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        
         let kidCellNib = UINib(nibName: "\(BKKidDoubleActionCell.self)", bundle: nil)
         tableView.register(kidCellNib, forCellReuseIdentifier: BKKidDoubleActionCellID)
         initialLoadAndReload()
-        
         /*
         SVProgressHUD.show()
         myGroup.enter()
@@ -49,6 +50,13 @@ class BKActivityNewVC: UITableViewController {
         */
     }
     
+    func switchToAddKidUI() {
+        let profileStoryboard = UIStoryboard(name: "BKProfile", bundle: nil)
+        let addKidVC = profileStoryboard.instantiateViewController(withIdentifier: "BKAddKidVC") as! BKAddKidVC
+        self.navigationController?.pushViewController(addKidVC, animated: false)
+    }
+
+    
     @IBAction func logout(_ sender: UIBarButtonItem) {
         BKAuthTool.shared.logout()
     }
@@ -62,16 +70,32 @@ class BKActivityNewVC: UITableViewController {
         //after successfull loading data
         myGroup.notify(queue: .main) {
             
-            print("Finished all requests.")
-            //@TODO: complete requests
-            self.setupNavigationBar()
-            self.loadActivityConnections()
-            
-            //once dropdown menu is loaded with kids. Load current Kids connection
-            self.myGroup.notify(queue: .main) {
-                print("connection table refreshed")
-                self.tableView.reloadData()
+            if (BKNetowrkTool.shared.myKids == nil || BKNetowrkTool.shared.myKids?.count == 0 ) {
+                self.switchToAddKidUI()
+                return
             }
+            
+            print("Finished all requests.")
+            
+            //TODO: take the user to add kid screen
+            if BKNetowrkTool.shared.myKids != nil
+            {
+                //@TODO: complete requests
+                self.setupNavigationBar()
+                self.loadActivityConnections()
+                
+                //once dropdown menu is loaded with kids. Load current Kids connection
+                self.myGroup.notify(queue: .main) {
+                    print("connection table refreshed")
+                    self.tableView.reloadData()
+                }
+            }
+            //TODO: Take the user to the onboarding flow.
+            else {
+                
+            }
+            
+            
             
         }
         
@@ -97,7 +121,6 @@ class BKActivityNewVC: UITableViewController {
 
     }
 
-    
     //Setup Navigation bar
     func setupNavigationBar() {
         var items = [AnyObject]()
@@ -117,7 +140,7 @@ class BKActivityNewVC: UITableViewController {
         
         self.menuView = BTNavigationDropdownMenu(navigationController: self.navigationController, containerView: self.navigationController!.view, title: title, items: items)
         self.navigationItem.titleView = menuView
-    
+        
         self.menuView?.didSelectItemAtIndexHandler = {[weak self] (indexPath: Int) -> () in
             print("Did select item at index: \(indexPath)")
             //@TODO: reload
@@ -129,6 +152,8 @@ class BKActivityNewVC: UITableViewController {
                 self?.tableView.reloadData()
             }
         }
+            
+        
         
     }
     
@@ -137,7 +162,8 @@ class BKActivityNewVC: UITableViewController {
         print ("entering load activity connections")
         
         //if self.selectedKidName.isEmpty || selectedKidName != BKNetowrkTool.shared.myCurrentKid?.kidName {
-            myGroup.enter()
+            self.myGroup.enter()
+        
             BKNetowrkTool.shared.getActivityConnections() { (success, activityConnectionsResult) in
                 
                 self.myGroup.leave()
