@@ -12,17 +12,16 @@ import UIKit
 let BKGlobalTintColor = UIColor.init(red: 112/255.0, green: 202/255.0, blue: 204/255.0, alpha: 1.0)
 let BKAlternativeColor = UIColor.init(red: 114/255.0, green: 202/255.0, blue: 204/255.0, alpha: 1.0)
 
-
 let BKNavigationBarTitleFontSize: CGFloat = 17.0
 
 let BKLoginLogoTopSpace: CGFloat = 20.0
-
 let BKInputTextFieldHeight: CGFloat = UIScreen.main.bounds.size.height > 480.0 ? 35.0 : 30.0
 let BKKidCellHeight: CGFloat = 100.0
 let BKNetowrkBaseUrlStr = "http://custom-env.aqrfytx2is.us-east-1.elasticbeanstalk.com"
 let BKNetworkingLoginUrlStr = "\(BKNetowrkBaseUrlStr)/rest/login/dologin"
 let BKNetworkingSignupUrlStr = "\(BKNetowrkBaseUrlStr)/rest/register/doregister"
 let BKNetworkingAddKidUrlStr = "\(BKNetowrkBaseUrlStr)/rest/kid/addkid"
+let BKNetworkingEditKidUrlStr = "\(BKNetowrkBaseUrlStr)/rest/kid/updatekid"
 
 let BKNetworkingGetKidUrlStr = "\(BKNetowrkBaseUrlStr)/rest/kid/getkids"
 let BKNetworkingGetKidsFilteredUrlStr = "\(BKNetowrkBaseUrlStr)/rest/kid/getkidsFiltered"
@@ -83,9 +82,25 @@ let BKConnectDeclineRespone = "Decline"
 
 //All seques
 let BKConnectPlayerCellSeque = "BKConnectPlayerCellSeque"
+let BKProfileSummaryHeaderCellID = "BKProfileSummaryHeaderCellID"
 
 //Model data
-let BKBloomSports = ["All", "Tennis", "Chess", "Basketball", "Baseball", "Cricket", "Soccer" ]
+//let BKBloomSports = ["All", "Tennis", "Chess", "Basketball", "Baseball", "Cricket", "Soccer" ]
+let BKBloomSports = [BKAllSport, BKTennisSport, BKChessSport, BKBasketballSport, BKBaseballSport, BKCricketSport, BKSoccerSport]
 var BKSportLevels = ["Rookie", "Shining Star", "Rock Star"]
+
+let BKAllSport = "All"
+let BKTennisSport = "Tennis"
+let BKChessSport = "Chess"
+let BKBasketballSport = "Basketball"
+let BKBaseballSport = "Baseball"
+let BKCricketSport = "Cricket"
+let BKSoccerSport = "Soccer"
+
+let BKSportImageDict = [BKTennisSport: #imageLiteral(resourceName: "tennis-icon"), BKChessSport: #imageLiteral(resourceName: "chess-icon"), BKBasketballSport: #imageLiteral(resourceName: "basketball-icon"), BKBaseballSport: #imageLiteral(resourceName: "baseball-icon"), BKCricketSport: #imageLiteral(resourceName: "cricket-icon"), BKSoccerSport: #imageLiteral(resourceName: "soccer-icon")]
+
+
+//user messages
+let BKNoKidsRegistered = "No kids registered. Add your kid to get started."
 
 

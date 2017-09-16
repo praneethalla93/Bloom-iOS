@@ -26,7 +26,6 @@ class BKEventLocationCell: UITableViewCell {
     
     var tapAction: ((UITableViewCell) -> Void)?
     
-    
     @IBAction func textButtonTapped(_ sender: Any) {
         tapAction?(self)
     }

@@ -17,7 +17,6 @@ class BKPhotoHeaderVC: UIViewController {
 
         photoHeaderView.frame = view.bounds
         view.addSubview(photoHeaderView)
-        
     }
 
 

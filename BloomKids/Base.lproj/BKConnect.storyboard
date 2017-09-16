@@ -180,7 +180,7 @@
                             <outlet property="delegate" destination="DuO-AY-cu8" id="B1y-Zt-Yz9"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Playdate" id="Nnc-Xj-KPR">
+                    <navigationItem key="navigationItem" title="My Friends" id="Nnc-Xj-KPR">
                         <barButtonItem key="backBarButtonItem" id="2Ge-1P-ftp"/>
                         <barButtonItem key="rightBarButtonItem" image="addkid-nav-icon" id="B7O-3X-afx">
                             <color key="tintColor" red="0.44705882349999998" green="0.79215686269999996" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
@@ -219,11 +219,11 @@
             </objects>
             <point key="canvasLocation" x="2641" y="42"/>
         </scene>
-        <!--PlayDate-->
+        <!--My Friends-->
         <scene sceneID="ZcK-dN-14Y">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hnm-Xp-XQY" customClass="BKNavigationVC" customModule="BloomKids" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="PlayDate" image="playdate-tabbar-icon" selectedImage="playdate-tabbar-icon" id="lUh-cM-fme"/>
+                    <tabBarItem key="tabBarItem" title="My Friends" image="myfriends-tabbar-icon" id="lUh-cM-fme"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="WD4-AF-9ce">
@@ -255,7 +255,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <stackView opaque="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="6L9-If-g8b">
+                                        <stackView opaque="NO" contentMode="scaleAspectFit" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="6L9-If-g8b">
                                             <rect key="frame" x="10" y="5" width="355" height="59.5"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Start" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E2M-ek-zFp">
@@ -268,7 +268,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="30" translatesAutoresizingMaskIntoConstraints="NO" id="pE7-Xh-avh" userLabel="StateDatePicker">
-                                                    <rect key="frame" x="70" y="0.0" width="285" height="59.5"/>
+                                                    <rect key="frame" x="80" y="0.0" width="275" height="59.5"/>
                                                     <date key="date" timeIntervalSinceReferenceDate="524780219.97776997">
                                                         <!--2017-08-18 20:16:59 +0000-->
                                                     </date>
@@ -298,7 +298,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="kOj-89-ZCz">
+                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="kOj-89-ZCz">
                                             <rect key="frame" x="10" y="8" width="355" height="54"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hh8-CV-BHO">
@@ -311,21 +311,11 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XOg-jS-CK1">
-                                                    <rect key="frame" x="90" y="0.0" width="215" height="54"/>
+                                                    <rect key="frame" x="80" y="0.0" width="275" height="54"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E2a-5c-89T">
-                                                    <rect key="frame" x="325" y="0.0" width="30" height="54"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                    <state key="normal" title="...">
-                                                        <color key="titleColor" red="0.44705882352941173" green="0.792156862745098" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
-                                                    </state>
-                                                    <connections>
-                                                        <action selector="textButtonTapped:" destination="9hJ-x6-A9V" eventType="touchUpInside" id="dyQ-eC-PeB"/>
-                                                    </connections>
-                                                </button>
                                             </subviews>
                                         </stackView>
                                     </subviews>
@@ -348,7 +338,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Hyx-zh-yjz">
+                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Hyx-zh-yjz">
                                             <rect key="frame" x="10" y="8" width="355" height="54"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sport" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p4R-ce-HbY" userLabel="Lbl Sport">
@@ -361,22 +351,11 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fas-xa-Yqx" userLabel="Txt Sport Selected">
-                                                    <rect key="frame" x="90" y="0.0" width="215" height="54"/>
+                                                    <rect key="frame" x="80" y="0.0" width="275" height="54"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rqP-mk-ijn">
-                                                    <rect key="frame" x="325" y="0.0" width="30" height="54"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                    <state key="normal" title="...">
-                                                        <color key="titleColor" red="0.44705882349999998" green="0.79215686269999996" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
-                                                    </state>
-                                                    <connections>
-                                                        <action selector="textButtonTapped:" destination="9Ff-xH-fIO" eventType="touchUpInside" id="jMn-aL-Xza"/>
-                                                        <segue destination="0i5-lE-P1Y" kind="show" id="51L-3j-frh"/>
-                                                    </connections>
-                                                </button>
                                             </subviews>
                                         </stackView>
                                     </subviews>
@@ -401,7 +380,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cRk-i0-Jzi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4276" y="720.98950524737631"/>
+            <point key="canvasLocation" x="4132" y="442"/>
         </scene>
         <!--Event Sport SelectVC-->
         <scene sceneID="44D-Ts-0i1">
@@ -429,7 +408,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MhD-Do-fBD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5009" y="720"/>
+            <point key="canvasLocation" x="4892" y="441"/>
         </scene>
     </scenes>
     <resources>
@@ -439,8 +418,8 @@
         <image name="chess-icon" width="25" height="30"/>
         <image name="cricket-icon" width="29" height="27"/>
         <image name="filter-nav-icon" width="21" height="21"/>
+        <image name="myfriends-tabbar-icon" width="32" height="32"/>
         <image name="photo-placeholder" width="139" height="139"/>
-        <image name="playdate-tabbar-icon" width="25" height="20"/>
         <image name="schedule-btn-icon" width="43" height="43"/>
         <image name="soccer-icon" width="31" height="31"/>
         <image name="tennis-icon" width="30" height="30"/>

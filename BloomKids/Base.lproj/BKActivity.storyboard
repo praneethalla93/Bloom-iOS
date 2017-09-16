@@ -31,7 +31,7 @@
         <scene sceneID="hHe-uN-Dik">
             <objects>
                 <navigationController title="Activity" automaticallyAdjustsScrollViewInsets="NO" id="bSU-to-JuD" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Activity" image="activity-tabbar-icon" id="Weo-yq-LhM"/>
+                    <tabBarItem key="tabBarItem" title="Notifications" image="notification-tabbar-icon" id="Weo-yq-LhM"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ybu-Vv-frg">
@@ -49,6 +49,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="activity-tabbar-icon" width="26" height="26"/>
+        <image name="notification-tabbar-icon" width="27" height="27"/>
     </resources>
 </document>

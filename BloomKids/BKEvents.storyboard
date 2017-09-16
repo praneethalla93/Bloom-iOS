@@ -71,7 +71,7 @@
                             <outlet property="delegate" destination="Y5W-UF-FGB" id="ev2-On-zDK"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Playdate" id="q9m-4m-Hnd">
+                    <navigationItem key="navigationItem" title="Schedule" id="q9m-4m-Hnd">
                         <barButtonItem key="backBarButtonItem" id="1ku-cY-Wcj"/>
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
@@ -84,7 +84,7 @@
         <scene sceneID="mXJ-d8-fbr">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tjT-WZ-jfT" userLabel="Navigation" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Events" image="schedule-tabbar-icon" selectedImage="schedule-tabbar-icon" id="Dej-RF-LDH"/>
+                    <tabBarItem key="tabBarItem" title="Events" image="schedule-tabbar-icon" id="Dej-RF-LDH"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="uWO-KK-DaD">

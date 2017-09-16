@@ -11,6 +11,7 @@
 		7206D9B71F096D2900F5A42A /* BKKidActionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7206D9B51F096D2900F5A42A /* BKKidActionCell.xib */; };
 		720B663E1F4CE828000A50C6 /* BKEventDoubleActionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 720B663D1F4CE828000A50C6 /* BKEventDoubleActionCell.xib */; };
 		720B66401F4CE836000A50C6 /* BKEventDoubleActionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 720B663F1F4CE836000A50C6 /* BKEventDoubleActionCell.swift */; };
+		7217C4771F6656B700875477 /* BKProfileSummaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7217C4761F6656B700875477 /* BKProfileSummaryCell.swift */; };
 		72366B9E1F479F7000799302 /* BKEventsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72366B9D1F479F7000799302 /* BKEventsVC.swift */; };
 		7242BD3C1F4E9D120041C033 /* BKEventsSummaryHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7242BD3B1F4E9D120041C033 /* BKEventsSummaryHeaderCell.swift */; };
 		7259404E1F56281D0028C108 /* BKEventStartDateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7259404D1F56281D0028C108 /* BKEventStartDateCell.swift */; };
@@ -87,6 +88,7 @@
 		7206D9B51F096D2900F5A42A /* BKKidActionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BKKidActionCell.xib; sourceTree = "<group>"; };
 		720B663D1F4CE828000A50C6 /* BKEventDoubleActionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BKEventDoubleActionCell.xib; sourceTree = "<group>"; };
 		720B663F1F4CE836000A50C6 /* BKEventDoubleActionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKEventDoubleActionCell.swift; sourceTree = "<group>"; };
+		7217C4761F6656B700875477 /* BKProfileSummaryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKProfileSummaryCell.swift; sourceTree = "<group>"; };
 		72366B9D1F479F7000799302 /* BKEventsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKEventsVC.swift; sourceTree = "<group>"; };
 		7242BD3B1F4E9D120041C033 /* BKEventsSummaryHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKEventsSummaryHeaderCell.swift; sourceTree = "<group>"; };
 		7259404D1F56281D0028C108 /* BKEventStartDateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKEventStartDateCell.swift; sourceTree = "<group>"; };
@@ -191,7 +193,9 @@
 		724FDC591F0AED360082A445 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				A1026A2A1EE27B0200FA7366 /* BKSportCell.swift */,
 				A198939E1EE2027E00DDF240 /* BKPhotoHeaderView.swift */,
+				7217C4761F6656B700875477 /* BKProfileSummaryCell.swift */,
 				A19893A01EE2028A00DDF240 /* BKPhotoHeaderView.xib */,
 				A1026A311EE286AC00FA7366 /* BKSportLevelCell.swift */,
 			);
@@ -351,7 +355,6 @@
 				A19893A51EE2572E00DDF240 /* BKSimpleCell.swift */,
 				A19893A71EE2607E00DDF240 /* BKGenderCell.swift */,
 				A1026A081EE26D1400FA7366 /* BKSchoolSearchCell.swift */,
-				A1026A2A1EE27B0200FA7366 /* BKSportCell.swift */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -618,6 +621,7 @@
 				A17A7B2F1ECFD05900D77D27 /* BKAuthTool.swift in Sources */,
 				A1CFEFB01ECD5E02003DBA74 /* Headers.swift in Sources */,
 				A198939D1EE2025900DDF240 /* BKPhotoHeaderVC.swift in Sources */,
+				7217C4771F6656B700875477 /* BKProfileSummaryCell.swift in Sources */,
 				A1026A2D1EE27CCC00FA7366 /* AHStackButton.swift in Sources */,
 				72FF82311F05C3B000A460CB /* BKConnectPlayerCell.swift in Sources */,
 				720B66401F4CE836000A50C6 /* BKEventDoubleActionCell.swift in Sources */,

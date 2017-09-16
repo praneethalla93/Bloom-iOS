@@ -16,28 +16,46 @@ private enum BKSportButtonState: Int {
 
 class BKSportCell: UITableViewCell {
     @IBOutlet weak var basketBallBtn: AHStackButton!
-    @IBOutlet weak var footBallBtn: AHStackButton!
     @IBOutlet weak var tenisBtn: AHStackButton!
     @IBOutlet weak var baseBallBtn: AHStackButton!
-
     @IBOutlet weak var chessBtn: AHStackButton!
+    @IBOutlet weak var cricketBtn: AHStackButton!
+    
     @IBOutlet weak var soccerBtn: AHStackButton!
+    
 
     fileprivate var buttons = [UIButton]()
-    fileprivate(set) var totalSports: [BKSport] = [BKSport]()
+    var totalSports: [BKSport] = [BKSport]()
+    
+    
+    
+    var myTotalSports: [BKSport]? {
+        
+        get {
+            return self.totalSports
+        }
+        
+        set(newSports) {
+            self.totalSports = newSports!
+            setButtonEditState()
+        }
+        
+    }
     
     weak var navigationVC: UINavigationController?
-    
     
     
     override func awakeFromNib() {
         super.awakeFromNib()
         setupButton(btn: basketBallBtn)
-        setupButton(btn: footBallBtn)
+        setupButton(btn: cricketBtn)
         setupButton(btn: tenisBtn)
         setupButton(btn: baseBallBtn)
         setupButton(btn: chessBtn)
         setupButton(btn: soccerBtn)
+        
+        //set initial state of sports buttons in edit mode
+        //setButtonEditState()
     }
 
     func setupButton(btn: UIButton) {
@@ -53,8 +71,29 @@ class BKSportCell: UITableViewCell {
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
+    }
+    
+    func setButtonEditState() {
+        
+        for sport in self.totalSports {
+            
+            
+            let kidSportName = sport.sportName
+            
+            
+            for button in buttons {
+                
+                if (button.titleLabel?.text?.lowercased() == kidSportName.lowercased()) {
+                    button.tag = BKSportButtonState.selected.rawValue
+                    setSportSelected(btn: button)
+                }
+                
+                continue
+            }
+            
+        }
+        
     }
 
 }
@@ -62,13 +101,21 @@ class BKSportCell: UITableViewCell {
 
 //MARK:- Event Handling
 extension BKSportCell {
+    
     func sportBtnTapped(_ btn: UIButton) {
+        
         if btn.tag == BKSportButtonState.normal.rawValue {
-            let sportLevelVC = UIStoryboard(name: "BKProfile", bundle: nil).instantiateViewController(withIdentifier: "BKSportLevelVC") as! BKSportLevelVC
-            sportLevelVC.delegate = self
-            sportLevelVC.sportName = btn.titleLabel?.text ?? "Unknown Sport"
-            navigationVC?.pushViewController(sportLevelVC, animated: true)
-        }else{
+            
+                //here making the sport selected
+                let sportLevelVC = UIStoryboard(name: "BKProfile", bundle: nil).instantiateViewController(withIdentifier: "BKSportLevelVC") as! BKSportLevelVC
+                sportLevelVC.delegate = self
+                sportLevelVC.sportName = btn.titleLabel?.text ?? "Unknown Sport"
+                navigationVC?.pushViewController(sportLevelVC, animated: true)
+            
+        } else {
+            
+            //here removing it if this is already selected
+            
             for i in 0..<totalSports.count {
                 let sport = totalSports[i]
                 if sport.sportName == btn.titleLabel!.text {
@@ -100,16 +147,28 @@ extension BKSportCell: BKSportLevelVCDelegate {
         if let sport = sport {
             print("a sport added")
             totalSports.append(sport)
+            setSportSelected(btn: btn)
+            /*
             btn?.tag = BKSportButtonState.selected.rawValue
             btn?.setImage(#imageLiteral(resourceName: "sport-selected"), for: .normal)
             btn?.layer.borderWidth = 1.0
             btn?.layer.borderColor = BKAlternativeColor.cgColor
             btn?.backgroundColor = UIColor.white
             btn?.setTitleColor(BKAlternativeColor, for: .normal)
+            */
         }
+        
         navigationVC?.popViewController(animated: true)
     }
     
+    func setSportSelected(btn: UIButton?) {
+        btn?.tag = BKSportButtonState.selected.rawValue
+        btn?.setImage(#imageLiteral(resourceName: "sport-selected"), for: .normal)
+        btn?.layer.borderWidth = 1.0
+        btn?.layer.borderColor = BKAlternativeColor.cgColor
+        btn?.backgroundColor = UIColor.white
+        btn?.setTitleColor(BKAlternativeColor, for: .normal)
+    }
 }
 
 

@@ -2,7 +2,7 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "notification-tabbar-icon@1x.png",
+      "filename" : "notification-tabbar-icon.png",
       "scale" : "1x"
     },
     {

@@ -19,12 +19,10 @@ class BKActivityNewVC: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
+
         let kidCellNib = UINib(nibName: "\(BKKidDoubleActionCell.self)", bundle: nil)
         tableView.register(kidCellNib, forCellReuseIdentifier: BKKidDoubleActionCellID)
-        initialLoadAndReload()
+        //initialLoadAndReload()
         /*
         SVProgressHUD.show()
         myGroup.enter()
@@ -50,13 +48,6 @@ class BKActivityNewVC: UITableViewController {
         */
     }
     
-    func switchToAddKidUI() {
-        let profileStoryboard = UIStoryboard(name: "BKProfile", bundle: nil)
-        let addKidVC = profileStoryboard.instantiateViewController(withIdentifier: "BKAddKidVC") as! BKAddKidVC
-        self.navigationController?.pushViewController(addKidVC, animated: false)
-    }
-
-    
     @IBAction func logout(_ sender: UIBarButtonItem) {
         BKAuthTool.shared.logout()
     }
@@ -69,11 +60,6 @@ class BKActivityNewVC: UITableViewController {
         
         //after successfull loading data
         myGroup.notify(queue: .main) {
-            
-            if (BKNetowrkTool.shared.myKids == nil || BKNetowrkTool.shared.myKids?.count == 0 ) {
-                self.switchToAddKidUI()
-                return
-            }
             
             print("Finished all requests.")
             
@@ -90,17 +76,10 @@ class BKActivityNewVC: UITableViewController {
                     self.tableView.reloadData()
                 }
             }
-            //TODO: Take the user to the onboarding flow.
-            else {
-                
-            }
-            
-            
             
         }
         
         SVProgressHUD.dismiss()
-
     }
     
     //Setup Navigation bar
@@ -162,27 +141,25 @@ class BKActivityNewVC: UITableViewController {
         print ("entering load activity connections")
         
         //if self.selectedKidName.isEmpty || selectedKidName != BKNetowrkTool.shared.myCurrentKid?.kidName {
-            self.myGroup.enter()
+        self.myGroup.enter()
         
-            BKNetowrkTool.shared.getActivityConnections() { (success, activityConnectionsResult) in
+        BKNetowrkTool.shared.getActivityConnections() { (success, activityConnectionsResult) in
                 
-                self.myGroup.leave()
-                SVProgressHUD.dismiss()
+            self.myGroup.leave()
+            SVProgressHUD.dismiss()
                 
-                if let activityConnectList = activityConnectionsResult, success {
-                    self.activityConnections = activityConnectList
-                    print ("success loading activity connections \(String(describing: self.activityConnections?.count))")
-                    print( "Activity connection count \(String(describing: self.activityConnections?.count))")
-                }
-                else {
-                    self.activityConnections = nil
-                    print ("failure loadActivityConnections")
-                }
-                
+            if let activityConnectList = activityConnectionsResult, success {
+                self.activityConnections = activityConnectList
+                print ("success loading activity connections \(String(describing: self.activityConnections?.count))")
+                print( "Activity connection count \(String(describing: self.activityConnections?.count))")
+            }
+            else {
+                self.activityConnections = nil
+                print ("failure loadActivityConnections")
             }
 
-        //}
-        
+        }
+
     }
 
 }
@@ -231,7 +208,7 @@ extension BKActivityNewVC {
         } else {
             return 40.0
         }
-        
+
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -239,9 +216,15 @@ extension BKActivityNewVC {
         var sectionTitle = ""
         
         if section == 0 {
-            sectionTitle = "Connection Activity"
+            
+            if BKNetowrkTool.shared.myCurrentKid != nil {
+                sectionTitle = "Connection Activity"
+            } else {
+                sectionTitle = BKNoKidsRegistered
+            }
+
         }
-        
+
         return sectionTitle
     }
     
@@ -253,11 +236,9 @@ extension BKActivityNewVC {
             initialLoadAndReload()
         }
         
-        
     }
     
     func showAlertForRow( row: Int, decision: String) {
-        
         //let myKids = BKNetowrkTool.shared.myKids
         if let activityConnection = self.activityConnections?[row] {
             
@@ -320,10 +301,28 @@ extension BKActivityNewVC {
                     self?.showAlertForRow( row: tableView.indexPath(for: cell)!.row, decision: BKConnectDeclineRespone)
                 }
             
-            
-                cell.lblPlayerName.text = "\(activityConnection.kidname) || \(activityConnection.id)"
+                //cell.lblPlayerName.text = "\(activityConnection.kidname) || \(activityConnection.id)"
+                cell.lblPlayerName.text = activityConnection.kidname
                 cell.lblPlayerSchoolAge.text = "\(activityConnection.school) | Age: \(activityConnection.age) | \(activityConnection.date)"
-                cell.imgSportIcon1.image = #imageLiteral(resourceName: "chess-icon")
+                //cell.imgSportIcon1.image = #imageLiteral(resourceName: "chess-icon")
+                
+                if let sport = activityConnection.sport {
+                    
+                    if !sport.sportName.isEmpty {
+                        cell.imgSportIcon1.image = BKSportImageDict[(sport.sportName)]
+                    } else {
+                        cell.imgSportIcon1.isHidden = true
+                    }
+                    
+                } else {
+                    cell.imgSportIcon1.isHidden = true
+                }
+                
+                cell.imgSportIcon2.isHidden = true
+                cell.imgSportIcon3.isHidden = true
+                cell.imgSportIcon4.isHidden = true
+                cell.imgSportIcon5.isHidden = true
+                cell.imgSportIcon6.isHidden = true
                 cell.lblActionStatus.text = activityConnection.connectionStateDescription
                 cell.lblActionStatus.isHidden = activityConnection.actionLabelHidden
                 cell.btnPlayerAction1.isHidden = activityConnection.btn1Hidden
@@ -371,12 +370,8 @@ extension BKActivityNewVC {
                 self.myGroup.leave()
             }
             
-            
-            
         }
-        
        
-
     }
     
 

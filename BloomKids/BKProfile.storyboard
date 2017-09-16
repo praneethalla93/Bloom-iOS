@@ -19,41 +19,61 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <sections>
-                            <tableViewSection headerTitle="   " id="uxM-tF-6bK">
+                            <tableViewSection headerTitle="   " id="uxM-tF-6bK" userLabel="ProfileSection">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="150" id="YAd-bw-cnP">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BKProfileSummaryCellID" rowHeight="150" id="YAd-bw-cnP" customClass="BKProfileSummaryHeaderCell" customModule="BloomKids" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="30" width="375" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YAd-bw-cnP" id="rPd-Jf-eZn">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo-placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="2mW-in-WSb">
-                                                    <rect key="frame" x="28" y="5.5" width="139" height="139"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" secondItem="2mW-in-WSb" secondAttribute="height" multiplier="1:1" id="guQ-LB-LUB"/>
-                                                    </constraints>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E67-Qq-t69">
-                                                    <rect key="frame" x="167" y="5.5" width="108" height="27"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Some secondary text" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KOQ-op-cSt">
-                                                    <rect key="frame" x="175" y="40.5" width="153.5" height="19.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="q0T-wq-Mze">
+                                                    <rect key="frame" x="5" y="5" width="365" height="140"/>
+                                                    <subviews>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo-placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="2mW-in-WSb">
+                                                            <rect key="frame" x="0.0" y="0.0" width="140" height="140"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" secondItem="2mW-in-WSb" secondAttribute="height" multiplier="1:1" id="guQ-LB-LUB"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <stackView opaque="NO" contentMode="scaleAspectFill" axis="vertical" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ZMf-QQ-iqK">
+                                                            <rect key="frame" x="150" y="0.0" width="215" height="140"/>
+                                                            <subviews>
+                                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Profile Name" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Pu-os-AG0">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="215" height="28"/>
+                                                                    <nil key="textColor"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                    <textInputTraits key="textInputTraits"/>
+                                                                </textField>
+                                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Email" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="myV-Ju-wW4">
+                                                                    <rect key="frame" x="0.0" y="38" width="215" height="28"/>
+                                                                    <nil key="textColor"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                    <textInputTraits key="textInputTraits"/>
+                                                                </textField>
+                                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Phone" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3gb-ZH-Z5E">
+                                                                    <rect key="frame" x="0.0" y="76" width="215" height="28"/>
+                                                                    <nil key="textColor"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                    <textInputTraits key="textInputTraits"/>
+                                                                </textField>
+                                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Primary City" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="M4j-5s-qf8">
+                                                                    <rect key="frame" x="0.0" y="114" width="215" height="26"/>
+                                                                    <nil key="textColor"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                    <textInputTraits key="textInputTraits"/>
+                                                                </textField>
+                                                            </subviews>
+                                                        </stackView>
+                                                    </subviews>
+                                                </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="2mW-in-WSb" firstAttribute="leading" secondItem="rPd-Jf-eZn" secondAttribute="leadingMargin" constant="20" id="LwK-zy-FZR"/>
-                                                <constraint firstItem="E67-Qq-t69" firstAttribute="leading" secondItem="2mW-in-WSb" secondAttribute="trailing" id="NQE-C3-P3P"/>
-                                                <constraint firstItem="E67-Qq-t69" firstAttribute="top" secondItem="2mW-in-WSb" secondAttribute="top" id="SkR-Aa-7Ri"/>
-                                                <constraint firstItem="2mW-in-WSb" firstAttribute="centerY" secondItem="rPd-Jf-eZn" secondAttribute="centerY" id="Z3u-2a-fqd"/>
-                                                <constraint firstItem="KOQ-op-cSt" firstAttribute="top" secondItem="E67-Qq-t69" secondAttribute="bottom" constant="8" id="ar3-Oa-ecQ"/>
-                                                <constraint firstItem="KOQ-op-cSt" firstAttribute="leading" secondItem="2mW-in-WSb" secondAttribute="trailing" constant="8" id="uXF-1a-hFX"/>
+                                                <constraint firstItem="q0T-wq-Mze" firstAttribute="leading" secondItem="rPd-Jf-eZn" secondAttribute="leading" constant="5" id="PrJ-D5-GOO"/>
+                                                <constraint firstAttribute="bottom" secondItem="q0T-wq-Mze" secondAttribute="bottom" constant="5" id="Uz3-aT-x2L"/>
+                                                <constraint firstItem="q0T-wq-Mze" firstAttribute="top" secondItem="rPd-Jf-eZn" secondAttribute="top" constant="5" id="dCT-AC-mmY"/>
+                                                <constraint firstAttribute="trailing" secondItem="q0T-wq-Mze" secondAttribute="trailing" constant="5" id="dFW-8U-ndc"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -234,6 +254,10 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="txtPhone" destination="3gb-ZH-Z5E" id="iSd-Fy-z5j"/>
+                        <outlet property="txtPrimaryCity" destination="M4j-5s-qf8" id="G3e-NH-Fty"/>
+                        <outlet property="txtProfileEmail" destination="myV-Ju-wW4" id="uXi-aO-RHk"/>
+                        <outlet property="txtProfileName" destination="4Pu-os-AG0" id="boP-K9-aW9"/>
                         <outlet property="userPhoto" destination="2mW-in-WSb" id="Pjg-xF-Qqu"/>
                     </connections>
                 </tableViewController>
@@ -298,11 +322,11 @@
             </objects>
             <point key="canvasLocation" x="2063" y="351"/>
         </scene>
-        <!--Profile-->
+        <!--Settings-->
         <scene sceneID="Z4b-zy-87j">
             <objects>
                 <navigationController id="4Mu-Ct-K2P" customClass="BKNavigationVC" customModule="BloomKids" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" image="profile-tab-icon" selectedImage="profile-tab-icon" id="aF8-n3-j1p"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="setting-tabbar-icon" id="aF8-n3-j1p"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="5tN-Kb-kTt">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -495,7 +519,7 @@
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5KS-4W-yNu" customClass="AHStackButton" customModule="BloomKids" customModuleProvider="target">
                                                             <rect key="frame" x="242" y="0.0" width="101" height="91"/>
                                                             <color key="backgroundColor" red="0.44705882349999998" green="0.79215686269999996" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <state key="normal" title="Soccer" image="sport-add-icon"/>
+                                                            <state key="normal" title="Cricket" image="sport-add-icon"/>
                                                         </button>
                                                     </subviews>
                                                 </stackView>
@@ -515,7 +539,7 @@
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wEQ-lg-PV3" customClass="AHStackButton" customModule="BloomKids" customModuleProvider="target">
                                                             <rect key="frame" x="242" y="0.0" width="101" height="91"/>
                                                             <color key="backgroundColor" red="0.44705882349999998" green="0.79215686269999996" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <state key="normal" title="Football" image="sport-add-icon"/>
+                                                            <state key="normal" title="Soccer" image="sport-add-icon"/>
                                                         </button>
                                                     </subviews>
                                                 </stackView>
@@ -533,8 +557,8 @@
                                     <outlet property="baseBallBtn" destination="pco-x0-3Ld" id="xDW-NL-dqW"/>
                                     <outlet property="basketBallBtn" destination="c7B-3E-Qge" id="TaV-BU-hgx"/>
                                     <outlet property="chessBtn" destination="AmE-l0-F8z" id="u4o-Za-Jre"/>
-                                    <outlet property="footBallBtn" destination="wEQ-lg-PV3" id="cEx-mq-CB3"/>
-                                    <outlet property="soccerBtn" destination="5KS-4W-yNu" id="W10-5l-qoE"/>
+                                    <outlet property="cricketBtn" destination="5KS-4W-yNu" id="Bjw-VZ-pNC"/>
+                                    <outlet property="soccerBtn" destination="wEQ-lg-PV3" id="GXb-4O-qul"/>
                                     <outlet property="tenisBtn" destination="CkE-5Q-hxy" id="ZjU-DE-Mfh"/>
                                 </connections>
                             </tableViewCell>
@@ -545,13 +569,7 @@
                             <outlet property="delegate" destination="hgL-mf-3qu" id="7tt-5Q-jlj"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="8La-oS-bIG">
-                        <barButtonItem key="rightBarButtonItem" title="Add" id="Hoe-a4-ms3">
-                            <connections>
-                                <action selector="addKid:" destination="hgL-mf-3qu" id="blu-lC-Lqq"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="8La-oS-bIG"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ysG-hS-1Rg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -606,7 +624,7 @@
         <image name="addkid-nav-icon" width="24" height="19"/>
         <image name="edit-nav-icon" width="24" height="24"/>
         <image name="photo-placeholder" width="139" height="139"/>
-        <image name="profile-tab-icon" width="25" height="25"/>
+        <image name="setting-tabbar-icon" width="27" height="27"/>
         <image name="sport-add-icon" width="22" height="22"/>
     </resources>
 </document>

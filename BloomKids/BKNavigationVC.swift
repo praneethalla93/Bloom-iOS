@@ -20,12 +20,12 @@ class BKNavigationVC: UINavigationController {
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white,NSFontAttributeName: UIFont.systemFont(ofSize: BKNavigationBarTitleFontSize)]
         UIBarButtonItem.appearance().tintColor = UIColor.white
         
-        navigationBar.layer.borderWidth = 0.2
-        navigationBar.layer.shadowColor = BKGlobalTintColor.withAlphaComponent(0.1).cgColor
-        navigationBar.layer.shadowOffset = .init(width: 1.5, height: 1.5)
-        navigationBar.layer.shadowOpacity = 1.0
-        navigationBar.layer.masksToBounds = false
-
+        //navigationBar.layer.borderWidth = 0.2
+        //navigationBar.layer.shadowColor = BKGlobalTintColor.withAlphaComponent(0.1).cgColor
+        //navigationBar.layer.shadowOffset = .init(width: 1.5, height: 1.5)
+        //navigationBar.layer.shadowOpacity = 1.0
+        //navigationBar.layer.masksToBounds = false
+        //self.tabBarController?.tabBar.itemWidth = 300
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -45,4 +45,5 @@ class BKNavigationVC: UINavigationController {
     func popVC(_ sender: UIBarButtonItem) {
         self.popViewController(animated: true)
     }
+    
 }

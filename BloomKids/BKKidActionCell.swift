@@ -50,32 +50,42 @@ class BKKidActionCell: UITableViewCell {
                 self.imgTennisIcon.isHidden = true
                 self.imgSoccerIcon.isHidden = true
                 
+                let basketBallSportName = BKBasketballSport.lowercased()
+                let baseballSportName = BKBaseballSport.lowercased()
+                let chessSportName = BKChessSport.lowercased()
+                let cricketSportName = BKCricketSport.lowercased()
+                let soccerSportName = BKSoccerSport.lowercased()
+                let tennisSportName = BKTennisSport.lowercased()
+                
                 for sport in kid.sports {
                     
                     switch sport.sportName.lowercased() {
                         
-                    case "basketball":
+                    case basketBallSportName.lowercased():
                         self.imgBasketballIcon.isHidden = false
                         print("kid.kidName \(kid.kidName) \(sport.sportName)" )
-                    case "baseball":
+                    case baseballSportName:
                         self.imgBaseballIcon.isHidden = false
                         print("kid.kidName \(kid.kidName) \(sport.sportName)" )
-                    case "chess":
+                    case chessSportName:
                         self.imgChessIcon.isHidden = false
                         print("kid.kidName \(kid.kidName) \(sport.sportName)" )
-                    case "cricket":
+                    case cricketSportName:
                         self.imgCricketIcon.isHidden = false
                         print("kid.kidName \(kid.kidName) \(sport.sportName)" )
-                    case "soccer":
+                    case soccerSportName:
                         self.imgSoccerIcon.isHidden = false
                         print("kid.kidName \(kid.kidName) \(sport.sportName)" )
-                    case "tennis":
+                    case "Football":
+                        self.imgSoccerIcon.isHidden = false
+                        print("kid.kidName \(kid.kidName) \(sport.sportName)" )
+                    case tennisSportName:
                         self.imgTennisIcon.isHidden = false
                         print("kid.kidName \(kid.kidName) \(sport.sportName)" )
                     default:
                         print("No Match: kid.kidName \(kid.kidName) \(sport.sportName)" )
                     }
-                    
+  
                 }
 
             }

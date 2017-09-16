@@ -20,20 +20,29 @@ class BKCongratsVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let kidCellNib = UINib(nibName: "\(BKKidCell.self)", bundle: nil)
-        tableView.register(kidCellNib, forCellReuseIdentifier: BKKidCellID)
-        tableView.contentInset.bottom = 49
+        let kidActionCellNib = UINib(nibName: "\(BKKidActionCell.self)", bundle: nil)
+        
+        tableView.register(kidActionCellNib, forCellReuseIdentifier: BKKidActionCellID)
+        //tableView.contentInset.bottom = 49
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: headerCellId)
 
         SVProgressHUD.show()
-        
         BKNetowrkTool.shared.locationDetails() { (success, kids) in
-            
             SVProgressHUD.dismiss()
+            
             if let kids = kids, success {
+                
+                if kids.count == 0 {
+                    BKAuthTool.shared.switchToMainUI()
+                    return
+                }
+                
                 self.kids = kids
                 self.tableView.reloadData()
+            } else {
+                BKAuthTool.shared.switchToMainUI()
             }
+            
         }
 
     }
@@ -44,7 +53,6 @@ class BKCongratsVC: UITableViewController {
     }
     
     // MARK: - Table view data source
-    
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 2
@@ -78,9 +86,10 @@ class BKCongratsVC: UITableViewController {
             
             return cell
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: BKKidCellID, for: indexPath) as! BKKidCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: BKKidActionCellID, for: indexPath) as! BKKidActionCell
             let kidModel = kids![indexPath.row]
             cell.kidModel = kidModel
+            cell.btnPlayerAction.isHidden = true
             return cell
         }
         
@@ -97,18 +106,9 @@ class BKCongratsVC: UITableViewController {
     }
     
     
-    
     @IBAction func nextBtnTapped(_ sender: UIBarButtonItem) {
         //switchToAddKidUI()
         BKAuthTool.shared.switchToMainUI()
-    }
-    
-    func switchToAddKidUI() {
-        let profileStoryboard = UIStoryboard(name: "BKProfile", bundle: nil)
-        let addKidVC = profileStoryboard.instantiateViewController(withIdentifier: "BKAddKidVC") as! BKAddKidVC
-        addKidVC.mode = "ONBOARD"
-        addKidVC.delegate = self as BKAddKidVCDelegate
-        navigationController?.pushViewController(addKidVC, animated: true)
     }
     
     /*

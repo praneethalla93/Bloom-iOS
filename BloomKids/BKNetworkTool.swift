@@ -41,6 +41,10 @@ class BKNetowrkTool {
             return self.profile
         }
         
+        set(newProfile) {
+            self.profile = newProfile
+        }
+
     }
 
 
@@ -135,7 +139,7 @@ extension BKNetowrkTool {
                     
                 } catch {
                     print("Error deserializing JSON: \(error)")
-                    print("Failed add kid finished request)")
+                    print("Failed Sign uo finished request)")
                     completion(false, statusCode)
                 }
 
@@ -143,7 +147,7 @@ extension BKNetowrkTool {
             
             completion(success, statusCode)
                 
-            }
+        }
         
     }
 
@@ -232,7 +236,7 @@ extension BKNetowrkTool {
 
                 }
                     
-                print("Success! add kid finished request)")
+                print("Success! Add Kid finished request)")
 
                 } catch {
                     print("Error deserializing JSON: \(error)")
@@ -240,11 +244,67 @@ extension BKNetowrkTool {
                     completion(false, nil)
 
                 }
-                
+
             }else{
                 completion(false, nil)
             }
                 
+        }
+    }
+    
+    func editKid(kidModel: BKKidModel, row: Int, completion: @escaping (_ success: Bool) -> Void) {
+        
+        var dict = [String: Any]()
+        dict["kidid"] = kidModel.id
+        dict["kidname"] = kidModel.kidName
+        dict["gender"] = kidModel.gender
+        dict["dob"] = "01/1/2010"
+        dict["age"] = kidModel.age
+        dict["school"] = kidModel.school
+
+        var sportArr = [[String: String]]()
+        /*
+         var sportName: String
+         var interestLevel: String
+         var skillLevel: String
+         */
+        
+        for sport in kidModel.sports {
+            var sportDict = [String: String]()
+            sportDict["sportname"] = sport.sportName
+            sportDict["skilllevel"] = sport.skillLevel
+            sportArr.append(sportDict)
+        }
+        
+        dict["sport"] = sportArr
+        print("kid info:\(dict)")
+        
+        request(.put, urlStr: BKNetworkingEditKidUrlStr, parameters: dict) { (success, data) in
+            
+            if success {
+                
+                do {
+                    if  let data = data,
+                        let json = try JSONSerialization.jsonObject(with: data) as? [String: Any] {
+                        
+                        
+                        let newkidModel = kidModel
+                        self.myKids?[row] = newkidModel
+                        completion(success)
+                    }
+                    
+                    print("Success! edit kid finished request)")
+                    
+                } catch {
+                    print("Error deserializing JSON: \(error)")
+                    print("Failed edit kid )")
+                    completion(false)
+                }
+                
+            } else{
+                completion(false)
+            }
+            
         }
     }
     
@@ -263,11 +323,10 @@ extension BKNetowrkTool {
         }
  
         let dict = ["email": currentEmail]
-        
         //let myGroup = DispatchGroup()
         //myGroup.enter()
         
-        
+    
         request(.post, urlStr: BKNetworkingGetKidUrlStr, parameters: dict) { (success, data) in
             if success {
             
@@ -342,7 +401,7 @@ extension BKNetowrkTool {
     func getKidsFiltered(kidModel:BKKidModel, sportName:String, interestLevel:String, completion: @escaping (_ success:Bool, _ kids: [BKKidModel]?) -> Void) {
         
         
-        var dict = ["kidid": String(describing: kidModel.id)]
+        var dict = ["kidid" : String(describing: kidModel.id!)]
         
         if sportName.isEmpty {
             dict["sportname"] = sportName
@@ -351,6 +410,8 @@ extension BKNetowrkTool {
         if interestLevel.isEmpty {
             dict["skilllevel"] = sportName
         }
+        
+        print("GetKids Filtered dict: \(dict)")
         
         request(.post, urlStr: BKNetworkingGetKidsFilteredUrlStr, parameters: dict) { (success, data) in
             if success {
@@ -414,18 +475,45 @@ extension BKNetowrkTool {
                                 var activityConnect = BKKidActivityConnection(dict: activity)
                                 activityConnect.connectionState = activityConnect.connectionState
                                 activityConnections.append(activityConnect)
-                                print("Activity connection kid name name is \(activityConnect.kidname)")
+                                print("Activity connection kid name is \(activityConnect.kidname)")
+                            }
+ 
+                            activityConnections.sort { (object1, object2) -> Bool in
+                                
+                                let dateFormatter = DateFormatter()
+                                var date1 = Date()
+                                var date2 = Date()
+                                
+                                if ( object1.date.characters.count == 8 ) {
+                                    dateFormatter.dateFormat = "MM/dd/yy"
+                                    date1 = dateFormatter.date(from: object1.date)!
+                                } else if ( object1.date.characters.count == 10 ) {
+                                    dateFormatter.dateFormat = "MM/dd/yyyy"
+                                    date1 = dateFormatter.date(from: object1.date)!
+                                }
+                                
+                                
+                                if ( object2.date.characters.count == 8 ) {
+                                    dateFormatter.dateFormat = "MM/dd/yy"
+                                    date2 = dateFormatter.date(from: object2.date)!
+                                } else if ( object2.date.characters.count == 10 ) {
+                                    dateFormatter.dateFormat = "MM/dd/yyyy"
+                                    date2 = dateFormatter.date(from: object2.date)!
+                                }
+                                
+                                return (date1 > date2)
                             }
                             
                             completion(status, activityConnections)
                         }
                         
                     }
+                    
                 } catch {
                     completion(false, nil)
                 }
-                
-            } else{
+
+            } else {
                 completion(false, nil)
             }
             
@@ -537,6 +625,8 @@ extension BKNetowrkTool {
     
     func getKidConnections(kidModel:BKKidModel, completion: @escaping (_ success:Bool, _ kids: [BKKidModel]?) -> Void) {
         
+        print("Entering getKid connections")
+        
         var dict = [String:Any]()
         dict["kidId"] = kidModel.id
         
@@ -572,22 +662,28 @@ extension BKNetowrkTool {
                     if  let data = data,
                         let json = try JSONSerialization.jsonObject(with: data) as? [String: Any]
                     {
-                        if let status = json["status"] as? Int {
+                        
+                        
+                        
+                        if let status = json["status"] as? Bool {
                             
-                            if ( status == 0 ) {
+                            if ( status ) {
+                                    completion(true, nil)
+                            }
+                            else {
+                                
+                                //TODO:" temporary need to return false for failures.
                                 completion(true, nil)
                             }
-
                         }
-                        
+
                     }
                     
                 } catch {
+                    print("Error info: \(error)")
                     completion(false, nil)
                 }
                 
-
-                completion(false, nil)
             }
 
         }
@@ -598,7 +694,7 @@ extension BKNetowrkTool {
         
         var dict = [String:Any]()
         
-        if (mode == "email") {
+        if (mode == "EMAIL") {
             
             if let emailAddress = email {
                 dict["email"] = emailAddress
@@ -686,6 +782,7 @@ extension BKNetowrkTool {
                     
                     if  let data = data,
                         let json = try JSONSerialization.jsonObject(with: data) as? [String: Any] {
+                        
                         if let status = json["status"] as? Bool {
                             print("ConnectionRequestor Finished request)")
                             completion(status)

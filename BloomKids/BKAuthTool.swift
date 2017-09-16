@@ -78,36 +78,37 @@ class BKAuthTool {
                 return vc
             }
             */
-            
         }
-        
-       
+
         return showViewController
     }
     
     func switchToMainUI() {
         
         //create profile if it's empty
-        
         if BKNetowrkTool.shared.myProfile == nil {
             
-            BKNetowrkTool.shared.getFamilyDetails(kidId: BKNetowrkTool.shared.myCurrentKid?.id, email: BKNetowrkTool.shared.currentEmail, mode: "email", completion: { (success, profile) in
+            BKNetowrkTool.shared.getFamilyDetails(kidId: BKNetowrkTool.shared.myCurrentKid?.id, email: BKNetowrkTool.shared.currentEmail, mode: "EMAIL", completion: { (success, profile) in
                 
                 if success {
                     //TODO: access profile data if needed
-                    let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                    let navagitionVC = mainStoryboard.instantiateViewController(withIdentifier: "BKMainTabBarVC")
-                    let window = UIApplication.shared.keyWindow
-                    window?.rootViewController = navagitionVC
+                    BKNetowrkTool.shared.myProfile = profile
                 } else {
-                    SVProgressHUD.showError(withStatus: "Login failed")
-                    
+                    SVProgressHUD.showError(withStatus: "Profile load failed")
+                    print("Profile load failed")
                     //TODO: login failed. stay in Auth UI
-                    self.switchToAuthUI()
+                    //self.switchToAuthUI()s
                 }
-
+                
             })
+
         }
+
+        //whether profile loads or not we want to proceed as the user is already authenticated
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let navagitionVC = mainStoryboard.instantiateViewController(withIdentifier: "BKMainTabBarVC")
+        let window = UIApplication.shared.keyWindow
+        window?.rootViewController = navagitionVC
        
     }
     
@@ -168,7 +169,7 @@ class BKAuthTool {
         BKNetowrkTool.shared.cleanObjects()
         switchToAuthUI()
     }
-    
+
 }
 
 extension BKAuthTool: BKPlaceAutocompleteDelegate {

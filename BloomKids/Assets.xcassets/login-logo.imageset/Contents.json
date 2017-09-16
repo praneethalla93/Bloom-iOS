@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "login-logo@1x.png",
+      "filename" : "bloom-144x144.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "login-logo@2x.png",
+      "filename" : "bloom-144x144@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "login-logo@3x.png",
+      "filename" : "bloom-144x144@3x.png",
       "scale" : "3x"
     }
   ],

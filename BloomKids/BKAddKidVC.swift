@@ -17,14 +17,20 @@ protocol BKAddKidVCDelegate: class {
 class BKAddKidVC: UITableViewController {
     weak var delegate: BKAddKidVCDelegate?
     var mode: String? // 1. ONBOARD 2. ADD 3. EDIT
+    var kidRow: Int?
+    var currentEditKid: BKKidModel?
+    var kidId: Int?
     
     fileprivate lazy var photoHeaderVC: BKPhotoHeaderVC = BKPhotoHeaderVC()
     fileprivate var genderStr: String?
     fileprivate var name: String?
     fileprivate var age: String?
-    fileprivate var schoolPlace: BKPlaceModel?
+    //fileprivate var schoolPlace: BKPlaceModel?
+    fileprivate var schoolPlace: String?
     fileprivate weak var sportCell: BKSportCell?
     fileprivate var newKid: BKKidModel?
+    
+    
     fileprivate var searchNavVC: BKPlaceSearchNavVC?
     
     let myGroup = DispatchGroup()
@@ -32,16 +38,6 @@ class BKAddKidVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        self.title = "Add Kid"
-        
-        if let mode = self.mode {
-            
-            if ( mode == "EDIT") {
-                self.title = "Edit Kid"
-            }
-            
-        }
         
         photoHeaderVC.willMove(toParentViewController: self)
         addChildViewController(photoHeaderVC)
@@ -55,7 +51,34 @@ class BKAddKidVC: UITableViewController {
         leftBtn.sizeToFit()
         leftBtn.addTarget(self, action: #selector(cancel(_:)), for: .touchUpInside)
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: leftBtn)
+       
+        /*
+        var buttonTitle = "Add"
         
+        if self.mode == "EDIT" {
+            buttonTitle = "Save"
+        }
+        */
+        
+        let rightButtonItem = UIBarButtonItem.init (
+            title: "Save",
+            style: .done,
+            target: self,
+            action: #selector(rightButtonAction(_:))
+        )
+        
+        navigationItem.rightBarButtonItem = rightButtonItem
+        
+        self.title = "Add Kid"
+        
+        if let mode = self.mode {
+            
+            if ( mode == "EDIT") {
+                loadKidData()
+            }
+   
+        }
+
         myGroup.enter()
         
         //after successfull addking kid
@@ -81,23 +104,38 @@ class BKAddKidVC: UITableViewController {
                 }
                 
              } else{
-                SVProgressHUD.showError(withStatus: "Failed to add kid")
+                SVProgressHUD.showError(withStatus: "Failed to add or edit kid")
              }
             
         }
         
     }
     
+    func loadKidData() {
+        self.title = "Edit Kid"
+        self.genderStr = currentEditKid?.gender
+        self.name = currentEditKid?.kidName
+        self.age = currentEditKid?.age
+        self.schoolPlace = currentEditKid?.school
+        self.kidId =  currentEditKid?.id
+        //self.tableView.reloadData()
+    }
+    
     func cancel(_ sender: Any) {
+        
         if navigationController != nil {
             navigationController?.popViewController(animated: true)
         }else {
             dismiss(animated: true, completion: nil)
         }
+        
     }
     
-    @IBAction func addKid(_ sender: UIBarButtonItem) {
-        
+    func rightButtonAction(_ sender: Any) {
+        addOrEditKid(sender)
+    }
+    
+    func addOrEditKid(_ sender: Any) {
         guard let gender = genderStr,
         let name = name,
         let schoolPlace = schoolPlace,
@@ -111,28 +149,47 @@ class BKAddKidVC: UITableViewController {
             return
         }
         
-        let kidModel = BKKidModel(kidName: name, gender: gender, school: schoolPlace.placeName, age: ageSr, sports: sports)
+        let kidModel = BKKidModel(kidName: name, gender: gender, school: schoolPlace, age: ageSr, sports: sports, id: self.kidId)
         SVProgressHUD.show()
         
-        BKNetowrkTool.shared.addKid(kidModel: kidModel) { (success, kidid) in
+        if ( self.mode == "EDIT") {
             
-            SVProgressHUD.dismiss()
-            self.myGroup.leave()
-            
-            if success {
-                self.newKid = kidModel
-                print ("success addking kid")
+            BKNetowrkTool.shared.editKid(kidModel: kidModel, row: self.kidRow!) { (success) in
+                
+                SVProgressHUD.dismiss()
+                self.myGroup.leave()
+                
+                if success {
+                    self.newKid = kidModel
+                    print ("success editing kid")
+                }
+                else {
+                    self.newKid = nil
+                    print ("failed editing kid")
+                }
+
             }
-            else {
-                self.newKid = nil
-                print ("failed addking kid")
+        } else {
+            
+            BKNetowrkTool.shared.addKid(kidModel: kidModel) { (success, kidid) in
+                
+                SVProgressHUD.dismiss()
+                self.myGroup.leave()
+                
+                if success {
+                    self.newKid = kidModel
+                    print ("success adding kid")
+                }
+                else {
+                    self.newKid = nil
+                    print ("failed addking kid")
+                }
+                
             }
             
         }
 
     }
-    
-
 
 }
 
@@ -192,7 +249,6 @@ extension BKAddKidVC {
             searchVC.resultType = .noFilter
             searchVC.placeholder = "Enter school name"
             self.navigationController?.pushViewController(searchVC, animated: true)
-            
             /*
             self.searchNavVC = BKPlaceSearchNavVC()
             searchNavVC?.placeDelegate = self
@@ -205,7 +261,6 @@ extension BKAddKidVC {
             
             //let window = UIApplication.shared.keyWindow
             //window?.rootViewController = searchNavVC
-            
         }
 
     }
@@ -230,6 +285,7 @@ extension BKAddKidVC {
         
         cell.label.text = "Name"
         cell.textField.placeholder = ""
+        cell.textField.text = name
         
         cell.didChangeText = {[weak self] (text) in
             self?.name = text
@@ -245,6 +301,13 @@ extension BKAddKidVC {
             self?.genderStr = genderStr
         }
         
+        if (self.mode == "EDIT"),
+           let gender = self.genderStr {
+            cell.setupGenderBtns(gender: gender)
+        }
+        
+        
+        
         return cell
     }
     
@@ -253,6 +316,7 @@ extension BKAddKidVC {
         
         cell.label.text = "Age"
         cell.textField.placeholder = ""
+        cell.textField.text = self.age
         
         cell.didChangeText = {[weak self] (text) in
             self?.age = text
@@ -263,7 +327,7 @@ extension BKAddKidVC {
     
     func handleSchool(_ tableView: UITableView, _ indexPath: IndexPath) -> UITableViewCell{
         let cell = tableView.dequeueReusableCell(withIdentifier: BKSchoolSearchCellID, for: indexPath) as! BKSchoolSearchCell
-        cell.schoolNameField.text = (self.schoolPlace == nil) ? "" : self.schoolPlace!.placeName
+        cell.schoolNameField.text = (self.schoolPlace == nil) ? "" : self.schoolPlace
         return cell
     }
 
@@ -271,6 +335,11 @@ extension BKAddKidVC {
         let cell = tableView.dequeueReusableCell(withIdentifier: BKSportCellID, for: indexPath) as! BKSportCell
         cell.navigationVC = navigationController
         sportCell = cell
+        
+        if (self.mode == "EDIT") {
+            sportCell?.myTotalSports = (currentEditKid!.sports)
+        }
+        
         return cell
     }
 
@@ -285,7 +354,8 @@ extension BKAddKidVC: BKPlaceAutocompleteDelegate {
     }
     
     func placeAutocomplete(_ vc: BKPlaceAutocompleteVC, didSelectPlace place: BKPlaceModel) {
-        self.schoolPlace = place
+        //self.schoolPlace = place
+        self.schoolPlace = place.placeName
         navigationController?.popViewController(animated: true)
         //self.searchNavVC?.popViewController(animated: true)
         self.tableView.reloadData()

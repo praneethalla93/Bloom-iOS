@@ -66,6 +66,7 @@ class BKEventSchedulerVC: UITableViewController {
                 
             } else{
                 SVProgressHUD.showError(withStatus: "Event Schedule failed. Try again.")
+                
             }
 
         }
@@ -73,7 +74,6 @@ class BKEventSchedulerVC: UITableViewController {
     }
     
     func editingChanged() {
-        
         
         guard
             let location = locationTextField?.text, !location.isEmpty,
@@ -108,8 +108,6 @@ class BKEventSchedulerVC: UITableViewController {
             location = "\( eventLoc.placeName) \r\n \(eventLoc.secondary!)"
         }
         
-        
-        
         let eventDate = self.eventDatePicker?.date
         let formatter = DateFormatter()
         // initially set the format based on your datepicker date
@@ -135,8 +133,7 @@ class BKEventSchedulerVC: UITableViewController {
             else {
                 print ("failure scheduling event")
             }
-            
-   
+
         }
         
     }
@@ -193,7 +190,6 @@ extension BKEventSchedulerVC {
     
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         // for school search
         if indexPath.section == 1 {
             let searchVC = BKPlaceAutocompleteVC()

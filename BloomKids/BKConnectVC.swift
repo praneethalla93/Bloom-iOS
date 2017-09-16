@@ -20,63 +20,78 @@ class BKConnectVC: UITableViewController {
     let myGroup = DispatchGroup()
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
-        
-                SVProgressHUD.show()
-        
+       
         let kidCellNib = UINib(nibName: "\(BKKidActionCell.self)", bundle: nil)
         self.tableView.register(kidCellNib, forCellReuseIdentifier: BKKidActionCellID)
         
         let kidDoubleActionCellNib = UINib(nibName: "\(BKKidDoubleActionCell.self)", bundle: nil)
         self.tableView.register(kidDoubleActionCellNib, forCellReuseIdentifier: BKKidDoubleActionCellID)
-        initialLoadAndReload()
+        initialLoadAndReload(reDirect: true)
     }
     
-    func initialLoadAndReload() {
-
+    func initialLoadAndReload(reDirect: Bool) {
+        
+        print ("initialLoadAndReload called")
+        SVProgressHUD.show()
         loadMyKids()
+        
+        
         
         //after successfull loading data
         myGroup.notify(queue: .main) {
+            
             print("Finished all requests.")
+            self.tableView.reloadData()
             
-            //var currentKid = BKNetowrkTool.shared.myCurrentKid
-            
-            if BKNetowrkTool.shared.myKids != nil {
+            if BKNetowrkTool.shared.myCurrentKid == nil {
+                SVProgressHUD.dismiss()
                 
-                
-                self.loadCurrentKidConnections()
-                self.loadPendingConnections()
-                self.setupNavigationBar()
-
-                //once dropdown menu is loaded with kids. Load current Kids connection
-                self.myGroup.notify(queue: .main) {
-                    print("connection table refreshed")
+                if reDirect {
                     
-                    
-                    self.tableView.reloadData()
-                    
-                    if (self.currentkidConnections != nil && self.currentkidConnections!.count == 0 ) && ( self.pendingConnections != nil && self.pendingConnections!.count == 0) {
-                        self.switchToConnectPlayerUI()
-                    }
+                    self.switchToAddKidUI()
+                    return
                     
                 }
                 
             }
             
+            if BKNetowrkTool.shared.myKids != nil {
+                self.loadCurrentKidConnections(reDirect: reDirect)
+                
+                self.myGroup.notify(queue: .main) {
+                    print("connection table refreshed")
+                    
+                    self.loadPendingConnections()
+                    
+                    //once dropdown menu is loaded with kids. Load current Kids connection
+                    self.myGroup.notify(queue: .main) {
+                        print("connection table refreshed")
+                        self.tableView.reloadData()
+                    }
+                    
+                }
+                
+                self.setupNavigationBar()
+            }
+
             SVProgressHUD.dismiss()
         }
         
-        
+    }
+    
+    func switchToAddKidUI() {
+        let profileStoryboard = UIStoryboard(name: "BKProfile", bundle: nil)
+        let addKidVC = profileStoryboard.instantiateViewController(withIdentifier: "BKAddKidVC") as! BKAddKidVC
+        self.navigationController?.pushViewController(addKidVC, animated: false)
     }
     
     func switchToConnectPlayerUI() {
         let profileStoryboard = UIStoryboard(name: "BKConnect", bundle: nil)
-        let connectPlayerVC = profileStoryboard.instantiateViewController(withIdentifier: "BKConnectPlayrVC") as! BKConnectPlayerVC
+        let connectPlayerVC = profileStoryboard.instantiateViewController(withIdentifier: "BKConnectPlayerVC") as! BKConnectPlayerVC
         self.navigationController?.pushViewController(connectPlayerVC, animated: false)
     }
-    
+
     //Setup Navigation bar
     func setupNavigationBar() {
         
@@ -105,12 +120,21 @@ class BKConnectVC: UITableViewController {
             //@TODO: reload
             let myKids = BKNetowrkTool.shared.myKids
             BKNetowrkTool.shared.myCurrentKid = myKids?[indexPath]
-            self?.loadCurrentKidConnections()
+            self?.loadCurrentKidConnections(reDirect: true)
+            
             
             //once dropdown menu is loaded with kids. Load current Kids connection
             self?.myGroup.notify(queue: .main) {
                 print("connect table refreshed")
-                self?.tableView.reloadData()
+                
+                self?.loadPendingConnections()
+                
+                //once dropdown menu is loaded with kids. Load current Kids connection
+                self?.myGroup.notify(queue: .main) {
+                    print("connection table refreshed")
+                    self?.tableView.reloadData()
+                }
+
             }
 
         }
@@ -118,17 +142,17 @@ class BKConnectVC: UITableViewController {
     }
     
     func loadMyKids() {
-        myGroup.enter()
+        self.myGroup.enter()
         print ("entering load my kids")
         
         //TODO: Big problem
         BKNetowrkTool.shared.getMyKids { (success, kids) in
             SVProgressHUD.dismiss()
-        
+            
             if let myKids = kids, success {
-                self.myGroup.leave()
                 print ("leaving load my kids")
                 print( "My kids count \(String(describing: myKids.count))")
+                self.myGroup.leave()
             }
             else {
                 self.myGroup.leave()
@@ -139,38 +163,61 @@ class BKConnectVC: UITableViewController {
         
     }
     
-    func loadCurrentKidConnections() {
-        
-            myGroup.enter()
+    func loadCurrentKidConnections(reDirect: Bool) {
         
             print ("entering loading current kid connections")
         
             if let kid = BKNetowrkTool.shared.myCurrentKid {
+                
+                self.myGroup.enter()
             
                 BKNetowrkTool.shared.getKidConnections(kidModel: kid) { ( success, kids) in
+                    
                     SVProgressHUD.dismiss()
                 
-                if success {
-                    
-                    if let kids = kids {
-                        self.currentkidConnections = kids
-                        print ("success loading current kid connections \(String(describing: self.currentkidConnections?.count))")
-                    } else {
-                        print("No connections")
-                        self.switchToConnectPlayerUI()
+                    if success {
+                        
+                        if let kids = kids {
+                            self.currentkidConnections = kids
+                            print ("success loading current kid connections \(String(describing: self.currentkidConnections?.count))")
+                            
+                            if (self.currentkidConnections?.count == 0 ) {
+                                print("No connections")
+                                
+                                if reDirect {
+                                    self.switchToConnectPlayerUI()
+                                    return
+                                }
+                                
+                                
+                            }
+                        
+                        } else {
+
+                            print("No connections")
+                            if reDirect {
+                                self.switchToConnectPlayerUI()
+                                return
+                            }
+                        }
+                        
+                        
+                    }
+                    else {
+                        self.currentkidConnections = nil
+                        print ("failure loading current kid connections")
+                        
+                        
+                        if reDirect {
+                            self.switchToConnectPlayerUI()
+                            return
+                        }
+
                     }
                     
                     self.myGroup.leave()
                 }
-                else {
-                    self.myGroup.leave()
-                    self.currentkidConnections = nil
-                    print ("failure loading current kid connections")
-                }
 
-                
-            }
-            
         }
     
         
@@ -179,13 +226,11 @@ class BKConnectVC: UITableViewController {
     
     func loadPendingConnections() {
         
-        print ("entering load activity connections")
+        print ("entering load pending connections")
         
         //if self.selectedKidName.isEmpty || selectedKidName != BKNetowrkTool.shared.myCurrentKid?.kidName {
-        myGroup.enter()
+        self.myGroup.enter()
         BKNetowrkTool.shared.getActivityConnections() { (success, activityConnectionsResult) in
-            
-            self.myGroup.leave()
             SVProgressHUD.dismiss()
             
             if let activityConnectList = activityConnectionsResult, success {
@@ -199,13 +244,13 @@ class BKConnectVC: UITableViewController {
                 print ("failure loadPendingConnections")
             }
             
+            //leave the thread
+            self.myGroup.leave()
+
         }
-        
-        //}
         
     }
 
-    
 }
 
 
@@ -285,8 +330,10 @@ extension BKConnectVC {
             
             if BKNetowrkTool.shared.myCurrentKid != nil {
                 sectionTitle = "Player Summary"
+            } else {
+                sectionTitle = BKNoKidsRegistered
             }
-            
+
         } else if section == 1 {
             
             if let pendingConnection = pendingConnections?.count {
@@ -299,15 +346,29 @@ extension BKConnectVC {
             
         } else if section == 2 {
             
-            sectionTitle = "Schedule a playdate with your buddy"
+            
+            if let currentkidConnectionCount = currentkidConnections?.count {
+                
+                if currentkidConnectionCount > 0 {
+                    sectionTitle = "Schedule a playdate with your buddy"
+                } else {
+                    sectionTitle = "No friends yet. Add connections to schedule PlayDates."
+                }
+                
+            }
+            
         }
         
         return sectionTitle
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        initialLoadAndReload()
+        super.viewWillAppear(false)
+        
+        if BKNetowrkTool.shared.myCurrentKid != nil {
+            initialLoadAndReload(reDirect: false)
+        }
+        
     }
     
     
@@ -325,6 +386,7 @@ extension BKConnectVC {
         }
         
     }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -404,11 +466,13 @@ extension BKConnectVC {
         let cell = tableView.dequeueReusableCell(withIdentifier: BKConnectSummaryHeaderCellID, for: indexPath) as! BKConnectSummaryHeaderCell
         
         //cell.imagePlayerPhoto
-        
         if let currentKid = BKNetowrkTool.shared.myCurrentKid {
             let connectionCount = self.currentkidConnections?.count ?? 0
             cell.lblPlayerName.text = "\(currentKid.kidName) | \(String(describing: currentKid.age))"
             cell.lblConnectionCounts.text = "\(String(describing: connectionCount)) Connections"
+        } else {
+            cell.lblPlayerName.text = ""
+            cell.lblConnectionCounts.text = ""
         }
         
         return cell
@@ -476,7 +540,14 @@ extension BKConnectVC {
                 
                 cell.lblPlayerName.text = "\(activityConnection.kidname) || \(activityConnection.id)"
                 cell.lblPlayerSchoolAge.text = "\(activityConnection.school) | Age: \(activityConnection.age) | \(activityConnection.date)"
-                cell.imgSportIcon1.image = #imageLiteral(resourceName: "chess-icon")
+                //cell.imgSportIcon1.image = #imageLiteral(resourceName: "chess-icon")
+                cell.sportsImageIsHidden = true
+                
+                if let sport = activityConnection.sport {
+                    cell.imgSportIcon1.image = BKSportImageDict[sport.sportName]
+                    cell.imgSportIcon1.isHidden = false
+                }
+                
                 cell.lblActionStatus.text = activityConnection.connectionStateDescription
                 cell.lblActionStatus.isHidden = activityConnection.actionLabelHidden
                 cell.btnPlayerAction1.isHidden = activityConnection.btn1Hidden
@@ -540,13 +611,9 @@ extension BKConnectVC {
 
 extension BKConnectVC: BKEventSchedulerDelegate {
     
-
-    
     func scheduleEventVC(_ vc: BKEventSchedulerVC, eventReveivingKid kid: BKKidModel) {
         //TBD
-        
     }
-    
 }
 
 

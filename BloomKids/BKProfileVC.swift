@@ -10,16 +10,32 @@ import UIKit
 
 class BKProfileVC: UITableViewController {
     @IBOutlet weak var userPhoto: UIImageView!
+    @IBOutlet weak var txtProfileName: UITextField!
+    @IBOutlet weak var txtProfileEmail: UITextField!
+    @IBOutlet weak var txtPhone: UITextField!
+    @IBOutlet weak var txtPrimaryCity:UITextField!
+
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        self.navigationItem.rightBarButtonItem = self.editButtonItem
         
+        //Disable edit button for now.
+        //self.navigationItem.rightBarButtonItem = self.editButtonItem
+        self.navigationItem.rightBarButtonItem = nil
+        loadProfile()
+    }
+    
+    func loadProfile() {
+        let myProfile = BKNetowrkTool.shared.myProfile
+        self.txtProfileName.text = myProfile?.parentName
+        self.txtProfileEmail.text = myProfile?.email
+        self.txtPhone.text = myProfile?.phone
+        self.txtPrimaryCity.text = myProfile?.city
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -28,11 +44,12 @@ class BKProfileVC: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         if section == 0 {
             return 1
         }
         else if section == 1 {
-            //TODO: Settings and 
+            //TODO: Settings
             return 1
         }
         else if section == 2 {
@@ -54,12 +71,27 @@ class BKProfileVC: UITableViewController {
         
     }
     
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        
+        var sectionTitle = ""
+        
+        if section == 0 {
+            
+            if BKNetowrkTool.shared.myCurrentKid != nil {
+                sectionTitle = "Profile Summary"
+            } else {
+                sectionTitle = BKNoKidsRegistered
+            }
+            
+        }
+        
+        return sectionTitle
+    }
+    
     //@TODO
     @IBAction func signOutButtonTapped(_ sender: Any) {
         BKAuthTool.shared.logout()
     }
     
     
-    
-
 }

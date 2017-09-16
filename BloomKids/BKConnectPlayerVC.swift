@@ -14,8 +14,6 @@ import SVProgressHUD
 
 
 class BKConnectPlayerVC: UITableViewController {
-        
-        
     fileprivate var myKidsPotentialConnections: [BKKidModel]?
     fileprivate var myKidsPotentialFilteredConnections: [BKKidModel]?
     let searchController = UISearchController(searchResultsController: nil)
@@ -23,28 +21,24 @@ class BKConnectPlayerVC: UITableViewController {
     let myGroup = DispatchGroup()
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
         SVProgressHUD.show()
         
         let kidCellNib = UINib(nibName: "\(BKKidActionCell.self)", bundle: nil)
         tableView.register(kidCellNib, forCellReuseIdentifier: BKKidActionCellID)
-        
         loadMyKidsPotentialConnections(sportNameParam: "", interestLevelParam: "")
         searchController.searchResultsUpdater = self as UISearchResultsUpdating
         searchController.dimsBackgroundDuringPresentation = false
         definesPresentationContext = true
         tableView.tableHeaderView = searchController.searchBar
-        
         searchController.searchBar.scopeButtonTitles = BKBloomSports
-        searchController.searchBar.tintColor = BKGlobalTintColor
-        searchController.searchBar.barTintColor = UIColor.white
+        //searchController.searchBar.tintColor = BKGlobalTintColor
+        //searchController.searchBar.barTintColor = UIColor.white
         searchController.searchBar.delegate = self as UISearchBarDelegate
         
         //after successfull loading data
         myGroup.notify(queue: .main) {
             print("Finished all requests.")
-            //self.currentKid = self.myKidsPotentialConnections?[0]
             SVProgressHUD.show()
             self.tableView.reloadData()
             SVProgressHUD.dismiss()
@@ -61,7 +55,7 @@ class BKConnectPlayerVC: UITableViewController {
         myGroup.enter()
         SVProgressHUD.show()
         
-        print ("entering loading current kid connections")
+        print ("entering loading potential kid connections based on location, sport and level")
         
         if let kid = BKNetowrkTool.shared.myCurrentKid {
             
@@ -71,7 +65,7 @@ class BKConnectPlayerVC: UITableViewController {
                 if let kids = kids, success {
                     
                     self.myKidsPotentialConnections = kids
-                    print ("success loading current kid connections \(String(describing: self.myKidsPotentialConnections?.count))")
+                    print ("success loading current kid potential connections \(String(describing: self.myKidsPotentialConnections?.count))")
                     self.myGroup.leave()
                 }
                 else {
@@ -151,7 +145,6 @@ extension BKConnectPlayerVC {
                 
             }
             
-            
         default:
             return 1
         }
@@ -172,7 +165,6 @@ extension BKConnectPlayerVC {
             return cell
         }
         
-        
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -182,14 +174,12 @@ extension BKConnectPlayerVC {
         }else{
             return 40.0
         }
-        
+
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        
         var sectionTitle = ""
         var searchCount = 0
-        
         
         if section == 0 {
             
@@ -225,7 +215,6 @@ extension BKConnectPlayerVC {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
         /*
         if segue.identifier == "BKConnectPlayerCellSeque" {
             // Create a new variable to store the instance of PlayerTableViewController

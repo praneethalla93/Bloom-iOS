@@ -23,11 +23,11 @@ class BKEventsVC: UITableViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        SVProgressHUD.show()
+        //SVProgressHUD.show()
         
         let eventDoubleActionCellNib = UINib(nibName: "\(BKEventDoubleActionCell.self)", bundle: nil)
         self.tableView.register(eventDoubleActionCellNib, forCellReuseIdentifier: BKEventDoubleActionCellID)
-        initialLoadAndReload()
+        //initialLoadAndReload()
     }
     
     func initialLoadAndReload() {
@@ -37,7 +37,6 @@ class BKEventsVC: UITableViewController {
         //after successfull loading data
         myGroup.notify(queue: .main) {
             print("Finished all requests.")
-            
             
             if BKNetowrkTool.shared.myKids != nil {
                 self.loadActivityEvents()
@@ -57,6 +56,7 @@ class BKEventsVC: UITableViewController {
 
         SVProgressHUD.dismiss()
     }
+
     
     //Setup Navigation bar
     func setupNavigationBar() {
@@ -134,6 +134,35 @@ class BKEventsVC: UITableViewController {
                 
                 self.pendingEvents = activityEventList.filter{ $0.connectionState == BKEventConnectionSate.requestPending.rawValue && $0.convertedDate > currentDateTime}
                 self.upcomingEvents = activityEventList.filter{ $0.convertedDate > currentDateTime && $0.connectionState == BKEventConnectionSate.accepted.rawValue}
+                
+                /*
+                self.upcomingEvents?.sort { (object1, object2) -> Bool in
+                    
+                    let dateFormatter = DateFormatter()
+                    var date1 = Date()
+                    var date2 = Date()
+                    
+                    if ( object1.date.characters.count == 8 ) {
+                        dateFormatter.dateFormat = "MM/dd/yy"
+                        date1 = dateFormatter.date(from: object1.date)!
+                    } else if ( object1.date.characters.count == 10 ) {
+                        dateFormatter.dateFormat = "MM/dd/yyyy"
+                        date1 = dateFormatter.date(from: object1.date)!
+                    }
+                    
+                    
+                    if ( object2.date.characters.count == 8 ) {
+                        dateFormatter.dateFormat = "MM/dd/yy"
+                        date2 = dateFormatter.date(from: object2.date)!
+                    } else if ( object2.date.characters.count == 10 ) {
+                        dateFormatter.dateFormat = "MM/dd/yyyy"
+                        date2 = dateFormatter.date(from: object2.date)!
+                    }
+                    
+                    return (date1 < date2)
+                }
+                */
+                
                 self.pastEvents = activityEventList.filter{ $0.convertedDate < currentDateTime }
                 
                 //override filter
@@ -249,6 +278,8 @@ extension BKEventsVC {
             
             if BKNetowrkTool.shared.myCurrentKid != nil {
                 sectionTitle = "Player Schedule"
+            } else {
+                sectionTitle = BKNoKidsRegistered
             }
             
         } else if section == 1 {
@@ -289,7 +320,10 @@ extension BKEventsVC {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        initialLoadAndReload()
+        
+        if BKNetowrkTool.shared.myCurrentKid != nil {
+            initialLoadAndReload()
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -314,9 +348,8 @@ extension BKEventsVC {
                     acceptFlag = true
                 }
                 
-                let alert = UIAlertController ( title: "New PlayDate Confirm",
+                let alert = UIAlertController ( title: "New PlayDate Confirmation",
                                                 message: "Are you sure you want to \(decision) playdate reuest from \(activitySchedule.kidName)", preferredStyle: .actionSheet)
-                
                 alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
                     self.dismiss(animated: true, completion: nil)
                     print("Sending connect request activityConnection | \(activitySchedule.id)")
@@ -362,6 +395,12 @@ extension BKEventsVC {
             cell.lblPlayerName.text = "\(currentKid.kidName) | Age: \(String(describing: currentKid.age))"
             cell.lblSchoolAge.text = currentKid.school
             cell.lblConnectionCounts.text = "Play Dates: \(String(describing: pendingEventsCount)) Pending | \(String(describing: upcomingEventsCount)) Upcoming | \(String(describing: pastEventsCount)) Past |"
+            
+        }
+        else {
+            cell.lblPlayerName.text = ""
+            cell.lblSchoolAge.text = ""
+            cell.lblConnectionCounts.text = ""
             
         }
 

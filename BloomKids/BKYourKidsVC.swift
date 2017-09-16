@@ -37,8 +37,6 @@ class BKYourKidsVC: UITableViewController {
 
     }
     
-    
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -48,27 +46,24 @@ class BKYourKidsVC: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 2
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         if section == 0 {
-            return 1
-        } else {
             return BKNetowrkTool.shared.myKids?.count ?? 0
         }
         
+        return 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        var cell: BKKidActionCell
+        
         if indexPath.section == 0 {
-            
-            let cell = tableView.dequeueReusableCell(withIdentifier: BKAddKidCellID, for: indexPath)
-            return cell
-            
-        } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: BKKidActionCellID, for: indexPath) as! BKKidActionCell
+            cell = tableView.dequeueReusableCell(withIdentifier: BKKidActionCellID, for: indexPath) as! BKKidActionCell
             let kidModel = BKNetowrkTool.shared.myKids![indexPath.row]
             cell.kidModel = kidModel
             
@@ -81,56 +76,94 @@ class BKYourKidsVC: UITableViewController {
                 self?.showAlertForRow(row: tableView.indexPath(for: cell)!.row)
             }
             
-            return cell
+        } else {
+            cell = tableView.dequeueReusableCell(withIdentifier: BKKidActionCellID, for: indexPath) as! BKKidActionCell
         }
-    
+        
+        return cell
     }
  
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
+        /*
+        
         if indexPath.section == 0 {
-            return 35.0
-        }else{
-            
+            return BKKidCellHeight
+        } else {
             //@TOD: Raj changing height for testing
             //return 400 + 20
             return BKKidCellHeight
         }
+        */
+        return BKKidCellHeight
         
     }
     
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        
+        var sectionTitle = ""
+        
+        if section == 0 {
+            
+            if BKNetowrkTool.shared.myCurrentKid != nil {
+                sectionTitle = "Player Summary"
+            } else {
+                sectionTitle = BKNoKidsRegistered
+            }
+            
+        }
+        
+        return sectionTitle
+    }
+    
+    /*
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         tableView.deselectRow(at: indexPath, animated: true)
         
-        if indexPath.section == 0 {
+        
+        if indexPath.section == 1 {
             let addKidVC = UIStoryboard(name: "BKProfile", bundle: nil).instantiateViewController(withIdentifier: "BKAddKidVC") as! BKAddKidVC
             addKidVC.delegate = self
+            addKidVC.mode = "EDIT"
             self.navigationController?.pushViewController(addKidVC, animated: true)
         }
         
     }
+    */
     
     func showAlertForRow(row: Int) {
         
+        /*
         if let kid = BKNetowrkTool.shared.myKids?[row] {
-        
+          
             let alert = UIAlertController ( title: "Edit Kid",
                 message: "\(kid.kidName) at row \(row) was tapped!",
                 preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Edit Kid", style: UIAlertActionStyle.default, handler: { (test) -> Void in
-            self.dismiss(animated: true, completion: nil)
+                    self.dismiss(animated: true, completion: nil)
                 }))
             self.present( alert, animated: true, completion: nil)
-        
+ 
         }
-        
+        */
+        self.switchToEditKidUI(row: row)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tableView.reloadData()
+    }
+    
+    func switchToEditKidUI(row: Int) {
+        let profileStoryboard = UIStoryboard(name: "BKProfile", bundle: nil)
+        let editKidVC = profileStoryboard.instantiateViewController(withIdentifier: "BKAddKidVC") as! BKAddKidVC
+        editKidVC.mode = "EDIT"
+        editKidVC.currentEditKid = BKNetowrkTool.shared.myKids?[row]
+        editKidVC.delegate = self as BKAddKidVCDelegate
+        editKidVC.kidRow = row
+        navigationController?.pushViewController(editKidVC, animated: true)
     }
 
 }
@@ -144,7 +177,3 @@ extension BKYourKidsVC: BKAddKidVCDelegate {
     }
     
 }
-
-
-
-

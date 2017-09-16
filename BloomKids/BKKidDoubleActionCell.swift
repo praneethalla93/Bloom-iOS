@@ -23,6 +23,7 @@ class BKKidDoubleActionCell: UITableViewCell {
     @IBOutlet weak var btnPlayerAction2: UIButton!
     @IBOutlet weak var lblPlayerSchoolAge: UILabel!
     @IBOutlet weak var lblActionStatus: UILabel!
+    @IBOutlet weak var lblPlays: UILabel!
     
     
     var tapAction1: ((UITableViewCell) -> Void)?
@@ -44,6 +45,19 @@ class BKKidDoubleActionCell: UITableViewCell {
             
         }
         
+    }
+    
+    var sportsImageIsHidden: Bool? {
+        
+        didSet {
+            imgSportIcon1.isHidden = sportsImageIsHidden!
+            imgSportIcon2.isHidden = sportsImageIsHidden!
+            imgSportIcon3.isHidden = sportsImageIsHidden!
+            imgSportIcon4.isHidden = sportsImageIsHidden!
+            imgSportIcon5.isHidden = sportsImageIsHidden!
+            imgSportIcon6.isHidden = sportsImageIsHidden!
+        }
+
     }
 
     override func awakeFromNib() {

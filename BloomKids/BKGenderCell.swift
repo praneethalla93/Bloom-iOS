@@ -26,6 +26,16 @@ class BKGenderCell: UITableViewCell {
         }
     }
     
+    func setupGenderBtns(gender: String) {
+        
+        if gender.lowercased() == "boy" {
+            genderBtnTapped(self.boyBtn)
+        } else {
+            genderBtnTapped(self.girlBtn)
+        }
+        
+    }
+    
     
     
 
@@ -52,6 +62,7 @@ class BKGenderCell: UITableViewCell {
         girlBtn.layer.cornerRadius = girlBtn.bounds.size.height / 2
         
     }
+    
     func setGenderBtnNormal(button: UIButton) {
         button.layer.borderColor = BKAlternativeColor.cgColor
         button.layer.borderWidth = 2.0

@@ -203,7 +203,9 @@ struct BKKidActivityConnection {
             skillLevel = "Rookie"
         }
         
-        self.sport? = BKSport(dict: ["sportName" : sportName!, "skillLevel": skillLevel!])
+        print( "sportname  \(String(describing: sportName)) and \(String(describing: skillLevel))")
+        
+        self.sport = BKSport(dict: ["sportName" : sportName!, "skillLevel": skillLevel!])
         
         //to manage status for the tableviewcell
         self.connectionStateDescription = ""
@@ -274,7 +276,6 @@ struct BKKidActivitySchedule {
     var btn1Hidden: Bool
     var btn2Hidden: Bool
     var actionLabelHidden: Bool
-
     var connectionState: Int {
         
         didSet {
@@ -457,8 +458,6 @@ struct BKScheduleResponse {
     var time: String
 
     init(responderKidId: Int,responderKidName: String, requesterKidId: Int, acceptanceStatus: Bool, requesterSkillLevel: Int, sportName: String, location: String, date: String, time: String) {
-        
-        
         self.responderKidId = responderKidId
         self.responderKidName = responderKidName
         self.requesterKidId = requesterKidId

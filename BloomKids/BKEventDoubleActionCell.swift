@@ -21,7 +21,7 @@ class BKEventDoubleActionCell: UITableViewCell {
     @IBOutlet weak var btnPlayerAction1: UIButton!
     @IBOutlet weak var btnPlayerAction2: UIButton!
     @IBOutlet weak var lblActionStatus: UILabel!
-    
+    @IBOutlet weak var lblEventAddress: UILabel!
     
     var tapAction1: ((UITableViewCell) -> Void)?
     var tapAction2: ((UITableViewCell) -> Void)?
@@ -35,13 +35,13 @@ class BKEventDoubleActionCell: UITableViewCell {
                 //self.lblPlayerName.text = "\(activity.kidName) ID: \(String(describing: activity.id))"
                 self.lblPlayerName.text = activity.kidName
                 self.lblEventDateTime.text = "\(activity.date) \(activity.time)"
-                
                 self.lblEventLocation.text = activity.location
-                
                 self.btnPlayerAction1.isHidden = activity.btn1Hidden
                 self.btnPlayerAction2.isHidden = activity.btn2Hidden
                 self.lblActionStatus.isHidden = activity.actionLabelHidden
                 self.lblActionStatus.text = activity.connectionStateDescription
+                self.imgSportIcon.image = BKSportImageDict[activity.sportName]
+                
                 
                 /*
                 if activity.connectionState == BKEventConnectionSate.accepted.rawValue {
