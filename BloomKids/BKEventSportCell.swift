@@ -11,7 +11,6 @@ import UIKit
 class BKEventSportCell: UITableViewCell {
     
     @IBOutlet weak var lblSport: UILabel!
-    @IBOutlet weak var textSport: UITextField!
     
     override func awakeFromNib() {
         super.awakeFromNib()

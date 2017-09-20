@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BKKidCellAction" customModule="BloomKids" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BKEventDoubleActionNewCellID" rowHeight="117" id="j6q-P8-nCo" userLabel="BKEventDoubleActionCell" customClass="BKEventDoubleActionCell" customModule="BloomKids" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="503" height="140"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="j6q-P8-nCo" id="OkW-81-c7z">
+                <rect key="frame" x="0.0" y="0.0" width="503" height="139.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleAspectFit" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="EFO-sc-RLQ">
+                        <rect key="frame" x="5" y="5" width="493" height="120"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="photo-placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="glw-M7-KpX" userLabel="playerImageView">
+                                <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="glw-M7-KpX" secondAttribute="height" multiplier="1:1" id="2r8-AG-IQQ"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="9jq-WF-QS5" userLabel="EventInfoStackView">
+                                <rect key="frame" x="125" y="0.0" width="298" height="120"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Player Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wff-5W-X9g">
+                                        <rect key="frame" x="0.0" y="0.0" width="298" height="20"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Date, Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lfd-5W-sK5" userLabel="Lbl Date Time">
+                                        <rect key="frame" x="0.0" y="25" width="298" height="20"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Event Location" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I2o-Xh-VdS" userLabel="Lbl Event Location">
+                                        <rect key="frame" x="0.0" y="50" width="298" height="20"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Event Address" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5iz-f5-hlX" userLabel="Lbl Event Address">
+                                        <rect key="frame" x="0.0" y="75" width="298" height="20"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="left" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="3Uq-AQ-nWH">
+                                        <rect key="frame" x="0.0" y="100" width="298" height="20"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Plays: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nSS-Mb-15L" userLabel="Lbl Plays">
+                                                <rect key="frame" x="0.0" y="0.0" width="36" height="20"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="36" id="gHA-LL-TZ1"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="256" verticalHuggingPriority="256" image="chess-icon" translatesAutoresizingMaskIntoConstraints="NO" id="wkI-bc-Jwa">
+                                                <rect key="frame" x="41" y="0.0" width="20" height="20"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="20" id="qd1-PR-cVc"/>
+                                                    <constraint firstAttribute="width" constant="20" id="uGH-BP-euq"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="245" verticalHuggingPriority="245" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O2N-ie-uwv" userLabel="Lbl Dummy">
+                                                <rect key="frame" x="66" y="0.0" width="232" height="20"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="ruM-rK-jeg"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleAspectFill" axis="vertical" distribution="equalCentering" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="M4h-f4-Fd2" userLabel="EventActionStackView">
+                                <rect key="frame" x="428" y="0.0" width="65" height="120"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8u7-mj-fZO" userLabel="btnPlayerAction1">
+                                        <rect key="frame" x="8.5" y="0.0" width="48" height="48"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="8u7-mj-fZO" secondAttribute="height" multiplier="1:1" id="5P1-oh-2Da"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <state key="normal" image="accept-btn-icon">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="btnPlayerctionButton1Tapped:" destination="j6q-P8-nCo" eventType="touchUpInside" id="hLp-sg-SkJ"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Accepted" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ziR-kl-Obm" userLabel="lblActionStatus">
+                                        <rect key="frame" x="6" y="53" width="53.5" height="13.5"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
+                                        <color key="textColor" red="0.44705882352941173" green="0.792156862745098" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lfS-jj-E0c" userLabel="btnPlayerAction2">
+                                        <rect key="frame" x="8.5" y="71.5" width="48" height="48.5"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="lfS-jj-E0c" secondAttribute="height" multiplier="1:1" id="PqN-Ox-Lep"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <state key="normal" image="decline-btn-icon">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="btnPlayerctionButton2Tapped:" destination="j6q-P8-nCo" eventType="touchUpInside" id="4h9-94-nTj"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="65" id="7xw-lc-TDc"/>
+                                    <constraint firstItem="lfS-jj-E0c" firstAttribute="width" secondItem="8u7-mj-fZO" secondAttribute="width" id="dKW-Yu-Cif"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="EFO-sc-RLQ" secondAttribute="trailing" constant="5" id="41w-C5-yFJ"/>
+                    <constraint firstItem="EFO-sc-RLQ" firstAttribute="leading" secondItem="OkW-81-c7z" secondAttribute="leading" constant="5" id="Mr5-cJ-fYi"/>
+                    <constraint firstItem="EFO-sc-RLQ" firstAttribute="top" secondItem="OkW-81-c7z" secondAttribute="top" constant="5" id="bOL-M1-m3G"/>
+                    <constraint firstAttribute="bottom" secondItem="EFO-sc-RLQ" secondAttribute="bottom" constant="5" id="eUN-x1-wRa"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="btnPlayerAction1" destination="8u7-mj-fZO" id="wzt-Pa-pCs"/>
+                <outlet property="btnPlayerAction2" destination="lfS-jj-E0c" id="673-ev-n3l"/>
+                <outlet property="imgPlayer" destination="glw-M7-KpX" id="efh-U5-dYh"/>
+                <outlet property="imgSportIcon" destination="wkI-bc-Jwa" id="O6s-cr-e6f"/>
+                <outlet property="lblActionStatus" destination="ziR-kl-Obm" id="Gi6-9B-O6o"/>
+                <outlet property="lblEventAddress" destination="5iz-f5-hlX" id="nSB-ut-oZN"/>
+                <outlet property="lblEventDateTime" destination="Lfd-5W-sK5" id="GiP-9x-ipU"/>
+                <outlet property="lblEventLocation" destination="I2o-Xh-VdS" id="1rH-AE-c2T"/>
+                <outlet property="lblPlayerName" destination="wff-5W-X9g" id="2Yb-7f-2M8"/>
+            </connections>
+            <point key="canvasLocation" x="53.5" y="144"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="accept-btn-icon" width="98" height="99"/>
+        <image name="chess-icon" width="25" height="30"/>
+        <image name="decline-btn-icon" width="98" height="99"/>
+        <image name="photo-placeholder" width="139" height="139"/>
+    </resources>
+</document>

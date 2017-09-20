@@ -116,9 +116,14 @@ extension BKSportCell {
             
             //here removing it if this is already selected
             
+            let buttonLabel = btn.titleLabel!.text?.lowercased()
+            
             for i in 0..<totalSports.count {
+                
                 let sport = totalSports[i]
-                if sport.sportName == btn.titleLabel!.text {
+                let sportName = sport.sportName.lowercased()
+                
+                if sportName == buttonLabel {
                     totalSports.remove(at: i)
                     print("a sport deleted")
                     break

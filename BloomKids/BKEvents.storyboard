@@ -84,7 +84,7 @@
         <scene sceneID="mXJ-d8-fbr">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tjT-WZ-jfT" userLabel="Navigation" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Events" image="schedule-tabbar-icon" id="Dej-RF-LDH"/>
+                    <tabBarItem key="tabBarItem" title="Schedule" image="schedule-tabbar-icon" id="Dej-RF-LDH"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="uWO-KK-DaD">

@@ -19,27 +19,75 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BKConnectSummaryHeaderCell" rowHeight="160" id="HGl-Rg-otZ" customClass="BKConnectSummaryHeaderCell" customModule="BloomKids" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="160"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BKConnectSummaryHeaderCell" rowHeight="240" id="HGl-Rg-otZ" customClass="BKConnectSummaryHeaderCell" customModule="BloomKids" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="240"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HGl-Rg-otZ" id="wR6-ik-3zO">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="159.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="239.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" distribution="equalSpacing" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="6JM-Jc-gq6">
-                                            <rect key="frame" x="10" y="10" width="355" height="139"/>
+                                        <stackView opaque="NO" contentMode="center" axis="vertical" distribution="equalCentering" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="6JM-Jc-gq6">
+                                            <rect key="frame" x="10" y="10" width="355" height="219.5"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="photo-placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="Nzq-I2-6eP">
-                                                    <rect key="frame" x="108" y="0.0" width="139" height="72.5"/>
+                                                    <rect key="frame" x="108" y="0.0" width="139" height="100"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="100" id="dev-Tc-Umt"/>
+                                                    </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Player Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LMK-cV-IJq">
-                                                    <rect key="frame" x="90.5" y="77.5" width="174" height="37"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="31"/>
+                                                    <rect key="frame" x="118" y="110" width="119" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="125 Connected | 2 Pending" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AKp-LQ-MIl">
-                                                    <rect key="frame" x="79.5" y="119.5" width="196" height="19.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1st Grade, Coyote Creek Elementary" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AKp-LQ-MIl" userLabel="Lbl School Name">
+                                                    <rect key="frame" x="46.5" y="140.5" width="262" height="19.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <stackView opaque="NO" contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="uQE-dy-GN5" userLabel="SportsStackView">
+                                                    <rect key="frame" x="17.5" y="170" width="320" height="20"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Favorite Sport:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Za9-hy-xeP" userLabel="Lbl Plays">
+                                                            <rect key="frame" x="0.0" y="0.0" width="112.5" height="20"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <color key="textColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="48" verticalCompressionResistancePriority="48" image="chess-icon" translatesAutoresizingMaskIntoConstraints="NO" id="kXc-Uv-8SX">
+                                                            <rect key="frame" x="112.5" y="0.0" width="20" height="20"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" secondItem="kXc-Uv-8SX" secondAttribute="height" multiplier="1:1" id="O25-dD-BaD"/>
+                                                                <constraint firstAttribute="height" constant="20" id="X8M-Wx-TDQ"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="48" verticalCompressionResistancePriority="48" image="basketball-icon" translatesAutoresizingMaskIntoConstraints="NO" id="kO5-kb-gf7">
+                                                            <rect key="frame" x="132.5" y="0.0" width="32" height="20"/>
+                                                        </imageView>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="48" verticalCompressionResistancePriority="48" image="tennis-icon" translatesAutoresizingMaskIntoConstraints="NO" id="hz4-ry-l76">
+                                                            <rect key="frame" x="164.5" y="0.0" width="30" height="20"/>
+                                                        </imageView>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="48" verticalCompressionResistancePriority="48" image="baseball-icon" translatesAutoresizingMaskIntoConstraints="NO" id="HqA-Rw-FAa">
+                                                            <rect key="frame" x="194.5" y="0.0" width="30" height="20"/>
+                                                        </imageView>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="48" verticalCompressionResistancePriority="48" image="soccer-icon" translatesAutoresizingMaskIntoConstraints="NO" id="ykj-aD-X8R">
+                                                            <rect key="frame" x="224.5" y="0.0" width="31" height="20"/>
+                                                        </imageView>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="48" image="cricket-icon" translatesAutoresizingMaskIntoConstraints="NO" id="T5m-k0-vis">
+                                                            <rect key="frame" x="255.5" y="0.0" width="29" height="20"/>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="        " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4u4-Ln-Lv1" userLabel="Lbl Plays">
+                                                            <rect key="frame" x="284.5" y="0.0" width="35.5" height="20"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <color key="textColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="125 Friends" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WDj-bh-U1B">
+                                                    <rect key="frame" x="135.5" y="200" width="84.5" height="19.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -61,7 +109,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BKConnectPlayerCell" rowHeight="100" id="IKC-QN-ZWF" customClass="BKConnectPlayerCell" customModule="BloomKids" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="188" width="375" height="100"/>
+                                <rect key="frame" x="0.0" y="268" width="375" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IKC-QN-ZWF" id="8Nw-1Y-OM2">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
@@ -258,24 +306,18 @@
                                         <stackView opaque="NO" contentMode="scaleAspectFit" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="6L9-If-g8b">
                                             <rect key="frame" x="10" y="5" width="355" height="59.5"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Start" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E2M-ek-zFp">
-                                                    <rect key="frame" x="0.0" y="0.0" width="70" height="59.5"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="70" id="Dcw-gP-1Uw"/>
-                                                    </constraints>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" text="Start time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E2M-ek-zFp">
+                                                    <rect key="frame" x="0.0" y="0.0" width="166.5" height="59.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="30" translatesAutoresizingMaskIntoConstraints="NO" id="pE7-Xh-avh" userLabel="StateDatePicker">
-                                                    <rect key="frame" x="80" y="0.0" width="275" height="59.5"/>
-                                                    <date key="date" timeIntervalSinceReferenceDate="524780219.97776997">
-                                                        <!--2017-08-18 20:16:59 +0000-->
-                                                    </date>
-                                                    <date key="minimumDate" timeIntervalSinceReferenceDate="-978267600">
-                                                        <!--1970-01-01 11:00:00 +0000-->
-                                                    </date>
-                                                </datePicker>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Sep 18, 2017 3:45 AM" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rKG-mo-eMx">
+                                                    <rect key="frame" x="176.5" y="0.0" width="178.5" height="59.5"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </stackView>
                                     </subviews>
@@ -288,11 +330,37 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="lblStart" destination="E2M-ek-zFp" id="huX-D8-47e"/>
-                                    <outlet property="startDatePicker" destination="pE7-Xh-avh" id="uVK-gA-5ZK"/>
                                 </connections>
                             </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BKEventDatePickerCellID" rowHeight="218" id="9Ff-xH-fIO" userLabel="EventDatePicker Cell" customClass="BKEventSportCell" customModule="BloomKids" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="98" width="375" height="218"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9Ff-xH-fIO" id="PHS-qv-wHN">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="218"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Hyx-zh-yjz">
+                                            <rect key="frame" x="8" y="8" width="359" height="202"/>
+                                            <subviews>
+                                                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="8BQ-JW-VvA">
+                                                    <rect key="frame" x="0.0" y="0.0" width="359" height="202"/>
+                                                    <date key="date" timeIntervalSinceReferenceDate="527568611.485964">
+                                                        <!--2017-09-20 02:50:11 +0000-->
+                                                    </date>
+                                                </datePicker>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Hyx-zh-yjz" firstAttribute="top" secondItem="PHS-qv-wHN" secondAttribute="top" constant="8" id="B55-E0-71c"/>
+                                        <constraint firstAttribute="trailing" secondItem="Hyx-zh-yjz" secondAttribute="trailing" constant="8" id="I8J-hB-uNe"/>
+                                        <constraint firstAttribute="bottom" secondItem="Hyx-zh-yjz" secondAttribute="bottom" constant="8" id="dSS-ZF-5WG"/>
+                                        <constraint firstItem="Hyx-zh-yjz" firstAttribute="leading" secondItem="PHS-qv-wHN" secondAttribute="leading" constant="8" id="wBz-in-4mQ"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                            </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BKLocationCellID" rowHeight="70" id="9hJ-x6-A9V" userLabel="Location Cell" customClass="BKEventLocationCell" customModule="BloomKids" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="98" width="375" height="70"/>
+                                <rect key="frame" x="0.0" y="316" width="375" height="70"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9hJ-x6-A9V" id="bxR-dx-t58">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
@@ -301,21 +369,18 @@
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="kOj-89-ZCz">
                                             <rect key="frame" x="10" y="8" width="355" height="54"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hh8-CV-BHO">
-                                                    <rect key="frame" x="0.0" y="0.0" width="70" height="54"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="70" id="PFf-5i-dtW"/>
-                                                    </constraints>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hh8-CV-BHO">
+                                                    <rect key="frame" x="0.0" y="0.0" width="219" height="54"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XOg-jS-CK1">
-                                                    <rect key="frame" x="80" y="0.0" width="275" height="54"/>
-                                                    <nil key="textColor"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Location" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l9P-Sg-GLe" userLabel="Lbl Selected Location">
+                                                    <rect key="frame" x="229" y="0.0" width="126" height="54"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </stackView>
                                     </subviews>
@@ -327,48 +392,43 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="lblLocation" destination="hh8-CV-BHO" id="WaC-VU-Mm2"/>
-                                    <outlet property="txtEventLocation" destination="XOg-jS-CK1" id="A28-dE-skv"/>
+                                    <outlet property="lblLocation" destination="l9P-Sg-GLe" id="4U1-k6-K7c"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BKEventSportCellID" rowHeight="70" id="9Ff-xH-fIO" userLabel="Event Sport Cell" customClass="BKEventSportCell" customModule="BloomKids" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="168" width="375" height="70"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BKEventSportCellID" rowHeight="70" id="Me7-nC-gjq" userLabel="Event Sport Cell" customClass="BKEventSportCell" customModule="BloomKids" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="386" width="375" height="70"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9Ff-xH-fIO" id="PHS-qv-wHN">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Me7-nC-gjq" id="UIR-R9-j1c">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Hyx-zh-yjz">
-                                            <rect key="frame" x="10" y="8" width="355" height="54"/>
+                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="oBW-Sm-X4e">
+                                            <rect key="frame" x="8" y="8" width="359" height="54"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sport" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p4R-ce-HbY" userLabel="Lbl Sport">
-                                                    <rect key="frame" x="0.0" y="0.0" width="70" height="54"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="70" id="Oe0-k2-jr7"/>
-                                                    </constraints>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Sport" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PBI-Ti-Wfi" userLabel="Lbl Sport">
+                                                    <rect key="frame" x="0.0" y="0.0" width="247.5" height="54"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fas-xa-Yqx" userLabel="Txt Sport Selected">
-                                                    <rect key="frame" x="80" y="0.0" width="275" height="54"/>
-                                                    <nil key="textColor"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Sport" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Z2-hi-cqg" userLabel="Lbl Selected Sport">
+                                                    <rect key="frame" x="257.5" y="0.0" width="101.5" height="54"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </stackView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="Hyx-zh-yjz" firstAttribute="top" secondItem="PHS-qv-wHN" secondAttribute="top" constant="8" id="B55-E0-71c"/>
-                                        <constraint firstAttribute="trailing" secondItem="Hyx-zh-yjz" secondAttribute="trailing" constant="10" id="I8J-hB-uNe"/>
-                                        <constraint firstAttribute="bottom" secondItem="Hyx-zh-yjz" secondAttribute="bottom" constant="8" id="dSS-ZF-5WG"/>
-                                        <constraint firstItem="Hyx-zh-yjz" firstAttribute="leading" secondItem="PHS-qv-wHN" secondAttribute="leading" constant="10" id="wBz-in-4mQ"/>
+                                        <constraint firstAttribute="bottom" secondItem="oBW-Sm-X4e" secondAttribute="bottom" constant="8" id="KdO-U4-kkT"/>
+                                        <constraint firstItem="oBW-Sm-X4e" firstAttribute="top" secondItem="UIR-R9-j1c" secondAttribute="top" constant="8" id="M7h-NP-6yL"/>
+                                        <constraint firstAttribute="trailing" secondItem="oBW-Sm-X4e" secondAttribute="trailing" constant="8" id="Xw4-k4-0yc"/>
+                                        <constraint firstItem="oBW-Sm-X4e" firstAttribute="leading" secondItem="UIR-R9-j1c" secondAttribute="leading" constant="8" id="e1e-RE-CIb"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="lblSport" destination="p4R-ce-HbY" id="UnH-UA-IYL"/>
-                                    <outlet property="textSport" destination="Fas-xa-Yqx" id="BkW-Vl-HW0"/>
+                                    <outlet property="lblSport" destination="6Z2-hi-cqg" id="X7c-zr-RX1"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -409,6 +469,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MhD-Do-fBD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4892" y="441"/>
+        </scene>
+        <!--Select Event Date-->
+        <scene sceneID="oED-Nf-m8N">
+            <objects>
+                <viewController storyboardIdentifier="DatePicker" title="Select Event Date" id="BiG-32-1ra" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Doc-HO-ISv"/>
+                        <viewControllerLayoutGuide type="bottom" id="O1R-Kh-8jL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gc7-xB-MOE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2zg-jS-qhp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4838" y="1117"/>
         </scene>
     </scenes>
     <resources>

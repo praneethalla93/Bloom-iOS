@@ -20,10 +20,7 @@ class BKKidActionCell: UITableViewCell {
     @IBOutlet weak var imgBaseballIcon: UIImageView!
     @IBOutlet weak var imgSoccerIcon: UIImageView!
     @IBOutlet weak var imgCricketIcon: UIImageView!
-    
     @IBOutlet weak var btnPlayerAction: UIButton!
-    
-    
     @IBOutlet weak var lblPlayerSchoolAge: UILabel!
     
      var tapAction: ((UITableViewCell) -> Void)?
@@ -44,11 +41,22 @@ class BKKidActionCell: UITableViewCell {
                 print("Sports count : \(kid.sports.count)")
                 
                 self.imgChessIcon.isHidden = true
+                //self.imgChessIcon.image = nil
+                
                 self.imgCricketIcon.isHidden = true
+                //self.imgCricketIcon.image = nil
+                
                 self.imgBaseballIcon.isHidden = true
+                //self.imgBaseballIcon.image = nil
+                
                 self.imgBasketballIcon.isHidden = true
+                //self.imgBasketballIcon.image = nil
+                
                 self.imgTennisIcon.isHidden = true
+                //self.imgTennisIcon.image = nil
+                
                 self.imgSoccerIcon.isHidden = true
+                //self.imgSoccerIcon.image = nil
                 
                 let basketBallSportName = BKBasketballSport.lowercased()
                 let baseballSportName = BKBaseballSport.lowercased()
@@ -63,24 +71,31 @@ class BKKidActionCell: UITableViewCell {
                         
                     case basketBallSportName.lowercased():
                         self.imgBasketballIcon.isHidden = false
+                        //self.imgBasketballIcon.image = #imageLiteral(resourceName: "basketball-icon")
                         print("kid.kidName \(kid.kidName) \(sport.sportName)" )
                     case baseballSportName:
                         self.imgBaseballIcon.isHidden = false
+                        //self.imgBaseballIcon.image = #imageLiteral(resourceName: "baseball-icon")
                         print("kid.kidName \(kid.kidName) \(sport.sportName)" )
                     case chessSportName:
                         self.imgChessIcon.isHidden = false
+                        //self.imgChessIcon.image = #imageLiteral(resourceName: "chess-icon")
                         print("kid.kidName \(kid.kidName) \(sport.sportName)" )
                     case cricketSportName:
                         self.imgCricketIcon.isHidden = false
+                        //self.imgCricketIcon.image = #imageLiteral(resourceName: "cricket-icon")
                         print("kid.kidName \(kid.kidName) \(sport.sportName)" )
                     case soccerSportName:
                         self.imgSoccerIcon.isHidden = false
+                        //self.imgSoccerIcon.image = #imageLiteral(resourceName: "soccer-icon")
                         print("kid.kidName \(kid.kidName) \(sport.sportName)" )
                     case "Football":
                         self.imgSoccerIcon.isHidden = false
+                        //self.imgSoccerIcon.image = #imageLiteral(resourceName: "soccer-icon")
                         print("kid.kidName \(kid.kidName) \(sport.sportName)" )
                     case tennisSportName:
                         self.imgTennisIcon.isHidden = false
+                        //self.imgTennisIcon.image = #imageLiteral(resourceName: "tennis-icon")
                         print("kid.kidName \(kid.kidName) \(sport.sportName)" )
                     default:
                         print("No Match: kid.kidName \(kid.kidName) \(sport.sportName)" )
@@ -92,11 +107,16 @@ class BKKidActionCell: UITableViewCell {
             
         }
     }
-    
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        btnPlayerAction.backgroundColor = .clear
+        btnPlayerAction.layer.cornerRadius = 10
+        btnPlayerAction.layer.borderWidth = 3
+        btnPlayerAction.layer.borderColor = BKGlobalTintColor.cgColor
+        
+        
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

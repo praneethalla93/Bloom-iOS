@@ -257,22 +257,20 @@ extension BKEventsVC {
         if indexPath.section == 0 {
             return 160.0
         }else if indexPath.section == 1 {
-            return 100.0
+            return BKKidEventActionCellHeight
         }else if indexPath.section == 2 {
-            return 100.0
+            return BKKidEventActionCellHeight
         }else if indexPath.section == 3 {
-            return 100.0
+            return BKKidEventActionCellHeight
         }
         else{
             return 40.0
         }
-   
+
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        
         var sectionTitle = ""
-        
         
         if section == 0 {
             
@@ -361,7 +359,7 @@ extension BKEventsVC {
                         print("Refresh cells for \(activitySchedule.kidName)")
                         self.tableView.reloadData()
                     }
-                    
+
                     //@TODO call connect requestor API
                 }))
                 
@@ -438,6 +436,10 @@ extension BKEventsVC {
                 self?.showAlertForRow(section: 1, row: tableView.indexPath(for: cell)!.row, decision: BKConnectDeclineRespone)
             }
             
+        }
+        
+        if (section == 1 || section == 2) {
+            cell.accessoryType = .disclosureIndicator
         }
 
         return cell

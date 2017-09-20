@@ -14,7 +14,6 @@ protocol BKEventSchedulerDelegate: class {
     func scheduleEventVC(_ vc: BKEventSchedulerVC, eventReveivingKid kid: BKKidModel)
 }
 
-
 class BKEventSchedulerVC: UITableViewController {
     weak var delegate: BKEventSchedulerDelegate?
     var eventReceivingKid: BKKidModel?
@@ -27,9 +26,15 @@ class BKEventSchedulerVC: UITableViewController {
     fileprivate var newKid: BKKidModel?
     fileprivate var locationTextField: UITextField?
     fileprivate var sportTextField: UITextField?
+    
+    @IBOutlet weak var lblLocation: UILabel!
+    @IBOutlet weak var lblSport: UILabel!
+    
     fileprivate var scheduleBtn: UIButton?
-    fileprivate var eventDatePicker: UIDatePicker?
+    //fileprivate var eventDatePicker: UIDatePicker?
     fileprivate var eventScheduleStatus = false
+    
+    var dpShowDateVisible = false
     
     let myGroup = DispatchGroup()
     
@@ -37,6 +42,7 @@ class BKEventSchedulerVC: UITableViewController {
         super.viewDidLoad()
         
         self.title = "PlayDate"
+        self.tableView.backgroundColor = UIColor.lightGray
         
         let leftBtn = UIButton(type: .custom)
         leftBtn.setTitle("Cancel", for: .normal)
@@ -76,8 +82,8 @@ class BKEventSchedulerVC: UITableViewController {
     func editingChanged() {
         
         guard
-            let location = locationTextField?.text, !location.isEmpty,
-            let sport = self.eventSport, !sport.isEmpty
+            let location = lblLocation?.text, !location.isEmpty, !(location == "Add Location"),
+            let sport = self.eventSport, !sport.isEmpty, !(sport == "Add Sport")
         else {
                 scheduleBtn?.isEnabled = false
                 return
@@ -108,19 +114,19 @@ class BKEventSchedulerVC: UITableViewController {
             location = "\( eventLoc.placeName) \r\n \(eventLoc.secondary!)"
         }
         
-        let eventDate = self.eventDatePicker?.date
+        //let eventDate = self.eventDatePicker?.date
+        let eventDate = Date()
         let formatter = DateFormatter()
         // initially set the format based on your datepicker date
         formatter.dateFormat = "MM/dd/yy"
-        let eventDateStr = formatter.string(from: eventDate!)
+        let eventDateStr = formatter.string(from: eventDate)
         
         //then again set the date format whhich type of output you need
         formatter.dateFormat = "HH:mm"
         // again convert your date to string
-        let eventTimeStr = formatter.string(from: eventDate!)
+        let eventTimeStr = formatter.string(from: eventDate)
         
         BKNetowrkTool.shared.scheduleEvent(kidName: (currentKid?.kidName)!, kidId: (currentKid?.id)!, sportName: self.eventSport!, location: location, responderKidId: (eventReceivingKid?.id)!, eventDate: eventDateStr, eventTime: eventTimeStr) { (success) in
-            
             
             SVProgressHUD.dismiss()
             self.myGroup.leave()
@@ -174,30 +180,36 @@ extension BKEventSchedulerVC {
    
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
         var width: CGFloat
         
         if indexPath.section == 0 {
             width = 70.0
-        } else if (indexPath.section == 1 || indexPath.section == 2) {
-            width = 50.0
+        }
+        else if indexPath.section == 1 {
+            width = 220.0
+        }
+        else if (indexPath.section == 2 || indexPath.section == 3) {
+            width = 50.00
         } else{
             width = 50.00
         }
-        
+
         return width
     }
     
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // for school search
-        if indexPath.section == 1 {
+        if indexPath.section == 0 {
+            toggleShowDateDatepicker()
+        }
+        else if indexPath.section == 2 {
             let searchVC = BKPlaceAutocompleteVC()
             searchVC.delegate = self
             searchVC.placeholder = "Enter event location"
             navigationController?.pushViewController(searchVC, animated: true)
         }
-        else if indexPath.section == 2 {
+        else if indexPath.section == 3 {
             let eventSportVC = BKEventSportSelectVC()
             eventSportVC.delegate = self
             navigationController?.pushViewController(eventSportVC, animated: true)
@@ -205,6 +217,8 @@ extension BKEventSchedulerVC {
         else {
             print("section row selecte :: \(indexPath.section) \(indexPath.row)")
         }
+        
+        tableView.deselectRow(at: indexPath, animated: true)
 
     }
     
@@ -232,19 +246,23 @@ extension BKEventSchedulerVC {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: BKStartDateCellID, for: indexPath) as! BKEventStartDateCell
         
-        cell.startDatePicker.minimumDate = Date()
+        let today = Date()
+        let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: today)
+        //cell.startDatePicker.minimumDate = tomorrow
         
         print ("date :: \(Date())")
         
         //cell.startDatePicker.maximumDate = cell.startDatePicker.maximumDate! + 180
-        self.eventDatePicker =  cell.startDatePicker
+        //self.eventDatePicker =  cell.startDatePicker
+        cell.accessoryType = .disclosureIndicator
         return cell
     }
     
     func handleLocation(_ tableView: UITableView, _ indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: BKLocationCellID, for: indexPath) as! BKEventLocationCell
      
-        cell.txtEventLocation.text = (self.eventLocation == nil) ? "" : self.eventLocation?.placeName
+        //cell.txtEventLocation.text = (self.eventLocation == nil) ? "" : self.eventLocation?.placeName
+        cell.lblLocation.text = (self.eventLocation == nil) ? "" : self.eventLocation?.placeName
         
         // Assign the tap action which will be executed when the user taps the UIButton
         
@@ -252,8 +270,9 @@ extension BKEventSchedulerVC {
             self?.showAlertForRow(section: 1, row: tableView.indexPath(for: cell)!.row)
         }
         
-        locationTextField = cell.txtEventLocation
-        
+        //locationTextField = cell.txtEventLocation
+        //cell.accessoryType = .disclosureIndicator
+        cell.accessoryType = .disclosureIndicator
         return cell
     }
 
@@ -262,15 +281,16 @@ extension BKEventSchedulerVC {
         let cell = tableView.dequeueReusableCell(withIdentifier: BKEventSportCellID, for: indexPath) as!
             BKEventSportCell
         
-        cell.textSport.text = (self.eventSport == nil) ? "" : self.eventSport
-        
+        //cell.textSport.text = (self.eventSport == nil) ? "" : self.eventSport
+        cell.lblSport.text = (self.eventSport == nil) ? "" : self.eventSport
         
         // Assign the tap action which will be executed when the user taps the UIButton
         cell.tapAction = { [weak self] (cell) in
             self?.showAlertForRow(section: 2, row: tableView.indexPath(for: cell)!.row)
         }
         
-        sportTextField = cell.textSport
+        //sportTextField = cell.textSport
+        cell.accessoryType = .disclosureIndicator
         return cell
     }
     
@@ -290,6 +310,14 @@ extension BKEventSchedulerVC {
         }
         
     }
+    
+    func toggleShowDateDatepicker () {
+        self.dpShowDateVisible = !dpShowDateVisible
+        
+        tableView.beginUpdates()
+        tableView.endUpdates()
+    }
+
 
 
 }
@@ -315,7 +343,6 @@ extension BKEventSchedulerVC: BKPlaceAutocompleteDelegate {
 extension BKEventSchedulerVC: BKEventSportSelectDelegate {
     
     func sportDidCancel(_ vc: BKEventSportSelectVC) {
-        
         editingChanged()
         sportTextField?.resignFirstResponder()
         navigationController?.popViewController(animated: true)
@@ -323,8 +350,8 @@ extension BKEventSchedulerVC: BKEventSportSelectDelegate {
     
     func sportSelect(_ vc: BKEventSportSelectVC, didChooseSport sportName: String?) {
         self.eventSport = sportName
-        print("EVent Sport Selected")
-        sportTextField?.resignFirstResponder()
+        print("Event Sport selected")
+        //sportTextField?.resignFirstResponder()
         self.tableView.reloadData()
         editingChanged()
         navigationController?.popViewController(animated: true)

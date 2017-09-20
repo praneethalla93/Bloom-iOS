@@ -13,7 +13,6 @@ class BKEventStartDateCell: UITableViewCell {
     //@IBOutlet weak var schoolNameField: UITextField!
     
     @IBOutlet weak var lblStart: UILabel!
-    @IBOutlet weak var startDatePicker: UIDatePicker!
     
     override func awakeFromNib() {
         super.awakeFromNib()

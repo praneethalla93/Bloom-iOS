@@ -119,19 +119,22 @@ class BKLoginVC: UIViewController {
 extension BKLoginVC: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
         guard let text = textField.text, text.characters.count != 0 else {
             return false
         }
         
         guard text.isValidEmail() else {
+            SVProgressHUD.showError(withStatus: "Invalid Email address")
             return false
         }
-        
+
         if textField === self.emailTextField {
             self.passwordTextField.becomeFirstResponder()
-        }else {
+        } else {
             textField.resignFirstResponder()
         }
+
         return true
     }
     
@@ -140,7 +143,7 @@ extension BKLoginVC: UITextFieldDelegate {
         guard email.isValidEmail() else {
             return
         }
-        
+
         SVProgressHUD.show()
         
         BKNetowrkTool.shared.authenticate(email: email, password: password) { (success) in
@@ -157,9 +160,9 @@ extension BKLoginVC: UITextFieldDelegate {
                     if let _ = currentCity, let _ = currentSate  {
                         BKAuthTool.shared.switchToMainUI()
                     }
-                    
+   
                 }
-                
+
                 //Raj: added to switch to main UI.
                 BKAuthTool.shared.switchToMainUI()
             } else {
@@ -181,7 +184,6 @@ extension BKLoginVC: UITextFieldDelegate {
                 
             }
             */
-            
         }
 
     }

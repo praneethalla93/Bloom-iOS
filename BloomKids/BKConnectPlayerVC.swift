@@ -32,8 +32,8 @@ class BKConnectPlayerVC: UITableViewController {
         definesPresentationContext = true
         tableView.tableHeaderView = searchController.searchBar
         searchController.searchBar.scopeButtonTitles = BKBloomSports
-        //searchController.searchBar.tintColor = BKGlobalTintColor
-        //searchController.searchBar.barTintColor = UIColor.white
+        searchController.searchBar.tintColor = BKGlobalTintColor
+        searchController.searchBar.barTintColor = UIColor.white
         searchController.searchBar.delegate = self as UISearchBarDelegate
         
         //after successfull loading data
@@ -170,7 +170,7 @@ extension BKConnectPlayerVC {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         if indexPath.section == 0 {
-            return 100.0
+            return BKKidActionCellHeight
         }else{
             return 40.0
         }
@@ -274,7 +274,7 @@ extension BKConnectPlayerVC {
                 self.dismiss(animated: true, completion: nil)
             }))
             */
-            
+
             alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
                 
                 self.dismiss(animated: true, completion: nil)
@@ -354,7 +354,6 @@ extension BKConnectPlayerVC {
 
 //handle all cell creation here
 extension BKConnectPlayerVC {
-    
   
     func handlePotentialConnections(_ tableView: UITableView, _ indexPath: IndexPath) -> UITableViewCell {
         
@@ -367,28 +366,29 @@ extension BKConnectPlayerVC {
             if let filteredConnections = myKidsPotentialFilteredConnections {
                 kid = filteredConnections[indexPath.row]
             }
-            
+
         }
         else {
             
             if let potentialConnections = myKidsPotentialConnections {
                 kid = potentialConnections[indexPath.row]
             }
-            
+
         }
         
         if let currentKid = kid {
+            
             //cell.imgPlayer = UIImage("")
             cell.kidModel = currentKid
             //cell.lblPlayerName.text = currentKid.kidName
             //cell.lblPlayerSchoolAge.text = "\(currentKid.school) , \(currentKid.age)"
-            
-            
-            cell.btnPlayerAction.setImage( UIImage(named: BKImageConnectBtnIcon), for: .normal)
+            //cell.btnPlayerAction.setImage( UIImage(named: BKImageConnectBtn), for: .normal)
+            cell.btnPlayerAction.setTitle("Invite to Connect", for: .normal)
             // Assign the tap action which will be executed when the user taps the UIButton
             cell.tapAction = { [weak self] (cell) in
                 self?.showAlertforSendConnection(cell: cell)
             }
+            
         }
         
         return cell

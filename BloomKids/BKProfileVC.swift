@@ -14,16 +14,13 @@ class BKProfileVC: UITableViewController {
     @IBOutlet weak var txtProfileEmail: UITextField!
     @IBOutlet weak var txtPhone: UITextField!
     @IBOutlet weak var txtPrimaryCity:UITextField!
-
-    
+    @IBOutlet weak var txtRelation: UITextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        
         //Disable edit button for now.
         //self.navigationItem.rightBarButtonItem = self.editButtonItem
         self.navigationItem.rightBarButtonItem = nil
@@ -36,6 +33,7 @@ class BKProfileVC: UITableViewController {
         self.txtProfileEmail.text = myProfile?.email
         self.txtPhone.text = myProfile?.phone
         self.txtPrimaryCity.text = myProfile?.city
+        self.txtRelation.text = myProfile?.relation
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -57,7 +55,7 @@ class BKProfileVC: UITableViewController {
         } else {
             return 0
         }
-        
+
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -82,9 +80,9 @@ class BKProfileVC: UITableViewController {
             } else {
                 sectionTitle = BKNoKidsRegistered
             }
-            
+
         }
-        
+
         return sectionTitle
     }
     

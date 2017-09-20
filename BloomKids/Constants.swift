@@ -16,7 +16,12 @@ let BKNavigationBarTitleFontSize: CGFloat = 17.0
 
 let BKLoginLogoTopSpace: CGFloat = 20.0
 let BKInputTextFieldHeight: CGFloat = UIScreen.main.bounds.size.height > 480.0 ? 35.0 : 30.0
+
 let BKKidCellHeight: CGFloat = 100.0
+let BKKidActionCellHeight: CGFloat = 150.0
+let BKKidEventActionCellHeight: CGFloat = 180.0
+
+
 let BKNetowrkBaseUrlStr = "http://custom-env.aqrfytx2is.us-east-1.elasticbeanstalk.com"
 let BKNetworkingLoginUrlStr = "\(BKNetowrkBaseUrlStr)/rest/login/dologin"
 let BKNetworkingSignupUrlStr = "\(BKNetowrkBaseUrlStr)/rest/register/doregister"
@@ -73,6 +78,7 @@ let BKConnectSectionHeaderCellID = "BKConnectSectionHeaderCell"
 
 //All image assets
 let BKImageConnectBtnIcon = "connect-btn-icon"
+let BKImageConnectBtn = "connect-btn"
 let BKImageEditBtnIcon = "edit-btn-icon"
 let BKImageScheduleBtnIcon = "schedule-btn-icon"
 

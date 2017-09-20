@@ -17,6 +17,7 @@ protocol BKEventSportSelectDelegate: class {
 
 class BKEventSportSelectVC: UITableViewController {
     weak var delegate: BKEventSportSelectDelegate?
+    var dpShowDateVisible = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,6 +62,5 @@ class BKEventSportSelectVC: UITableViewController {
     }
     
 }
-
 
 

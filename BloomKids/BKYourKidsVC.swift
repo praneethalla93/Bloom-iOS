@@ -67,9 +67,9 @@ class BKYourKidsVC: UITableViewController {
             let kidModel = BKNetowrkTool.shared.myKids![indexPath.row]
             cell.kidModel = kidModel
             
-            
             //cell.imgActionButtonImage.image = UIImage(named: BKImageEditBtnIcon)
-            cell.btnPlayerAction.setImage( UIImage(named: BKImageEditBtnIcon), for: .normal)
+            //cell.btnPlayerAction.setImage( UIImage(named: BKImageEditBtnIcon), for: .normal)
+            cell.btnPlayerAction.setTitle("Edit Kid", for: .normal)
             
             // Assign the tap action which will be executed when the user taps the UIButton
             cell.tapAction = { [weak self] (cell) in
@@ -79,7 +79,7 @@ class BKYourKidsVC: UITableViewController {
         } else {
             cell = tableView.dequeueReusableCell(withIdentifier: BKKidActionCellID, for: indexPath) as! BKKidActionCell
         }
-        
+
         return cell
     }
  
@@ -96,7 +96,7 @@ class BKYourKidsVC: UITableViewController {
             return BKKidCellHeight
         }
         */
-        return BKKidCellHeight
+        return BKKidActionCellHeight
         
     }
     
@@ -107,7 +107,7 @@ class BKYourKidsVC: UITableViewController {
         if section == 0 {
             
             if BKNetowrkTool.shared.myCurrentKid != nil {
-                sectionTitle = "Player Summary"
+                sectionTitle = "Your Kids"
             } else {
                 sectionTitle = BKNoKidsRegistered
             }

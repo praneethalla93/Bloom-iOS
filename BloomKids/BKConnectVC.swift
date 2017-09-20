@@ -24,19 +24,16 @@ class BKConnectVC: UITableViewController {
        
         let kidCellNib = UINib(nibName: "\(BKKidActionCell.self)", bundle: nil)
         self.tableView.register(kidCellNib, forCellReuseIdentifier: BKKidActionCellID)
-        
+ 
         let kidDoubleActionCellNib = UINib(nibName: "\(BKKidDoubleActionCell.self)", bundle: nil)
         self.tableView.register(kidDoubleActionCellNib, forCellReuseIdentifier: BKKidDoubleActionCellID)
         initialLoadAndReload(reDirect: true)
     }
     
     func initialLoadAndReload(reDirect: Bool) {
-        
         print ("initialLoadAndReload called")
         SVProgressHUD.show()
         loadMyKids()
-        
-        
         
         //after successfull loading data
         myGroup.notify(queue: .main) {
@@ -53,7 +50,7 @@ class BKConnectVC: UITableViewController {
                     return
                     
                 }
-                
+   
             }
             
             if BKNetowrkTool.shared.myKids != nil {
@@ -77,7 +74,7 @@ class BKConnectVC: UITableViewController {
 
             SVProgressHUD.dismiss()
         }
-        
+
     }
     
     func switchToAddKidUI() {
@@ -87,6 +84,12 @@ class BKConnectVC: UITableViewController {
     }
     
     func switchToConnectPlayerUI() {
+        //reset current connection for th
+        /*
+        self.currentkidConnections = nil
+        self.pendingConnections = nil
+        self.tableView.reloadData()
+        */
         let profileStoryboard = UIStoryboard(name: "BKConnect", bundle: nil)
         let connectPlayerVC = profileStoryboard.instantiateViewController(withIdentifier: "BKConnectPlayerVC") as! BKConnectPlayerVC
         self.navigationController?.pushViewController(connectPlayerVC, animated: false)
@@ -97,7 +100,6 @@ class BKConnectVC: UITableViewController {
         
         //let items = ["Most Popular", "Latest", "Trending", "Nearest", "Top Picks"]
         var items = [AnyObject]()
-        
         let myKids = BKNetowrkTool.shared.myKids
         
         for  kid in myKids! {
@@ -120,18 +122,20 @@ class BKConnectVC: UITableViewController {
             //@TODO: reload
             let myKids = BKNetowrkTool.shared.myKids
             BKNetowrkTool.shared.myCurrentKid = myKids?[indexPath]
+            
+            print ("LoadCurrentKidConnections called from navigation drop down")
             self?.loadCurrentKidConnections(reDirect: true)
             
             
             //once dropdown menu is loaded with kids. Load current Kids connection
             self?.myGroup.notify(queue: .main) {
-                print("connect table refreshed")
+                print("Navigation connect table refreshed")
                 
                 self?.loadPendingConnections()
                 
                 //once dropdown menu is loaded with kids. Load current Kids connection
                 self?.myGroup.notify(queue: .main) {
-                    print("connection table refreshed")
+                    print("Navigation pending connection table refreshed")
                     self?.tableView.reloadData()
                 }
 
@@ -157,8 +161,7 @@ class BKConnectVC: UITableViewController {
             else {
                 self.myGroup.leave()
             }
-            
-            
+
         }
         
     }
@@ -174,12 +177,15 @@ class BKConnectVC: UITableViewController {
                 BKNetowrkTool.shared.getKidConnections(kidModel: kid) { ( success, kids) in
                     
                     SVProgressHUD.dismiss()
+                    self.myGroup.leave()
                 
                     if success {
                         
                         if let kids = kids {
                             self.currentkidConnections = kids
                             print ("success loading current kid connections \(String(describing: self.currentkidConnections?.count))")
+                            //TODO: this is a temporary work around
+                            self.tableView.reloadData()
                             
                             if (self.currentkidConnections?.count == 0 ) {
                                 print("No connections")
@@ -193,7 +199,8 @@ class BKConnectVC: UITableViewController {
                             }
                         
                         } else {
-
+                            self.currentkidConnections = nil
+                            
                             print("No connections")
                             if reDirect {
                                 self.switchToConnectPlayerUI()
@@ -215,7 +222,7 @@ class BKConnectVC: UITableViewController {
 
                     }
                     
-                    self.myGroup.leave()
+                    
                 }
 
         }
@@ -311,11 +318,11 @@ extension BKConnectVC {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         if indexPath.section == 0 {
-            return 160.0
+            return 250.0
         }else if indexPath.section == 1 {
-            return 100.0
+            return BKKidActionCellHeight
         }else if indexPath.section == 2 {
-            return 100.0
+            return BKKidActionCellHeight
         }else{
             return 40.0
         }
@@ -350,7 +357,7 @@ extension BKConnectVC {
             if let currentkidConnectionCount = currentkidConnections?.count {
                 
                 if currentkidConnectionCount > 0 {
-                    sectionTitle = "Schedule a playdate with your buddy"
+                    sectionTitle = "Your Friends"
                 } else {
                     sectionTitle = "No friends yet. Add connections to schedule PlayDates."
                 }
@@ -474,7 +481,7 @@ extension BKConnectVC {
             cell.lblPlayerName.text = ""
             cell.lblConnectionCounts.text = ""
         }
-        
+
         return cell
     }
     
@@ -484,7 +491,9 @@ extension BKConnectVC {
         if let kid = currentkidConnections?[indexPath.row] {
         
             cell.kidModel = kid
-            cell.btnPlayerAction.setImage( UIImage(named: BKImageScheduleBtnIcon), for: .normal)
+            //cell.btnPlayerAction.setImage( UIImage(named: BKImageScheduleBtnIcon), for: .normal)
+            //cell.btnPlayerAction.titleLabel?.text = "Schedule"
+            cell.btnPlayerAction.setTitle("Schedule a PlayDate", for: .normal)
             // Assign the tap action which will be executed when the user taps the UIButton
             cell.tapAction = { [weak self] (cell) in
                 self?.showAlertForRow(section: 2, row: tableView.indexPath(for: cell)!.row)

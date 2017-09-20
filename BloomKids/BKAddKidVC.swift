@@ -13,7 +13,6 @@ protocol BKAddKidVCDelegate: class {
     func addKidVC(_ vc: BKAddKidVC, didAddkid kid: BKKidModel)
 }
 
-
 class BKAddKidVC: UITableViewController {
     weak var delegate: BKAddKidVCDelegate?
     var mode: String? // 1. ONBOARD 2. ADD 3. EDIT
@@ -37,8 +36,6 @@ class BKAddKidVC: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
         photoHeaderVC.willMove(toParentViewController: self)
         addChildViewController(photoHeaderVC)
         photoHeaderVC.didMove(toParentViewController: self)
@@ -51,7 +48,6 @@ class BKAddKidVC: UITableViewController {
         leftBtn.sizeToFit()
         leftBtn.addTarget(self, action: #selector(cancel(_:)), for: .touchUpInside)
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: leftBtn)
-       
         /*
         var buttonTitle = "Add"
         
@@ -85,12 +81,11 @@ class BKAddKidVC: UITableViewController {
         myGroup.notify(queue: .main) {
             
              if self.newKid != nil {
-                print("\(String(describing: self.newKid!.kidName)) added successfully")
-                SVProgressHUD.showSuccess(withStatus: "\(String(describing: self.newKid!.kidName)) added successfully")
+                print("\(String(describing: self.newKid!.kidName)) updated successfully")
+                SVProgressHUD.showSuccess(withStatus: "\(String(describing: self.newKid!.kidName)) updated successfully")
                 BKAuthTool.shared.finishedOnboarding()
 
                 //cancel to return to your kids screen.
-                
                 if let mode = self.mode {
                     
                     if ( mode == "ADD" || mode == "EDIT") {
@@ -106,7 +101,7 @@ class BKAddKidVC: UITableViewController {
              } else{
                 SVProgressHUD.showError(withStatus: "Failed to add or edit kid")
              }
-            
+
         }
         
     }
@@ -125,7 +120,7 @@ class BKAddKidVC: UITableViewController {
         
         if navigationController != nil {
             navigationController?.popViewController(animated: true)
-        }else {
+        } else {
             dismiss(animated: true, completion: nil)
         }
         

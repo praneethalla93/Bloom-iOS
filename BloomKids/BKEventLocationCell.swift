@@ -11,7 +11,9 @@ import UIKit
 class BKEventLocationCell: UITableViewCell {
     
     @IBOutlet weak var lblLocation: UILabel!
+    /*
     @IBOutlet weak var txtEventLocation: UITextField!
+    */
     
     override func awakeFromNib() {
         super.awakeFromNib()
