@@ -92,7 +92,7 @@ class BKEventSchedulerVC: UITableViewController {
         scheduleBtn?.isEnabled = true
     }
     
-    func cancel(_ sender: Any) {
+    @objc func cancel(_ sender: Any) {
         
         if navigationController != nil {
             navigationController?.popViewController(animated: true)

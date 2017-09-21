@@ -1,30 +1,27 @@
 PODS:
-  - Alamofire (4.5.0)
+  - Alamofire (4.5.1)
   - BTNavigationDropdownMenu (0.4.1)
-  - GoogleMaps/Base (2.3.1)
-  - GooglePlaces (2.3.1):
-    - GoogleMaps/Base (= 2.3.1)
-  - JTAppleCalendar (6.1.6)
-  - KeychainAccess (3.0.2)
-  - SVProgressHUD (2.1.2)
+  - GoogleMaps/Base (2.4.0)
+  - GooglePlaces (2.4.0):
+    - GoogleMaps/Base (= 2.4.0)
+  - KeychainAccess (3.1.0)
+  - SVProgressHUD (2.2.1)
 
 DEPENDENCIES:
   - Alamofire (~> 4.4)
   - BTNavigationDropdownMenu
   - GooglePlaces
-  - JTAppleCalendar
   - KeychainAccess
   - SVProgressHUD
 
 SPEC CHECKSUMS:
-  Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
+  Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
   BTNavigationDropdownMenu: 093f3cbfad1572f2c222bdf8d17584d1e13380d4
-  GoogleMaps: c66a71058b9b1294bcdd5463a68e357fa50c079f
-  GooglePlaces: 4a7b22debfa1af65017b82943431822607e45201
-  JTAppleCalendar: 560fb46421880f53ad54123295072de24bca2b18
-  KeychainAccess: a986406022dfc7c634c691ad3bec670cc6a32002
-  SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
+  GoogleMaps: 8436ab5d1c25e36915b2f7416d0c8e3fa2e76c61
+  GooglePlaces: aafe5990fa7951e98e078761bbdaaf236d7e0c65
+  KeychainAccess: 94c5540b32eabf7bc32bfb976a268e8ea05fd6da
+  SVProgressHUD: db27c54e6e18bc903341661fc9feb55e04905cc4
 
-PODFILE CHECKSUM: 9de7f03c95922e53826da53b9a630c2cd916827f
+PODFILE CHECKSUM: 6b50cee8b9614118140c23e9845b57d1594882fa
 
 COCOAPODS: 1.2.1

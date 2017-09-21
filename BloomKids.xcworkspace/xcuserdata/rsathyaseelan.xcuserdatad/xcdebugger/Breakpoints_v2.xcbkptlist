@@ -122,12 +122,12 @@
                   moduleName = "BloomKids"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/rsathyaseelan/Google%20Drive/Business_Opportunity/Bloom/BloomKids/iOS/Bloom-iOS-master/Bloom-iOS/BloomKids/BKKidModel.swift"
-                  timestampString = "527556606.352169"
+                  timestampString = "527576666.531599"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "220"
                   endingLineNumber = "220"
-                  offsetFromSymbolStart = "176">
+                  offsetFromSymbolStart = "283">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -137,7 +137,7 @@
                   moduleName = "BloomKids"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/rsathyaseelan/Google%20Drive/Business_Opportunity/Bloom/BloomKids/iOS/Bloom-iOS-master/Bloom-iOS/BloomKids/BKKidModel.swift"
-                  timestampString = "527556606.353425"
+                  timestampString = "527576666.533476"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "220"
@@ -161,38 +161,6 @@
             endingLineNumber = "123"
             landmarkName = "textFieldShouldReturn(_:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "BloomKids.BKLoginVC.textFieldShouldReturn (__ObjC.UITextField) -&gt; Swift.Bool"
-                  moduleName = "BloomKids"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/rsathyaseelan/Google%20Drive/Business_Opportunity/Bloom/BloomKids/iOS/Bloom-iOS-master/Bloom-iOS/BloomKids/BKLoginVC.swift"
-                  timestampString = "527556606.356418"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "123"
-                  endingLineNumber = "123"
-                  offsetFromSymbolStart = "32">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "BloomKids.BKLoginVC.textFieldShouldReturn (__ObjC.UITextField) -&gt; Swift.Bool"
-                  moduleName = "BloomKids"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/rsathyaseelan/Google%20Drive/Business_Opportunity/Bloom/BloomKids/iOS/Bloom-iOS-master/Bloom-iOS/BloomKids/BKLoginVC.swift"
-                  timestampString = "527556606.35763"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "123"
-                  endingLineNumber = "123"
-                  offsetFromSymbolStart = "216">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -29,7 +29,7 @@ class BKSimpleCell: UITableViewCell {
 }
 
 extension BKSimpleCell: UITextFieldDelegate {
-    func labelTextDidChange(_ textField: UITextField) {
+    @objc func labelTextDidChange(_ textField: UITextField) {
         guard let text = textField.text else {
             return
         }

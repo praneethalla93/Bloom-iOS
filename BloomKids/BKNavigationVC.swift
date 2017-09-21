@@ -17,7 +17,7 @@ class BKNavigationVC: UINavigationController {
 
     func setupNavigationBar() {
         UINavigationBar.appearance().barTintColor = BKGlobalTintColor
-        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white,NSFontAttributeName: UIFont.systemFont(ofSize: BKNavigationBarTitleFontSize)]
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white,NSAttributedStringKey.font: UIFont.systemFont(ofSize: BKNavigationBarTitleFontSize)]
         UIBarButtonItem.appearance().tintColor = UIColor.white
         
         //navigationBar.layer.borderWidth = 0.2
@@ -42,7 +42,7 @@ class BKNavigationVC: UINavigationController {
         super.pushViewController(viewController, animated: animated)
     }
     
-    func popVC(_ sender: UIBarButtonItem) {
+    @objc func popVC(_ sender: UIBarButtonItem) {
         self.popViewController(animated: true)
     }
     

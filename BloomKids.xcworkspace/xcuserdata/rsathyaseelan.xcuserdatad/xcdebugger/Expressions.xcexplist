@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "BKNetowrkTool.getFamilyDetails(kidId : Int?, email : String?, mode : String, completion : (Bool, BKProfile?) -&gt; ()) -&gt; ():BKNetworkTool.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "dict">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "BKNetowrkTool.(connectionResponder(connectResponse : BKConnectResponse, completion : (Bool) -&gt; ()) -&gt; ()).(closure #1):BKNetworkTool.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "BKNetworkingConnectionResponderUrlStr">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "BKConnectVC.tableView(UITableView, didSelectRowAt : IndexPath) -&gt; ():BKConnectVC.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "indexPath.section">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "BKAuthTool.switchToCitySearch() -&gt; ():BKAuthTool.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "authVC?.navigationController">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "BKEventSchedulerVC.editingChanged() -&gt; ():BKEventSchedulerVC.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "locationTextField">
+            </PersistentString>
+            <PersistentString
+               value = "sportTextField?.text">
+            </PersistentString>
+            <PersistentString
+               value = "locationTextField?.text">
+            </PersistentString>
+            <PersistentString
+               value = "sportTextField">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "BKConnectVC.handleActiveConnections(UITableView, IndexPath) -&gt; UITableViewCell:BKConnectVC.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "cell.btnPlayerAction">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "BKAddKidVC.handleSports(UITableView, IndexPath) -&gt; UITableViewCell:BKAddKidVC.swift">
+      </ContextState>
+      <ContextState
+         contextName = "BKLoginVC.loginBtnTapped(UIButton) -&gt; ():BKLoginVC.swift">
+      </ContextState>
+      <ContextState
+         contextName = "BKNetowrkTool.(getKidConnections(kidModel : BKKidModel, completion : (Bool, [BKKidModel]?) -&gt; ()) -&gt; ()).(closure #1):BKNetworkTool.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "BKNetowrkTool.shared.myCurrentKid">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "BKActivityNewVC.handleActivityConnection(UITableView, IndexPath) -&gt; UITableViewCell:BKActivityNewVC.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "activityConnection">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "BKAuthTool.switchToMainUI() -&gt; ():BKAuthTool.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "BKNetowrkTool.shared.myCurrentKid">
+            </PersistentString>
+            <PersistentString
+               value = "BKNetowrkTool.shared.currentEmail">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "BKSportCell.setButtonEditState() -&gt; ():BKSportCell.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "button.titleLabel?.text">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "String.isValidEmail() -&gt; Bool:String+Extension.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "emailTest.evaluate(with: self)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "BKNetowrkTool.(getFamilyDetails(kidId : Int?, email : String?, mode : String, completion : (Bool, BKProfile?) -&gt; ()) -&gt; ()).(closure #1):BKNetworkTool.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "dict">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

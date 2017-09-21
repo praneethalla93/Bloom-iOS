@@ -116,7 +116,7 @@ class BKAddKidVC: UITableViewController {
         //self.tableView.reloadData()
     }
     
-    func cancel(_ sender: Any) {
+    @objc func cancel(_ sender: Any) {
         
         if navigationController != nil {
             navigationController?.popViewController(animated: true)
@@ -126,7 +126,7 @@ class BKAddKidVC: UITableViewController {
         
     }
     
-    func rightButtonAction(_ sender: Any) {
+    @objc func rightButtonAction(_ sender: Any) {
         addOrEditKid(sender)
     }
     

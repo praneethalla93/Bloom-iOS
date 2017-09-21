@@ -102,7 +102,7 @@ class BKSportCell: UITableViewCell {
 //MARK:- Event Handling
 extension BKSportCell {
     
-    func sportBtnTapped(_ btn: UIButton) {
+    @objc func sportBtnTapped(_ btn: UIButton) {
         
         if btn.tag == BKSportButtonState.normal.rawValue {
             
