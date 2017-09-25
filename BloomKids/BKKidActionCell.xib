@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -31,29 +32,23 @@
                                             <constraint firstAttribute="width" constant="75" id="xHj-dD-nyu"/>
                                         </constraints>
                                     </imageView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" axis="vertical" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="StS-cw-FzJ">
+                                    <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" axis="vertical" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="StS-cw-FzJ">
                                         <rect key="frame" x="175.5" y="0.0" width="314" height="165.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Player Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wff-5W-X9g">
-                                                <rect key="frame" x="0.0" y="0.0" width="314" height="26.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="314" height="27.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="1st Grader at Coyote Creek Elementary   " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lfd-5W-sK5">
-                                                <rect key="frame" x="0.0" y="31.5" width="314" height="20.5"/>
+                                                <rect key="frame" x="0.0" y="37.5" width="314" height="21.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="School, Age" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T60-wm-SQ6">
-                                                <rect key="frame" x="0.0" y="57" width="314" height="19.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                             <stackView opaque="NO" contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="OBo-mJ-SHQ" userLabel="SportsStackView">
-                                                <rect key="frame" x="0.0" y="81.5" width="314" height="28"/>
+                                                <rect key="frame" x="0.0" y="69" width="314" height="28"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Plays: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CnD-d9-3Ka">
                                                         <rect key="frame" x="0.0" y="0.0" width="39.5" height="28"/>
@@ -104,10 +99,10 @@
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleAspectFit" verticalHuggingPriority="249" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="p61-Pk-sPW">
-                                                <rect key="frame" x="0.0" y="114.5" width="314" height="51"/>
+                                                <rect key="frame" x="0.0" y="107" width="314" height="58.5"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NUM-kG-irL" userLabel="actionButton">
-                                                        <rect key="frame" x="0.0" y="0.0" width="314" height="51"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="314" height="58.5"/>
                                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
                                                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>

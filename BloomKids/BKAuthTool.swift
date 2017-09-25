@@ -114,7 +114,11 @@ class BKAuthTool {
     
     func switchToAuthUI() {
         let authStoryboard = UIStoryboard(name: "BKAuth", bundle: nil)
-        authVC = authStoryboard.instantiateViewController(withIdentifier: "BKNavigationVC") as? BKNavigationVC
+        
+        if authVC == nil {
+            authVC = authStoryboard.instantiateViewController(withIdentifier: "BKNavigationVC") as? BKNavigationVC
+        }
+
         let window = UIApplication.shared.keyWindow
         window?.rootViewController = authVC
     }
@@ -127,12 +131,23 @@ class BKAuthTool {
         vc.placeholder = "What's your home city?"
         //let window = UIApplication.shared.keyWindow
         //window?.rootViewController = vc
+
+        if authVC == nil {
+            let authStoryboard = UIStoryboard(name: "BKAuth", bundle: nil)
+            authVC = authStoryboard.instantiateViewController(withIdentifier: "BKNavigationVC") as? BKNavigationVC
+        }
         authVC?.pushViewController(vc, animated: false)
     }
     
     func switchToCongratsUI() {
         let authStoryboard = UIStoryboard(name: "BKAuth", bundle: nil)
         let congratsVC = authStoryboard.instantiateViewController(withIdentifier: "BKCongratsVC")
+        
+        if authVC == nil {
+            let authStoryboard = UIStoryboard(name: "BKAuth", bundle: nil)
+            authVC = authStoryboard.instantiateViewController(withIdentifier: "BKNavigationVC") as? BKNavigationVC
+        }
+        
         authVC?.pushViewController(congratsVC, animated: false)
     }
     
@@ -140,6 +155,12 @@ class BKAuthTool {
         let profileStoryboard = UIStoryboard(name: "BKProfile", bundle: nil)
         let addKidVC = profileStoryboard.instantiateViewController(withIdentifier: "BKAddKidVC") as! BKAddKidVC
         addKidVC.mode = "ONBOARD"
+        
+        if authVC == nil {
+            let authStoryboard = UIStoryboard(name: "BKAuth", bundle: nil)
+            authVC = authStoryboard.instantiateViewController(withIdentifier: "BKNavigationVC") as? BKNavigationVC
+        }
+        
         authVC?.pushViewController(addKidVC, animated: false)
     }
     

@@ -29,8 +29,9 @@ struct BKProfile {
     let state: String
     let phone: String
     let relation: String?
-    let dob: String
+    var dob: String
     var kids: [BKKidModel]
+    
     
     init(email: String, dict: [String: Any], kids: [BKKidModel]) {
         self.email = email
@@ -41,11 +42,8 @@ struct BKProfile {
         self.dob = (dict["dob"] as! String)
         self.relation = (dict["relation"] as? String)
         self.kids = kids
-        
         /*
         let kidsDict = dict["kids"] as! [[String: Any]]
-        
-        
         
         for dict in kidsDict {
             
@@ -53,7 +51,6 @@ struct BKProfile {
             kids.append(kid)
         }
         */
-        
     }
     
 }
@@ -81,15 +78,18 @@ struct BKKidModel: CustomDebugStringConvertible {
     var school: String
     var sports: [BKSport]
     var age: String
-    
+    var grade: String?
     
     init(kidName: String, gender: String, school: String, age: String, sports: [BKSport], id: Int? = nil) {
         self.kidName = kidName.capitalized
         self.gender = gender
         self.school = school
         self.age = age
+        
         self.sports = sports
         self.id = id
+        self.myAge = self.age
+        self.grade = getGrade(age: age)
     }
     
     init(dict: [String: Any]) {
@@ -98,6 +98,7 @@ struct BKKidModel: CustomDebugStringConvertible {
         self.gender = dict["gender"] as! String
         self.school = dict["school"] as! String
         self.age = dict["age"] as! String
+        
         let sportDict = dict["sport"] as! [[String: String]]
         
         sports = [BKSport]()
@@ -105,8 +106,60 @@ struct BKKidModel: CustomDebugStringConvertible {
             let sport = BKSport(dict: dict)
             sports.append(sport)
         }
-
+        
+        self.grade = getGrade(age: age)
     }
+    
+    //this is required to derive grade
+    var myAge: String? {
+        
+        didSet(age) {
+            self.age = age!
+            self.grade = getGrade(age: age!)
+        }
+        
+    }
+    
+    func getGrade(age: String) -> String {
+        
+        var grade = age
+        
+        if let intAge = Int(age) {
+            
+            switch(intAge) {
+                
+            case 2:
+                grade = "Pre-K"
+            case 3:
+                grade = "Pre-K"
+            case 4:
+                grade = "Pre-K"
+            case 5:
+                grade = "Pre-K"
+            case 6:
+                grade = "1st Grader"
+            case 7:
+                grade = "2nd Grader"
+            case 8:
+                grade = "3rd Grader"
+            case 9:
+                grade = "4th Grader"
+            case 10:
+                grade = "5th Grader"
+            case 11:
+                grade = "6th Grader"
+            case 12:
+                grade = "7th Grader"
+            default:
+                grade = "Pre-K"
+            }
+            
+        }
+        
+        return grade
+        
+    }
+    
     
     var debugDescription: String {
         return "kidname:\(kidName) id:\(String(describing: id)) age:\(age) gender:\(gender) school:\(school) sports:\(sports)"

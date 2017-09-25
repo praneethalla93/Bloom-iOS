@@ -472,11 +472,13 @@ extension BKConnectVC {
     func handlePlayerSummaryHeader(_ tableView: UITableView, _ indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: BKConnectSummaryHeaderCellID, for: indexPath) as! BKConnectSummaryHeaderCell
         
-        //cell.imagePlayerPhoto
         if let currentKid = BKNetowrkTool.shared.myCurrentKid {
+            cell.kidModel = currentKid
             let connectionCount = self.currentkidConnections?.count ?? 0
-            cell.lblPlayerName.text = "\(currentKid.kidName) | \(String(describing: currentKid.age))"
-            cell.lblConnectionCounts.text = "\(String(describing: connectionCount)) Connections"
+            //cell.lblPlayerName.text = "\(currentKid.kidName) | \(String(describing: currentKid.age))"
+            cell.lblPlayerName.text = currentKid.kidName
+            cell.lblConnectionCounts.text = "\(String(describing: connectionCount)) Friends on Bloom"
+            cell.lblSchoolName.text = "\(currentKid.grade!), \(currentKid.school)"
         } else {
             cell.lblPlayerName.text = ""
             cell.lblConnectionCounts.text = ""
@@ -491,6 +493,7 @@ extension BKConnectVC {
         if let kid = currentkidConnections?[indexPath.row] {
         
             cell.kidModel = kid
+
             //cell.btnPlayerAction.setImage( UIImage(named: BKImageScheduleBtnIcon), for: .normal)
             //cell.btnPlayerAction.titleLabel?.text = "Schedule"
             cell.btnPlayerAction.setTitle("Schedule a PlayDate", for: .normal)

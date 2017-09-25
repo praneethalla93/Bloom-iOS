@@ -10,5 +10,4 @@ import UIKit
 
 class BKSportLevelCell: UITableViewCell {
     @IBOutlet weak var sportLabel: UILabel!
-
 }

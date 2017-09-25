@@ -8,11 +8,13 @@
 
 import UIKit
 
-class BKEventStartDateCell: UITableViewCell {
+class BKSimpleSelectCell: UITableViewCell {
     
     //@IBOutlet weak var schoolNameField: UITextField!
     
-    @IBOutlet weak var lblSelectedStartDate: UILabel!
+    @IBOutlet weak var lblName: UILabel!
+    @IBOutlet weak var lblSelect: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

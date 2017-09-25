@@ -19,7 +19,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         GMSPlacesClient.provideAPIKey("AIzaSyCcVxdaoAlpPHR00g41RRvoQsK71fVEVHs")
-        
         SVProgressHUD.setDefaultStyle(.dark)
         SVProgressHUD.setMinimumDismissTimeInterval(1.0)
         window = UIWindow()

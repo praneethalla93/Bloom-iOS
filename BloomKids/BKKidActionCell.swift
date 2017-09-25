@@ -32,12 +32,10 @@ class BKKidActionCell: UITableViewCell {
             if let kid = kidModel {
                 //self.lblPlayerName.text = "\(kid.kidName) ID: \(String(describing: kid.id))"
                 self.lblPlayerName.text = kid.kidName
-                self.lblPlayerSchoolAge.text = "\(kid.school) | \(kid.age)"
-                
+                self.lblPlayerSchoolAge.text = "\(kid.grade ?? "Pre-K"), \(kid.school)"
                 /*
                 self.btnPlayerAction.setImage(UIImage(named: BKImageEditBtnIcon), for: .Normal)
                 */
-                
                 print("Sports count : \(kid.sports.count)")
                 
                 self.imgChessIcon.isHidden = true
@@ -115,8 +113,6 @@ class BKKidActionCell: UITableViewCell {
         btnPlayerAction.layer.cornerRadius = 10
         btnPlayerAction.layer.borderWidth = 3
         btnPlayerAction.layer.borderColor = BKGlobalTintColor.cgColor
-        
-        
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

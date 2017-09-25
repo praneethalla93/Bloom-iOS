@@ -23,26 +23,20 @@ class BKEventSchedulerVC: UITableViewController {
     fileprivate var eventSport: String?
     fileprivate var eventDate: String?
     
-    fileprivate var newKid: BKKidModel?
-    fileprivate var locationTextField: UITextField?
-    fileprivate var sportTextField: UITextField?
-    
-    @IBOutlet weak var lblLocation: UILabel!
-    @IBOutlet weak var lblSport: UILabel!
-    
+    fileprivate var scheduleKid: BKKidModel?
     fileprivate var scheduleBtn: UIButton?
-    //fileprivate var eventDatePicker: UIDatePicker?
+    
     fileprivate var eventScheduleStatus = false
+    fileprivate var datePickerEvent: UIDatePicker?
     
     var dpShowDateVisible = false
-    
     let myGroup = DispatchGroup()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.title = "PlayDate"
-        self.tableView.backgroundColor = UIColor.lightGray
+        //self.tableView.backgroundColor = UIColor.lightGray
         
         let leftBtn = UIButton(type: .custom)
         leftBtn.setTitle("Cancel", for: .normal)
@@ -57,38 +51,22 @@ class BKEventSchedulerVC: UITableViewController {
         scheduleBtn?.sizeToFit()
         scheduleBtn?.addTarget(self, action: #selector(schedule(_:)), for: .touchUpInside)
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: scheduleBtn!)
-        myGroup.enter()
+        
         scheduleBtn?.setTitleColor(UIColor.gray, for: .disabled)
         scheduleBtn?.isEnabled = false
-        
-        //TODO: after successfull scheduling event
-        myGroup.notify(queue: .main) {
-            
-            if self.eventScheduleStatus {
-                print("\(String(describing: self.newKid?.kidName)) added successfully")
-                SVProgressHUD.showSuccess(withStatus: "Playdate successfully scheduled with \(String(describing: self.newKid?.kidName))")
-                //cancel to return to playdate screen
-                self.cancel(self)
-                
-            } else{
-                SVProgressHUD.showError(withStatus: "Event Schedule failed. Try again.")
-                
-            }
-
-        }
-
     }
     
     func editingChanged() {
         
         guard
-            let location = lblLocation?.text, !location.isEmpty, !(location == "Add Location"),
-            let sport = self.eventSport, !sport.isEmpty, !(sport == "Add Sport")
+            let location = self.eventLocation?.placeName, !location.isEmpty, !(location == "Add Location"),
+            let sport = self.eventSport, !sport.isEmpty, !(sport == "Add Sport"),
+            let eventDt = self.eventDate, !eventDt.isEmpty, !(eventDt == "Select Date & Time")
         else {
                 scheduleBtn?.isEnabled = false
                 return
         }
-        
+
         scheduleBtn?.isEnabled = true
     }
     
@@ -104,8 +82,7 @@ class BKEventSchedulerVC: UITableViewController {
     
     @IBAction func schedule(_ sender: UIBarButtonItem) {
         
-        print ("schedule button clicked")
-        SVProgressHUD.show()
+        
         
         let currentKid = BKNetowrkTool.shared.myCurrentKid
         var location = ""
@@ -115,33 +92,48 @@ class BKEventSchedulerVC: UITableViewController {
         }
         
         //let eventDate = self.eventDatePicker?.date
-        let eventDate = Date()
+        //let eventDate = Date()
         let formatter = DateFormatter()
         // initially set the format based on your datepicker date
         formatter.dateFormat = "MM/dd/yy"
-        let eventDateStr = formatter.string(from: eventDate)
+        let eventDateStr = formatter.string(from: (datePickerEvent?.date)!)
         
         //then again set the date format whhich type of output you need
-        formatter.dateFormat = "HH:mm"
+        formatter.dateFormat = "h:mm a"
         // again convert your date to string
-        let eventTimeStr = formatter.string(from: eventDate)
+        let eventTimeStr = formatter.string(from: (datePickerEvent?.date)!)
         
+        print ("schedule button clicked")
+        SVProgressHUD.show()
+        self.myGroup.enter()
+
         BKNetowrkTool.shared.scheduleEvent(kidName: (currentKid?.kidName)!, kidId: (currentKid?.id)!, sportName: self.eventSport!, location: location, responderKidId: (eventReceivingKid?.id)!, eventDate: eventDateStr, eventTime: eventTimeStr) { (success) in
-            
-            SVProgressHUD.dismiss()
-            self.myGroup.leave()
             self.eventScheduleStatus = success
             
             if success {
-                print ("success scheduling event")
-                
+                print ("success scheduling event")   
             }
             else {
                 print ("failure scheduling event")
             }
-
+            
+            self.myGroup.leave()
         }
         
+        //TODO: after successfull scheduling event
+        myGroup.notify(queue: .main) {
+
+            if self.eventScheduleStatus {
+                print("Playdate successfully scheduled with \(String(describing: self.scheduleKid?.kidName))")
+                SVProgressHUD.showSuccess(withStatus: "Playdate successfully scheduled with \(String(describing: self.scheduleKid?.kidName))")
+                //cancel to return to my friends screen
+                self.cancel(self)
+            } else {
+                SVProgressHUD.showError(withStatus: "Event Schedule failed. Try again.")
+            }
+
+        }
+  
     }
     
 
@@ -151,7 +143,7 @@ class BKEventSchedulerVC: UITableViewController {
 extension BKEventSchedulerVC {
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 4
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -165,8 +157,10 @@ extension BKEventSchedulerVC {
         case 0:
             return handleStartDate(tableView, indexPath)
         case 1:
-            return handleLocation(tableView, indexPath)
+            return handleDatePicker(tableView, indexPath)
         case 2:
+            return handleLocation(tableView, indexPath)
+        case 3:
             return handleEventSports(tableView, indexPath)
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: BKSimpleCellID, for: indexPath)
@@ -174,7 +168,7 @@ extension BKEventSchedulerVC {
             print("Default row created")
             return cell
         }
-    
+        
     }
     
    
@@ -186,7 +180,12 @@ extension BKEventSchedulerVC {
             width = 70.0
         }
         else if indexPath.section == 1 {
-            width = 220.0
+            
+            if dpShowDateVisible {
+                width = 220.0
+            } else {
+                width = 0.0
+            }
         }
         else if (indexPath.section == 2 || indexPath.section == 3) {
             width = 50.00
@@ -199,9 +198,11 @@ extension BKEventSchedulerVC {
     
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         // for school search
         if indexPath.section == 0 {
             toggleShowDateDatepicker()
+            //dpShowDateChanged()
         }
         else if indexPath.section == 2 {
             let searchVC = BKPlaceAutocompleteVC()
@@ -219,13 +220,11 @@ extension BKEventSchedulerVC {
         }
         
         tableView.deselectRow(at: indexPath, animated: true)
-
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        
         var sectionTitle = ""
-        
+
         if section == 0 {
             
             if eventReceivingKid != nil {
@@ -233,7 +232,7 @@ extension BKEventSchedulerVC {
             } else {
                 sectionTitle = "Schedule play date"
             }
-            
+
         }
         return sectionTitle
     }
@@ -245,12 +244,15 @@ extension BKEventSchedulerVC {
     func handleStartDate(_ tableView: UITableView, _ indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: BKStartDateCellID, for: indexPath) as! BKEventStartDateCell
-        
+
+        print ("date :: \(Date())")
         let today = Date()
         let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: today)
-        //cell.startDatePicker.minimumDate = tomorrow
         
-        print ("date :: \(Date())")
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMM d, h:mm a"
+        cell.lblSelectedStartDate.text = formatter.string(from: tomorrow!)
+        cell.lblSelectedStartDate.text = (self.eventDate == nil) ? "Select Date & Time" : self.eventDate
         
         //cell.startDatePicker.maximumDate = cell.startDatePicker.maximumDate! + 180
         //self.eventDatePicker =  cell.startDatePicker
@@ -258,14 +260,37 @@ extension BKEventSchedulerVC {
         return cell
     }
     
+    func handleDatePicker(_ tableView: UITableView, _ indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: BKEventDatePickerCellID, for: indexPath) as! BKEventDatePickerCell
+        
+        let today = Date()
+        let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: today)
+        //cell.startDatePicker.minimumDate = tomorrow
+        //cell.txtEventLocation.text = (self.eventLocation == nil) ? "" : self.eventLocation?.placeName
+        self.datePickerEvent = cell.datePickerEventStart
+        cell.datePickerEventStart.minimumDate = tomorrow
+        
+        if (self.eventDate == nil) {
+            let initialDate = Calendar.current.date(byAdding: .minute, value: 60, to: tomorrow!)
+            cell.datePickerEventStart.date = initialDate!
+        }
+        
+        // Assign the tap action which will be executed when the user taps the UIButton
+        cell.eventDateChanged = { [weak self] (cell) in
+            self?.dpShowDateChanged()
+        }
+
+        //cell.accessoryType = .disclosureIndicator
+        return cell
+    }
+    
     func handleLocation(_ tableView: UITableView, _ indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: BKLocationCellID, for: indexPath) as! BKEventLocationCell
      
         //cell.txtEventLocation.text = (self.eventLocation == nil) ? "" : self.eventLocation?.placeName
-        cell.lblLocation.text = (self.eventLocation == nil) ? "" : self.eventLocation?.placeName
+        cell.lblLocation.text = (self.eventLocation == nil) ? "Select Location" : self.eventLocation?.placeName
         
         // Assign the tap action which will be executed when the user taps the UIButton
-        
         cell.tapAction = { [weak self] (cell) in
             self?.showAlertForRow(section: 1, row: tableView.indexPath(for: cell)!.row)
         }
@@ -282,7 +307,7 @@ extension BKEventSchedulerVC {
             BKEventSportCell
         
         //cell.textSport.text = (self.eventSport == nil) ? "" : self.eventSport
-        cell.lblSport.text = (self.eventSport == nil) ? "" : self.eventSport
+        cell.lblSport.text = (self.eventSport == nil) ? "Select Sport" : self.eventSport
         
         // Assign the tap action which will be executed when the user taps the UIButton
         cell.tapAction = { [weak self] (cell) in
@@ -293,7 +318,6 @@ extension BKEventSchedulerVC {
         cell.accessoryType = .disclosureIndicator
         return cell
     }
-    
     
     func showAlertForRow(section: Int, row: Int, decision: String="") {
         
@@ -313,27 +337,35 @@ extension BKEventSchedulerVC {
     
     func toggleShowDateDatepicker () {
         self.dpShowDateVisible = !dpShowDateVisible
-        
+        editingChanged()
         tableView.beginUpdates()
         tableView.endUpdates()
     }
-
-
+    
+   
+    private func dpShowDateChanged () {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMM d, h:mm a"
+        self.eventDate = formatter.string(from: (self.datePickerEvent?.date)!)
+        editingChanged()
+        self.tableView.reloadData()
+    }
+    
 
 }
 
 extension BKEventSchedulerVC: BKPlaceAutocompleteDelegate {
-    
+
     func placeAutocompleteDidCancel(_ vc: BKPlaceAutocompleteVC) {
         editingChanged()
-        locationTextField?.resignFirstResponder()
+        //locationTextField?.resignFirstResponder()
         navigationController?.popViewController(animated: true)
     }
     
     func placeAutocomplete(_ vc: BKPlaceAutocompleteVC, didSelectPlace place: BKPlaceModel) {
         self.eventLocation = place
         self.tableView.reloadData()
-        locationTextField?.resignFirstResponder()
+        //locationTextField?.resignFirstResponder()
         editingChanged()
         navigationController?.popViewController(animated: true)
     }
@@ -344,7 +376,7 @@ extension BKEventSchedulerVC: BKEventSportSelectDelegate {
     
     func sportDidCancel(_ vc: BKEventSportSelectVC) {
         editingChanged()
-        sportTextField?.resignFirstResponder()
+        //sportTextField?.resignFirstResponder()
         navigationController?.popViewController(animated: true)
     }
     

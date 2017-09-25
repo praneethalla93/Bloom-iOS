@@ -107,7 +107,7 @@ class BKYourKidsVC: UITableViewController {
         if section == 0 {
             
             if BKNetowrkTool.shared.myCurrentKid != nil {
-                sectionTitle = "Your Kids"
+                sectionTitle = "My Kids"
             } else {
                 sectionTitle = BKNoKidsRegistered
             }

@@ -35,10 +35,18 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "BKConnectVC.handleActiveConnections(UITableView, IndexPath) -&gt; UITableViewCell:BKConnectVC.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "cell.btnPlayerAction">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "BKEventSchedulerVC.editingChanged() -&gt; ():BKEventSchedulerVC.swift">
          <PersistentStrings>
             <PersistentString
-               value = "locationTextField">
+               value = "sportTextField">
             </PersistentString>
             <PersistentString
                value = "sportTextField?.text">
@@ -47,15 +55,15 @@
                value = "locationTextField?.text">
             </PersistentString>
             <PersistentString
-               value = "sportTextField">
+               value = "locationTextField">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "BKConnectVC.handleActiveConnections(UITableView, IndexPath) -&gt; UITableViewCell:BKConnectVC.swift">
+         contextName = "BKEventSchedulerVC.dpShowDateChanged():BKEventSchedulerVC.swift">
          <PersistentStrings>
             <PersistentString
-               value = "cell.btnPlayerAction">
+               value = " self.datePickerEvent?.date">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

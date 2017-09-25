@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BKKidCellAction" customModule="BloomKids" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BKSimpleSelectCellID" rowHeight="73" id="qE6-eX-Dip" userLabel="Simple Select Cell" customClass="BKSimpleSelectCell" customModule="BloomKids" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="73"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qE6-eX-Dip" id="y7A-1b-1KY">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="72.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nKU-JY-la0">
+                        <rect key="frame" x="16" y="8" width="343" height="56.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ENl-Pa-5Ku">
+                                <rect key="frame" x="0.0" y="0.0" width="80" height="56.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Sep 18, 2017 3:45 AM" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="keh-ep-cEl">
+                                <rect key="frame" x="80" y="0.0" width="263" height="56.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="nKU-JY-la0" secondAttribute="bottom" constant="8" id="2cZ-Dt-A8s"/>
+                    <constraint firstItem="nKU-JY-la0" firstAttribute="leading" secondItem="y7A-1b-1KY" secondAttribute="leading" constant="16" id="IoI-FO-vwd"/>
+                    <constraint firstItem="nKU-JY-la0" firstAttribute="top" secondItem="y7A-1b-1KY" secondAttribute="top" constant="8" id="rYz-JB-ju8"/>
+                    <constraint firstAttribute="trailing" secondItem="nKU-JY-la0" secondAttribute="trailing" constant="16" id="sft-by-Pqz"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="lblName" destination="ENl-Pa-5Ku" id="udo-CC-cmO"/>
+                <outlet property="lblSelect" destination="keh-ep-cEl" id="lBf-GJ-Yod"/>
+            </connections>
+            <point key="canvasLocation" x="-117.5" y="30.5"/>
+        </tableViewCell>
+    </objects>
+</document>

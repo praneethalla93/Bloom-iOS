@@ -20,14 +20,13 @@ class BKSportCell: UITableViewCell {
     @IBOutlet weak var baseBallBtn: AHStackButton!
     @IBOutlet weak var chessBtn: AHStackButton!
     @IBOutlet weak var cricketBtn: AHStackButton!
-    
     @IBOutlet weak var soccerBtn: AHStackButton!
+    
+    var sportName: String?
     
 
     fileprivate var buttons = [UIButton]()
     var totalSports: [BKSport] = [BKSport]()
-    
-    
     
     var myTotalSports: [BKSport]? {
         
@@ -53,7 +52,6 @@ class BKSportCell: UITableViewCell {
         setupButton(btn: baseBallBtn)
         setupButton(btn: chessBtn)
         setupButton(btn: soccerBtn)
-        
         //set initial state of sports buttons in edit mode
         //setButtonEditState()
     }
@@ -81,7 +79,6 @@ class BKSportCell: UITableViewCell {
             
             let kidSportName = sport.sportName
             
-            
             for button in buttons {
                 
                 if (button.titleLabel?.text?.lowercased() == kidSportName.lowercased()) {
@@ -91,7 +88,7 @@ class BKSportCell: UITableViewCell {
                 
                 continue
             }
-            
+
         }
         
     }
@@ -109,13 +106,12 @@ extension BKSportCell {
                 //here making the sport selected
                 let sportLevelVC = UIStoryboard(name: "BKProfile", bundle: nil).instantiateViewController(withIdentifier: "BKSportLevelVC") as! BKSportLevelVC
                 sportLevelVC.delegate = self
-                sportLevelVC.sportName = btn.titleLabel?.text ?? "Unknown Sport"
+                self.sportName = btn.titleLabel?.text ?? "Unknown Sport"
                 navigationVC?.pushViewController(sportLevelVC, animated: true)
             
         } else {
             
             //here removing it if this is already selected
-            
             let buttonLabel = btn.titleLabel!.text?.lowercased()
             
             for i in 0..<totalSports.count {
@@ -128,6 +124,7 @@ extension BKSportCell {
                     print("a sport deleted")
                     break
                 }
+                
             }
             
             btn.tag = BKSportButtonState.normal.rawValue
@@ -136,22 +133,27 @@ extension BKSportCell {
             btn.backgroundColor = BKAlternativeColor
             btn.setTitleColor(UIColor.white, for: .normal)
         }
-        
+
     }
 
 }
 
 extension BKSportCell: BKSportLevelVCDelegate {
     
-    func sportLevel(_ vc: BKSportLevelVC, didChooseSport sport: BKSport?) {
-        let sportName = vc.sportName
-        
+    func sportLevel(_ vc: BKSportLevelVC, skillLevel: String) {
+        //let sportName = vc.sportName
+
         let btn = buttons.filter { (btn) -> Bool in
-            return btn.titleLabel!.text! == sportName
+            return btn.titleLabel!.text! == self.sportName
         }.first
-        if let sport = sport {
+        if let selectedSportName = self.sportName {
             print("a sport added")
-            totalSports.append(sport)
+            var sportDict = [String: String]()
+            sportDict["sportName"] = selectedSportName
+            sportDict["skillLevel"] = skillLevel
+            
+            let newSport = BKSport(dict: sportDict)
+            totalSports.append(newSport)
             setSportSelected(btn: btn)
             /*
             btn?.tag = BKSportButtonState.selected.rawValue
@@ -174,6 +176,7 @@ extension BKSportCell: BKSportLevelVCDelegate {
         btn?.backgroundColor = UIColor.white
         btn?.setTitleColor(BKAlternativeColor, for: .normal)
     }
+
 }
 
 

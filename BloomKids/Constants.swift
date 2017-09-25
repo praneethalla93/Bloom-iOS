@@ -53,6 +53,7 @@ let BKPlaceAutocompleteCountry: String? = "US"
 let BKPhotoHeaderCellID = "BKPhotoHeaderCellID"
 let BKSchoolSearchCellID = "BKSchoolSearchCellID"
 let BKSimpleCellID = "BKSimpleCellID"
+let BKSimpleSelectCellID = "BKSimpleSelectCellID"
 let BKGenderCellID = "BKGenderCellID"
 let BKSportCellID = "BKSportCellID"
 let BKAddKidCellID = "BKAddKidCellID"
@@ -64,6 +65,7 @@ let BKEventDoubleActionCellID = "BKEventDoubleActionCellID"
 let BKStartDateCellID =  "BKStartDateCellID"
 let BKEndDateCellID =  "BKEndDateCellID"
 let BKLocationCellID =  "BKLocationCellID"
+let BKEventDatePickerCellID = "BKEventDatePickerCellID"
 let BKEventSportCellID = "BKEventSportCellID"
 let BKEventSportSelectCellID = "BKEventSportSelectCellID"
 let BKScheduleButtonCellID = "BKScheduleButtonCellID"
@@ -93,7 +95,6 @@ let BKProfileSummaryHeaderCellID = "BKProfileSummaryHeaderCellID"
 //Model data
 //let BKBloomSports = ["All", "Tennis", "Chess", "Basketball", "Baseball", "Cricket", "Soccer" ]
 let BKBloomSports = [BKAllSport, BKTennisSport, BKChessSport, BKBasketballSport, BKBaseballSport, BKCricketSport, BKSoccerSport]
-var BKSportLevels = ["Rookie", "Shining Star", "Rock Star"]
 
 let BKAllSport = "All"
 let BKTennisSport = "Tennis"
@@ -103,8 +104,23 @@ let BKBaseballSport = "Baseball"
 let BKCricketSport = "Cricket"
 let BKSoccerSport = "Soccer"
 
-let BKSportImageDict = [BKTennisSport: #imageLiteral(resourceName: "tennis-icon"), BKChessSport: #imageLiteral(resourceName: "chess-icon"), BKBasketballSport: #imageLiteral(resourceName: "basketball-icon"), BKBaseballSport: #imageLiteral(resourceName: "baseball-icon"), BKCricketSport: #imageLiteral(resourceName: "cricket-icon"), BKSoccerSport: #imageLiteral(resourceName: "soccer-icon")]
 
+var BKSportLevels = ["Rookie", "Shining Star", "Rock Star"]
+
+let BKGradeLevels = [BKPreK, BKKG, BK1stGrader, BK2ndGrader, BK3rdGrader, BK4thGrader, BK5thGrader, BK6thGrader, BK7thGrader, BK8thGrader]
+
+let BKPreK = "Pre-K"
+let BKKG = "KG"
+let BK1stGrader = "1st Grader"
+let BK2ndGrader = "2nd Grader"
+let BK3rdGrader = "3rd Grader"
+let BK4thGrader = "4th Grader"
+let BK5thGrader = "5th Grader"
+let BK6thGrader = "6th Grader"
+let BK7thGrader = "7th Grader"
+let BK8thGrader = "8th Grader"
+
+let BKSportImageDict = [BKTennisSport: #imageLiteral(resourceName: "tennis-icon"), BKChessSport: #imageLiteral(resourceName: "chess-icon"), BKBasketballSport: #imageLiteral(resourceName: "basketball-icon"), BKBaseballSport: #imageLiteral(resourceName: "baseball-icon"), BKCricketSport: #imageLiteral(resourceName: "cricket-icon"), BKSoccerSport: #imageLiteral(resourceName: "soccer-icon")]
 
 //user messages
 let BKNoKidsRegistered = "No kids registered. Add your kid to get started."

@@ -12,10 +12,10 @@ class BKSimpleCell: UITableViewCell {
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var textField: UITextField!
     
+    
     var didChangeText: ((_ text: String) -> Void)?
     
     override func awakeFromNib() {
-       
         super.awakeFromNib()
         textField.addTarget(self, action: #selector(labelTextDidChange(_:)), for: .allEditingEvents)
     }

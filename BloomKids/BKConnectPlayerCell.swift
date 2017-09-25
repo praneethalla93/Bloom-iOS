@@ -11,8 +11,7 @@ import UIKit
 class BKConnectPlayerCell: UITableViewCell {
     
     //@IBOutlet weak var schoolNameField: UITextField!
-    
-    
+
     @IBOutlet weak var imgPlayer: UIImageView!
     @IBOutlet weak var lblPlayerName: UILabel!
     @IBOutlet weak var imgSportIcon1: UIImageView!

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="hnm-Xp-XQY">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="hnm-Xp-XQY">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -36,59 +36,59 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Player Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LMK-cV-IJq">
-                                                    <rect key="frame" x="118" y="110" width="119" height="20.5"/>
+                                                    <rect key="frame" x="120" y="110" width="115" height="25.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1st Grade, Coyote Creek Elementary" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AKp-LQ-MIl" userLabel="Lbl School Name">
-                                                    <rect key="frame" x="46.5" y="140.5" width="262" height="19.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <stackView opaque="NO" contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="uQE-dy-GN5" userLabel="SportsStackView">
-                                                    <rect key="frame" x="17.5" y="170" width="320" height="20"/>
+                                                    <rect key="frame" x="18" y="145.5" width="319.5" height="20"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Favorite Sport:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Za9-hy-xeP" userLabel="Lbl Plays">
-                                                            <rect key="frame" x="0.0" y="0.0" width="112.5" height="20"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="112" height="20"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="48" verticalCompressionResistancePriority="48" image="chess-icon" translatesAutoresizingMaskIntoConstraints="NO" id="kXc-Uv-8SX">
-                                                            <rect key="frame" x="112.5" y="0.0" width="20" height="20"/>
+                                                            <rect key="frame" x="112" y="0.0" width="20" height="20"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="kXc-Uv-8SX" secondAttribute="height" multiplier="1:1" id="O25-dD-BaD"/>
                                                                 <constraint firstAttribute="height" constant="20" id="X8M-Wx-TDQ"/>
                                                             </constraints>
                                                         </imageView>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="48" verticalCompressionResistancePriority="48" image="basketball-icon" translatesAutoresizingMaskIntoConstraints="NO" id="kO5-kb-gf7">
-                                                            <rect key="frame" x="132.5" y="0.0" width="32" height="20"/>
+                                                            <rect key="frame" x="132" y="0.0" width="32" height="20"/>
                                                         </imageView>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="48" verticalCompressionResistancePriority="48" image="tennis-icon" translatesAutoresizingMaskIntoConstraints="NO" id="hz4-ry-l76">
-                                                            <rect key="frame" x="164.5" y="0.0" width="30" height="20"/>
+                                                            <rect key="frame" x="164" y="0.0" width="30" height="20"/>
                                                         </imageView>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="48" verticalCompressionResistancePriority="48" image="baseball-icon" translatesAutoresizingMaskIntoConstraints="NO" id="HqA-Rw-FAa">
-                                                            <rect key="frame" x="194.5" y="0.0" width="30" height="20"/>
+                                                            <rect key="frame" x="194" y="0.0" width="30" height="20"/>
                                                         </imageView>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="48" verticalCompressionResistancePriority="48" image="soccer-icon" translatesAutoresizingMaskIntoConstraints="NO" id="ykj-aD-X8R">
-                                                            <rect key="frame" x="224.5" y="0.0" width="31" height="20"/>
+                                                            <rect key="frame" x="224" y="0.0" width="31" height="20"/>
                                                         </imageView>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="48" image="cricket-icon" translatesAutoresizingMaskIntoConstraints="NO" id="T5m-k0-vis">
-                                                            <rect key="frame" x="255.5" y="0.0" width="29" height="20"/>
+                                                            <rect key="frame" x="255" y="0.0" width="29" height="20"/>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="        " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4u4-Ln-Lv1" userLabel="Lbl Plays">
-                                                            <rect key="frame" x="284.5" y="0.0" width="35.5" height="20"/>
+                                                            <rect key="frame" x="284" y="0.0" width="35.5" height="20"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
                                                 </stackView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="125 Friends" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WDj-bh-U1B">
-                                                    <rect key="frame" x="135.5" y="200" width="84.5" height="19.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25 Bloom Friends" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AKp-LQ-MIl" userLabel="Lbl Connections">
+                                                    <rect key="frame" x="121" y="175.5" width="113" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1s Grader @ Coyote Creek Elementary" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WDj-bh-U1B" userLabel="Lbl Friends">
+                                                    <rect key="frame" x="54.5" y="202.5" width="246" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -104,122 +104,15 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="imagePlayerPhoto" destination="Nzq-I2-6eP" id="3ro-o0-c8I"/>
+                                    <outlet property="imgSport1" destination="kXc-Uv-8SX" id="t9j-ja-BQr"/>
+                                    <outlet property="imgSport2" destination="kO5-kb-gf7" id="MbI-S0-uOa"/>
+                                    <outlet property="imgSport3" destination="hz4-ry-l76" id="NIt-EJ-yfP"/>
+                                    <outlet property="imgSport4" destination="HqA-Rw-FAa" id="8P5-5T-e86"/>
+                                    <outlet property="imgSport5" destination="ykj-aD-X8R" id="V2q-oq-8Xl"/>
+                                    <outlet property="imgSport6" destination="T5m-k0-vis" id="FMb-Yi-XYe"/>
                                     <outlet property="lblConnectionCounts" destination="AKp-LQ-MIl" id="r53-Dt-qEY"/>
                                     <outlet property="lblPlayerName" destination="LMK-cV-IJq" id="R14-I4-xXT"/>
-                                </connections>
-                            </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BKConnectPlayerCell" rowHeight="100" id="IKC-QN-ZWF" customClass="BKConnectPlayerCell" customModule="BloomKids" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="268" width="375" height="100"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IKC-QN-ZWF" id="8Nw-1Y-OM2">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo-placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="Tbx-jd-IyT" userLabel="playerImageView">
-                                            <rect key="frame" x="33" y="13" width="60" height="60"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="60" id="TfT-Fp-lfu"/>
-                                                <constraint firstAttribute="height" constant="60" id="kvB-sF-p3G"/>
-                                            </constraints>
-                                        </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Taylor Johnson" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nl9-cv-C1h">
-                                            <rect key="frame" x="108" y="13" width="92" height="16"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coyote Creek, 9" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nf8-vW-xhb">
-                                            <rect key="frame" x="108" y="32" width="227" height="14.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Plays: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PPs-yH-Vrs">
-                                            <rect key="frame" x="108" y="49.5" width="37" height="14.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <stackView opaque="NO" contentMode="scaleAspectFit" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="N03-uD-KOE" userLabel="SportsStackView">
-                                            <rect key="frame" x="148" y="47" width="125" height="20"/>
-                                            <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chess-icon" translatesAutoresizingMaskIntoConstraints="NO" id="Gax-M2-KAC">
-                                                    <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="20" id="2Bb-KY-4bz"/>
-                                                        <constraint firstAttribute="width" constant="20" id="Oyj-P6-bAq"/>
-                                                    </constraints>
-                                                </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="basketball-icon" translatesAutoresizingMaskIntoConstraints="NO" id="VCx-9s-SMa">
-                                                    <rect key="frame" x="21" y="0.0" width="20" height="20"/>
-                                                </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tennis-icon" translatesAutoresizingMaskIntoConstraints="NO" id="kFZ-VT-fIK">
-                                                    <rect key="frame" x="42" y="0.0" width="20" height="20"/>
-                                                </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="baseball-icon" translatesAutoresizingMaskIntoConstraints="NO" id="m7F-4M-t18">
-                                                    <rect key="frame" x="63" y="0.0" width="20" height="20"/>
-                                                </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="soccer-icon" translatesAutoresizingMaskIntoConstraints="NO" id="X8O-3A-cvQ">
-                                                    <rect key="frame" x="84" y="0.0" width="20" height="20"/>
-                                                </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cricket-icon" translatesAutoresizingMaskIntoConstraints="NO" id="1aj-6d-dB9">
-                                                    <rect key="frame" x="105" y="0.0" width="20" height="20"/>
-                                                </imageView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="20" id="x4M-xK-2aC"/>
-                                            </constraints>
-                                        </stackView>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tvF-Te-Dxi">
-                                            <rect key="frame" x="340" y="5" width="30" height="67"/>
-                                            <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="schedule-btn-icon" translatesAutoresizingMaskIntoConstraints="NO" id="VcF-f3-mJJ" userLabel="actionButton">
-                                                    <rect key="frame" x="2" y="21" width="26" height="26"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" secondItem="VcF-f3-mJJ" secondAttribute="height" multiplier="1:1" id="shm-e1-yY1"/>
-                                                    </constraints>
-                                                </imageView>
-                                            </subviews>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <constraints>
-                                                <constraint firstItem="VcF-f3-mJJ" firstAttribute="centerX" secondItem="tvF-Te-Dxi" secondAttribute="centerX" id="5w7-iR-4mg"/>
-                                                <constraint firstItem="VcF-f3-mJJ" firstAttribute="centerY" secondItem="tvF-Te-Dxi" secondAttribute="centerY" id="6Ca-Pg-tNe"/>
-                                                <constraint firstAttribute="width" constant="30" id="8yb-WW-xus"/>
-                                                <constraint firstAttribute="trailing" secondItem="VcF-f3-mJJ" secondAttribute="trailing" constant="2" id="Kdn-LZ-Vim"/>
-                                                <constraint firstItem="VcF-f3-mJJ" firstAttribute="leading" secondItem="tvF-Te-Dxi" secondAttribute="leading" constant="2" id="ma6-Cm-RwR"/>
-                                            </constraints>
-                                        </view>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="bottomMargin" secondItem="Tbx-jd-IyT" secondAttribute="bottom" constant="5" id="8Qn-bw-dwY"/>
-                                        <constraint firstAttribute="bottom" secondItem="tvF-Te-Dxi" secondAttribute="bottom" constant="5" id="9ce-Lb-Gi2"/>
-                                        <constraint firstAttribute="trailing" secondItem="tvF-Te-Dxi" secondAttribute="trailing" constant="5" id="EAt-DJ-c70"/>
-                                        <constraint firstItem="Nl9-cv-C1h" firstAttribute="leading" secondItem="Tbx-jd-IyT" secondAttribute="trailing" constant="15" id="FpG-mB-CZI"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="N03-uD-KOE" secondAttribute="bottom" constant="2" id="HG9-4O-XCB"/>
-                                        <constraint firstItem="PPs-yH-Vrs" firstAttribute="top" secondItem="Nf8-vW-xhb" secondAttribute="bottom" constant="3" id="Hma-Kr-wjL"/>
-                                        <constraint firstItem="Nf8-vW-xhb" firstAttribute="top" secondItem="Nl9-cv-C1h" secondAttribute="bottom" constant="3" id="LXn-r3-PQ8"/>
-                                        <constraint firstItem="Nl9-cv-C1h" firstAttribute="top" secondItem="8Nw-1Y-OM2" secondAttribute="topMargin" constant="5" id="TJA-aI-OEP"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="PPs-yH-Vrs" secondAttribute="bottom" constant="5" id="U6c-8e-J2g"/>
-                                        <constraint firstItem="N03-uD-KOE" firstAttribute="leading" secondItem="PPs-yH-Vrs" secondAttribute="trailing" constant="3" id="aN9-WT-Gi6"/>
-                                        <constraint firstItem="tvF-Te-Dxi" firstAttribute="top" secondItem="8Nw-1Y-OM2" secondAttribute="top" constant="5" id="aRL-c8-J8v"/>
-                                        <constraint firstItem="Nf8-vW-xhb" firstAttribute="leading" secondItem="Tbx-jd-IyT" secondAttribute="trailing" constant="15" id="hIX-5D-Mai"/>
-                                        <constraint firstItem="tvF-Te-Dxi" firstAttribute="leading" secondItem="Nf8-vW-xhb" secondAttribute="trailing" constant="5" id="mIX-z6-JiJ"/>
-                                        <constraint firstItem="PPs-yH-Vrs" firstAttribute="leading" secondItem="Tbx-jd-IyT" secondAttribute="trailing" constant="15" id="qZa-js-k1B"/>
-                                        <constraint firstItem="Tbx-jd-IyT" firstAttribute="leading" secondItem="8Nw-1Y-OM2" secondAttribute="leadingMargin" constant="25" id="rei-gK-53w"/>
-                                        <constraint firstItem="Tbx-jd-IyT" firstAttribute="top" secondItem="8Nw-1Y-OM2" secondAttribute="topMargin" constant="5" id="ufG-u1-4Ly"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="imgConnectActionButtonImage" destination="VcF-f3-mJJ" id="fWt-10-JAd"/>
-                                    <outlet property="imgPlayer" destination="Tbx-jd-IyT" id="aKK-hZ-KZj"/>
-                                    <outlet property="imgSportIcon1" destination="Gax-M2-KAC" id="eaU-R9-GnC"/>
-                                    <outlet property="imgSportIcon2" destination="VCx-9s-SMa" id="UDu-qf-DGO"/>
-                                    <outlet property="imgSportIcon3" destination="kFZ-VT-fIK" id="PMJ-yi-ivg"/>
-                                    <outlet property="imgSportIcon4" destination="m7F-4M-t18" id="UDW-sg-lJH"/>
-                                    <outlet property="imgSportIcon5" destination="X8O-3A-cvQ" id="ohk-hs-DJK"/>
-                                    <outlet property="imgSportIcon6" destination="1aj-6d-dB9" id="zJP-ux-vfn"/>
-                                    <outlet property="lblPlayerName" destination="Nl9-cv-C1h" id="9dx-mo-wsG"/>
-                                    <outlet property="lblPlayerSchoolAge" destination="Nf8-vW-xhb" id="pd3-o1-pvw"/>
+                                    <outlet property="lblSchoolName" destination="WDj-bh-U1B" id="8hZ-V9-hO1"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -231,7 +124,7 @@
                     <navigationItem key="navigationItem" title="My Friends" id="Nnc-Xj-KPR">
                         <barButtonItem key="backBarButtonItem" id="2Ge-1P-ftp"/>
                         <barButtonItem key="rightBarButtonItem" image="addkid-nav-icon" id="B7O-3X-afx">
-                            <color key="tintColor" red="0.44705882349999998" green="0.79215686269999996" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="1LO-zj-dV3" kind="show" identifier="BKConnectPlayerCellSeque" id="y5f-7c-OBa"/>
                             </connections>
@@ -259,7 +152,7 @@
                     <navigationItem key="navigationItem" title="Connect Kids" id="LAJ-IU-YDf">
                         <barButtonItem key="backBarButtonItem" title="Back" id="kdC-WI-8T2"/>
                         <barButtonItem key="rightBarButtonItem" image="filter-nav-icon" id="m8C-kf-EIx">
-                            <color key="tintColor" red="0.44705882349999998" green="0.79215686269999996" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>
@@ -275,7 +168,7 @@
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="WD4-AF-9ce">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -307,14 +200,14 @@
                                             <rect key="frame" x="10" y="5" width="355" height="59.5"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" text="Start time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E2M-ek-zFp">
-                                                    <rect key="frame" x="0.0" y="0.0" width="166.5" height="59.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="138.5" height="59.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Sep 18, 2017 3:45 AM" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rKG-mo-eMx">
-                                                    <rect key="frame" x="176.5" y="0.0" width="178.5" height="59.5"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <rect key="frame" x="148.5" y="0.0" width="206.5" height="59.5"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -329,24 +222,27 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="lblStart" destination="E2M-ek-zFp" id="huX-D8-47e"/>
+                                    <outlet property="lblSelectedStartDate" destination="rKG-mo-eMx" id="inE-yB-08U"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BKEventDatePickerCellID" rowHeight="218" id="9Ff-xH-fIO" userLabel="EventDatePicker Cell" customClass="BKEventSportCell" customModule="BloomKids" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="98" width="375" height="218"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BKEventDatePickerCellID" rowHeight="220" id="9Ff-xH-fIO" userLabel="EventDatePicker Cell" customClass="BKEventDatePickerCell" customModule="BloomKids" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="98" width="375" height="220"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9Ff-xH-fIO" id="PHS-qv-wHN">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="218"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="220"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Hyx-zh-yjz">
-                                            <rect key="frame" x="8" y="8" width="359" height="202"/>
+                                            <rect key="frame" x="8" y="8" width="359" height="204"/>
                                             <subviews>
-                                                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="8BQ-JW-VvA">
-                                                    <rect key="frame" x="0.0" y="0.0" width="359" height="202"/>
+                                                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="30" translatesAutoresizingMaskIntoConstraints="NO" id="8BQ-JW-VvA">
+                                                    <rect key="frame" x="0.0" y="0.0" width="359" height="204"/>
                                                     <date key="date" timeIntervalSinceReferenceDate="527568611.485964">
                                                         <!--2017-09-20 02:50:11 +0000-->
                                                     </date>
+                                                    <connections>
+                                                        <action selector="didDateChange:" destination="9Ff-xH-fIO" eventType="valueChanged" id="yjl-bK-k5z"/>
+                                                    </connections>
                                                 </datePicker>
                                             </subviews>
                                         </stackView>
@@ -358,9 +254,12 @@
                                         <constraint firstItem="Hyx-zh-yjz" firstAttribute="leading" secondItem="PHS-qv-wHN" secondAttribute="leading" constant="8" id="wBz-in-4mQ"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="datePickerEventStart" destination="8BQ-JW-VvA" id="fVe-JI-Cg9"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BKLocationCellID" rowHeight="70" id="9hJ-x6-A9V" userLabel="Location Cell" customClass="BKEventLocationCell" customModule="BloomKids" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="316" width="375" height="70"/>
+                                <rect key="frame" x="0.0" y="318" width="375" height="70"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9hJ-x6-A9V" id="bxR-dx-t58">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
@@ -370,14 +269,14 @@
                                             <rect key="frame" x="10" y="8" width="355" height="54"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hh8-CV-BHO">
-                                                    <rect key="frame" x="0.0" y="0.0" width="219" height="54"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="199" height="54"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Location" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l9P-Sg-GLe" userLabel="Lbl Selected Location">
-                                                    <rect key="frame" x="229" y="0.0" width="126" height="54"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <rect key="frame" x="209" y="0.0" width="146" height="54"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -392,11 +291,11 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="lblLocation" destination="l9P-Sg-GLe" id="4U1-k6-K7c"/>
+                                    <outlet property="lblLocation" destination="l9P-Sg-GLe" id="hM2-BM-Axu"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BKEventSportCellID" rowHeight="70" id="Me7-nC-gjq" userLabel="Event Sport Cell" customClass="BKEventSportCell" customModule="BloomKids" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="386" width="375" height="70"/>
+                                <rect key="frame" x="0.0" y="388" width="375" height="70"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Me7-nC-gjq" id="UIR-R9-j1c">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
@@ -406,14 +305,14 @@
                                             <rect key="frame" x="8" y="8" width="359" height="54"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Sport" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PBI-Ti-Wfi" userLabel="Lbl Sport">
-                                                    <rect key="frame" x="0.0" y="0.0" width="247.5" height="54"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="232.5" height="54"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Sport" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Z2-hi-cqg" userLabel="Lbl Selected Sport">
-                                                    <rect key="frame" x="257.5" y="0.0" width="101.5" height="54"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <rect key="frame" x="242.5" y="0.0" width="116.5" height="54"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -428,7 +327,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="lblSport" destination="6Z2-hi-cqg" id="X7c-zr-RX1"/>
+                                    <outlet property="lblSport" destination="6Z2-hi-cqg" id="2Fx-E4-69m"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -440,7 +339,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cRk-i0-Jzi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4132" y="442"/>
+            <point key="canvasLocation" x="3368" y="597"/>
         </scene>
         <!--Event Sport SelectVC-->
         <scene sceneID="44D-Ts-0i1">
@@ -468,25 +367,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MhD-Do-fBD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4892" y="441"/>
-        </scene>
-        <!--Select Event Date-->
-        <scene sceneID="oED-Nf-m8N">
-            <objects>
-                <viewController storyboardIdentifier="DatePicker" title="Select Event Date" id="BiG-32-1ra" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Doc-HO-ISv"/>
-                        <viewControllerLayoutGuide type="bottom" id="O1R-Kh-8jL"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="gc7-xB-MOE">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2zg-jS-qhp" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4838" y="1117"/>
+            <point key="canvasLocation" x="4058" y="597"/>
         </scene>
     </scenes>
     <resources>
@@ -498,7 +379,6 @@
         <image name="filter-nav-icon" width="21" height="21"/>
         <image name="myfriends-tabbar-icon" width="32" height="32"/>
         <image name="photo-placeholder" width="139" height="139"/>
-        <image name="schedule-btn-icon" width="43" height="43"/>
         <image name="soccer-icon" width="31" height="31"/>
         <image name="tennis-icon" width="30" height="30"/>
     </resources>

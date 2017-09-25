@@ -24,14 +24,12 @@ class BKAddKidVC: UITableViewController {
     fileprivate var genderStr: String?
     fileprivate var name: String?
     fileprivate var age: String?
+    fileprivate var grade: String?
     //fileprivate var schoolPlace: BKPlaceModel?
     fileprivate var schoolPlace: String?
     fileprivate weak var sportCell: BKSportCell?
     fileprivate var newKid: BKKidModel?
-    
-    
     fileprivate var searchNavVC: BKPlaceSearchNavVC?
-    
     let myGroup = DispatchGroup()
     
     override func viewDidLoad() {
@@ -40,8 +38,13 @@ class BKAddKidVC: UITableViewController {
         addChildViewController(photoHeaderVC)
         photoHeaderVC.didMove(toParentViewController: self)
         
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cellId")
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cellId")
+        //self.tableView.register(BKSimpleSelectCell.self, forCellReuseIdentifier: BKSimpleSelectCellID)
         
+        let simpleSelectCellNib = UINib(nibName: "\(BKSimpleSelectCell.self)", bundle: nil)
+        self.tableView.register(simpleSelectCellNib, forCellReuseIdentifier: BKSimpleSelectCellID)
+        
+        //self.tableView.register(BKSimpleCell.self, forCellReuseIdentifier: BKSimpleCellID)
         let leftBtn = UIButton(type: .custom)
         leftBtn.setTitle("Cancel", for: .normal)
         leftBtn.setTitleColor(UIColor.white, for: .normal)
@@ -72,7 +75,6 @@ class BKAddKidVC: UITableViewController {
             if ( mode == "EDIT") {
                 loadKidData()
             }
-   
         }
 
         myGroup.enter()
@@ -111,6 +113,7 @@ class BKAddKidVC: UITableViewController {
         self.genderStr = currentEditKid?.gender
         self.name = currentEditKid?.kidName
         self.age = currentEditKid?.age
+        self.grade = currentEditKid?.grade
         self.schoolPlace = currentEditKid?.school
         self.kidId =  currentEditKid?.id
         //self.tableView.reloadData()
@@ -135,7 +138,8 @@ class BKAddKidVC: UITableViewController {
         let name = name,
         let schoolPlace = schoolPlace,
         let sports = sportCell?.totalSports,
-        let ageSr = age else {
+        //let ageStr = age,
+        let gradeStr = grade else {
             return
         }
         
@@ -144,7 +148,7 @@ class BKAddKidVC: UITableViewController {
             return
         }
         
-        let kidModel = BKKidModel(kidName: name, gender: gender, school: schoolPlace, age: ageSr, sports: sports, id: self.kidId)
+        let kidModel = BKKidModel(kidName: name, gender: gender, school: schoolPlace, age: gradeStr, sports: sports, id: self.kidId)
         SVProgressHUD.show()
         
         if ( self.mode == "EDIT") {
@@ -164,6 +168,7 @@ class BKAddKidVC: UITableViewController {
                 }
 
             }
+
         } else {
             
             BKNetowrkTool.shared.addKid(kidModel: kidModel) { (success, kidid) in
@@ -179,7 +184,7 @@ class BKAddKidVC: UITableViewController {
                     self.newKid = nil
                     print ("failed addking kid")
                 }
-                
+
             }
             
         }
@@ -207,7 +212,7 @@ extension BKAddKidVC {
         case 2:
             return handleGender(tableView, indexPath)
         case 3:
-            return handleAge(tableView, indexPath)
+            return handleGrade(tableView, indexPath)
         case 4:
             return handleSchool(tableView, indexPath)
         case 5:
@@ -238,7 +243,25 @@ extension BKAddKidVC {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         // for school search
-        if indexPath.section == 4 {
+        if indexPath.section == 3 {
+            let listVC = BKListSelectVC()
+            listVC.delegate = self
+            listVC.listChoices = BKGradeLevels
+            self.navigationController?.pushViewController(listVC, animated: true)
+            /*
+             self.searchNavVC = BKPlaceSearchNavVC()
+             searchNavVC?.placeDelegate = self
+             //vc.resultType = .city
+             searchNavVC?.resultType = .noFilter
+             searchNavVC?.placeholder = "Enter your school name?"
+             searchNavVC?.searchVC =  BKPlaceAutocompleteVC()
+             searchNavVC?.pushViewController(searchNavVC!.searchVC, animated: false)
+             */
+            
+            //let window = UIApplication.shared.keyWindow
+            //window?.rootViewController = searchNavVC
+        }
+        else if indexPath.section == 4 {
             let searchVC = BKPlaceAutocompleteVC()
             searchVC.delegate = self
             searchVC.resultType = .noFilter
@@ -300,29 +323,33 @@ extension BKAddKidVC {
            let gender = self.genderStr {
             cell.setupGenderBtns(gender: gender)
         }
-        
-        
-        
+
         return cell
     }
     
-    func handleAge(_ tableView: UITableView, _ indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: BKSimpleCellID, for: indexPath) as! BKSimpleCell
+    func handleGrade(_ tableView: UITableView, _ indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: BKSimpleSelectCellID, for: indexPath) as! BKSimpleSelectCell
         
-        cell.label.text = "Age"
-        cell.textField.placeholder = ""
+        cell.lblName.text = "Class"
+        /*
         cell.textField.text = self.age
-        
         cell.didChangeText = {[weak self] (text) in
             self?.age = text
         }
-        
+         */
+        cell.lblSelect.text = (self.grade == nil) ? "Select Grade" : self.grade
+        cell.accessoryType = .disclosureIndicator
         return cell
     }
     
     func handleSchool(_ tableView: UITableView, _ indexPath: IndexPath) -> UITableViewCell{
-        let cell = tableView.dequeueReusableCell(withIdentifier: BKSchoolSearchCellID, for: indexPath) as! BKSchoolSearchCell
-        cell.schoolNameField.text = (self.schoolPlace == nil) ? "" : self.schoolPlace
+        //let cell = tableView.dequeueReusableCell(withIdentifier: BKSchoolSearchCellID, for: indexPath) as! BKSchoolSearchCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: BKSimpleSelectCellID, for: indexPath) as! BKSimpleSelectCell
+        cell.lblName.text = "School"
+      
+        cell.lblSelect.text = (self.schoolPlace == nil) ? "Select School" : self.schoolPlace
+        cell.accessoryType = .disclosureIndicator
+        //cell.schoolNameField.text = (self.schoolPlace == nil) ? "" : self.schoolPlace
         return cell
     }
 
@@ -356,6 +383,33 @@ extension BKAddKidVC: BKPlaceAutocompleteDelegate {
         self.tableView.reloadData()
     }
 }
+
+extension BKAddKidVC: BKListSelectVCDelegate {
+    
+    /*
+    func placeAutocompleteDidCancel(_ vc: BKPlaceAutocompleteVC) {
+        navigationController?.popViewController(animated: true)
+        //self.searchNavVC?.popViewController(animated: true)
+    }
+    
+    
+    func placeAutocomplete(_ vc: BKPlaceAutocompleteVC, didSelectPlace place: BKPlaceModel) {
+        //self.schoolPlace = place
+        self.schoolPlace = place.placeName
+        navigationController?.popViewController(animated: true)
+        //self.searchNavVC?.popViewController(animated: true)
+        self.tableView.reloadData()
+    }
+    */
+
+    func selectedChoice(_ vc: BKListSelectVC, selected: String) {
+        //self.age = selected
+        self.grade = selected
+        navigationController?.popViewController(animated: true)
+        self.tableView.reloadData()
+    }
+}
+
 
 
 

@@ -390,10 +390,9 @@ extension BKEventsVC {
             let upcomingEventsCount = self.upcomingEvents?.count ?? 0
             let pendingEventsCount = self.pendingEvents?.count ?? 0
             let pastEventsCount = self.pastEvents?.count ?? 0
-            cell.lblPlayerName.text = "\(currentKid.kidName) | Age: \(String(describing: currentKid.age))"
+            cell.lblPlayerName.text = currentKid.kidName
             cell.lblSchoolAge.text = currentKid.school
-            cell.lblConnectionCounts.text = "Play Dates: \(String(describing: pendingEventsCount)) Pending | \(String(describing: upcomingEventsCount)) Upcoming | \(String(describing: pastEventsCount)) Past |"
-            
+            cell.lblConnectionCounts.text = "Play Dates: \(String(describing: pendingEventsCount)) Pending | \(String(describing: upcomingEventsCount)) Upcoming"
         }
         else {
             cell.lblPlayerName.text = ""

@@ -25,11 +25,11 @@ class BKEmailSignupVC: UIViewController {
     weak var currentGender: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-        inputTextFieldsHeightConstraint.constant = BKInputTextFieldHeight
+        //inputTextFieldsHeightConstraint.constant = BKInputTextFieldHeight
         setupGenderBtns()
         
         if signUpTestFlag {
-            emailField.text = "raj.sathyaseelan@gmail.com"
+            emailField.text = "jill.johnson2@gmail.com"
             passwordField.text = "Bloom123"
             comfirmPassword.text = "Bloom123"
             nameField.text = "Jimmy Buck"
@@ -135,16 +135,16 @@ extension BKEmailSignupVC {
         self.myGroup.enter()
         
         SVProgressHUD.show()
+        
         BKNetowrkTool.shared.signup(emailText, passwordText, nameText, phoneStr, relation: genderStr) { (success, statusCode) in
             
-            self.myGroup.leave()
+            
             
             if success {
                 SVProgressHUD.showSuccess(withStatus: "Welcome!")
                 BKNetowrkTool.shared.currentEmail = emailText
-                BKAuthTool.shared.switchToCitySearch()
-                
-                
+                self.myGroup.leave()
+         
             } else {
                 
                 if (statusCode == 201) {
@@ -152,16 +152,28 @@ extension BKEmailSignupVC {
                 } else {
                     SVProgressHUD.showError(withStatus: "Please check the infomation you just entered")
                 }
-
+                self.myGroup.leave()
             }
             
             //after successfull loading data
             self.myGroup.notify(queue: .main) {
                 print("Finished all requests.")
+         
+                 if BKNetowrkTool.shared.currentEmail != nil {
+                     BKAuthTool.shared.switchToCitySearch()
+                 }
                 //var currentKid = BKNetowrkTool.shared.myCurrentKid
             }
+            
         }
-        
+ 
+ 
+         /*
+        //TODO temporary diversion
+        SVProgressHUD.showSuccess(withStatus: "Welcome!")
+        BKNetowrkTool.shared.currentEmail = emailText
+        BKAuthTool.shared.switchToCitySearch()
+         */
     }
 }
 

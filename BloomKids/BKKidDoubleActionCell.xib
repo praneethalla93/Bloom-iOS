@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -46,13 +47,13 @@
                                         <rect key="frame" x="0.0" y="40" width="224" height="20"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="255" text="Plays: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CnD-d9-3Ka">
-                                                <rect key="frame" x="0.0" y="0.0" width="42" height="20"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="0.0" height="20"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="left" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="OBo-mJ-SHQ" userLabel="SportsStackView">
-                                                <rect key="frame" x="42" y="0.0" width="141.5" height="20"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="141.5" height="20"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chess-icon" translatesAutoresizingMaskIntoConstraints="NO" id="wkI-bc-Jwa">
                                                         <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
@@ -82,7 +83,7 @@
                                                 </constraints>
                                             </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sRq-E3-Dq7" userLabel="Lbl Dummy">
-                                                <rect key="frame" x="183.5" y="0.0" width="40.5" height="20"/>
+                                                <rect key="frame" x="141.5" y="0.0" width="82.5" height="20"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>

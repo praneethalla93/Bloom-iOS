@@ -9,20 +9,17 @@
 import UIKit
 
 protocol BKSportLevelVCDelegate: class {
-    func sportLevel(_ vc: BKSportLevelVC, didChooseSport sport: BKSport?)
+    func sportLevel(_ vc: BKSportLevelVC, skillLevel: String)
 }
 
 
 class BKSportLevelVC: UITableViewController {
     weak var delegate: BKSportLevelVCDelegate?
     
-    var sportName: String = "Chess"
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = sportName
+        self.title = "Select Experience"
     }
-
 
     // MARK: - Table view data source
 
@@ -58,19 +55,8 @@ class BKSportLevelVC: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath) as? BKSportLevelCell else {return}
-        /*
-         var sportName: String
-         var skillLevel: String
-         */
-        let dict = ["sportName": self.sportName,
-                    "skillLevel": cell.sportLabel.text!]
-        let sportModel = BKSport(dict: dict)
-        delegate?.sportLevel(self, didChooseSport: sportModel)
+        delegate?.sportLevel(self, skillLevel: cell.sportLabel.text!)
     }
-    
-    
-    
+
 }
-
-
 
