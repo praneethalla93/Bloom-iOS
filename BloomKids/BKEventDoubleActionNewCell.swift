@@ -17,11 +17,12 @@ class BKEventDoubleActionNewCell: UITableViewCell {
     
     @IBOutlet weak var lblEventDateTime: UILabel!
     @IBOutlet weak var lblEventLocation: UILabel!
+    @IBOutlet weak var lblEventAddress: UILabel!
     
+    @IBOutlet weak var lblDisplayAction: UILabel!
     @IBOutlet weak var btnPlayerAction1: UIButton!
     @IBOutlet weak var btnPlayerAction2: UIButton!
     @IBOutlet weak var lblActionStatus: UILabel!
-    @IBOutlet weak var lblEventAddress: UILabel!
     
     var tapAction1: ((UITableViewCell) -> Void)?
     var tapAction2: ((UITableViewCell) -> Void)?
@@ -41,7 +42,6 @@ class BKEventDoubleActionNewCell: UITableViewCell {
                 self.lblActionStatus.isHidden = activity.actionLabelHidden
                 self.lblActionStatus.text = activity.connectionStateDescription
                 self.imgSportIcon.image = BKSportImageDict[activity.sportName]
-                
                 
                 /*
                 if activity.connectionState == BKEventConnectionSate.accepted.rawValue {
@@ -105,6 +105,16 @@ class BKEventDoubleActionNewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        btnPlayerAction1.backgroundColor = .clear
+        btnPlayerAction1.layer.cornerRadius = 10
+        btnPlayerAction1.layer.borderWidth = 3
+        btnPlayerAction1.layer.borderColor = BKGlobalTintColor.cgColor
+        
+        btnPlayerAction2.backgroundColor = .clear
+        btnPlayerAction2.layer.cornerRadius = 10
+        btnPlayerAction2.layer.borderWidth = 3
+        btnPlayerAction2.layer.borderColor = BKGlobalTintColor.cgColor
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -27,6 +27,10 @@ class BKEventsVC: UITableViewController {
         
         let eventDoubleActionCellNib = UINib(nibName: "\(BKEventDoubleActionCell.self)", bundle: nil)
         self.tableView.register(eventDoubleActionCellNib, forCellReuseIdentifier: BKEventDoubleActionCellID)
+        
+        let eventDoubleActionNewCellNib = UINib(nibName: "\(BKEventDoubleActionNewCell.self)", bundle: nil)
+        self.tableView.register(eventDoubleActionNewCellNib, forCellReuseIdentifier: BKEventDoubleActionNewCellID)
+        
         //initialLoadAndReload()
     }
     
@@ -421,7 +425,10 @@ extension BKEventsVC {
         }
         
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: BKEventDoubleActionCellID, for: indexPath) as! BKEventDoubleActionCell
+        //let cell = tableView.dequeueReusableCell(withIdentifier: BKEventDoubleActionCellID, for: indexPath) as! BKEventDoubleActionCell
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: BKEventDoubleActionNewCellID, for: indexPath) as! BKEventDoubleActionNewCell
+        
         
         if let activity = events?[indexPath.row] {
             cell.activitySchedule = activity
@@ -437,9 +444,11 @@ extension BKEventsVC {
             
         }
         
+        /*
         if (section == 1 || section == 2) {
             cell.accessoryType = .disclosureIndicator
         }
+        */
 
         return cell
     }

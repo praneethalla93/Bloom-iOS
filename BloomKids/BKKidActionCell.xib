@@ -50,44 +50,44 @@
                                             <stackView opaque="NO" contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="OBo-mJ-SHQ" userLabel="SportsStackView">
                                                 <rect key="frame" x="0.0" y="69" width="314" height="28"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Plays: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CnD-d9-3Ka">
-                                                        <rect key="frame" x="0.0" y="0.0" width="39.5" height="28"/>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="favorites-icon" translatesAutoresizingMaskIntoConstraints="NO" id="3Xp-yH-oy9">
+                                                        <rect key="frame" x="0.0" y="0.0" width="30" height="28"/>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="   " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CnD-d9-3Ka" userLabel="Lbl Dummy">
+                                                        <rect key="frame" x="30" y="0.0" width="11" height="28"/>
                                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="40" id="yHp-0d-6Pe"/>
-                                                        </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <stackView opaque="NO" contentMode="scaleAspectFit" distribution="fillEqually" alignment="firstBaseline" translatesAutoresizingMaskIntoConstraints="NO" id="ZZL-Q2-nxU">
-                                                        <rect key="frame" x="39.5" y="0.0" width="168" height="28"/>
+                                                        <rect key="frame" x="41" y="0.0" width="165" height="28"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="chess-icon" translatesAutoresizingMaskIntoConstraints="NO" id="wkI-bc-Jwa">
-                                                                <rect key="frame" x="0.0" y="0.0" width="28" height="28"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="27.5" height="28"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="wkI-bc-Jwa" secondAttribute="height" multiplier="1:1" id="Zv5-cd-y6A"/>
                                                                 </constraints>
                                                             </imageView>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="basketball-icon" translatesAutoresizingMaskIntoConstraints="NO" id="1iF-G6-epQ">
-                                                                <rect key="frame" x="28" y="0.0" width="28" height="28"/>
+                                                                <rect key="frame" x="27.5" y="0.0" width="27.5" height="28"/>
                                                             </imageView>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="tennis-icon" translatesAutoresizingMaskIntoConstraints="NO" id="Owd-Ap-iSg" userLabel="Img Tennis Icon">
-                                                                <rect key="frame" x="56" y="0.0" width="28" height="28"/>
+                                                                <rect key="frame" x="55" y="0.0" width="27.5" height="28"/>
                                                             </imageView>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="baseball-icon" translatesAutoresizingMaskIntoConstraints="NO" id="wCy-Yz-zej">
-                                                                <rect key="frame" x="84" y="0.0" width="28" height="28"/>
+                                                                <rect key="frame" x="82.5" y="0.0" width="27.5" height="28"/>
                                                             </imageView>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="soccer-icon" translatesAutoresizingMaskIntoConstraints="NO" id="MkE-uO-sfX">
-                                                                <rect key="frame" x="112" y="0.0" width="28" height="28"/>
+                                                                <rect key="frame" x="110" y="0.0" width="27.5" height="28"/>
                                                             </imageView>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="cricket-icon" translatesAutoresizingMaskIntoConstraints="NO" id="KHH-tX-FDq">
-                                                                <rect key="frame" x="140" y="0.0" width="28" height="27"/>
+                                                                <rect key="frame" x="137.5" y="0.0" width="27.5" height="27"/>
                                                             </imageView>
                                                         </subviews>
                                                     </stackView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" text="    " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FGd-54-f0N" userLabel="Lbl Dummy">
-                                                        <rect key="frame" x="207.5" y="0.0" width="106.5" height="28"/>
+                                                        <rect key="frame" x="206" y="0.0" width="108" height="28"/>
                                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -153,6 +153,7 @@
         <image name="basketball-icon" width="32" height="32"/>
         <image name="chess-icon" width="25" height="30"/>
         <image name="cricket-icon" width="29" height="27"/>
+        <image name="favorites-icon" width="30" height="27"/>
         <image name="photo-placeholder" width="139" height="139"/>
         <image name="soccer-icon" width="31" height="31"/>
         <image name="tennis-icon" width="30" height="30"/>

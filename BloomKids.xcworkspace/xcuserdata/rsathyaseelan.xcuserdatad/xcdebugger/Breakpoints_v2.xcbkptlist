@@ -90,7 +90,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BloomKids/BKKidModel.swift"
-            timestampString = "528004262.339076"
+            timestampString = "528012921.804539"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "270"
@@ -106,12 +106,12 @@
                   moduleName = "BloomKids"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/rsathyaseelan/Google%20Drive/Business_Opportunity/Bloom/BloomKids/iOS/Bloom-iOS-master/Bloom-iOS/BloomKids/BKKidModel.swift"
-                  timestampString = "528004262.554613"
+                  timestampString = "528012922.250337"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "273"
                   endingLineNumber = "273"
-                  offsetFromSymbolStart = "283">
+                  offsetFromSymbolStart = "176">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -121,7 +121,7 @@
                   moduleName = "BloomKids"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/rsathyaseelan/Google%20Drive/Business_Opportunity/Bloom/BloomKids/iOS/Bloom-iOS-master/Bloom-iOS/BloomKids/BKKidModel.swift"
-                  timestampString = "528004262.557294"
+                  timestampString = "528012922.253455"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "273"

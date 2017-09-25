@@ -12,108 +12,117 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BKKidCellAction" customModule="BloomKids" customModuleProvider="target"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BKEventDoubleActionNewCellID" rowHeight="228" id="j6q-P8-nCo" userLabel="BKEventDoubleActionNewCell" customClass="BKEventDoubleActionNewCell" customModule="BloomKids" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="503" height="251"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BKEventDoubleActionNewCellID" rowHeight="166" id="j6q-P8-nCo" userLabel="BKEventDoubleActionNewCell" customClass="BKEventDoubleActionNewCell" customModule="BloomKids" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="530" height="189"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="j6q-P8-nCo" id="OkW-81-c7z">
-                <rect key="frame" x="0.0" y="0.0" width="503" height="250.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="530" height="188.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="EFO-sc-RLQ">
-                        <rect key="frame" x="5" y="4.5" width="493" height="228"/>
+                        <rect key="frame" x="10" y="8" width="510" height="172.5"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="photo-placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="glw-M7-KpX" userLabel="playerImageView">
-                                <rect key="frame" x="0.0" y="0.0" width="228.5" height="228"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="glw-M7-KpX" secondAttribute="height" multiplier="1:1" id="2r8-AG-IQQ"/>
-                                    <constraint firstAttribute="width" constant="75" id="D7A-Eq-Oyf"/>
-                                </constraints>
-                            </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" axis="vertical" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="9jq-WF-QS5" userLabel="EventInfoStackView">
-                                <rect key="frame" x="233.5" y="0.0" width="259.5" height="228"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="RWk-Ob-Cey">
+                                <rect key="frame" x="0.0" y="0.0" width="172" height="172.5"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="photo-placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="glw-M7-KpX" userLabel="playerImageView">
+                                        <rect key="frame" x="0.0" y="0.0" width="172" height="172.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="glw-M7-KpX" secondAttribute="height" multiplier="1:1" id="2r8-AG-IQQ"/>
+                                            <constraint firstAttribute="width" constant="60" id="F2f-oh-BdX"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="9jq-WF-QS5" userLabel="EventInfoStackView">
+                                <rect key="frame" x="177" y="0.0" width="333" height="172.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Player Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wff-5W-X9g">
-                                        <rect key="frame" x="0.0" y="0.0" width="259.5" height="26"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="333" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Date, Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lfd-5W-sK5" userLabel="Lbl Date Time">
-                                        <rect key="frame" x="0.0" y="31" width="259.5" height="20"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Date, Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lfd-5W-sK5" userLabel="Lbl Date Time">
+                                        <rect key="frame" x="0.0" y="30.5" width="333" height="16"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Event Location" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I2o-Xh-VdS" userLabel="Lbl Event Location">
-                                        <rect key="frame" x="0.0" y="56" width="259.5" height="20.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Event Location" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I2o-Xh-VdS" userLabel="Lbl Event Location">
+                                        <rect key="frame" x="0.0" y="56.5" width="333" height="16"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Event Address" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5iz-f5-hlX" userLabel="Lbl Event Address">
-                                        <rect key="frame" x="0.0" y="81.5" width="259.5" height="20"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Event Address" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5iz-f5-hlX" userLabel="Lbl Event Address">
+                                        <rect key="frame" x="0.0" y="82.5" width="333" height="16"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="3Uq-AQ-nWH">
-                                        <rect key="frame" x="0.0" y="106.5" width="259.5" height="18"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="255" verticalHuggingPriority="255" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="M4h-f4-Fd2" userLabel="EventSportView">
+                                        <rect key="frame" x="0.0" y="108.5" width="333" height="27"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Plays: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nSS-Mb-15L" userLabel="Lbl Plays">
-                                                <rect key="frame" x="0.0" y="0.0" width="0.0" height="18"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="256" verticalHuggingPriority="256" image="chess-icon" translatesAutoresizingMaskIntoConstraints="NO" id="wkI-bc-Jwa">
-                                                <rect key="frame" x="5" y="0.0" width="0.0" height="18"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="255" verticalHuggingPriority="255" image="favorites-icon" translatesAutoresizingMaskIntoConstraints="NO" id="U2Y-vU-8OP">
+                                                <rect key="frame" x="0.0" y="0.0" width="27" height="27"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="U2Y-vU-8OP" secondAttribute="height" multiplier="1:1" id="O7U-ET-WxR"/>
+                                                </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="245" verticalHuggingPriority="245" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O2N-ie-uwv" userLabel="Lbl Dummy">
-                                                <rect key="frame" x="10" y="0.0" width="249.5" height="18"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="255" verticalHuggingPriority="255" image="chess-icon" translatesAutoresizingMaskIntoConstraints="NO" id="t1f-6Z-PiG">
+                                                <rect key="frame" x="37" y="0.0" width="27" height="27"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="t1f-6Z-PiG" secondAttribute="height" multiplier="1:1" id="bNl-KR-qAL"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CIU-uf-CEd" userLabel="lblDummy">
+                                                <rect key="frame" x="74" y="0.0" width="259" height="27"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleAspectFill" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="M4h-f4-Fd2" userLabel="EventActionStackView">
-                                        <rect key="frame" x="0.0" y="129.5" width="259.5" height="98.5"/>
+                                    <stackView opaque="NO" contentMode="scaleAspectFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ROw-lz-0O3" userLabel="EventActionStackView">
+                                        <rect key="frame" x="0.0" y="145.5" width="333" height="27"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8u7-mj-fZO" userLabel="btnPlayerAction1">
-                                                <rect key="frame" x="0.0" y="0.0" width="98" height="98.5"/>
-                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" secondItem="8u7-mj-fZO" secondAttribute="height" multiplier="1:1" id="5P1-oh-2Da"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                <state key="normal" image="accept-btn-icon">
-                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="btnPlayerctionButton1Tapped:" destination="j6q-P8-nCo" eventType="touchUpInside" id="hLp-sg-SkJ"/>
-                                                </connections>
-                                            </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Accepted" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ziR-kl-Obm" userLabel="lblActionStatus">
-                                                <rect key="frame" x="103" y="0.0" width="53.5" height="98.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Going?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jph-lb-Kg3" userLabel="lblActionStatus">
+                                                <rect key="frame" x="0.0" y="0.0" width="76" height="27"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
-                                                <color key="textColor" red="0.44705882352941173" green="0.792156862745098" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lfS-jj-E0c" userLabel="btnPlayerAction2">
-                                                <rect key="frame" x="161.5" y="0.0" width="98" height="98.5"/>
+                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XHk-BE-Jfr" userLabel="btnPlayerAction1">
+                                                <rect key="frame" x="86" y="0.0" width="75.5" height="27"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" secondItem="lfS-jj-E0c" secondAttribute="height" multiplier="1:1" id="PqN-Ox-Lep"/>
-                                                </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                <state key="normal" image="decline-btn-icon">
-                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <state key="normal" title="Accept">
+                                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="btnPlayerctionButton2Tapped:" destination="j6q-P8-nCo" eventType="touchUpInside" id="4h9-94-nTj"/>
+                                                    <action selector="btnPlayerctionButton1Tapped:" destination="j6q-P8-nCo" eventType="touchUpInside" id="kQX-g5-FOe"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Completed" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gOB-SI-ikl" userLabel="lblActionStatus">
+                                                <rect key="frame" x="171.5" y="0.0" width="76" height="27"/>
+                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
+                                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wHi-EZ-6u3" userLabel="btnPlayerAction2">
+                                                <rect key="frame" x="257.5" y="0.0" width="75.5" height="27"/>
+                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <state key="normal" title="Decline">
+                                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="btnPlayerctionButton2Tapped:" destination="j6q-P8-nCo" eventType="touchUpInside" id="gRa-VW-vuZ"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -124,30 +133,30 @@
                     </stackView>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="EFO-sc-RLQ" secondAttribute="trailing" constant="5" id="41w-C5-yFJ"/>
-                    <constraint firstItem="EFO-sc-RLQ" firstAttribute="leading" secondItem="OkW-81-c7z" secondAttribute="leading" constant="5" id="Mr5-cJ-fYi"/>
-                    <constraint firstItem="EFO-sc-RLQ" firstAttribute="top" secondItem="OkW-81-c7z" secondAttribute="top" constant="5" id="bOL-M1-m3G"/>
-                    <constraint firstAttribute="bottom" secondItem="EFO-sc-RLQ" secondAttribute="bottom" constant="5" id="eUN-x1-wRa"/>
+                    <constraint firstAttribute="bottom" secondItem="EFO-sc-RLQ" secondAttribute="bottom" constant="8" id="PHg-X0-w4i"/>
+                    <constraint firstItem="EFO-sc-RLQ" firstAttribute="top" secondItem="OkW-81-c7z" secondAttribute="top" constant="8" id="UY7-nh-Hmf"/>
+                    <constraint firstItem="EFO-sc-RLQ" firstAttribute="leading" secondItem="OkW-81-c7z" secondAttribute="leading" constant="10" id="Xch-zL-cwD"/>
+                    <constraint firstAttribute="trailing" secondItem="EFO-sc-RLQ" secondAttribute="trailing" constant="10" id="s0u-bY-z44"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="btnPlayerAction1" destination="8u7-mj-fZO" id="wzt-Pa-pCs"/>
-                <outlet property="btnPlayerAction2" destination="lfS-jj-E0c" id="673-ev-n3l"/>
+                <outlet property="btnPlayerAction1" destination="XHk-BE-Jfr" id="FUL-kn-lM2"/>
+                <outlet property="btnPlayerAction2" destination="wHi-EZ-6u3" id="g38-Ih-fAe"/>
                 <outlet property="imgPlayer" destination="glw-M7-KpX" id="efh-U5-dYh"/>
-                <outlet property="imgSportIcon" destination="wkI-bc-Jwa" id="O6s-cr-e6f"/>
-                <outlet property="lblActionStatus" destination="ziR-kl-Obm" id="Gi6-9B-O6o"/>
+                <outlet property="imgSportIcon" destination="t1f-6Z-PiG" id="CYs-rz-VS6"/>
+                <outlet property="lblActionStatus" destination="gOB-SI-ikl" id="yc6-hm-ugQ"/>
+                <outlet property="lblDisplayAction" destination="jph-lb-Kg3" id="PRT-6b-a76"/>
                 <outlet property="lblEventAddress" destination="5iz-f5-hlX" id="nSB-ut-oZN"/>
                 <outlet property="lblEventDateTime" destination="Lfd-5W-sK5" id="GiP-9x-ipU"/>
                 <outlet property="lblEventLocation" destination="I2o-Xh-VdS" id="1rH-AE-c2T"/>
                 <outlet property="lblPlayerName" destination="wff-5W-X9g" id="2Yb-7f-2M8"/>
             </connections>
-            <point key="canvasLocation" x="53.5" y="199.5"/>
+            <point key="canvasLocation" x="-96" y="173.5"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="accept-btn-icon" width="98" height="99"/>
         <image name="chess-icon" width="25" height="30"/>
-        <image name="decline-btn-icon" width="98" height="99"/>
+        <image name="favorites-icon" width="30" height="27"/>
         <image name="photo-placeholder" width="139" height="139"/>
     </resources>
 </document>

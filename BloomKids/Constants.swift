@@ -19,7 +19,7 @@ let BKInputTextFieldHeight: CGFloat = UIScreen.main.bounds.size.height > 480.0 ?
 
 let BKKidCellHeight: CGFloat = 100.0
 let BKKidActionCellHeight: CGFloat = 150.0
-let BKKidEventActionCellHeight: CGFloat = 180.0
+let BKKidEventActionCellHeight: CGFloat = 200.0
 
 
 let BKNetowrkBaseUrlStr = "http://custom-env.aqrfytx2is.us-east-1.elasticbeanstalk.com"
@@ -61,6 +61,7 @@ let BKKidCellID = "BKKidCellID"
 let BKKidActionCellID = "BKKidActionCellID"
 let BKKidDoubleActionCellID = "BKKidDoubleActionCellID"
 let BKEventDoubleActionCellID = "BKEventDoubleActionCellID"
+let BKEventDoubleActionNewCellID = "BKEventDoubleActionNewCellID"
 
 let BKStartDateCellID =  "BKStartDateCellID"
 let BKEndDateCellID =  "BKEndDateCellID"
