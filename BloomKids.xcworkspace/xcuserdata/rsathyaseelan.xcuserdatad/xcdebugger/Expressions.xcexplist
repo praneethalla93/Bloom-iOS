@@ -43,23 +43,6 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "BKEventSchedulerVC.editingChanged() -&gt; ():BKEventSchedulerVC.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "sportTextField">
-            </PersistentString>
-            <PersistentString
-               value = "sportTextField?.text">
-            </PersistentString>
-            <PersistentString
-               value = "locationTextField?.text">
-            </PersistentString>
-            <PersistentString
-               value = "locationTextField">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
          contextName = "BKEventSchedulerVC.dpShowDateChanged():BKEventSchedulerVC.swift">
          <PersistentStrings>
             <PersistentString
@@ -68,10 +51,38 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "BKEventSchedulerVC.editingChanged() -&gt; ():BKEventSchedulerVC.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "locationTextField">
+            </PersistentString>
+            <PersistentString
+               value = "sportTextField?.text">
+            </PersistentString>
+            <PersistentString
+               value = "locationTextField?.text">
+            </PersistentString>
+            <PersistentString
+               value = "sportTextField">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "BKAddKidVC.handleSports(UITableView, IndexPath) -&gt; UITableViewCell:BKAddKidVC.swift">
       </ContextState>
       <ContextState
          contextName = "BKLoginVC.loginBtnTapped(UIButton) -&gt; ():BKLoginVC.swift">
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in BKEventsVC.sortEvents(events:order:):BKEventsVC.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "object1.convertedDate">
+            </PersistentString>
+            <PersistentString
+               value = "object2.convertedDate">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "BKNetowrkTool.(getKidConnections(kidModel : BKKidModel, completion : (Bool, [BKKidModel]?) -&gt; ()) -&gt; ()).(closure #1):BKNetworkTool.swift">

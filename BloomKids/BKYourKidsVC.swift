@@ -73,7 +73,7 @@ class BKYourKidsVC: UITableViewController {
             
             // Assign the tap action which will be executed when the user taps the UIButton
             cell.tapAction = { [weak self] (cell) in
-                self?.showAlertForRow(row: tableView.indexPath(for: cell)!.row)
+                self?.showAlertForRow(cell: cell, row: tableView.indexPath(for: cell)!.row)
             }
             
         } else {
@@ -133,7 +133,7 @@ class BKYourKidsVC: UITableViewController {
     }
     */
     
-    func showAlertForRow(row: Int) {
+    func showAlertForRow(cell: UITableViewCell, row: Int) {
         
         /*
         if let kid = BKNetowrkTool.shared.myKids?[row] {

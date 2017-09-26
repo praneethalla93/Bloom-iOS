@@ -83,19 +83,19 @@ class BKEventSchedulerVC: UITableViewController {
     @IBAction func schedule(_ sender: UIBarButtonItem) {
         
         
-        
         let currentKid = BKNetowrkTool.shared.myCurrentKid
         var location = ""
         
         if let eventLoc = self.eventLocation {
-            location = "\( eventLoc.placeName) \r\n \(eventLoc.secondary!)"
+            location = "\( eventLoc.placeName) at \(eventLoc.secondary!)"
+            //location = "\( eventLoc.placeName)"
         }
-        
+
         //let eventDate = self.eventDatePicker?.date
         //let eventDate = Date()
         let formatter = DateFormatter()
         // initially set the format based on your datepicker date
-        formatter.dateFormat = "MM/dd/yy"
+        formatter.dateFormat = "MM/dd/yyyy"
         let eventDateStr = formatter.string(from: (datePickerEvent?.date)!)
         
         //then again set the date format whhich type of output you need
@@ -135,8 +135,6 @@ class BKEventSchedulerVC: UITableViewController {
         }
   
     }
-    
-
 
 }
 
@@ -168,9 +166,8 @@ extension BKEventSchedulerVC {
             print("Default row created")
             return cell
         }
-        
+
     }
-    
    
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -292,7 +289,7 @@ extension BKEventSchedulerVC {
         
         // Assign the tap action which will be executed when the user taps the UIButton
         cell.tapAction = { [weak self] (cell) in
-            self?.showAlertForRow(section: 1, row: tableView.indexPath(for: cell)!.row)
+            self?.showAlertForRow(cell: cell, section: 1, row: tableView.indexPath(for: cell)!.row)
         }
         
         //locationTextField = cell.txtEventLocation
@@ -311,7 +308,7 @@ extension BKEventSchedulerVC {
         
         // Assign the tap action which will be executed when the user taps the UIButton
         cell.tapAction = { [weak self] (cell) in
-            self?.showAlertForRow(section: 2, row: tableView.indexPath(for: cell)!.row)
+            self?.showAlertForRow(cell: cell, section: 2, row: tableView.indexPath(for: cell)!.row)
         }
         
         //sportTextField = cell.textSport
@@ -319,7 +316,7 @@ extension BKEventSchedulerVC {
         return cell
     }
     
-    func showAlertForRow(section: Int, row: Int, decision: String="") {
+    func showAlertForRow(cell: UITableViewCell, section: Int, row: Int, decision: String = "") {
         
         if ( section == 1 ) {
             let searchVC = BKPlaceAutocompleteVC()

@@ -238,7 +238,7 @@ extension BKActivityNewVC {
         
     }
     
-    func showAlertForRow( row: Int, decision: String) {
+    func showAlertForRow( cell: UITableViewCell, row: Int, decision: String) {
         //let myKids = BKNetowrkTool.shared.myKids
         if let activityConnection = self.activityConnections?[row] {
             
@@ -271,7 +271,9 @@ extension BKActivityNewVC {
                 //self.sendConnectResponse(row: row, acceptDecision: false)
                 
             }))
-
+            
+            alert.popoverPresentationController?.sourceView = self.view
+            alert.popoverPresentationController?.sourceRect = self.view.bounds
             self.present( alert, animated: true, completion: nil)
         }
 
@@ -294,11 +296,11 @@ extension BKActivityNewVC {
                 
                 // Assign the tap action which will be executed when the user taps the UIButton
                 cell.tapAction1 = { [weak self] (cell) in
-                    self?.showAlertForRow(row: tableView.indexPath(for: cell)!.row, decision: BKConnectAcceptRespone)
+                    self?.showAlertForRow(cell: cell, row: tableView.indexPath(for: cell)!.row, decision: BKConnectAcceptRespone)
                 }
                 
                 cell.tapAction2 = { [weak self] (cell) in
-                    self?.showAlertForRow( row: tableView.indexPath(for: cell)!.row, decision: BKConnectDeclineRespone)
+                    self?.showAlertForRow( cell: cell, row: tableView.indexPath(for: cell)!.row, decision: BKConnectDeclineRespone)
                 }
             
                 //cell.lblPlayerName.text = "\(activityConnection.kidname) || \(activityConnection.id)"

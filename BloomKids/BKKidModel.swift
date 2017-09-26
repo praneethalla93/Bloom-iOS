@@ -326,40 +326,53 @@ struct BKKidActivitySchedule {
     let location: String
     let sportName: String
     var connectionStateDescription: String
+    
     var btn1Hidden: Bool
+    var btn1Selected: Bool
+    
     var btn2Hidden: Bool
+    var btn2Selected: Bool
+    
     var actionLabelHidden: Bool
+    var createdBy: String?
+    
     var connectionState: Int {
-        
+
         didSet {
-            
-            print( "New connection state is \(connectionState)")
-            
+            print( "kidName: \(kidName)  is \(connectionState) ")
             self.connectionStateDescription = "Expired"
             self.actionLabelHidden = false
             self.btn1Hidden = true
             self.btn2Hidden = true
-            
+            self.btn1Selected = false
+            self.btn2Selected = false
             let eventDateTime = "\(self.date)T\(self.time)"
+            self.createdBy = BKNetowrkTool.shared.myCurrentKid!.kidName
             
             if ( self.connectionState == BKEventConnectionSate.requestSent.rawValue || self.connectionState == BKEventConnectionSate.declined.rawValue ) {
-                
                 self.connectionStateDescription = "Pending"
-                
                 let formatter = DateFormatter()
+                let formatter1 = DateFormatter()
                 // initially set the format based on your datepicker date
                 formatter.dateFormat = "MM/dd/yy'T'HH:mm"
+                formatter1.dateFormat = "MM/dd/yyyy'T'HH:mm"
                 
                 if let eventDate = formatter.date(from: eventDateTime)  {
+                    print( "event date \(eventDate)")
                     
+                    if ( eventDate < Date() ) {
+                        self.connectionStateDescription = "Expired"
+                    }
+
+                } else if let eventDate = formatter1.date(from: eventDateTime)  {
                     print( "event date \(eventDate)")
                     
                     if ( eventDate < Date() ) {
                         self.connectionStateDescription = "Expired"
                     }
                     
-                } else {
-                    
+                }
+                else {
                     formatter.dateFormat = "E, d MMM yyyy'T'h:mm a"
                     
                     if let newEventDate = formatter.date(from: eventDateTime) {
@@ -369,24 +382,23 @@ struct BKKidActivitySchedule {
                         if ( newEventDate < Date() ) {
                             self.connectionStateDescription = "Expired"
                         }
-                        
+
                     }
-                    
+    
                 }
-                
                 
             }
             else if (self.connectionState == BKEventConnectionSate.declined.rawValue ) {
                 self.connectionStateDescription = "Declined"
             }
             else if (self.connectionState == BKEventConnectionSate.requestPending.rawValue ) {
-                    
+                
+                self.createdBy = kidName
                 let formatter = DateFormatter()
                 // initially set the format based on your datepicker date
                 formatter.dateFormat = "MM/dd/yy'T'HH:mm"
                     
                 if let eventDate = formatter.date(from: eventDateTime)  {
-                        
                     print( "event date \(eventDate)")
                         
                     if ( eventDate > Date() ) {
@@ -397,7 +409,7 @@ struct BKKidActivitySchedule {
                     } else {
                         self.connectionStateDescription = "Expired"
                     }
-                    
+
                 } else {
                         
                     formatter.dateFormat = "E, d MMM yyyy'T'h:mm a"
@@ -416,9 +428,9 @@ struct BKKidActivitySchedule {
                         }
 
                     }
-                        
+
                 }
-               
+
             }
             else if ( self.connectionState == BKEventConnectionSate.accepted.rawValue ) {
                 self.connectionStateDescription = "Accepted"
@@ -433,15 +445,19 @@ struct BKKidActivitySchedule {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM/dd/yy'T'HH:mm"
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-        //dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
         dateFormatter.timeZone = NSTimeZone.local
-        
         let formattedDate = "\(date)T\(time)"
         
         if let convertedDate = dateFormatter.date(from: formattedDate) {
             print("formattedDate  \(formattedDate ) :: convertedDate \(convertedDate)")
             return convertedDate
-            
+        }
+
+        dateFormatter.dateFormat = "MM/dd/yyyy'T'h:mm a"
+        
+        if let convertedDate = dateFormatter.date(from: formattedDate) {
+            print("formattedDate  \(formattedDate ) :: convertedDate \(convertedDate)")
+            return convertedDate
         } else {
             dateFormatter.dateFormat = "E, d MMM yyyy'T'h:mm a"
             
@@ -451,9 +467,8 @@ struct BKKidActivitySchedule {
             }
 
         }
-        
+
         return Date()
-        
     }
     
     init(id: Int, kidName: String, dateSchedule: String, timeSchedule: String, gender: String, age: String, school: String, location: String, sportName: String, connectionState: BKEventConnectionSate) {
@@ -471,7 +486,9 @@ struct BKKidActivitySchedule {
         //to manage status for the tableviewcell
         self.connectionStateDescription = ""
         self.btn1Hidden = false
+        self.btn1Selected = false
         self.btn2Hidden = false
+        self.btn2Selected = false
         self.actionLabelHidden = false
     }
     
@@ -480,13 +497,13 @@ struct BKKidActivitySchedule {
         //to manage status for the tableviewcell
         self.connectionStateDescription = ""
         self.btn1Hidden = false
+        self.btn1Selected = false
         self.btn2Hidden = false
+        self.btn2Selected = false
         self.actionLabelHidden = false
         
         self.id = dict["id"] as! Int
         self.kidName = (dict["kidname"] as! String).capitalized
-        
-        
         self.date = dict["dateschedule"] as! String
         self.time = dict["timeschedule"] as! String
         self.gender = dict["gender"] as! String
@@ -496,7 +513,7 @@ struct BKKidActivitySchedule {
         self.sportName = dict["sportname"] as! String
         self.connectionState = Int(dict["scheduleconnectionstate"] as! String)!
     }
-    
+
 }
 
 struct BKScheduleResponse {
@@ -547,11 +564,7 @@ struct BKScheduleResponse {
     }
     */
 
-
 }
-
-
-
 
 
 

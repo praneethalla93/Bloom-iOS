@@ -9,16 +9,14 @@
 import UIKit
 
 class BKEventDoubleActionNewCell: UITableViewCell {
-
-
-    @IBOutlet weak var imgPlayer: UIImageView!
+    
+    //@IBOutlet weak var imgPlayer: UIImageView!
     @IBOutlet weak var lblPlayerName: UILabel!
     @IBOutlet weak var imgSportIcon: UIImageView!
-    
-    @IBOutlet weak var lblEventDateTime: UILabel!
-    @IBOutlet weak var lblEventLocation: UILabel!
+    @IBOutlet weak var lblEventDay: UILabel!
+    @IBOutlet weak var lblEventMonth: UILabel!
+    @IBOutlet weak var lblCreatedBy: UILabel!
     @IBOutlet weak var lblEventAddress: UILabel!
-    
     @IBOutlet weak var lblDisplayAction: UILabel!
     @IBOutlet weak var btnPlayerAction1: UIButton!
     @IBOutlet weak var btnPlayerAction2: UIButton!
@@ -27,21 +25,83 @@ class BKEventDoubleActionNewCell: UITableViewCell {
     var tapAction1: ((UITableViewCell) -> Void)?
     var tapAction2: ((UITableViewCell) -> Void)?
     
+    
+    var eventStatus: String? {
+        
+        didSet {
+            
+            if (eventStatus == "Pending") {
+                activitySchedule?.actionLabelHidden = true
+                self.lblActionStatus.isHidden = true
+                self.lblActionStatus.text = "Pending"
+                
+                activitySchedule?.btn1Hidden = false
+                self.btnPlayerAction1.isHidden = false
+                
+                activitySchedule?.btn2Hidden = false
+                self.btnPlayerAction2.isHidden = false
+            } else if (eventStatus == "Upcoming") {
+                activitySchedule?.actionLabelHidden = true
+                self.lblActionStatus.isHidden = true
+                self.lblActionStatus.text = "Accepted"
+                
+                activitySchedule?.btn1Hidden = false
+                self.btnPlayerAction1.isHidden = false
+                
+                activitySchedule?.btn2Hidden = false
+                self.btnPlayerAction2.isHidden = false
+                
+            } else if (eventStatus == "Past") {
+                self.lblActionStatus.isHidden = false
+                self.lblActionStatus.text = "Completed"
+                
+                activitySchedule?.btn1Hidden = true
+                self.btnPlayerAction1.isHidden = true
+                
+                activitySchedule?.btn2Hidden = true
+                self.btnPlayerAction2.isHidden = true
+                
+            }
+            
+        }
+   
+    }
+    
+    var buttonStatus: String? {
+        
+        didSet {
+            
+        }
+    }
+    
     var activitySchedule: BKKidActivitySchedule? {
         
         didSet {
             
-            if let activity = activitySchedule {
-                
+            if let activity = activitySchedule {                
                 //self.lblPlayerName.text = "\(activity.kidName) ID: \(String(describing: activity.id))"
                 self.lblPlayerName.text = activity.kidName
-                self.lblEventDateTime.text = "\(activity.date) \(activity.time)"
-                self.lblEventLocation.text = activity.location
+                self.lblEventAddress.text = activity.location
+                self.lblCreatedBy.text = "Invited by \(activity.createdBy!)"
+                self.imgSportIcon.image = BKSportImageDict[activity.sportName]
+                
+                //set event date views
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "MMM"
+                dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+                dateFormatter.timeZone = NSTimeZone.local
+                
+                self.lblEventMonth.text = dateFormatter.string(from: activity.convertedDate)
+                dateFormatter.dateFormat = "d"
+                self.lblEventDay.text = dateFormatter.string(from: activity.convertedDate)
+                
+                /*
                 self.btnPlayerAction1.isHidden = activity.btn1Hidden
                 self.btnPlayerAction2.isHidden = activity.btn2Hidden
                 self.lblActionStatus.isHidden = activity.actionLabelHidden
                 self.lblActionStatus.text = activity.connectionStateDescription
-                self.imgSportIcon.image = BKSportImageDict[activity.sportName]
+                 */
+                
                 
                 /*
                 if activity.connectionState == BKEventConnectionSate.accepted.rawValue {
@@ -87,17 +147,16 @@ class BKEventDoubleActionNewCell: UITableViewCell {
                         }
                         
                     }
-                    
-                    
+                 
                 }
                 else if activity.connectionState == BKEventConnectionSate.declined.rawValue {
                     self.lblActionStatus.text = "Declined"
                 
                 }
                 */
-               
+
             }
-            
+    
         }
         
     }
@@ -105,7 +164,6 @@ class BKEventDoubleActionNewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        
         btnPlayerAction1.backgroundColor = .clear
         btnPlayerAction1.layer.cornerRadius = 10
         btnPlayerAction1.layer.borderWidth = 3
@@ -116,10 +174,9 @@ class BKEventDoubleActionNewCell: UITableViewCell {
         btnPlayerAction2.layer.borderWidth = 3
         btnPlayerAction2.layer.borderColor = BKGlobalTintColor.cgColor
     }
-    
+
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        
         // Configure the view for the selected state
     }
     

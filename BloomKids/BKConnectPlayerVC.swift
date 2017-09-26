@@ -293,6 +293,8 @@ extension BKConnectPlayerVC {
                 self.dismiss(animated: true, completion: nil)
             }))
             
+            alert.popoverPresentationController?.sourceView = self.view
+            alert.popoverPresentationController?.sourceRect = self.view.bounds
             self.present( alert, animated: true, completion: nil)
             
         }

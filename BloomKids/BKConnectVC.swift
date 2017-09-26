@@ -406,7 +406,7 @@ extension BKConnectVC {
     }
 
     
-    func showAlertForRow(section: Int, row: Int, decision: String="") {
+    func showAlertForRow(cell: UITableViewCell,section: Int, row: Int, decision: String="") {
         
         if ( section == 1 ) {
             
@@ -443,10 +443,12 @@ extension BKConnectVC {
                     
                 }))
                 
-                self.present( alert, animated: true, completion: nil)
+                alert.popoverPresentationController?.sourceView = cell
+                alert.popoverPresentationController?.sourceRect = cell.bounds
+                //alert.popoverPresentationController?.sourceRect = CGRect(x: self.view.bounds.size.width / 2.0, y: self.view.bounds.size.height / 2.0, width: 1.0, height: 2.0)
+                self.present(alert, animated: true, completion: nil)
             }
-            
-            
+
         }
         else if ( section == 2 ) {
         
@@ -456,9 +458,8 @@ extension BKConnectVC {
                 eventSchedulerVC.delegate = self
                 eventSchedulerVC.eventReceivingKid = kid
                 navigationController?.pushViewController(eventSchedulerVC, animated: true)
-
             }
-            
+
         }
         
     }
@@ -499,7 +500,7 @@ extension BKConnectVC {
             cell.btnPlayerAction.setTitle("Schedule a PlayDate", for: .normal)
             // Assign the tap action which will be executed when the user taps the UIButton
             cell.tapAction = { [weak self] (cell) in
-                self?.showAlertForRow(section: 2, row: tableView.indexPath(for: cell)!.row)
+                self?.showAlertForRow(cell: cell, section: 2, row: tableView.indexPath(for: cell)!.row)
             }
             
         }
@@ -543,11 +544,11 @@ extension BKConnectVC {
                 
                 // Assign the tap action which will be executed when the user taps the UIButton
                 cell.tapAction1 = { [weak self] (cell) in
-                    self?.showAlertForRow(section: 1, row: tableView.indexPath(for: cell)!.row, decision: BKConnectAcceptRespone)
+                    self?.showAlertForRow(cell: cell, section: 1, row: tableView.indexPath(for: cell)!.row, decision: BKConnectAcceptRespone)
                 }
-                
+
                 cell.tapAction2 = { [weak self] (cell) in
-                    self?.showAlertForRow( section: 1, row: tableView.indexPath(for: cell)!.row, decision: BKConnectDeclineRespone)
+                    self?.showAlertForRow(cell: cell,section: 1, row: tableView.indexPath(for: cell)!.row, decision: BKConnectDeclineRespone)
                 }
                 
                 cell.lblPlayerName.text = "\(activityConnection.kidname) || \(activityConnection.id)"
@@ -609,25 +610,20 @@ extension BKConnectVC {
                 
                 self.myGroup.leave()
             }
-            
-            
-            
+
         }
         
-        
-        
     }
-    
     
 }
 
 extension BKConnectVC: BKEventSchedulerDelegate {
-    
+
     func scheduleEventVC(_ vc: BKEventSchedulerVC, eventReveivingKid kid: BKKidModel) {
         //TBD
     }
-}
 
+}
 
 extension BKConnectVC: BKPlaceAutocompleteDelegate {
     

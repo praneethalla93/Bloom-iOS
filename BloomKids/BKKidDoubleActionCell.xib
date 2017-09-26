@@ -49,7 +49,7 @@
                                             <stackView opaque="NO" contentMode="left" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="OBo-mJ-SHQ" userLabel="SportsStackView">
                                                 <rect key="frame" x="0.0" y="0.0" width="172" height="20"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="favorites-icon" translatesAutoresizingMaskIntoConstraints="NO" id="nec-yZ-ekP">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="favorites-grey-icon" translatesAutoresizingMaskIntoConstraints="NO" id="nec-yZ-ekP">
                                                         <rect key="frame" x="0.0" y="0.0" width="24" height="20"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="255" text="  " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CnD-d9-3Ka" userLabel="Lbl Dummy">
@@ -176,7 +176,7 @@
         <image name="chess-icon" width="25" height="30"/>
         <image name="cricket-icon" width="29" height="27"/>
         <image name="decline-btn-icon" width="98" height="99"/>
-        <image name="favorites-icon" width="30" height="27"/>
+        <image name="favorites-grey-icon" width="30" height="27"/>
         <image name="photo-placeholder" width="139" height="139"/>
         <image name="soccer-icon" width="31" height="31"/>
         <image name="tennis-icon" width="30" height="30"/>
