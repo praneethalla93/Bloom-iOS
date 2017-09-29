@@ -190,6 +190,11 @@ class BKAddKidVC: UITableViewController {
         }
 
     }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 
 }
 
@@ -382,6 +387,7 @@ extension BKAddKidVC: BKPlaceAutocompleteDelegate {
         //self.searchNavVC?.popViewController(animated: true)
         self.tableView.reloadData()
     }
+
 }
 
 extension BKAddKidVC: BKListSelectVCDelegate {

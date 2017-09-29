@@ -577,43 +577,43 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="X7q-hw-n31">
-                                            <rect key="frame" x="16" y="16" width="343" height="202"/>
+                                            <rect key="frame" x="16" y="8" width="343" height="218"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="7aE-Ol-U6R">
-                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="91"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="99"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AmE-l0-F8z" customClass="AHStackButton" customModule="BloomKids" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="0.0" width="101" height="91"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="101" height="99"/>
                                                             <color key="backgroundColor" red="0.44705882349999998" green="0.79215686269999996" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                                             <state key="normal" title="Chess" image="sport-add-icon"/>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pco-x0-3Ld" customClass="AHStackButton" customModule="BloomKids" customModuleProvider="target">
-                                                            <rect key="frame" x="121" y="0.0" width="101" height="91"/>
+                                                            <rect key="frame" x="121" y="0.0" width="101" height="99"/>
                                                             <color key="backgroundColor" red="0.44705882349999998" green="0.79215686269999996" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                                             <state key="normal" title="Baseball" image="sport-add-icon"/>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5KS-4W-yNu" customClass="AHStackButton" customModule="BloomKids" customModuleProvider="target">
-                                                            <rect key="frame" x="242" y="0.0" width="101" height="91"/>
+                                                            <rect key="frame" x="242" y="0.0" width="101" height="99"/>
                                                             <color key="backgroundColor" red="0.44705882349999998" green="0.79215686269999996" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                                             <state key="normal" title="Cricket" image="sport-add-icon"/>
                                                         </button>
                                                     </subviews>
                                                 </stackView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="lkk-Ty-Ynx">
-                                                    <rect key="frame" x="0.0" y="111" width="343" height="91"/>
+                                                    <rect key="frame" x="0.0" y="119" width="343" height="99"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c7B-3E-Qge" customClass="AHStackButton" customModule="BloomKids" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="0.0" width="101" height="91"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="101" height="99"/>
                                                             <color key="backgroundColor" red="0.44705882349999998" green="0.79215686269999996" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                                             <state key="normal" title="Basketball" image="sport-add-icon"/>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CkE-5Q-hxy" customClass="AHStackButton" customModule="BloomKids" customModuleProvider="target">
-                                                            <rect key="frame" x="121" y="0.0" width="101" height="91"/>
+                                                            <rect key="frame" x="121" y="0.0" width="101" height="99"/>
                                                             <color key="backgroundColor" red="0.44705882349999998" green="0.79215686269999996" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                                             <state key="normal" title="Tennis" image="sport-add-icon"/>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wEQ-lg-PV3" customClass="AHStackButton" customModule="BloomKids" customModuleProvider="target">
-                                                            <rect key="frame" x="242" y="0.0" width="101" height="91"/>
+                                                            <rect key="frame" x="242" y="0.0" width="101" height="99"/>
                                                             <color key="backgroundColor" red="0.44705882349999998" green="0.79215686269999996" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                                             <state key="normal" title="Soccer" image="sport-add-icon"/>
                                                         </button>
@@ -623,10 +623,10 @@
                                         </stackView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailingMargin" secondItem="X7q-hw-n31" secondAttribute="trailing" constant="8" id="MwD-lp-lS6"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="X7q-hw-n31" secondAttribute="bottom" constant="8" id="e6Z-YT-xxg"/>
-                                        <constraint firstItem="X7q-hw-n31" firstAttribute="top" secondItem="C5L-3p-3WZ" secondAttribute="topMargin" constant="8" id="mOD-cR-Nfw"/>
-                                        <constraint firstItem="X7q-hw-n31" firstAttribute="leading" secondItem="C5L-3p-3WZ" secondAttribute="leadingMargin" constant="8" id="weY-B2-YfM"/>
+                                        <constraint firstItem="X7q-hw-n31" firstAttribute="top" secondItem="C5L-3p-3WZ" secondAttribute="top" constant="8" id="ACu-3j-Xy9"/>
+                                        <constraint firstItem="X7q-hw-n31" firstAttribute="leading" secondItem="C5L-3p-3WZ" secondAttribute="leading" constant="16" id="HRf-3l-s7z"/>
+                                        <constraint firstAttribute="bottom" secondItem="X7q-hw-n31" secondAttribute="bottom" constant="8" id="iGt-hf-PVt"/>
+                                        <constraint firstAttribute="trailing" secondItem="X7q-hw-n31" secondAttribute="trailing" constant="16" id="xvh-eM-K4r"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>

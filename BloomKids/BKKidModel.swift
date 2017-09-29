@@ -89,7 +89,7 @@ struct BKKidModel: CustomDebugStringConvertible {
         self.sports = sports
         self.id = id
         self.myAge = self.age
-        self.grade = getGrade(age: age)
+        self.grade = BKNetowrkTool.shared.getGrade(age: age)
     }
     
     init(dict: [String: Any]) {
@@ -98,6 +98,7 @@ struct BKKidModel: CustomDebugStringConvertible {
         self.gender = dict["gender"] as! String
         self.school = dict["school"] as! String
         self.age = dict["age"] as! String
+        self.grade = BKNetowrkTool.shared.getGrade(age: age)
         
         let sportDict = dict["sport"] as! [[String: String]]
         
@@ -107,7 +108,7 @@ struct BKKidModel: CustomDebugStringConvertible {
             sports.append(sport)
         }
         
-        self.grade = getGrade(age: age)
+        
     }
     
     //this is required to derive grade
@@ -115,51 +116,10 @@ struct BKKidModel: CustomDebugStringConvertible {
         
         didSet(age) {
             self.age = age!
-            self.grade = getGrade(age: age!)
+            self.grade = BKNetowrkTool.shared.getGrade(age: self.age)
         }
-        
+
     }
-    
-    func getGrade(age: String) -> String {
-        
-        var grade = age
-        
-        if let intAge = Int(age) {
-            
-            switch(intAge) {
-                
-            case 2:
-                grade = "Pre-K"
-            case 3:
-                grade = "Pre-K"
-            case 4:
-                grade = "Pre-K"
-            case 5:
-                grade = "Pre-K"
-            case 6:
-                grade = "1st Grader"
-            case 7:
-                grade = "2nd Grader"
-            case 8:
-                grade = "3rd Grader"
-            case 9:
-                grade = "4th Grader"
-            case 10:
-                grade = "5th Grader"
-            case 11:
-                grade = "6th Grader"
-            case 12:
-                grade = "7th Grader"
-            default:
-                grade = "Pre-K"
-            }
-            
-        }
-        
-        return grade
-        
-    }
-    
     
     var debugDescription: String {
         return "kidname:\(kidName) id:\(String(describing: id)) age:\(age) gender:\(gender) school:\(school) sports:\(sports)"
@@ -180,13 +140,14 @@ struct BKKidActivityConnection {
     let kidname: String
     let age: String
     let id: Int
+    var grade: String?
     
     var connectionState: Int {
         
         didSet {
             
             print( "New connection state is \(connectionState)")
-            
+
             if ( self.connectionState == BKKidConnectionSate.requestSent.rawValue || self.connectionState == BKKidConnectionSate.rejected.rawValue ) {
                 self.connectionStateDescription = "Pending"
                 self.actionLabelHidden = false
@@ -215,6 +176,7 @@ struct BKKidActivityConnection {
     var btn1Hidden: Bool
     var btn2Hidden: Bool
     var actionLabelHidden: Bool
+    var lblDisplayHidden: Bool
     var sport: BKSport?
     
     init(kidName: String, gender: String, school: String, age: String, sport: BKSport, id: Int, connectionState: BKKidConnectionSate, date: String, city: String, ownerId: Int) {
@@ -233,6 +195,7 @@ struct BKKidActivityConnection {
         self.btn1Hidden = false
         self.btn2Hidden = false
         self.actionLabelHidden = false
+        self.lblDisplayHidden = false
     }
     
     init(dict: [String: Any]) {
@@ -265,6 +228,7 @@ struct BKKidActivityConnection {
         self.btn1Hidden = false
         self.btn2Hidden = false
         self.actionLabelHidden = false
+        self.lblDisplayHidden = false
     }
 
 }
@@ -333,6 +297,8 @@ struct BKKidActivitySchedule {
     var btn2Hidden: Bool
     var btn2Selected: Bool
     
+    var eventDecisionStatus: String?
+    
     var actionLabelHidden: Bool
     var createdBy: String?
     
@@ -346,6 +312,8 @@ struct BKKidActivitySchedule {
             self.btn2Hidden = true
             self.btn1Selected = false
             self.btn2Selected = false
+            self.eventDecisionStatus = "U"
+            
             let eventDateTime = "\(self.date)T\(self.time)"
             self.createdBy = BKNetowrkTool.shared.myCurrentKid!.kidName
             
@@ -356,7 +324,7 @@ struct BKKidActivitySchedule {
                 // initially set the format based on your datepicker date
                 formatter.dateFormat = "MM/dd/yy'T'HH:mm"
                 formatter1.dateFormat = "MM/dd/yyyy'T'HH:mm"
-                
+
                 if let eventDate = formatter.date(from: eventDateTime)  {
                     print( "event date \(eventDate)")
                     
@@ -390,9 +358,10 @@ struct BKKidActivitySchedule {
             }
             else if (self.connectionState == BKEventConnectionSate.declined.rawValue ) {
                 self.connectionStateDescription = "Declined"
+                self.eventDecisionStatus = "D"
             }
             else if (self.connectionState == BKEventConnectionSate.requestPending.rawValue ) {
-                
+                self.eventDecisionStatus = "U"
                 self.createdBy = kidName
                 let formatter = DateFormatter()
                 // initially set the format based on your datepicker date
@@ -434,6 +403,7 @@ struct BKKidActivitySchedule {
             }
             else if ( self.connectionState == BKEventConnectionSate.accepted.rawValue ) {
                 self.connectionStateDescription = "Accepted"
+                self.eventDecisionStatus = "A"
             }
             
         }
@@ -441,6 +411,7 @@ struct BKKidActivitySchedule {
     }
 
     var convertedDate: Date {
+
         //formattedDate	String	"07/08/17 10:00"
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM/dd/yy'T'HH:mm"
@@ -452,22 +423,28 @@ struct BKKidActivitySchedule {
             print("formattedDate  \(formattedDate ) :: convertedDate \(convertedDate)")
             return convertedDate
         }
+        
+        dateFormatter.dateFormat = "MM/dd/yy'T'h:mm a"
+        if let convertedDate = dateFormatter.date(from: formattedDate) {
+            print("formattedDate  \(formattedDate ) :: convertedDate \(convertedDate)")
+            return convertedDate
+        }
 
         dateFormatter.dateFormat = "MM/dd/yyyy'T'h:mm a"
         
         if let convertedDate = dateFormatter.date(from: formattedDate) {
             print("formattedDate  \(formattedDate ) :: convertedDate \(convertedDate)")
             return convertedDate
-        } else {
-            dateFormatter.dateFormat = "E, d MMM yyyy'T'h:mm a"
+        }
+        
+        dateFormatter.dateFormat = "E, d MMM yyyy'T'h:mm a"
             
-            if let newconvertedDate =  dateFormatter.date(from: formattedDate) {
+        if let newconvertedDate =  dateFormatter.date(from: formattedDate) {
                 print("formattedDate  \(formattedDate ) :: convertedDate \(newconvertedDate)")
                 return newconvertedDate
-            }
-
         }
 
+        print("Big problem:::: \(self.convertedDate) \(Date())")
         return Date()
     }
     
@@ -482,6 +459,7 @@ struct BKKidActivitySchedule {
         self.location = location
         self.sportName = sportName
         self.connectionState = connectionState.rawValue
+        self.eventDecisionStatus = "U"
         
         //to manage status for the tableviewcell
         self.connectionStateDescription = ""
@@ -501,6 +479,7 @@ struct BKKidActivitySchedule {
         self.btn2Hidden = false
         self.btn2Selected = false
         self.actionLabelHidden = false
+        self.eventDecisionStatus = "U"
         
         self.id = dict["id"] as! Int
         self.kidName = (dict["kidname"] as! String).capitalized

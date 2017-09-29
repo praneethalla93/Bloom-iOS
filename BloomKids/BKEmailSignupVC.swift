@@ -19,7 +19,7 @@ class BKEmailSignupVC: UIViewController {
     @IBOutlet weak var fatherBtn: UIButton!
     @IBOutlet weak var motherBtn: UIButton!
     
-    var signUpTestFlag = true
+    var signUpTestFlag = false
     let myGroup = DispatchGroup()
 
     weak var currentGender: UIButton!
@@ -138,8 +138,6 @@ extension BKEmailSignupVC {
         
         BKNetowrkTool.shared.signup(emailText, passwordText, nameText, phoneStr, relation: genderStr) { (success, statusCode) in
             
-            
-            
             if success {
                 SVProgressHUD.showSuccess(withStatus: "Welcome!")
                 BKNetowrkTool.shared.currentEmail = emailText
@@ -147,22 +145,23 @@ extension BKEmailSignupVC {
          
             } else {
                 
-                if (statusCode == 201) {
+                if (statusCode == "210") {
                     SVProgressHUD.showError(withStatus: "Email Id already signed up. Try forgot password.")
                 } else {
                     SVProgressHUD.showError(withStatus: "Please check the infomation you just entered")
                 }
+
                 self.myGroup.leave()
             }
             
-            //after successfull loading data
+            //after successfullly loading data
             self.myGroup.notify(queue: .main) {
                 print("Finished all requests.")
          
                  if BKNetowrkTool.shared.currentEmail != nil {
                      BKAuthTool.shared.switchToCitySearch()
                  }
-                //var currentKid = BKNetowrkTool.shared.myCurrentKid
+
             }
             
         }
@@ -175,11 +174,19 @@ extension BKEmailSignupVC {
         BKAuthTool.shared.switchToCitySearch()
          */
     }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+
 }
 
 
 //MARK:- TextField related
+/*
 extension BKEmailSignupVC: UITextFieldDelegate {
+    
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
@@ -216,6 +223,7 @@ extension BKEmailSignupVC: UITextFieldDelegate {
     }
     
 }
+ */
 
 
 

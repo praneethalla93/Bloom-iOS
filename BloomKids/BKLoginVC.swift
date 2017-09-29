@@ -15,6 +15,7 @@ let fakePassword = "123"
 let myGroup = DispatchGroup()
 
 class BKLoginVC: UIViewController {
+
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
@@ -26,7 +27,6 @@ class BKLoginVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         /*
         let size = UIScreen.main.bounds.size
         
@@ -41,11 +41,11 @@ class BKLoginVC: UIViewController {
           //  OAuthBottomConstraint.constant = 49.0
         }
         */
-        
+
         //TODO: temporarily hiding Google and Facebook Btn
         googleLoginBtn.isHidden = true
         facebookLoginBtn.isHidden = true
-        
+
         //initial email and password from key chain.
         
         let keychain = Keychain(service: BKKeychainService)
@@ -81,7 +81,7 @@ class BKLoginVC: UIViewController {
         else {
             return
         }
-        
+
         myGroup.enter()
         updateKeyChain(email: emailText, password: passwordText)
         authenticate(emailText, password: passwordText)
@@ -109,7 +109,6 @@ class BKLoginVC: UIViewController {
         BKNetowrkTool.shared.currentEmail = email
         keychain[BKUserEmailKey] = email
         keychain[email] = password
-        
     }
 
 }
@@ -145,7 +144,6 @@ extension BKLoginVC: UITextFieldDelegate {
         }
 
         SVProgressHUD.show()
-        
         BKNetowrkTool.shared.authenticate(email: email, password: password) { (success) in
             
             if success {

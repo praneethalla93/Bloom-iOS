@@ -20,11 +20,11 @@ class BKEventDoubleActionNewCell: UITableViewCell {
     @IBOutlet weak var lblDisplayAction: UILabel!
     @IBOutlet weak var btnPlayerAction1: UIButton!
     @IBOutlet weak var btnPlayerAction2: UIButton!
+    
     @IBOutlet weak var lblActionStatus: UILabel!
     
     var tapAction1: ((UITableViewCell) -> Void)?
     var tapAction2: ((UITableViewCell) -> Void)?
-    
     
     var eventStatus: String? {
         
@@ -32,7 +32,7 @@ class BKEventDoubleActionNewCell: UITableViewCell {
             
             if (eventStatus == "Pending") {
                 activitySchedule?.actionLabelHidden = true
-                self.lblActionStatus.isHidden = true
+                //self.lblActionStatus.isHidden = true
                 self.lblActionStatus.text = "Pending"
                 
                 activitySchedule?.btn1Hidden = false
@@ -41,7 +41,7 @@ class BKEventDoubleActionNewCell: UITableViewCell {
                 activitySchedule?.btn2Hidden = false
                 self.btnPlayerAction2.isHidden = false
             } else if (eventStatus == "Upcoming") {
-                activitySchedule?.actionLabelHidden = true
+                //activitySchedule?.actionLabelHidden = true
                 self.lblActionStatus.isHidden = true
                 self.lblActionStatus.text = "Accepted"
                 
@@ -66,14 +66,7 @@ class BKEventDoubleActionNewCell: UITableViewCell {
         }
    
     }
-    
-    var buttonStatus: String? {
-        
-        didSet {
-            
-        }
-    }
-    
+
     var activitySchedule: BKKidActivitySchedule? {
         
         didSet {
@@ -94,6 +87,20 @@ class BKEventDoubleActionNewCell: UITableViewCell {
                 self.lblEventMonth.text = dateFormatter.string(from: activity.convertedDate)
                 dateFormatter.dateFormat = "d"
                 self.lblEventDay.text = dateFormatter.string(from: activity.convertedDate)
+                
+                if (activity.eventDecisionStatus == "U") {
+                    setButton(button: btnPlayerAction1, selected: false)
+                    setButton(button: btnPlayerAction2, selected: false)
+                } else if (activity.eventDecisionStatus == "A") {
+                    setButton(button: btnPlayerAction1, selected: true)
+                    setButton(button: btnPlayerAction2, selected: false)
+                } else if (activity.eventDecisionStatus == "D") {
+                    setButton(button: btnPlayerAction1, selected: false)
+                    setButton(button: btnPlayerAction2, selected: true)
+                }
+                
+                
+                
                 
                 /*
                 self.btnPlayerAction1.isHidden = activity.btn1Hidden
@@ -187,6 +194,19 @@ class BKEventDoubleActionNewCell: UITableViewCell {
     @IBAction func btnPlayerctionButton2Tapped(_ sender: Any) {
         tapAction2?(self)
         
+    }
+    
+    func setButton(button: UIButton, selected: Bool) {
+        
+        if (selected ) {
+            button.backgroundColor = BKGlobalTintColor
+            button.layer.borderColor = BKGlobalTintColor.cgColor
+            button.setTitleColor(UIColor.white, for: .normal)
+        } else {
+            button.backgroundColor = .clear
+            button.layer.borderColor = BKGlobalTintColor.cgColor
+            button.setTitleColor(BKGlobalTintColor, for: .normal)
+        }
     }
 
     

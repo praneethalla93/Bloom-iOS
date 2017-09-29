@@ -26,6 +26,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = BKAuthTool.shared.viewControllerForWindow()
         window?.makeKeyAndVisible()
         
+        //resign textfield active
+        UIApplication.shared.sendAction(#selector(UIApplication.resignFirstResponder), to: nil, from: nil, for: nil);
+        
         //set default color globablly for all tabbars
         //UITabBar.appearance().tintColor = UIColor(red: 255/255.0, green: 255/255.0, blue: 255/255.0, alpha: 1.0)
         UITabBar.appearance().tintColor = BKGlobalTintColor

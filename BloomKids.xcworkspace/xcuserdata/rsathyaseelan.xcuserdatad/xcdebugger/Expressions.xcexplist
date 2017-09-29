@@ -54,7 +54,7 @@
          contextName = "BKEventSchedulerVC.editingChanged() -&gt; ():BKEventSchedulerVC.swift">
          <PersistentStrings>
             <PersistentString
-               value = "locationTextField">
+               value = "sportTextField">
             </PersistentString>
             <PersistentString
                value = "sportTextField?.text">
@@ -63,15 +63,9 @@
                value = "locationTextField?.text">
             </PersistentString>
             <PersistentString
-               value = "sportTextField">
+               value = "locationTextField">
             </PersistentString>
          </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "BKAddKidVC.handleSports(UITableView, IndexPath) -&gt; UITableViewCell:BKAddKidVC.swift">
-      </ContextState>
-      <ContextState
-         contextName = "BKLoginVC.loginBtnTapped(UIButton) -&gt; ():BKLoginVC.swift">
       </ContextState>
       <ContextState
          contextName = "closure #1 in BKEventsVC.sortEvents(events:order:):BKEventsVC.swift">
@@ -81,6 +75,20 @@
             </PersistentString>
             <PersistentString
                value = "object2.convertedDate">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "BKLoginVC.loginBtnTapped(UIButton) -&gt; ():BKLoginVC.swift">
+      </ContextState>
+      <ContextState
+         contextName = "BKAddKidVC.handleSports(UITableView, IndexPath) -&gt; UITableViewCell:BKAddKidVC.swift">
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in closure #1 in BKEmailSignupVC.signupBtnTapped(_:):BKEmailSignupVC.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "BKNetowrkTool.shared.currentEmail">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

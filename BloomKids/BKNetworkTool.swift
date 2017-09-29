@@ -104,7 +104,7 @@ class BKNetowrkTool {
 
 extension BKNetowrkTool {
     
-    func signup(_ email: String, _ password: String, _ parentName: String,_ phone: String, relation: String, completion: @escaping (_ success: Bool, _ statusCode: Int) -> Void) {
+    func signup(_ email: String, _ password: String, _ parentName: String,_ phone: String, relation: String, completion: @escaping (_ success: Bool, _ statusCode: String) -> Void) {
         
         let parameters = [
             "email": email,
@@ -112,7 +112,7 @@ extension BKNetowrkTool {
             "password": password,
             "phone": phone,
             "relation": relation]
-        var statusCode = 0
+        var statusCode = ""
         
         print("parameters:\(parameters)")
         //request(.post, urlStr: BKNetworkingSignupUrlStr, parameters: parameters) { (success, data) in
@@ -129,7 +129,7 @@ extension BKNetowrkTool {
                     if  let data = data,
                         let json = try JSONSerialization.jsonObject(with: data) as? [String: Any] {
                         
-                        if let statusCodeReturn = json["statuscode"] as? Int {
+                        if let statusCodeReturn = json["statuscode"] as? String {
                             statusCode = statusCodeReturn
                         }
                         
@@ -143,14 +143,33 @@ extension BKNetowrkTool {
                     completion(false, statusCode)
                 }
 
+            } else {
+                
+                do {
+                    if  let data = data,
+                        let json = try JSONSerialization.jsonObject(with: data) as? [String: Any] {
+                        
+                        if let statusCodeReturn = json["statuscode"] as? String {
+                            statusCode = statusCodeReturn
+                        }
+                        
+                    }
+                    
+                    print("Sign up failed. Error status code received")
+                    completion(false, statusCode)
+                    return
+                } catch {
+                    print("Error deserializing JSON: \(error)")
+                    print("Failed Sign uo finished request)")
+                    completion(false, statusCode)
+                }
+                
             }
             
             completion(success, statusCode)
-                
         }
         
     }
-
     
     func authenticate(email: String,password: String, completion: @escaping (_ success: Bool)->Void) {
         
@@ -245,7 +264,7 @@ extension BKNetowrkTool {
 
                 }
 
-            }else{
+            } else{
                 completion(false, nil)
             }
                 
@@ -285,7 +304,8 @@ extension BKNetowrkTool {
                 
                 do {
                     if  let data = data,
-                        let json = try JSONSerialization.jsonObject(with: data) as? [String: Any] {
+                        //let json = try JSONSerialization.jsonObject(with: data) as? [String: Any] {
+                        let _ = try JSONSerialization.jsonObject(with: data) as? [String: Any] {
                         
                         
                         let newkidModel = kidModel
@@ -946,5 +966,46 @@ extension BKNetowrkTool {
         self.profile = nil
         BKAuthTool.shared.clearKeychain()
     }
+    
+    func getGrade(age: String) -> String {
+        
+        var grade = age
+        
+        if let intAge = Int(age) {
+            
+            switch(intAge) {
+                
+            case 2:
+                grade = "Pre-K"
+            case 3:
+                grade = "Pre-K"
+            case 4:
+                grade = "Pre-K"
+            case 5:
+                grade = "Pre-K"
+            case 6:
+                grade = "1st Grader"
+            case 7:
+                grade = "2nd Grader"
+            case 8:
+                grade = "3rd Grader"
+            case 9:
+                grade = "4th Grader"
+            case 10:
+                grade = "5th Grader"
+            case 11:
+                grade = "6th Grader"
+            case 12:
+                grade = "7th Grader"
+            default:
+                grade = "Pre-K"
+            }
+            
+        }
+        
+        return grade
+        
+    }
+    
 
 }

@@ -10,7 +10,6 @@ import UIKit
 
 class BKKidDoubleActionCell: UITableViewCell {
 
-
     @IBOutlet weak var imgPlayer: UIImageView!
     @IBOutlet weak var lblPlayerName: UILabel!
     @IBOutlet weak var imgSportIcon1: UIImageView!
@@ -23,9 +22,8 @@ class BKKidDoubleActionCell: UITableViewCell {
     @IBOutlet weak var btnPlayerAction2: UIButton!
     @IBOutlet weak var lblPlayerSchoolAge: UILabel!
     @IBOutlet weak var lblActionStatus: UILabel!
-    @IBOutlet weak var lblPlays: UILabel!
-    
-    
+    @IBOutlet weak var lblDisplayName: UILabel!
+
     var tapAction1: ((UITableViewCell) -> Void)?
     var tapAction2: ((UITableViewCell) -> Void)?
     
@@ -63,6 +61,16 @@ class BKKidDoubleActionCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        btnPlayerAction1.backgroundColor = .clear
+        btnPlayerAction1.layer.cornerRadius = 10
+        btnPlayerAction1.layer.borderWidth = 3
+        btnPlayerAction1.layer.borderColor = BKGlobalTintColor.cgColor
+        
+        btnPlayerAction2.backgroundColor = .clear
+        btnPlayerAction2.layer.cornerRadius = 10
+        btnPlayerAction2.layer.borderWidth = 3
+        btnPlayerAction2.layer.borderColor = BKGlobalTintColor.cgColor
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

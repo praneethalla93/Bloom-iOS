@@ -19,6 +19,9 @@ class BKActivityNewVC: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedRowHeight = BKKidActionCellHeight - 50
 
         let kidCellNib = UINib(nibName: "\(BKKidDoubleActionCell.self)", bundle: nil)
         tableView.register(kidCellNib, forCellReuseIdentifier: BKKidDoubleActionCellID)
@@ -204,7 +207,7 @@ extension BKActivityNewVC {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         if indexPath.section == 0 {
-            return 100
+            return 130
         } else {
             return 40.0
         }
@@ -212,7 +215,7 @@ extension BKActivityNewVC {
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        
+
         var sectionTitle = ""
         
         if section == 0 {
@@ -272,8 +275,8 @@ extension BKActivityNewVC {
                 
             }))
             
-            alert.popoverPresentationController?.sourceView = self.view
-            alert.popoverPresentationController?.sourceRect = self.view.bounds
+            alert.popoverPresentationController?.sourceView = cell
+            alert.popoverPresentationController?.sourceRect = cell.bounds
             self.present( alert, animated: true, completion: nil)
         }
 
@@ -289,8 +292,8 @@ extension BKActivityNewVC {
         
         if self.activityConnections != nil {
             
-            cell.btnPlayerAction1.setImage(UIImage(named: "accept-btn-icon"), for: .normal)
-            cell.btnPlayerAction2.setImage(UIImage(named: "decline-btn-icon"), for: .normal)
+            //cell.btnPlayerAction1.setImage(UIImage(named: "accept-btn-icon"), for: .normal)
+            //cell.btnPlayerAction2.setImage(UIImage(named: "decline-btn-icon"), for: .normal)
             
             if let activityConnection = self.activityConnections?[indexPath.row] {
                 
@@ -304,9 +307,12 @@ extension BKActivityNewVC {
                 }
             
                 //cell.lblPlayerName.text = "\(activityConnection.kidname) || \(activityConnection.id)"
-                cell.lblPlayerName.text = activityConnection.kidname
-                cell.lblPlayerSchoolAge.text = "\(activityConnection.school) | Age: \(activityConnection.age) | \(activityConnection.date)"
+                //cell.lblPlayerName.text = activityConnection.kidname
+                //cell.lblPlayerSchoolAge.text = "\(activityConnection.school) | Age: \(activityConnection.age) | \(activityConnection.date)"
                 //cell.imgSportIcon1.image = #imageLiteral(resourceName: "chess-icon")
+                
+                cell.lblPlayerName.text = activityConnection.kidname
+                cell.lblPlayerSchoolAge.text = "\(activityConnection.age), \(activityConnection.school)"
                 
                 if let sport = activityConnection.sport {
                     
@@ -325,10 +331,13 @@ extension BKActivityNewVC {
                 cell.imgSportIcon4.isHidden = true
                 cell.imgSportIcon5.isHidden = true
                 cell.imgSportIcon6.isHidden = true
+                cell.lblDisplayName.isHidden = true
+
                 cell.lblActionStatus.text = activityConnection.connectionStateDescription
                 cell.lblActionStatus.isHidden = activityConnection.actionLabelHidden
                 cell.btnPlayerAction1.isHidden = activityConnection.btn1Hidden
                 cell.btnPlayerAction2.isHidden = activityConnection.btn2Hidden
+                //cell.lblDisplayName.isHidden = activityConnection.lblDisplayHidden
             }
 
         }

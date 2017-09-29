@@ -199,7 +199,7 @@ class BKEventsVC: UITableViewController {
 
 
 extension BKEventsVC {
-    
+
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 4
     }
@@ -250,7 +250,6 @@ extension BKEventsVC {
             return orderTest
         }
         */
-        
         return sortedEvents
     }
     
@@ -326,7 +325,7 @@ extension BKEventsVC {
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         var sectionTitle = ""
-        
+
         if section == 0 {
             
             if BKNetowrkTool.shared.myCurrentKid != nil {
@@ -342,7 +341,7 @@ extension BKEventsVC {
                 if pendingEventCount > 0 {
                     sectionTitle = "Pending your response"
                 }
-                
+
             }
             
         } else if section == 2 {
@@ -352,7 +351,7 @@ extension BKEventsVC {
                 if upComingEventCount > 0 {
                     sectionTitle = "Upcoming PlayDates"
                 }
-                
+   
             }
             
             
@@ -391,44 +390,61 @@ extension BKEventsVC {
     
     func showAlertForRow(cell: UITableViewCell, section: Int, row: Int, decision: String="") {
         
+        var events: [BKKidActivitySchedule]?
+        
+        
         if ( section == 1 ) {
+            events = pendingEvents
+        } else if ( section == 2 ) {
+            events = upcomingEvents
+        } else {
+            return
+        }
             
-            if let activitySchedule = self.pendingEvents?[row] {
-                
-                var acceptFlag = false
-                
-                if decision == BKConnectAcceptRespone {
-                    acceptFlag = true
-                }
-                
-                let alert = UIAlertController ( title: "New PlayDate Confirmation",
-                                                message: "Are you sure you want to \(decision) playdate reuest from \(activitySchedule.kidName)", preferredStyle: .actionSheet)
-                alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
-                    self.dismiss(animated: true, completion: nil)
-                    print("Sending connect request activityConnection | \(activitySchedule.id)")
-                    
-                    self.myGroup.enter()
-                    self.sendEventResponse(row: row, acceptDecision: acceptFlag)
-                    self.myGroup.notify(queue: .main) {
-                        self.pendingEvents?.remove(at: row)
-                        print("Refresh cells for \(activitySchedule.kidName)")
-                        self.tableView.reloadData()
-                    }
-
-                    //@TODO call connect requestor API
-                }))
-                
-                alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: { (action: UIAlertAction!) in
-                    print("Handle reject Logic here")
-                    self.dismiss(animated: true, completion: nil)
-                    
-                }))
-                
-                alert.popoverPresentationController?.sourceView = self.view
-                alert.popoverPresentationController?.sourceRect = self.view.bounds
-                self.present( alert, animated: true, completion: nil)
+        if let activitySchedule = events?[row] {
+            
+            var acceptFlag = false
+            
+            if decision == BKConnectAcceptRespone {
+                acceptFlag = true
             }
             
+            let alert = UIAlertController ( title: "New PlayDate Confirmation",
+                                            message: "Are you sure you want to \(decision) playdate reuest from \(activitySchedule.kidName)", preferredStyle: .actionSheet)
+            alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
+                self.dismiss(animated: true, completion: nil)
+                print("Sending connect request activityConnection | \(activitySchedule.id)")
+                self.myGroup.enter()
+                self.sendEventResponse(section: section, row: row, acceptDecision: acceptFlag)
+                
+                self.myGroup.notify(queue: .main) {
+
+                    if (section == 1 ) {
+                        events?.remove(at: row)
+                        self.pendingEvents = events
+                    }
+                    
+                    if (decision == BKConnectAcceptRespone) {
+                        SVProgressHUD.showSuccess(withStatus: "Event accepted successfully.")
+                    } else {
+                        SVProgressHUD.showSuccess(withStatus: "Event declined successfully.")
+                    }
+                    
+                    print("Refresh cells for \(activitySchedule.kidName)")
+                    self.tableView.reloadData()
+                }
+
+                //@TODO call connect requestor API
+            }))
+            
+            alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: { (action: UIAlertAction!) in
+                print("Handle reject Logic here")
+                self.dismiss(animated: true, completion: nil)
+            }))
+
+            alert.popoverPresentationController?.sourceView = cell
+            alert.popoverPresentationController?.sourceRect = cell.bounds
+            self.present( alert, animated: true, completion: nil)
         }
         
     }
@@ -475,8 +491,6 @@ extension BKEventsVC {
         //let cell = tableView.dequeueReusableCell(withIdentifier: BKEventDoubleActionCellID, for: indexPath) as! BKEventDoubleActionCell
         let cell = tableView.dequeueReusableCell(withIdentifier: BKEventDoubleActionNewCellID, for: indexPath) as! BKEventDoubleActionNewCell
         
-        var activity: BKKidActivitySchedule
-
         if let activity = events?[indexPath.row] {
             
             //set state before setting a view
@@ -487,7 +501,6 @@ extension BKEventsVC {
             //let connectionSate = cell.activitySchedule?.connectionState
             
             switch section {
-
                 //Pending events
                 case 1:
                     cell.eventStatus = "Pending"
@@ -500,6 +513,21 @@ extension BKEventsVC {
                 default:
                     break
             }
+            
+            //TODO: temorarily setting these until we have a good of tracking events.
+            cell.lblActionStatus.isHidden = false
+            cell.lblCreatedBy.isHidden = true
+            
+            if (section == 3) {
+                cell.lblDisplayAction.isHidden = true
+            }
+            /*
+            //TODO: temporary code. clean it up.
+            let formatter = DateFormatter()
+            formatter.dateFormat = "MM/dd/yyyy H:mm a"
+            let converetedDateStr = formatter.string(from: activity.convertedDate)
+            cell.lblCreatedBy.text = "\(activity.date) \(activity.time) \(converetedDateStr)"
+           */
             
             // Assign the tap action which will be executed when the user taps the UIButton
             cell.tapAction1 = { [weak self] (cell) in
@@ -523,17 +551,26 @@ extension BKEventsVC {
 
 extension BKEventsVC {
     
-    func sendEventResponse(row: Int, acceptDecision: Bool) {
+    func sendEventResponse(section: Int,row: Int, acceptDecision: Bool) {
         SVProgressHUD.show()
         print ("entering sendConnectResponse")
         
-        if var activitySchedule = self.pendingEvents?[row], let currentKid = BKNetowrkTool.shared.myCurrentKid {
+        var events: [BKKidActivitySchedule]?
+        
+        if ( section == 1 ) {
+            events = pendingEvents
+        } else if ( section == 2 ) {
+            events = upcomingEvents
+        } else {
+            return
+        }
+        
+        if var activitySchedule = events?[row], let currentKid = BKNetowrkTool.shared.myCurrentKid {
             
             let formatter = DateFormatter()
             formatter.dateFormat = "MM/dd/yyyy"
             
             //let todayDate = formatter.string(from: date)
-            
             let eventResponse = BKScheduleResponse(responderKidId: currentKid.id!, responderKidName: currentKid.kidName, requesterKidId: activitySchedule.id, acceptanceStatus: acceptDecision, requesterSkillLevel: 5, sportName: activitySchedule.sportName, location: activitySchedule.location, date: activitySchedule.date, time: activitySchedule.time)
             
             BKNetowrkTool.shared.scheduleResponder( scheduleResponse: eventResponse) { (success) in
@@ -541,15 +578,16 @@ extension BKEventsVC {
                 
                 if success {
                     print ("success sendConnectResponse)")
-                    activitySchedule.connectionState = BKKidConnectionSate.connected.rawValue
                     
                     if acceptDecision {
                         activitySchedule.connectionState = BKKidConnectionSate.connected.rawValue
+                        activitySchedule.eventDecisionStatus = "A"
                     } else {
                         activitySchedule.connectionState = BKKidConnectionSate.rejected.rawValue
+                        activitySchedule.eventDecisionStatus = "D"
                     }
                     
-                    self.pendingEvents?[row] = activitySchedule
+                    events?[row] = activitySchedule
                 }
                 else {
                     print ("failure sendConnectResponse")

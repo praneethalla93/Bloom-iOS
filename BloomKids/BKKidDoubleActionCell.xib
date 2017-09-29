@@ -12,143 +12,143 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BKKidCellAction" customModule="BloomKids" customModuleProvider="target"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BKKidDoubleActionCellID" rowHeight="99" id="j6q-P8-nCo" userLabel="BKKidDoubleActionCell" customClass="BKKidDoubleActionCell" customModule="BloomKids" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="379" height="89"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BKKidDoubleActionCellID" rowHeight="147" id="j6q-P8-nCo" userLabel="BKKidDoubleActionCell" customClass="BKKidDoubleActionCell" customModule="BloomKids" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="549" height="137"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="j6q-P8-nCo" id="OkW-81-c7z">
-                <rect key="frame" x="0.0" y="0.0" width="379" height="88.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="549" height="136.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <stackView opaque="NO" contentMode="scaleAspectFit" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="MdM-QZ-Gz5">
-                        <rect key="frame" x="5" y="5" width="369" height="60"/>
+                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Cxa-7U-whX">
+                        <rect key="frame" x="10" y="10" width="529" height="116.5"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="photo-placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="glw-M7-KpX" userLabel="playerImageView">
-                                <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="glw-M7-KpX" secondAttribute="height" multiplier="1:1" id="dtD-pr-ys0"/>
-                                </constraints>
-                            </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="b8b-Fj-Zb1">
-                                <rect key="frame" x="70" y="0.0" width="224" height="60"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="mza-YV-Eop">
+                                <rect key="frame" x="0.0" y="0.0" width="75" height="116.5"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Player Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wff-5W-X9g">
-                                        <rect key="frame" x="0.0" y="0.0" width="224" height="20"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="School, Age" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lfd-5W-sK5">
-                                        <rect key="frame" x="0.0" y="20" width="224" height="20"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <stackView opaque="NO" contentMode="left" translatesAutoresizingMaskIntoConstraints="NO" id="VNM-0L-x66">
-                                        <rect key="frame" x="0.0" y="40" width="224" height="20"/>
-                                        <subviews>
-                                            <stackView opaque="NO" contentMode="left" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="OBo-mJ-SHQ" userLabel="SportsStackView">
-                                                <rect key="frame" x="0.0" y="0.0" width="172" height="20"/>
-                                                <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="favorites-grey-icon" translatesAutoresizingMaskIntoConstraints="NO" id="nec-yZ-ekP">
-                                                        <rect key="frame" x="0.0" y="0.0" width="24" height="20"/>
-                                                    </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="255" text="  " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CnD-d9-3Ka" userLabel="Lbl Dummy">
-                                                        <rect key="frame" x="24" y="0.0" width="6.5" height="20"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chess-icon" translatesAutoresizingMaskIntoConstraints="NO" id="wkI-bc-Jwa">
-                                                        <rect key="frame" x="30.5" y="0.0" width="20" height="20"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="20" id="8ys-vv-PDG"/>
-                                                            <constraint firstAttribute="width" constant="20" id="Bcf-B8-Lkk"/>
-                                                        </constraints>
-                                                    </imageView>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="basketball-icon" translatesAutoresizingMaskIntoConstraints="NO" id="1iF-G6-epQ">
-                                                        <rect key="frame" x="50.5" y="0.0" width="25.5" height="20"/>
-                                                    </imageView>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tennis-icon" translatesAutoresizingMaskIntoConstraints="NO" id="Owd-Ap-iSg">
-                                                        <rect key="frame" x="76" y="0.0" width="24" height="20"/>
-                                                    </imageView>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="baseball-icon" translatesAutoresizingMaskIntoConstraints="NO" id="wCy-Yz-zej">
-                                                        <rect key="frame" x="100" y="0.0" width="24" height="20"/>
-                                                    </imageView>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="soccer-icon" translatesAutoresizingMaskIntoConstraints="NO" id="MkE-uO-sfX">
-                                                        <rect key="frame" x="124" y="0.0" width="25" height="20"/>
-                                                    </imageView>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cricket-icon" translatesAutoresizingMaskIntoConstraints="NO" id="KHH-tX-FDq">
-                                                        <rect key="frame" x="149" y="0.0" width="23" height="20"/>
-                                                    </imageView>
-                                                </subviews>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="20" id="N3F-ga-Ha1"/>
-                                                </constraints>
-                                            </stackView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sRq-E3-Dq7" userLabel="Lbl Dummy">
-                                                <rect key="frame" x="172" y="0.0" width="52" height="20"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                    </stackView>
-                                </subviews>
-                            </stackView>
-                            <stackView opaque="NO" contentMode="scaleAspectFill" axis="vertical" distribution="equalCentering" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="M4h-f4-Fd2">
-                                <rect key="frame" x="304" y="0.0" width="65" height="60"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8u7-mj-fZO" userLabel="btnPlayerAction1">
-                                        <rect key="frame" x="23.5" y="0.0" width="18.5" height="18"/>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="photo-placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="glw-M7-KpX" userLabel="playerImageView">
+                                        <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="8u7-mj-fZO" secondAttribute="height" multiplier="1:1" id="hzu-fO-5iP"/>
+                                            <constraint firstAttribute="width" secondItem="glw-M7-KpX" secondAttribute="height" multiplier="1:1" id="dtD-pr-ys0"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                        <state key="normal" image="accept-btn-icon">
-                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="btnPlayerctionButton1Tapped:" destination="j6q-P8-nCo" eventType="touchUpInside" id="hLp-sg-SkJ"/>
-                                        </connections>
-                                    </button>
+                                    </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Connected" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ziR-kl-Obm" userLabel="lblActionStatus">
-                                        <rect key="frame" x="2" y="23" width="61" height="13.5"/>
+                                        <rect key="frame" x="0.0" y="75" width="75" height="41.5"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
                                         <color key="textColor" red="0.44705882352941173" green="0.792156862745098" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lfS-jj-E0c" userLabel="btnPlayerAction2">
-                                        <rect key="frame" x="23.5" y="41.5" width="18.5" height="18.5"/>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="lfS-jj-E0c" secondAttribute="height" multiplier="1:1" id="GK2-E3-4tz"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                        <state key="normal" image="decline-btn-icon">
-                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="btnPlayerctionButton2Tapped:" destination="j6q-P8-nCo" eventType="touchUpInside" id="4h9-94-nTj"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="lfS-jj-E0c" firstAttribute="width" secondItem="8u7-mj-fZO" secondAttribute="width" id="a9d-Iv-Slz"/>
-                                    <constraint firstAttribute="width" constant="65" id="vPx-W4-B3T"/>
+                                    <constraint firstAttribute="width" constant="75" id="Keg-65-Q0d"/>
                                 </constraints>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="b8b-Fj-Zb1">
+                                <rect key="frame" x="85" y="0.0" width="444" height="116.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Player Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wff-5W-X9g">
+                                        <rect key="frame" x="0.0" y="0.0" width="444" height="29.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="School, Age" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lfd-5W-sK5">
+                                        <rect key="frame" x="0.0" y="37.5" width="444" height="16"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="left" horizontalHuggingPriority="255" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="VNM-0L-x66">
+                                        <rect key="frame" x="0.0" y="61.5" width="444" height="20"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="left" distribution="fillEqually" alignment="firstBaseline" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="OBo-mJ-SHQ" userLabel="SportsStackView">
+                                                <rect key="frame" x="0.0" y="0.0" width="170" height="20"/>
+                                                <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="favorites-grey-icon" translatesAutoresizingMaskIntoConstraints="NO" id="nec-yZ-ekP">
+                                                        <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="nec-yZ-ekP" secondAttribute="height" multiplier="1:1" id="j4f-3y-dUA"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="chess-icon" translatesAutoresizingMaskIntoConstraints="NO" id="wkI-bc-Jwa">
+                                                        <rect key="frame" x="25" y="0.0" width="20" height="20"/>
+                                                    </imageView>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="basketball-icon" translatesAutoresizingMaskIntoConstraints="NO" id="1iF-G6-epQ">
+                                                        <rect key="frame" x="50" y="0.0" width="20" height="20"/>
+                                                    </imageView>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="tennis-icon" translatesAutoresizingMaskIntoConstraints="NO" id="Owd-Ap-iSg">
+                                                        <rect key="frame" x="75" y="0.0" width="20" height="20"/>
+                                                    </imageView>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="baseball-icon" translatesAutoresizingMaskIntoConstraints="NO" id="wCy-Yz-zej">
+                                                        <rect key="frame" x="100" y="0.0" width="20" height="20"/>
+                                                    </imageView>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="soccer-icon" translatesAutoresizingMaskIntoConstraints="NO" id="MkE-uO-sfX">
+                                                        <rect key="frame" x="125" y="0.0" width="20" height="20"/>
+                                                    </imageView>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="cricket-icon" translatesAutoresizingMaskIntoConstraints="NO" id="KHH-tX-FDq">
+                                                        <rect key="frame" x="150" y="0.0" width="20" height="20"/>
+                                                    </imageView>
+                                                </subviews>
+                                            </stackView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nLy-OH-JJb" userLabel="Lbl Dummy">
+                                                <rect key="frame" x="175" y="0.0" width="269" height="20"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="ehl-Os-B5B"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="255" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="M4h-f4-Fd2">
+                                        <rect key="frame" x="0.0" y="89.5" width="444" height="27"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Connect?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mfg-Uf-RTN">
+                                                <rect key="frame" x="0.0" y="0.0" width="0.0" height="27"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8u7-mj-fZO" userLabel="btnPlayerAction1">
+                                                <rect key="frame" x="0.0" y="0.0" width="181" height="27"/>
+                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <state key="normal" title="Yes">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="btnPlayerctionButton1Tapped:" destination="j6q-P8-nCo" eventType="touchUpInside" id="hLp-sg-SkJ"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lfS-jj-E0c" userLabel="btnPlayerAction2">
+                                                <rect key="frame" x="-95" y="0.0" width="181" height="27"/>
+                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <state key="normal" title="No">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="btnPlayerctionButton2Tapped:" destination="j6q-P8-nCo" eventType="touchUpInside" id="4h9-94-nTj"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="lfS-jj-E0c" firstAttribute="width" secondItem="8u7-mj-fZO" secondAttribute="width" id="XMX-7D-2C8"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
                             </stackView>
                         </subviews>
                     </stackView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="MdM-QZ-Gz5" firstAttribute="leading" secondItem="OkW-81-c7z" secondAttribute="leading" constant="5" id="6HZ-4o-zwi"/>
-                    <constraint firstAttribute="trailing" secondItem="MdM-QZ-Gz5" secondAttribute="trailing" constant="5" id="CVm-gl-wSo"/>
-                    <constraint firstAttribute="bottom" secondItem="MdM-QZ-Gz5" secondAttribute="bottom" constant="5" id="Cnx-R6-Rpx"/>
-                    <constraint firstItem="MdM-QZ-Gz5" firstAttribute="top" secondItem="OkW-81-c7z" secondAttribute="top" constant="5" id="O30-rx-qlE"/>
+                    <constraint firstAttribute="trailing" secondItem="Cxa-7U-whX" secondAttribute="trailing" constant="10" id="T8k-KC-v5c"/>
+                    <constraint firstItem="Cxa-7U-whX" firstAttribute="top" secondItem="OkW-81-c7z" secondAttribute="top" constant="10" id="XZi-l9-9xD"/>
+                    <constraint firstAttribute="bottom" secondItem="Cxa-7U-whX" secondAttribute="bottom" constant="10" id="d2U-Nu-eAU"/>
+                    <constraint firstItem="Cxa-7U-whX" firstAttribute="leading" secondItem="OkW-81-c7z" secondAttribute="leading" constant="10" id="xz9-Bc-Xmn"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
@@ -162,20 +162,18 @@
                 <outlet property="imgSportIcon5" destination="MkE-uO-sfX" id="Rph-RO-Qyh"/>
                 <outlet property="imgSportIcon6" destination="KHH-tX-FDq" id="5vr-z3-1kO"/>
                 <outlet property="lblActionStatus" destination="ziR-kl-Obm" id="Gi6-9B-O6o"/>
+                <outlet property="lblDisplayName" destination="mfg-Uf-RTN" id="1Z5-08-3v9"/>
                 <outlet property="lblPlayerName" destination="wff-5W-X9g" id="2Yb-7f-2M8"/>
                 <outlet property="lblPlayerSchoolAge" destination="Lfd-5W-sK5" id="zoC-T1-M8U"/>
-                <outlet property="lblPlays" destination="CnD-d9-3Ka" id="v5U-1i-eiu"/>
             </connections>
-            <point key="canvasLocation" x="49.5" y="122.5"/>
+            <point key="canvasLocation" x="134.5" y="191.5"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="accept-btn-icon" width="98" height="99"/>
         <image name="baseball-icon" width="30" height="30"/>
         <image name="basketball-icon" width="32" height="32"/>
         <image name="chess-icon" width="25" height="30"/>
         <image name="cricket-icon" width="29" height="27"/>
-        <image name="decline-btn-icon" width="98" height="99"/>
         <image name="favorites-grey-icon" width="30" height="27"/>
         <image name="photo-placeholder" width="139" height="139"/>
         <image name="soccer-icon" width="31" height="31"/>

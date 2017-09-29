@@ -445,7 +445,6 @@ extension BKConnectVC {
                 
                 alert.popoverPresentationController?.sourceView = cell
                 alert.popoverPresentationController?.sourceRect = cell.bounds
-                //alert.popoverPresentationController?.sourceRect = CGRect(x: self.view.bounds.size.width / 2.0, y: self.view.bounds.size.height / 2.0, width: 1.0, height: 2.0)
                 self.present(alert, animated: true, completion: nil)
             }
 
@@ -532,13 +531,11 @@ extension BKConnectVC {
 extension BKConnectVC {
     
     func handlePendingConnections(_ tableView: UITableView, _ indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: BKKidDoubleActionCellID, for: indexPath) as! BKKidDoubleActionCell
         
         if self.pendingConnections != nil {
-            
-            cell.btnPlayerAction1.setImage(UIImage(named: "accept-btn-icon"), for: .normal)
-            cell.btnPlayerAction2.setImage(UIImage(named: "decline-btn-icon"), for: .normal)
+            //cell.btnPlayerAction1.setImage(UIImage(named: "accept-btn-icon"), for: .normal)
+            //cell.btnPlayerAction2.setImage(UIImage(named: "decline-btn-icon"), for: .normal)
             
             if let activityConnection = self.pendingConnections?[indexPath.row] {
                 
@@ -551,9 +548,12 @@ extension BKConnectVC {
                     self?.showAlertForRow(cell: cell,section: 1, row: tableView.indexPath(for: cell)!.row, decision: BKConnectDeclineRespone)
                 }
                 
-                cell.lblPlayerName.text = "\(activityConnection.kidname) || \(activityConnection.id)"
-                cell.lblPlayerSchoolAge.text = "\(activityConnection.school) | Age: \(activityConnection.age) | \(activityConnection.date)"
+                //cell.lblPlayerName.text = "\(activityConnection.kidname) || \(activityConnection.id)"
+                //cell.lblPlayerSchoolAge.text = "\(activityConnection.school) | Age: \(activityConnection.age) | \(activityConnection.date)"
                 //cell.imgSportIcon1.image = #imageLiteral(resourceName: "chess-icon")
+                cell.lblPlayerName.text = activityConnection.kidname
+                //cell.lblSchoolName.text = "\(activityConnection.grade!), \(currentKid.school)"
+                cell.lblPlayerSchoolAge.text = "\(activityConnection.age), \(activityConnection.school)"
                 cell.sportsImageIsHidden = true
                 
                 if let sport = activityConnection.sport {

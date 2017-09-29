@@ -22,6 +22,9 @@ class BKCongratsVC: UITableViewController {
         
         let kidActionCellNib = UINib(nibName: "\(BKKidActionCell.self)", bundle: nil)
         
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedRowHeight = BKKidActionCellHeight - 50
+        
         tableView.register(kidActionCellNib, forCellReuseIdentifier: BKKidActionCellID)
         //tableView.contentInset.bottom = 49
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: headerCellId)
@@ -100,7 +103,7 @@ class BKCongratsVC: UITableViewController {
         if indexPath.section == 0 {
             return 35.0
         } else {
-            return BKKidCellHeight
+            return BKKidActionCellHeight
         }
         
     }

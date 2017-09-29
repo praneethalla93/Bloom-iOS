@@ -94,7 +94,7 @@ class BKAuthTool {
                     //TODO: access profile data if needed
                     BKNetowrkTool.shared.myProfile = profile
                 } else {
-                    SVProgressHUD.showError(withStatus: "Profile load failed")
+                    //SVProgressHUD.showError(withStatus: "Profile load failed")
                     print("Profile load failed")
                     //TODO: login failed. stay in Auth UI
                     //self.switchToAuthUI()s
@@ -136,7 +136,9 @@ class BKAuthTool {
             let authStoryboard = UIStoryboard(name: "BKAuth", bundle: nil)
             authVC = authStoryboard.instantiateViewController(withIdentifier: "BKNavigationVC") as? BKNavigationVC
         }
+        
         authVC?.pushViewController(vc, animated: false)
+        //authVC?.present(vc, animated: false)
     }
     
     func switchToCongratsUI() {
@@ -149,6 +151,7 @@ class BKAuthTool {
         }
         
         authVC?.pushViewController(congratsVC, animated: false)
+        //authVC?.present(congratsVC, animated: false)
     }
     
     func switchToAddKidUI() {

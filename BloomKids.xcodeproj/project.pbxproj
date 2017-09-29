@@ -440,6 +440,7 @@
 				72D24A5E1F018E48002ACD79 /* Cell */,
 				72D24A571F018C73002ACD79 /* VCs */,
 				A1FA1B3F1EE3A0C10025143E /* BKConnect.storyboard */,
+				A1FA1B3E1EE3A0A20025143E /* Profile */,
 			);
 			name = Connect;
 			sourceTree = "<group>";
@@ -479,7 +480,6 @@
 				A185AE5B1ED611A7002FDF89 /* OnBoarding */,
 				A179F9AC1ED2811400B42540 /* Activity */,
 				A1FA1B3D1EE3A0910025143E /* Connect */,
-				A1FA1B3E1EE3A0A20025143E /* Profile */,
 				A17A7B2B1ECFCA5800D77D27 /* Networking */,
 				A1CFEFA71ECD5BAF003DBA74 /* Auth */,
 				A1CFEFB11ECD5FE0003DBA74 /* Base + Extensions */,
