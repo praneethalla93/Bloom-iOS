@@ -419,6 +419,10 @@ struct BKKidActivitySchedule {
         dateFormatter.timeZone = NSTimeZone.local
         let formattedDate = "\(date)T\(time)"
         
+        if formattedDate == "T" {
+            return Date()
+        }
+        
         if let convertedDate = dateFormatter.date(from: formattedDate) {
             print("formattedDate  \(formattedDate ) :: convertedDate \(convertedDate)")
             return convertedDate
