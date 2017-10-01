@@ -11,22 +11,18 @@ import UIKit
 //let BKGlobalTintColor = UIColor.init(red: 155/255.0, green: 207/255.0, blue: 132/255.0, alpha: 1.0)
 let BKGlobalTintColor = UIColor.init(red: 112/255.0, green: 202/255.0, blue: 204/255.0, alpha: 1.0)
 let BKAlternativeColor = UIColor.init(red: 114/255.0, green: 202/255.0, blue: 204/255.0, alpha: 1.0)
-
 let BKNavigationBarTitleFontSize: CGFloat = 17.0
-
 let BKLoginLogoTopSpace: CGFloat = 20.0
 let BKInputTextFieldHeight: CGFloat = UIScreen.main.bounds.size.height > 480.0 ? 35.0 : 30.0
-
 let BKKidCellHeight: CGFloat = 100.0
 let BKKidActionCellHeight: CGFloat = 150.0
 let BKKidEventActionCellHeight: CGFloat = 170.0
 
-
 //DEV URL
-let BKNetowrkBaseUrlStr = "http://custom-env.aqrfytx2is.us-east-1.elasticbeanstalk.com"
+//let BKNetowrkBaseUrlStr = "http://custom-env.aqrfytx2is.us-east-1.elasticbeanstalk.com"
 
 //PROD URL
-//let BKNetowrkBaseUrlStr = "http://bloomkids-env.us-east-1.elasticbeanstalk.com"
+let BKNetowrkBaseUrlStr = "http://bloomkids-env.us-east-1.elasticbeanstalk.com"
 
 
 let BKNetworkingLoginUrlStr = "\(BKNetowrkBaseUrlStr)/rest/login/dologin"

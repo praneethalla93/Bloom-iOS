@@ -220,7 +220,6 @@ struct BKKidActivityConnection {
         }
         
         print( "sportname  \(String(describing: sportName)) and \(String(describing: skillLevel))")
-        
         self.sport = BKSport(dict: ["sportName" : sportName!, "skillLevel": skillLevel!])
         
         //to manage status for the tableviewcell
