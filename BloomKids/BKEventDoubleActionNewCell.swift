@@ -60,7 +60,6 @@ class BKEventDoubleActionNewCell: UITableViewCell {
                 
                 activitySchedule?.btn2Hidden = true
                 self.btnPlayerAction2.isHidden = true
-                
             }
             
         }
@@ -98,9 +97,6 @@ class BKEventDoubleActionNewCell: UITableViewCell {
                     setButton(button: btnPlayerAction1, selected: false)
                     setButton(button: btnPlayerAction2, selected: true)
                 }
-                
-                
-                
                 
                 /*
                 self.btnPlayerAction1.isHidden = activity.btn1Hidden

@@ -207,7 +207,7 @@ extension BKActivityNewVC {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         if indexPath.section == 0 {
-            return 130
+            return BKKidActionCellHeight
         } else {
             return 40.0
         }

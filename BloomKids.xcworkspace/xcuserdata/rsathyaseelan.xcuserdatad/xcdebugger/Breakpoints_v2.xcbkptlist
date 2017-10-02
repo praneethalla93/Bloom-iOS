@@ -90,12 +90,12 @@
                   moduleName = "BloomKids"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/rsathyaseelan/Google%20Drive/Business_Opportunity/Bloom/BloomKids/iOS/Bloom-iOS-master/Bloom-iOS/BloomKids/BKKidModel.swift"
-                  timestampString = "528571623.133321"
+                  timestampString = "528575350.513077"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "236"
                   endingLineNumber = "236"
-                  offsetFromSymbolStart = "176">
+                  offsetFromSymbolStart = "283">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -105,7 +105,7 @@
                   moduleName = "BloomKids"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/rsathyaseelan/Google%20Drive/Business_Opportunity/Bloom/BloomKids/iOS/Bloom-iOS-master/Bloom-iOS/BloomKids/BKKidModel.swift"
-                  timestampString = "528571623.134681"
+                  timestampString = "528575350.515826"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "236"
@@ -145,6 +145,22 @@
             endingLineNumber = "451"
             landmarkName = "unknown"
             landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BloomKids/BKAddKidVC.swift"
+            timestampString = "528598318.518304"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "202"
+            endingLineNumber = "202"
+            landmarkName = "BKAddKidVC"
+            landmarkType = "21">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

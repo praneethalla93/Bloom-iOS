@@ -520,6 +520,8 @@ extension BKEventsVC {
             
             if (section == 3) {
                 cell.lblDisplayAction.isHidden = true
+            } else {
+                cell.lblDisplayAction.isHidden = false
             }
             /*
             //TODO: temporary code. clean it up.
