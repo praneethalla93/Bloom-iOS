@@ -83,7 +83,7 @@ class BKLoginVC: UIViewController {
         }
 
         myGroup.enter()
-        updateKeyChain(email: emailText, password: passwordText)
+        BKAuthTool.shared.updateKeyChain(email: emailText, password: passwordText)
         authenticate(emailText, password: passwordText)
         
         //TODO to activities after login.
@@ -104,12 +104,7 @@ class BKLoginVC: UIViewController {
         self.view.endEditing(true)
     }
     
-    func updateKeyChain(email: String, password: String) {
-        let keychain = Keychain(service: BKKeychainService)
-        BKNetowrkTool.shared.currentEmail = email
-        keychain[BKUserEmailKey] = email
-        keychain[email] = password
-    }
+
 
 }
 

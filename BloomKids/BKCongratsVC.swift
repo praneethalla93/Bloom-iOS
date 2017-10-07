@@ -111,6 +111,7 @@ class BKCongratsVC: UITableViewController {
     
     @IBAction func nextBtnTapped(_ sender: UIBarButtonItem) {
         //switchToAddKidUI()
+        BKAuthTool.shared.authVC = nil
         BKAuthTool.shared.switchToMainUI()
     }
     

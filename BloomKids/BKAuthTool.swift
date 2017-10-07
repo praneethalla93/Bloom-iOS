@@ -26,6 +26,7 @@ class BKAuthTool {
         //Scenario 2. The user will be shown Main UI if he already has the credentials with successful login
         //Scenario 3. The user will be shown Auth UI if he already has the credentials with failed login
         showViewController = authStoryboard.instantiateViewController(withIdentifier: "BKNavigationVC")
+        self.authVC = showViewController as? BKNavigationVC
         let keychain = Keychain(service: BKKeychainService)
         
         if let emailStr = try? keychain.getString(BKUserEmailKey), let email = emailStr {
@@ -35,11 +36,10 @@ class BKAuthTool {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
                 
                 if let passwordStr = try? keychain.getString(email), let password = passwordStr {
-                    
+
                     BKNetowrkTool.shared.authenticate(email: email, password: password, completion: { (success) in
                         
                         if success {
-                            
                             //let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
                             //showViewController = mainStoryboard.instantiateViewController(withIdentifier: "BKMainTabBarVC")
                             self.switchToMainUI()
@@ -79,7 +79,7 @@ class BKAuthTool {
             }
             */
         }
-
+        
         return showViewController
     }
     
@@ -99,7 +99,7 @@ class BKAuthTool {
                     //TODO: login failed. stay in Auth UI
                     //self.switchToAuthUI()s
                 }
-                
+
             })
 
         }
@@ -117,12 +117,14 @@ class BKAuthTool {
         
         if authVC == nil {
             authVC = authStoryboard.instantiateViewController(withIdentifier: "BKNavigationVC") as? BKNavigationVC
+            print("switchToAuthUI:: AuthUI new instance created")
         }
 
         let window = UIApplication.shared.keyWindow
         window?.rootViewController = authVC
+        print("switchToAuthUI: switch to AuthUI success")
     }
-    
+
     func switchToCitySearch() {
         let vc = BKPlaceAutocompleteVC()
         //vc.placeDelegate = self
@@ -135,10 +137,13 @@ class BKAuthTool {
         if authVC == nil {
             let authStoryboard = UIStoryboard(name: "BKAuth", bundle: nil)
             authVC = authStoryboard.instantiateViewController(withIdentifier: "BKNavigationVC") as? BKNavigationVC
+            print("switchToCitySearch:: AuthUI new instance created")
+        } else {
+            print("switchToCitySearch:: AuthUI using existing")
         }
         
+        print("City search pushed")
         authVC?.pushViewController(vc, animated: false)
-        //authVC?.present(vc, animated: false)
     }
     
     func switchToCongratsUI() {
@@ -148,6 +153,9 @@ class BKAuthTool {
         if authVC == nil {
             let authStoryboard = UIStoryboard(name: "BKAuth", bundle: nil)
             authVC = authStoryboard.instantiateViewController(withIdentifier: "BKNavigationVC") as? BKNavigationVC
+            print("switchToCongratsUI:: AuthUI new instance created")
+        } else {
+            print("switchToCongratsUI:: AuthUI using existing")
         }
         
         authVC?.pushViewController(congratsVC, animated: false)
@@ -162,6 +170,9 @@ class BKAuthTool {
         if authVC == nil {
             let authStoryboard = UIStoryboard(name: "BKAuth", bundle: nil)
             authVC = authStoryboard.instantiateViewController(withIdentifier: "BKNavigationVC") as? BKNavigationVC
+            print("switchToAddKidUI::  new instance created")
+        } else {
+            print("switchToAddKidUI:: using existing")
         }
         
         authVC?.pushViewController(addKidVC, animated: false)
@@ -212,7 +223,6 @@ extension BKAuthTool: BKPlaceAutocompleteDelegate {
         let keychain = Keychain(service: BKKeychainService)
         keychain[BKCurrentCity] = place.placeName
         keychain[BKCurrentState] = state
-
         switchToCongratsUI()
         
     }
@@ -220,6 +230,13 @@ extension BKAuthTool: BKPlaceAutocompleteDelegate {
     func finishedOnboarding() {
         let keychain = Keychain(service: BKKeychainService)
         keychain[BKHasFinishedOnboarding] = "true"
+    }
+    
+    func updateKeyChain(email: String, password: String) {
+        let keychain = Keychain(service: BKKeychainService)
+        BKNetowrkTool.shared.currentEmail = email
+        keychain[BKUserEmailKey] = email
+        keychain[email] = password
     }
 
 }

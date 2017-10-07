@@ -330,7 +330,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kel-gt-7il" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2692.5" y="1323.5915492957747"/>
+            <point key="canvasLocation" x="2274" y="649"/>
         </scene>
         <!--Forgot password-->
         <scene sceneID="0T2-j9-7Zy">
@@ -403,24 +403,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rtz-ec-zmc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1356" y="-141"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="vnL-08-4c4">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="heE-eE-Hhd" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="P3d-o8-ESn">
-                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="oi1-ik-Zeo" kind="relationship" relationship="rootViewController" id="amL-WY-kN9"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qKE-44-JFK" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1898" y="1324"/>
         </scene>
     </scenes>
     <resources>

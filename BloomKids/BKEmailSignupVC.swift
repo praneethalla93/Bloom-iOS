@@ -19,6 +19,8 @@ class BKEmailSignupVC: UIViewController {
     @IBOutlet weak var fatherBtn: UIButton!
     @IBOutlet weak var motherBtn: UIButton!
     
+    var signUpSuccessFlag = false
+    
     var signUpTestFlag = false
     let myGroup = DispatchGroup()
 
@@ -27,9 +29,12 @@ class BKEmailSignupVC: UIViewController {
         super.viewDidLoad()
         //inputTextFieldsHeightConstraint.constant = BKInputTextFieldHeight
         setupGenderBtns()
+        self.signUpSuccessFlag = false
         
         if signUpTestFlag {
-            emailField.text = "jill.johnson2@gmail.com"
+            //emailField.text = "jill.johnson2@gmail.com"
+            //emailField.text = "raj.sathyaseelan@gmail.com"
+            emailField.text = "bloomkidsports@gmail.com"
             passwordField.text = "Bloom123"
             comfirmPassword.text = "Bloom123"
             nameField.text = "Jimmy Buck"
@@ -141,8 +146,10 @@ extension BKEmailSignupVC {
             if success {
                 SVProgressHUD.showSuccess(withStatus: "Welcome!")
                 BKNetowrkTool.shared.currentEmail = emailText
+                
+                BKAuthTool.shared.updateKeyChain(email: emailText, password: passwordText)
+                self.signUpSuccessFlag = true
                 self.myGroup.leave()
-         
             } else {
                 
                 if (statusCode == "210") {
@@ -158,7 +165,7 @@ extension BKEmailSignupVC {
             self.myGroup.notify(queue: .main) {
                 print("Finished all requests.")
          
-                 if BKNetowrkTool.shared.currentEmail != nil {
+                 if BKNetowrkTool.shared.currentEmail != nil && self.signUpSuccessFlag {
                      BKAuthTool.shared.switchToCitySearch()
                  }
 

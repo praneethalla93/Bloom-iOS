@@ -32,6 +32,8 @@ class BKAddKidVC: UITableViewController {
     fileprivate var searchNavVC: BKPlaceSearchNavVC?
     let myGroup = DispatchGroup()
     
+    var txtNameField: UITextField?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         photoHeaderVC.willMove(toParentViewController: self)
@@ -77,34 +79,6 @@ class BKAddKidVC: UITableViewController {
             }
         }
 
-        myGroup.enter()
-        
-        //after successfull addking kid
-        myGroup.notify(queue: .main) {
-            
-             if self.newKid != nil {
-                print("\(String(describing: self.newKid!.kidName)) updated successfully")
-                SVProgressHUD.showSuccess(withStatus: "\(String(describing: self.newKid!.kidName)) updated successfully")
-                BKAuthTool.shared.finishedOnboarding()
-
-                //cancel to return to your kids screen.
-                if let mode = self.mode {
-                    
-                    if ( mode == "ADD" || mode == "EDIT") {
-                        self.cancel(self)
-                    } else {
-                        BKAuthTool.shared.switchToMainUI()
-                    }
-                    
-                } else {
-                    self.cancel(self)
-                }
-                
-             } else{
-                SVProgressHUD.showError(withStatus: "Failed to add or edit kid")
-             }
-
-        }
         
     }
     
@@ -135,11 +109,25 @@ class BKAddKidVC: UITableViewController {
     
     func addOrEditKid(_ sender: Any) {
         guard let gender = genderStr,
-        let name = name,
-        let schoolPlace = schoolPlace,
-        let sports = sportCell?.totalSports,
+        let sports = sportCell?.totalSports else {
         //let ageStr = age,
-        let gradeStr = grade else {
+            return
+        }
+        
+        self.name = txtNameField?.text
+        
+        guard let name = name else {
+            SVProgressHUD.showError(withStatus: "You have to enter kid's name")
+            return
+        }
+        
+        guard let gradeStr = grade else {
+            SVProgressHUD.showError(withStatus: "You have to enter kid's name")
+            return
+        }
+        
+        guard let schoolPlace = schoolPlace else {
+            SVProgressHUD.showError(withStatus: "You have to select school")
             return
         }
         
@@ -150,13 +138,14 @@ class BKAddKidVC: UITableViewController {
         
         let kidModel = BKKidModel(kidName: name, gender: gender, school: schoolPlace, age: gradeStr, sports: sports, id: self.kidId)
         SVProgressHUD.show()
+        myGroup.enter()
         
         if ( self.mode == "EDIT") {
             
             BKNetowrkTool.shared.editKid(kidModel: kidModel, row: self.kidRow!) { (success) in
                 
                 SVProgressHUD.dismiss()
-                self.myGroup.leave()
+                
                 
                 if success {
                     self.newKid = kidModel
@@ -166,7 +155,8 @@ class BKAddKidVC: UITableViewController {
                     self.newKid = nil
                     print ("failed editing kid")
                 }
-
+                
+                self.myGroup.leave()
             }
 
         } else {
@@ -174,7 +164,6 @@ class BKAddKidVC: UITableViewController {
             BKNetowrkTool.shared.addKid(kidModel: kidModel) { (success, kidid) in
                 
                 SVProgressHUD.dismiss()
-                self.myGroup.leave()
                 
                 if success {
                     self.newKid = kidModel
@@ -184,7 +173,38 @@ class BKAddKidVC: UITableViewController {
                     self.newKid = nil
                     print ("failed addking kid")
                 }
+                
+                self.myGroup.leave()
 
+            }
+            
+        }
+        
+        
+        
+        //after successfull addking kid
+        myGroup.notify(queue: .main) {
+            
+            if self.newKid != nil {
+                print("\(String(describing: self.newKid!.kidName)) updated successfully")
+                SVProgressHUD.showSuccess(withStatus: "\(String(describing: self.newKid!.kidName)) updated successfully")
+                BKAuthTool.shared.finishedOnboarding()
+                
+                //cancel to return to your kids screen.
+                if let mode = self.mode {
+                    
+                    if ( mode == "ADD" || mode == "EDIT") {
+                        self.cancel(self)
+                    } else {
+                        BKAuthTool.shared.switchToMainUI()
+                    }
+                    
+                } else {
+                    self.cancel(self)
+                }
+                
+            } else{
+                SVProgressHUD.showError(withStatus: "Failed to add or edit kid")
             }
             
         }
@@ -193,6 +213,7 @@ class BKAddKidVC: UITableViewController {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
+        print("resign first responder")
         return true
     }
 
@@ -309,6 +330,7 @@ extension BKAddKidVC {
         cell.label.text = "Name"
         cell.textField.placeholder = ""
         cell.textField.text = name
+        self.txtNameField = cell.textField
         
         cell.didChangeText = {[weak self] (text) in
             self?.name = text

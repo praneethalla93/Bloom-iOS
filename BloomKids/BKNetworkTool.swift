@@ -248,7 +248,6 @@ extension BKNetowrkTool {
                         
                         var newkidModel = kidModel
                         newkidModel.id = kidid
-                        
                         self.myKids!.append(newkidModel)
                         completion(status, kidid)
                     }
@@ -646,21 +645,20 @@ extension BKNetowrkTool {
     func getKidConnections(kidModel:BKKidModel, completion: @escaping (_ success:Bool, _ kids: [BKKidModel]?) -> Void) {
         
         print("Entering getKid connections")
-        
         var dict = [String:Any]()
         dict["kidId"] = kidModel.id
         
         request(.post, urlStr: BKNetworkingConnectionsUrlStr, parameters: dict) { (success, data) in
 
             if success {
-                
+
                 do {
                     if  let data = data,
                         let json = try JSONSerialization.jsonObject(with: data) as? [String: Any]
                     {
                         if let kidsDict = json["kids"] as? [[String: Any]] {
-                            
                             var kidConnections = [BKKidModel]()
+                            
                             for kidDict in kidsDict {
                                 let kidModel = BKKidModel(dict: kidDict)
                                 kidConnections.append(kidModel)
@@ -682,9 +680,6 @@ extension BKNetowrkTool {
                     if  let data = data,
                         let json = try JSONSerialization.jsonObject(with: data) as? [String: Any]
                     {
-                        
-                        
-                        
                         if let status = json["status"] as? Bool {
                             
                             if ( status ) {
@@ -709,6 +704,7 @@ extension BKNetowrkTool {
         }
         
     }
+
     
     func getFamilyDetails(kidId: Int?, email: String?, mode: String, completion: @escaping (_ success:Bool, _ profile: BKProfile?) -> Void) {
         

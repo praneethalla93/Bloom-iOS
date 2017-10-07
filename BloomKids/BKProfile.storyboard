@@ -347,7 +347,7 @@
             </objects>
             <point key="canvasLocation" x="1048.8" y="707.49625187406298"/>
         </scene>
-        <!--Your Kids-->
+        <!--My Kids-->
         <scene sceneID="Unk-WU-EU2">
             <objects>
                 <tableViewController id="SOC-lH-Dix" customClass="BKYourKidsVC" customModule="BloomKids" customModuleProvider="target" sceneMemberID="viewController">
@@ -391,7 +391,7 @@
                             <outlet property="delegate" destination="SOC-lH-Dix" id="ZBO-nI-7gb"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Your Kids" id="Sdc-Cp-ebb">
+                    <navigationItem key="navigationItem" title="My Kids" id="Sdc-Cp-ebb">
                         <barButtonItem key="rightBarButtonItem" image="addkid-nav-icon" id="UpU-NE-CkE" userLabel="addkid-bar-btn-item">
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>

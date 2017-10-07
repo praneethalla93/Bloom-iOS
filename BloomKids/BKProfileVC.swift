@@ -93,6 +93,8 @@ class BKProfileVC: UITableViewController {
     
     //@TODO
     @IBAction func signOutButtonTapped(_ sender: Any) {
+        //reset
+        BKAuthTool.shared.authVC = nil
         BKAuthTool.shared.logout()
     }
     
