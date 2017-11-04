@@ -51,7 +51,6 @@ class BKConnectPlayerVC: UITableViewController {
     
 
     func loadMyKidsPotentialConnections(sportNameParam: String, interestLevelParam: String) {
-        
         myGroup.enter()
         SVProgressHUD.show()
         
@@ -122,9 +121,10 @@ extension BKConnectPlayerVC {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+
         switch section {
-        case 0:
             
+        case 0:
             
             if searchController.isActive && searchController.searchBar.text != "" {
                 
@@ -151,7 +151,6 @@ extension BKConnectPlayerVC {
         
     }
     
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         switch indexPath.section {
@@ -170,13 +169,13 @@ extension BKConnectPlayerVC {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         if indexPath.section == 0 {
-            return BKKidActionCellHeight
+            return BKKidEventActionCellHeight
         }else{
             return 40.0
         }
 
     }
-    
+
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         var sectionTitle = ""
         var searchCount = 0
@@ -244,8 +243,6 @@ extension BKConnectPlayerVC {
         */
     }
     
-    
-    
     func showAlertforSendConnection (cell: UITableViewCell) {
         
         var receivingKid: BKKidModel?
@@ -296,8 +293,8 @@ extension BKConnectPlayerVC {
             alert.popoverPresentationController?.sourceView = self.view
             alert.popoverPresentationController?.sourceRect = self.view.bounds
             self.present( alert, animated: true, completion: nil)
-            
         }
+        
     }
     
     func handleSucessDeleteConnection(alertAction: UIAlertAction!) -> Void {
@@ -350,8 +347,6 @@ extension BKConnectPlayerVC {
         deleteConnecionSentdKidIndexPath = nil
     }
 
-    
-    
 }
 
 //handle all cell creation here
@@ -379,23 +374,22 @@ extension BKConnectPlayerVC {
         }
         
         if let currentKid = kid {
-            
             //cell.imgPlayer = UIImage("")
             cell.kidModel = currentKid
             //cell.lblPlayerName.text = currentKid.kidName
             //cell.lblPlayerSchoolAge.text = "\(currentKid.school) , \(currentKid.age)"
+            cell.lblPlayerSchoolAge.text = "\(currentKid.grade ?? "Pre-K") at \(currentKid.school), \(BKNetowrkTool.shared.myProfile?.city ?? "San Francisco"), \(BKNetowrkTool.shared.myProfile?.state ?? "CA") "
             //cell.btnPlayerAction.setImage( UIImage(named: BKImageConnectBtn), for: .normal)
             cell.btnPlayerAction.setTitle("Invite to Connect", for: .normal)
             // Assign the tap action which will be executed when the user taps the UIButton
             cell.tapAction = { [weak self] (cell) in
                 self?.showAlertforSendConnection(cell: cell)
             }
-            
+
         }
         
         return cell
     }
-        
     
 }
 
@@ -447,16 +441,14 @@ extension BKConnectPlayerVC: UISearchBarDelegate {
                     return sportsMatch
                     
                 } else {
-                    
                     //let kidSearchableText = "\(kid.kidName) \(kid.school) \(kid.age) \(kid.gender)"
                     let kidSearchableText = kid.searchDescription
                     
                     //print ("Scope \(scope) || searchTech \(searchText) || kid \(kid.kidName) || sportsMarch \(sportsMatch) || Selected \(sportsMatch && kid.kidName.lowercased().contains(searchText.lowercased()))")
-                    
                     print ("kidsearchabletext \(kidSearchableText) Selected \(sportsMatch && kidSearchableText.lowercased().contains(searchText.lowercased()))")
                     return  sportsMatch && kidSearchableText.lowercased().contains(searchText.lowercased())
                 }
-                
+
             }
             
             
@@ -464,9 +456,7 @@ extension BKConnectPlayerVC: UISearchBarDelegate {
         
     }
     
-    
 }
-
 
 
 

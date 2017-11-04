@@ -180,8 +180,6 @@ class BKAddKidVC: UITableViewController {
             
         }
         
-        
-        
         //after successfull addking kid
         myGroup.notify(queue: .main) {
             

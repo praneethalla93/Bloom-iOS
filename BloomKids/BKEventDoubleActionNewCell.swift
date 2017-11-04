@@ -73,7 +73,7 @@ class BKEventDoubleActionNewCell: UITableViewCell {
             if let activity = activitySchedule {                
                 //self.lblPlayerName.text = "\(activity.kidName) ID: \(String(describing: activity.id))"
                 self.lblPlayerName.text = activity.kidName
-                self.lblEventAddress.text = activity.location
+                self.lblEventAddress.text = "On \(activity.date) \(activity.time) | \(activity.location)"
                 self.lblCreatedBy.text = "Invited by \(activity.createdBy!)"
                 self.imgSportIcon.image = BKSportImageDict[activity.sportName]
                 
