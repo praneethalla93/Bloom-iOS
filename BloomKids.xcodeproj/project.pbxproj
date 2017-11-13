@@ -12,6 +12,7 @@
 		720B663E1F4CE828000A50C6 /* BKEventDoubleActionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 720B663D1F4CE828000A50C6 /* BKEventDoubleActionCell.xib */; };
 		720B66401F4CE836000A50C6 /* BKEventDoubleActionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 720B663F1F4CE836000A50C6 /* BKEventDoubleActionCell.swift */; };
 		7217C4771F6656B700875477 /* BKProfileSummaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7217C4761F6656B700875477 /* BKProfileSummaryCell.swift */; };
+		721C5AAA1FB273BD00836021 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 721C5AA61FB273BC00836021 /* Bolts.framework */; };
 		72366B9E1F479F7000799302 /* BKEventsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72366B9D1F479F7000799302 /* BKEventsVC.swift */; };
 		723CB5C01F787FB400A22BB3 /* BKSimpleSelectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723CB5BF1F787FB400A22BB3 /* BKSimpleSelectCell.swift */; };
 		723CB5C21F78976200A22BB3 /* BKSimpleSelectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 723CB5C11F78976200A22BB3 /* BKSimpleSelectCell.xib */; };
@@ -96,6 +97,7 @@
 		720B663D1F4CE828000A50C6 /* BKEventDoubleActionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BKEventDoubleActionCell.xib; sourceTree = "<group>"; };
 		720B663F1F4CE836000A50C6 /* BKEventDoubleActionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKEventDoubleActionCell.swift; sourceTree = "<group>"; };
 		7217C4761F6656B700875477 /* BKProfileSummaryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKProfileSummaryCell.swift; sourceTree = "<group>"; };
+		721C5AA61FB273BC00836021 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = "../../../../../../../Downloads/FacebookSDKs-iOS-4/Bolts.framework"; sourceTree = "<group>"; };
 		72366B9D1F479F7000799302 /* BKEventsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKEventsVC.swift; sourceTree = "<group>"; };
 		723CB5BF1F787FB400A22BB3 /* BKSimpleSelectCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKSimpleSelectCell.swift; sourceTree = "<group>"; };
 		723CB5C11F78976200A22BB3 /* BKSimpleSelectCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BKSimpleSelectCell.xib; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				732B959C6A89925E7239D316 /* Pods_BloomKids.framework in Frameworks */,
+				721C5AAA1FB273BD00836021 /* Bolts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,6 +307,7 @@
 		7E66A35C3CC25A8A22BD4A17 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				721C5AA61FB273BC00836021 /* Bolts.framework */,
 				D8EACF588830FABFF52CD389 /* Pods_BloomKids.framework */,
 			);
 			name = Frameworks;
@@ -861,6 +865,15 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = EF7GXS63VL;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/Alamofire\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/BTNavigationDropdownMenu\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/KeychainAccess\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/SVProgressHUD\"",
+					"\"${PODS_ROOT}/GoogleMaps/Base/Frameworks\"",
+					"\"${PODS_ROOT}/GooglePlaces/Frameworks\"",
+				);
 				INFOPLIST_FILE = BloomKids/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -883,6 +896,15 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = EF7GXS63VL;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/Alamofire\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/BTNavigationDropdownMenu\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/KeychainAccess\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/SVProgressHUD\"",
+					"\"${PODS_ROOT}/GoogleMaps/Base/Frameworks\"",
+					"\"${PODS_ROOT}/GooglePlaces/Frameworks\"",
+				);
 				INFOPLIST_FILE = BloomKids/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

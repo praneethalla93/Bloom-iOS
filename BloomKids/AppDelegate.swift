@@ -9,6 +9,7 @@
 import UIKit
 import SVProgressHUD
 import GooglePlaces
+import FacebookCore
 
 let isLogin = false
 
@@ -59,6 +60,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+    
+    func applicationDidBecomeActive(application: UIApplication) {
+        // Call the 'activate' method to log an app event for use
+        // in analytics and advertising reporting.
+        AppEventsLogger.activate(application)
+        // ...
     }
 
 }

@@ -79,8 +79,10 @@ struct BKKidModel: CustomDebugStringConvertible {
     var sports: [BKSport]
     var age: String
     var grade: String?
+    var relation: String?
+    var city: String?
     
-    init(kidName: String, gender: String, school: String, age: String, sports: [BKSport], id: Int? = nil) {
+    init(kidName: String, gender: String, school: String, age: String, sports: [BKSport], id: Int? = nil, relation: String?, city: String?) {
         self.kidName = kidName.capitalized
         self.gender = gender
         self.school = school
@@ -90,6 +92,8 @@ struct BKKidModel: CustomDebugStringConvertible {
         self.id = id
         self.myAge = self.age
         self.grade = BKNetowrkTool.shared.getGrade(age: age)
+        self.relation = relation
+        self.city = city
     }
     
     init(dict: [String: Any]) {
@@ -99,7 +103,8 @@ struct BKKidModel: CustomDebugStringConvertible {
         self.school = dict["school"] as! String
         self.age = dict["age"] as! String
         self.grade = BKNetowrkTool.shared.getGrade(age: age)
-        
+        self.relation = dict["relation"] as? String
+        self.city = dict["city"] as? String
         let sportDict = dict["sport"] as! [[String: String]]
         
         sports = [BKSport]()
@@ -107,7 +112,6 @@ struct BKKidModel: CustomDebugStringConvertible {
             let sport = BKSport(dict: dict)
             sports.append(sport)
         }
-        
         
     }
     

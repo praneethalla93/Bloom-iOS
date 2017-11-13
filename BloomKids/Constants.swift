@@ -18,8 +18,11 @@ let BKKidCellHeight: CGFloat = 100.0
 let BKKidActionCellHeight: CGFloat = 150.0
 let BKKidEventActionCellHeight: CGFloat = 170.0
 
-//DEV URL
-let BKNetowrkBaseUrlStr = "http://custom-env.aqrfytx2is.us-east-1.elasticbeanstalk.com"
+//OLD DEV URL
+//let BKNetowrkBaseUrlStr = "http://custom-env.aqrfytx2is.us-east-1.elasticbeanstalk.com"
+
+//New DEV URL
+let BKNetowrkBaseUrlStr = "http://bloomkidsqa-env.us-east-1.elasticbeanstalk.com/"
 
 //PROD URL
 //let BKNetowrkBaseUrlStr = "http://bloomkids-env.us-east-1.elasticbeanstalk.com"

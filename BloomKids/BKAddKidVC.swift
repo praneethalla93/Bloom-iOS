@@ -27,6 +27,7 @@ class BKAddKidVC: UITableViewController {
     fileprivate var grade: String?
     //fileprivate var schoolPlace: BKPlaceModel?
     fileprivate var schoolPlace: String?
+    fileprivate var relation: String?
     fileprivate weak var sportCell: BKSportCell?
     fileprivate var newKid: BKKidModel?
     fileprivate var searchNavVC: BKPlaceSearchNavVC?
@@ -79,7 +80,6 @@ class BKAddKidVC: UITableViewController {
             }
         }
 
-        
     }
     
     func loadKidData() {
@@ -90,6 +90,7 @@ class BKAddKidVC: UITableViewController {
         self.grade = currentEditKid?.grade
         self.schoolPlace = currentEditKid?.school
         self.kidId =  currentEditKid?.id
+        self.relation =  currentEditKid?.relation
         //self.tableView.reloadData()
     }
     
@@ -136,7 +137,12 @@ class BKAddKidVC: UITableViewController {
             return
         }
         
-        let kidModel = BKKidModel(kidName: name, gender: gender, school: schoolPlace, age: gradeStr, sports: sports, id: self.kidId)
+        guard let relation = relation else {
+            SVProgressHUD.showError(withStatus: "You have to select relation")
+            return
+        }
+        
+        let kidModel = BKKidModel(kidName: name, gender: gender, school: schoolPlace, age: gradeStr, sports: sports, id: self.kidId, relation: relation, city: BKNetowrkTool.shared.myProfile?.city)
         SVProgressHUD.show()
         myGroup.enter()
         

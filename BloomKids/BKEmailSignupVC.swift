@@ -173,13 +173,12 @@ extension BKEmailSignupVC {
             
         }
  
- 
          /*
         //TODO temporary diversion
         SVProgressHUD.showSuccess(withStatus: "Welcome!")
         BKNetowrkTool.shared.currentEmail = emailText
         BKAuthTool.shared.switchToCitySearch()
-         */
+        */
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

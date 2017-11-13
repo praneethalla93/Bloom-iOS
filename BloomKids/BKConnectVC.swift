@@ -21,7 +21,7 @@ class BKConnectVC: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+
         let kidCellNib = UINib(nibName: "\(BKKidActionCell.self)", bundle: nil)
         self.tableView.register(kidCellNib, forCellReuseIdentifier: BKKidActionCellID)
  
@@ -33,6 +33,7 @@ class BKConnectVC: UITableViewController {
     func initialLoadAndReload(reDirect: Bool) {
         print ("initialLoadAndReload called")
         SVProgressHUD.show()
+        
         loadMyKids()
         
         //after successfull loading data
@@ -227,12 +228,10 @@ class BKConnectVC: UITableViewController {
 
         }
     
-        
     }
     
     
     func loadPendingConnections() {
-        
         print ("entering load pending connections")
         
         //if self.selectedKidName.isEmpty || selectedKidName != BKNetowrkTool.shared.myCurrentKid?.kidName {
@@ -310,9 +309,7 @@ extension BKConnectVC {
                 cell.backgroundColor = UIColor.random()
                 return cell
         }
-            
         
-
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BKProfileVC: UITableViewController {
+class BKProfileVC: UITableViewController, UITextFieldDelegate{
     @IBOutlet weak var userPhoto: UIImageView!
     @IBOutlet weak var txtProfileName: UITextField!
     @IBOutlet weak var txtProfileEmail: UITextField!
@@ -25,6 +25,12 @@ class BKProfileVC: UITableViewController {
         //self.navigationItem.rightBarButtonItem = self.editButtonItem
         self.navigationItem.rightBarButtonItem = nil
         loadProfile()
+        
+        txtProfileName.delegate = self
+        txtProfileEmail.delegate = self
+        txtPhone.delegate = self
+        txtPrimaryCity.delegate = self
+        txtRelation.delegate = self
     }
     
     func loadProfile() {
@@ -70,12 +76,18 @@ class BKProfileVC: UITableViewController {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
+        //textField.resignFirstResponder()
+        
+        txtProfileName.resignFirstResponder()
+        txtProfileEmail.resignFirstResponder()
+        txtPhone.resignFirstResponder()
+        txtPrimaryCity.resignFirstResponder()
+        txtRelation.resignFirstResponder()
+        print("resign first responder")
         return true
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        
         var sectionTitle = ""
         
         if section == 0 {

@@ -592,8 +592,8 @@ extension BKNetowrkTool {
         let keychain = Keychain(service: BKKeychainService)
         
         dict["email"] = currentEmail!
-        dict["city"] = "San Francisco"
-        dict["state"] = "California"
+        dict["city"] = myProfile?.city
+        dict["state"] = myProfile?.state
         
         if let profileCity = self.profile?.city {
             dict["city"] = profileCity

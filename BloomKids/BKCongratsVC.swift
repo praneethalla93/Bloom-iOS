@@ -24,7 +24,6 @@ class BKCongratsVC: UITableViewController {
         
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = BKKidActionCellHeight - 50
-        
         tableView.register(kidActionCellNib, forCellReuseIdentifier: BKKidActionCellID)
         //tableView.contentInset.bottom = 49
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: headerCellId)
@@ -81,7 +80,6 @@ class BKCongratsVC: UITableViewController {
             if numberOfKids > 0 {
                 let headerLabel = UILabel()
                 headerLabel.frame = CGRect(x: 16, y: 0, width: cell.contentView.bounds.size.width, height: cell.contentView.bounds.size.height)
-                
                 headerLabel.text = "Congrats! \(numberOfKids) Bloom kids in your city"
                 cell.contentView.addSubview(headerLabel)
             }

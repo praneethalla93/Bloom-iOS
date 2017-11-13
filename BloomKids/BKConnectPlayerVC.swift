@@ -355,7 +355,6 @@ extension BKConnectPlayerVC {
     func handlePotentialConnections(_ tableView: UITableView, _ indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: BKKidActionCellID, for: indexPath) as! BKKidActionCell
-        
         var kid: BKKidModel?
         
         if searchController.isActive && searchController.searchBar.text != "" {
@@ -378,7 +377,7 @@ extension BKConnectPlayerVC {
             cell.kidModel = currentKid
             //cell.lblPlayerName.text = currentKid.kidName
             //cell.lblPlayerSchoolAge.text = "\(currentKid.school) , \(currentKid.age)"
-            cell.lblPlayerSchoolAge.text = "\(currentKid.grade ?? "Pre-K") at \(currentKid.school), \(BKNetowrkTool.shared.myProfile?.city ?? "San Francisco"), \(BKNetowrkTool.shared.myProfile?.state ?? "CA") "
+            cell.lblPlayerSchoolAge.text = "\(currentKid.grade ?? "Pre-K") at \(currentKid.school), \(currentKid.city ?? "San Francisco")"
             //cell.btnPlayerAction.setImage( UIImage(named: BKImageConnectBtn), for: .normal)
             cell.btnPlayerAction.setTitle("Invite to Connect", for: .normal)
             // Assign the tap action which will be executed when the user taps the UIButton
