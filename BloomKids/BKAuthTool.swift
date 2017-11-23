@@ -46,14 +46,14 @@ class BKAuthTool {
                         }else{
                             SVProgressHUD.showError(withStatus: "Login failed")
                             //TODO: login failed. stay in Auth UI
-                            self.switchToAuthUI()
+                            self.switchToAuthUI(logout: false)
                         }
 
                     })
                     
                 } else {
                     SVProgressHUD.showError(withStatus: "password not in keychain")
-                    self.switchToAuthUI()
+                    self.switchToAuthUI(logout: false)
                 }
 
             })
@@ -97,7 +97,7 @@ class BKAuthTool {
                     //SVProgressHUD.showError(withStatus: "Profile load failed")
                     print("Profile load failed")
                     //TODO: login failed. stay in Auth UI
-                    //self.switchToAuthUI()s
+                    //self.switchToAuthUI()
                 }
 
             })
@@ -112,12 +112,18 @@ class BKAuthTool {
        
     }
     
-    func switchToAuthUI() {
+    func switchToAuthUI(logout: Bool) {
         let authStoryboard = UIStoryboard(name: "BKAuth", bundle: nil)
         
-        if authVC == nil {
+        if logout {
             authVC = authStoryboard.instantiateViewController(withIdentifier: "BKNavigationVC") as? BKNavigationVC
-            print("switchToAuthUI:: AuthUI new instance created")
+        } else {
+
+            if authVC == nil {
+                authVC = authStoryboard.instantiateViewController(withIdentifier: "BKNavigationVC") as? BKNavigationVC
+                print("switchToAuthUI:: AuthUI new instance created")
+            }
+            
         }
 
         let window = UIApplication.shared.keyWindow
@@ -141,7 +147,7 @@ class BKAuthTool {
         } else {
             print("switchToCitySearch:: AuthUI using existing")
         }
-        
+
         print("City search pushed")
         authVC?.pushViewController(vc, animated: false)
     }
@@ -194,6 +200,7 @@ class BKAuthTool {
             try keychain.remove(BKCurrentState)
             try keychain.remove(BKCurrentCity)
             try keychain.remove(BKUserEmailKey)
+            try keychain.remove("relation")
         } catch _ {
             
         }
@@ -202,7 +209,7 @@ class BKAuthTool {
     func logout() {
         clearKeychain()
         BKNetowrkTool.shared.cleanObjects()
-        switchToAuthUI()
+        switchToAuthUI(logout: true)
     }
 
 }

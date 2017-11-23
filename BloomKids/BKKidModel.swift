@@ -30,8 +30,19 @@ struct BKProfile {
     let phone: String
     let relation: String?
     var dob: String
-    var kids: [BKKidModel]
+    var kids: [BKKidModel]?
     
+    init(email: String, parentName: String, city: String, state: String, phone: String, relation: String, dob: String, kids: [BKKidModel]) {
+        self.email = email
+        self.parentName = parentName
+        self.city = city
+        self.state = state
+        self.phone = phone
+        self.dob = relation
+        self.relation = dob
+        self.kids = kids
+    }
+
     
     init(email: String, dict: [String: Any], kids: [BKKidModel]) {
         self.email = email

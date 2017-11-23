@@ -26,6 +26,7 @@ let BKNetowrkBaseUrlStr = "http://bloomkidsqa-env.us-east-1.elasticbeanstalk.com
 
 //PROD URL
 //let BKNetowrkBaseUrlStr = "http://bloomkids-env.us-east-1.elasticbeanstalk.com"
+
 let BKNetworkingLoginUrlStr = "\(BKNetowrkBaseUrlStr)/rest/login/dologin"
 let BKNetworkingSignupUrlStr = "\(BKNetowrkBaseUrlStr)/rest/register/doregister"
 let BKNetworkingAddKidUrlStr = "\(BKNetowrkBaseUrlStr)/rest/kid/addkid"

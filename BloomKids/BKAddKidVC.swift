@@ -8,6 +8,7 @@
 
 import UIKit
 import SVProgressHUD
+import KeychainAccess
 
 protocol BKAddKidVCDelegate: class {
     func addKidVC(_ vc: BKAddKidVC, didAddkid kid: BKKidModel)
@@ -91,7 +92,6 @@ class BKAddKidVC: UITableViewController {
         self.schoolPlace = currentEditKid?.school
         self.kidId =  currentEditKid?.id
         self.relation =  currentEditKid?.relation
-        //self.tableView.reloadData()
     }
     
     @objc func cancel(_ sender: Any) {
@@ -137,10 +137,25 @@ class BKAddKidVC: UITableViewController {
             return
         }
         
+        if let relation = BKNetowrkTool.shared.myProfile?.relation {
+            self.relation = relation
+
+        } else {
+            let keychain = Keychain(service: BKKeychainService)
+            
+            if let relation = keychain["relation"] {
+                self.relation = relation
+            } else {
+                self.relation = "Mother"
+            }
+        }
+
+        /*
         guard let relation = relation else {
             SVProgressHUD.showError(withStatus: "You have to select relation")
             return
         }
+        */
         
         let kidModel = BKKidModel(kidName: name, gender: gender, school: schoolPlace, age: gradeStr, sports: sports, id: self.kidId, relation: relation, city: BKNetowrkTool.shared.myProfile?.city)
         SVProgressHUD.show()
@@ -149,10 +164,8 @@ class BKAddKidVC: UITableViewController {
         if ( self.mode == "EDIT") {
             
             BKNetowrkTool.shared.editKid(kidModel: kidModel, row: self.kidRow!) { (success) in
-                
                 SVProgressHUD.dismiss()
-                
-                
+        
                 if success {
                     self.newKid = kidModel
                     print ("success editing kid")

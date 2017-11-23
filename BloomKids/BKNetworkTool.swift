@@ -124,6 +124,7 @@ extension BKNetowrkTool {
                 let keychain = Keychain(service: BKKeychainService)
                 keychain[email] = password
                 keychain[BKUserEmailKey] = email
+                keychain["relation"] = relation
                 
                 do {
                     if  let data = data,

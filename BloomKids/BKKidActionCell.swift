@@ -32,7 +32,7 @@ class BKKidActionCell: UITableViewCell {
             if let kid = kidModel {
                 //self.lblPlayerName.text = "\(kid.kidName) ID: \(String(describing: kid.id))"
                 self.lblPlayerName.text = kid.kidName
-                self.lblPlayerSchoolAge.text = "\(kid.grade ?? "Pre-K"), \(kid.school), \(kid.city)"
+                self.lblPlayerSchoolAge.text = "\(kid.grade ?? "Pre-K"), \(kid.school), \(kid.city ?? "")"
                 /*
                 self.btnPlayerAction.setImage(UIImage(named: BKImageEditBtnIcon), for: .Normal)
                 */

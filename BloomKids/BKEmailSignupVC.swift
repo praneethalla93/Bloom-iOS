@@ -25,6 +25,7 @@ class BKEmailSignupVC: UIViewController {
     let myGroup = DispatchGroup()
 
     weak var currentGender: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //inputTextFieldsHeightConstraint.constant = BKInputTextFieldHeight
@@ -66,6 +67,8 @@ extension BKEmailSignupVC {
         
         motherBtn.layer.masksToBounds = true
         motherBtn.layer.cornerRadius = fatherBtn.bounds.size.height / 2
+        
+        
         
     }
     

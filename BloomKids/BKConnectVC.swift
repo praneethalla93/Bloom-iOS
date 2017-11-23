@@ -533,7 +533,6 @@ extension BKConnectVC {
         if self.pendingConnections != nil {
             //cell.btnPlayerAction1.setImage(UIImage(named: "accept-btn-icon"), for: .normal)
             //cell.btnPlayerAction2.setImage(UIImage(named: "decline-btn-icon"), for: .normal)
-            
             if let activityConnection = self.pendingConnections?[indexPath.row] {
                 
                 // Assign the tap action which will be executed when the user taps the UIButton
